@@ -5,6 +5,15 @@ export type TinyApp = {
   cardClassName: string;
   cardTextClassName: string;
   cardLinkClassName: string;
+  tagline: string;
+  description: string;
+  features: { title: string; text: string }[];
+  theme: {
+    hero: string;
+    heroHeading: string;
+    heroText: string;
+    accent: string;
+  };
 };
 
 export const apps: TinyApp[] = [
@@ -15,6 +24,29 @@ export const apps: TinyApp[] = [
     cardClassName: "bg-navy",
     cardTextClassName: "text-cream/75",
     cardLinkClassName: "text-butter",
+    tagline: "You're not alone tonight.",
+    description:
+      "A calm companion for the late nights — gentle company, soft sounds and quiet reassurance for when the house is asleep and you're wide awake.",
+    features: [
+      {
+        title: "Night-friendly by design",
+        text: "A soft, dark interface that keeps the room calm and your eyes rested.",
+      },
+      {
+        title: "Gentle reassurance",
+        text: "Real words from real parents who have sat in the same dark room.",
+      },
+      {
+        title: "Soft sounds",
+        text: "Lullabies, white noise and quiet stories to carry you both through.",
+      },
+    ],
+    theme: {
+      hero: "bg-navy",
+      heroHeading: "text-cream",
+      heroText: "text-cream/70",
+      accent: "text-butter",
+    },
   },
   {
     slug: "tinylayers",
@@ -23,6 +55,29 @@ export const apps: TinyApp[] = [
     cardClassName: "bg-powder",
     cardTextClassName: "text-ink/70",
     cardLinkClassName: "text-amber-deep",
+    tagline: "Dressed right, every time.",
+    description:
+      "Take the guesswork out of dressing your baby — for sleep, for weather and for every situation in between.",
+    features: [
+      {
+        title: "Weather-aware outfits",
+        text: "Suggestions based on the temperature outside and inside.",
+      },
+      {
+        title: "Sleep-safe layers",
+        text: "TOG-based sleepwear guidance for safer, comfier nights.",
+      },
+      {
+        title: "Every situation",
+        text: "From car rides to first snow — know exactly what to put on.",
+      },
+    ],
+    theme: {
+      hero: "bg-powder",
+      heroHeading: "text-ink",
+      heroText: "text-ink/70",
+      accent: "text-amber-deep",
+    },
   },
   {
     slug: "tinyblooms",
@@ -31,6 +86,29 @@ export const apps: TinyApp[] = [
     cardClassName: "bg-sage",
     cardTextClassName: "text-ink/70",
     cardLinkClassName: "text-amber-deep",
+    tagline: "Help your baby bloom.",
+    description:
+      "Age-based ideas and tiny activities that fit real days — no pressure, just little moments of growth.",
+    features: [
+      {
+        title: "Made for their age",
+        text: "Ideas that match exactly where your baby is right now.",
+      },
+      {
+        title: "Five-minute activities",
+        text: "Small, doable play that fits between naps and feeds.",
+      },
+      {
+        title: "Grow together",
+        text: "Gentle guidance that turns everyday routines into discovery.",
+      },
+    ],
+    theme: {
+      hero: "bg-sage",
+      heroHeading: "text-ink",
+      heroText: "text-ink/70",
+      accent: "text-amber-deep",
+    },
   },
   {
     slug: "tinymeals",
@@ -39,5 +117,32 @@ export const apps: TinyApp[] = [
     cardClassName: "bg-peach",
     cardTextClassName: "text-ink/70",
     cardLinkClassName: "text-amber-deep",
+    tagline: "Something good from what you have.",
+    description:
+      "Turn the ingredients already in your kitchen into baby-friendly meals. Less waste, less stress, more happy plates.",
+    features: [
+      {
+        title: "Cook with what's there",
+        text: "Tell us what's in the fridge — we'll do the thinking.",
+      },
+      {
+        title: "Age-appropriate recipes",
+        text: "Textures and portions that match every stage.",
+      },
+      {
+        title: "No more food waste",
+        text: "Use it up before it goes off, one tiny meal at a time.",
+      },
+    ],
+    theme: {
+      hero: "bg-peach",
+      heroHeading: "text-ink",
+      heroText: "text-ink/70",
+      accent: "text-amber-deep",
+    },
   },
 ];
+
+export function getApp(slug: string): TinyApp | undefined {
+  return apps.find((app) => app.slug === slug);
+}
