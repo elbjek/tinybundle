@@ -37,7 +37,7 @@ export function Values() {
 
         <div className="flex h-44 w-44 shrink-0 flex-col items-center justify-center rounded-full border border-line bg-cream text-center shadow-[0_0_0_10px_rgba(242,193,115,0.12)]">
           <HeartIcon className="h-6 w-6 text-amber" />
-          <p className="mt-2 px-6 font-serif text-base font-semibold leading-snug text-ink">
+          <p className="mt-2 px-6 text-base font-bold leading-snug text-ink">
             One tiny world. Everything you need.
           </p>
         </div>

@@ -6,7 +6,7 @@ export function AppsShowcase() {
   return (
     <section id="apps" className="bg-[#fffcf6] py-20 sm:py-24">
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
-        <h2 className="text-center font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl">
           Four apps. One mission.
         </h2>
         <p className="mx-auto mt-4 max-w-sm text-center text-sm leading-relaxed text-muted sm:text-base">
@@ -23,7 +23,7 @@ export function AppsShowcase() {
             >
               <AppIcon slug={app.slug} className="h-14 w-14" />
               <h3
-                className={`mt-5 font-serif text-xl font-semibold ${
+                className={`mt-5 text-xl font-bold ${
                   app.slug === "tinyhaven" ? "text-cream" : "text-ink"
                 }`}
               >

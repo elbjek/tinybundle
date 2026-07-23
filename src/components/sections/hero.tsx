@@ -39,7 +39,7 @@ export function Hero() {
     <section className="flex w-full flex-col items-center gap-10 px-5 pb-14 pt-6 sm:px-8 lg:grid lg:grid-cols-2 lg:items-center lg:gap-0 lg:px-0 lg:pb-0">
       <div className="max-w-xl lg:mr-16 lg:max-w-md lg:justify-self-end lg:pb-16 xl:mr-24">
         <HeartIcon className="mb-5 h-7 w-7 text-amber" />
-        <h1 className="font-serif text-[2.6rem] font-semibold leading-[1.12] tracking-tight sm:text-5xl lg:text-[3.4rem]">
+        <h1 className="text-[2.6rem] font-bold leading-[1.12] tracking-tight sm:text-5xl lg:text-[3.4rem]">
           Four moments.
           <br />
           One journey.

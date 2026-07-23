@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
-import { Fraunces, Nunito_Sans } from "next/font/google";
+import { Nunito_Sans } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-});
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
@@ -27,7 +21,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${fraunces.variable} ${nunitoSans.variable}`}>
+      <body className={nunitoSans.variable}>
         <SiteHeader />
         {children}
         <SiteFooter />

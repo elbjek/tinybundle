@@ -37,7 +37,7 @@ export default async function AppPage({ params }: Props) {
           <p className={`mt-6 text-sm font-bold uppercase tracking-[0.2em] ${app.theme.accent}`}>
             {app.name}
           </p>
-          <h1 className={`mt-4 font-serif text-4xl font-semibold tracking-tight sm:text-5xl ${app.theme.heroHeading}`}>
+          <h1 className={`mt-4 text-4xl font-bold tracking-tight sm:text-5xl ${app.theme.heroHeading}`}>
             {app.tagline}
           </h1>
           <p className={`mt-5 max-w-xl text-base leading-relaxed sm:text-lg ${app.theme.heroText}`}>
@@ -62,7 +62,7 @@ export default async function AppPage({ params }: Props) {
 
       <section id="features" className="bg-[#fffcf6] py-20 sm:py-24">
         <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
-          <h2 className="text-center font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl">
             Made for tiny moments.
           </h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -71,7 +71,7 @@ export default async function AppPage({ params }: Props) {
                 key={feature.title}
                 className="rounded-2xl border border-line bg-blush px-7 py-9 text-center"
               >
-                <h3 className="font-serif text-lg font-semibold text-ink">
+                <h3 className="text-lg font-bold text-ink">
                   {feature.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted">
@@ -85,7 +85,7 @@ export default async function AppPage({ params }: Props) {
 
       <section className="bg-[#fffcf6] pb-20 sm:pb-24">
         <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
-          <h2 className="text-center font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight sm:text-3xl">
             One of four. Better together.
           </h2>
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
@@ -97,7 +97,7 @@ export default async function AppPage({ params }: Props) {
               >
                 <AppIcon slug={other.slug} className="h-10 w-10" />
                 <h3
-                  className={`mt-4 font-serif text-lg font-semibold ${
+                  className={`mt-4 text-lg font-bold ${
                     other.slug === "tinyhaven" ? "text-cream" : "text-ink"
                   }`}
                 >
