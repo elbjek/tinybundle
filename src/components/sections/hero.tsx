@@ -11,7 +11,7 @@ const callouts = [
   {
     title: "Right choices",
     text: "Answers when you need them.",
-    className: "left-[64%] top-[50%] bg-powder text-ink",
+    className: "right-[2%] top-[50%] bg-powder text-ink",
     subClassName: "text-ink/70",
   },
   {
@@ -36,8 +36,8 @@ const trustItems = [
 
 export function Hero() {
   return (
-    <section className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 px-5 pb-16 pt-6 sm:px-8 lg:flex-row lg:justify-center lg:gap-16 lg:pb-24">
-      <div className="max-w-xl lg:max-w-md">
+    <section className="flex w-full flex-col items-center gap-10 px-5 pb-14 pt-6 sm:px-8 lg:grid lg:grid-cols-2 lg:items-center lg:gap-0 lg:px-0 lg:pb-0">
+      <div className="max-w-xl lg:mr-16 lg:max-w-md lg:justify-self-end lg:pb-16 xl:mr-24">
         <HeartIcon className="mb-5 h-7 w-7 text-amber" />
         <h1 className="font-serif text-[2.6rem] font-semibold leading-[1.12] tracking-tight sm:text-5xl lg:text-[3.4rem]">
           Four moments.
@@ -69,7 +69,7 @@ export function Hero() {
         </ul>
       </div>
 
-      <div className="relative w-full max-w-[340px] shrink-0 sm:max-w-md lg:max-w-[450px]">
+      <div className="relative w-full max-w-[340px] shrink-0 sm:max-w-md lg:max-w-[460px] lg:justify-self-end xl:max-w-[500px]">
         <div className="relative aspect-[2/3] w-full">
           <Image
             src="/hero-journey.png"
