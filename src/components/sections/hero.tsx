@@ -36,8 +36,8 @@ const trustItems = [
 
 export function Hero() {
   return (
-    <section className="mx-auto grid w-full max-w-6xl items-center gap-10 px-5 pb-16 pt-6 sm:px-8 lg:grid-cols-[1fr_1.05fr] lg:gap-6 lg:pb-24">
-      <div className="max-w-xl">
+    <section className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 px-5 pb-16 pt-6 sm:px-8 lg:flex-row lg:justify-center lg:gap-16 lg:pb-24">
+      <div className="max-w-xl lg:max-w-md">
         <HeartIcon className="mb-5 h-7 w-7 text-amber" />
         <h1 className="font-serif text-[2.6rem] font-semibold leading-[1.12] tracking-tight sm:text-5xl lg:text-[3.4rem]">
           Four moments.
@@ -69,7 +69,7 @@ export function Hero() {
         </ul>
       </div>
 
-      <div className="relative mx-auto w-full max-w-[340px] sm:max-w-md lg:max-w-[450px]">
+      <div className="relative w-full max-w-[340px] shrink-0 sm:max-w-md lg:max-w-[450px]">
         <div className="relative aspect-[2/3] w-full">
           <Image
             src="/hero-journey.png"
