@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Nunito_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
-const nunitoSans = Nunito_Sans({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-nunito",
+  variable: "--font-jakarta",
   display: "swap",
 });
 
@@ -21,7 +21,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={nunitoSans.variable}>
+      <body className={plusJakartaSans.variable}>
         <SiteHeader />
         {children}
         <SiteFooter />

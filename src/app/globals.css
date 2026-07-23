@@ -17,7 +17,7 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-nunito), system-ui, sans-serif;
+  --font-sans: var(--font-jakarta), system-ui, sans-serif;
 }
 
 body {
