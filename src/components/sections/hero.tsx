@@ -72,7 +72,7 @@ export function Hero() {
       <div className="relative w-full max-w-[340px] shrink-0 sm:max-w-md lg:max-w-[460px] lg:justify-self-end xl:max-w-[500px]">
         <div className="relative aspect-[2/3] w-full">
           <Image
-            src="/hero-journey.png"
+            src="/hero-scene.png"
             alt="A winding path from a starry night sky through cozy scenes of baby clothes, a teddy bear and a bowl of baby food"
             fill
             priority
