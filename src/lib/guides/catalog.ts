@@ -777,50 +777,104 @@ function otherAppSeeds(): GuidePage[] {
       "tinymeals",
       "/tinymeals",
       "See TinyMeals",
-      "Staring at the fridge after a long day? TinyMeals turns what you already have into something good — coming soon.",
+      "Need something baby can actually eat from what you already have? TinyMeals is coming soon.",
       {
-        slug: "what-can-i-cook-with-whats-in-my-fridge",
+        slug: "baby-meal-ideas",
         category: "cooking",
-        question: "What can I cook with what’s in my fridge?",
-        title: "What Can I Cook With What’s in My Fridge?",
-        metaTitle: "Recipes From What’s in My Fridge",
-        description: "Decision-fatigued dinner ideas from ingredients you already have.",
+        question: "What are easy baby meal ideas?",
+        title: "Easy Baby Meal Ideas for Tired Parents",
+        metaTitle: "Baby Meal Ideas — Simple, Age-Right Plates",
+        description:
+          "Simple baby meal ideas when you’re out of inspiration — soft textures, small portions, and no fancy prep.",
         quickAnswer:
-          "List what you have, pick one protein + one veg + one carb, cook the simplest version.",
-        bullets: ["Start from inventory", "Simple combinations win"],
+          "Think soft, simple, and repeatable: mashed banana, yogurt with soft fruit, scrambled egg, well-cooked veg mash, or soft pasta shapes — matched to your baby’s stage.",
+        bullets: [
+          "Match texture to age and chewing skill",
+          "One new food at a time when introducing allergens",
+          "Adult dinner, softened — not a second cookbook",
+        ],
         sections: [
           {
-            heading: "Parent-brain cooking",
-            paragraphs: ["After a long day with a baby, recipe ambition collapses."],
+            heading: "Baby meals without a second kitchen",
+            paragraphs: [
+              "“Baby meal ideas” searches spike when lunch hits and the fridge looks empty of inspiration. You rarely need a special recipe — you need today’s food made soft and safe enough.",
+              "Start from what you’re already cooking. Soften, mash, or cut to the right size. Keep salt low. Sit with them.",
+              "TinyMeals is being built to turn what’s in your kitchen into baby-friendly plates — less decision fatigue, less waste.",
+            ],
           },
         ],
-        faqs: [],
-        relatedSlugs: ["how-to-stop-food-waste"],
+        faqs: [
+          {
+            q: "Do I need separate baby recipes every day?",
+            a: "Usually no. Adapt the family meal: remove added salt, adjust texture, and serve a tiny portion.",
+          },
+        ],
+        relatedSlugs: ["first-baby-foods", "baby-led-weaning-meal-ideas"],
       },
     ),
     seed(
       "tinymeals",
       "/tinymeals",
       "See TinyMeals",
-      "Cook from what you already have — coming soon.",
+      "Age-right plates from what you already have — coming soon.",
       {
-        slug: "how-to-stop-food-waste",
+        slug: "first-baby-foods",
         category: "cooking",
-        question: "How do I stop food from going bad?",
-        title: "How to Stop Food Waste at Home",
-        metaTitle: "How to Stop Food Waste — Busy Parent Habits",
-        description: "Practical ways to reduce food waste with a baby in the house.",
+        question: "What should baby’s first foods be?",
+        title: "First Baby Foods — Simple Starting Ideas",
+        metaTitle: "First Baby Foods — Easy Starter Meal Ideas",
+        description:
+          "Simple first-food ideas for starting solids — soft single ingredients and calm pacing.",
         quickAnswer:
-          "Keep a rough fridge inventory, cook the soonest-to-spoil first, plan one use-it-up meal every few days.",
-        bullets: ["See what you own", "Cook the urgent stuff first"],
+          "Start simple: soft veg, fruit, or iron-rich options your clinician recommends. One new food at a time, watch for reactions, and keep the mood low-pressure.",
+        bullets: [
+          "Soft single foods to start",
+          "Iron-rich options matter early",
+          "Follow your clinician’s timing advice",
+        ],
         sections: [
           {
-            heading: "Waste is often a visibility problem",
-            paragraphs: ["If you can’t see it, you’ll buy it again."],
+            heading: "First foods, not a menu plan",
+            paragraphs: [
+              "The goal of early solids is practice and nutrition — not Instagram variety. A few soft, repeatable foods beat a rotating gourmet list.",
+              "Always follow your clinician’s guidance for when and how to start, especially with allergens.",
+            ],
           },
         ],
         faqs: [],
-        relatedSlugs: ["what-can-i-cook-with-whats-in-my-fridge"],
+        relatedSlugs: ["baby-meal-ideas", "baby-led-weaning-meal-ideas"],
+      },
+    ),
+    seed(
+      "tinymeals",
+      "/tinymeals",
+      "See TinyMeals",
+      "Family food, baby-sized — coming soon from TinyBundle.",
+      {
+        slug: "baby-led-weaning-meal-ideas",
+        category: "cooking",
+        question: "What are baby-led weaning meal ideas?",
+        title: "Baby-Led Weaning Meal Ideas",
+        metaTitle: "Baby-Led Weaning Meal Ideas — Soft Finger Foods",
+        description:
+          "Practical BLW-style meal ideas — soft finger foods from everyday family cooking.",
+        quickAnswer:
+          "Offer soft, graspable strips of what the family is eating: steamed veg sticks, ripe fruit, soft omelette strips, well-cooked pasta — always supervised.",
+        bullets: [
+          "Soft enough to squash between fingers",
+          "Supervise every meal",
+          "Adapt the family plate first",
+        ],
+        sections: [
+          {
+            heading: "BLW from the family table",
+            paragraphs: [
+              "You don’t need a parallel BLW cookbook. Cook once, modify texture and salt, and let baby explore safely beside you.",
+            ],
+          },
+        ],
+        faqs: [],
+        relatedSlugs: ["baby-meal-ideas", "first-baby-foods"],
       },
     ),
     seed(
@@ -842,7 +896,7 @@ function otherAppSeeds(): GuidePage[] {
           "TinyHaven — night company",
           "TinyLayers — what to wear",
           "TinyBlooms — one activity",
-          "TinyMeals — cook from what you have",
+          "TinyMeals — baby meal ideas from what you have",
         ],
         sections: [
           {

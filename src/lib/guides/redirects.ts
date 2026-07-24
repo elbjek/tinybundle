@@ -20,4 +20,6 @@ export const GUIDE_REDIRECTS: Record<string, string> = {
   "baby-sleep-clothes-25c": "baby-sleep-24-26c",
   "baby-sleep-clothes-26c": "baby-sleep-24-26c",
   "baby-sleep-clothes-27c": "baby-sleep-27c-plus",
+  "what-can-i-cook-with-whats-in-my-fridge": "baby-meal-ideas",
+  "how-to-stop-food-waste": "baby-meal-ideas",
 };

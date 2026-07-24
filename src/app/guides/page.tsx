@@ -11,7 +11,7 @@ import { absoluteUrl, SITE_URL } from "@/lib/seo";
 
 const title = "Parenting Guides — Questions Parents Ask at 2am";
 const description =
-  "Search-intent guides for what baby should wear, what to do with baby, night loneliness, and cooking from what’s in the fridge — from TinyBundle.";
+  "Search-intent guides for what baby should wear, what to do with baby, night loneliness, and baby meal ideas — from TinyBundle.";
 const path = "/guides";
 
 export const metadata: Metadata = {
@@ -77,8 +77,8 @@ const otherHubs = [
   },
   {
     app: "tinymeals" as const,
-    title: "What can I cook?",
-    blurb: "Fridge-stare dinners and less food waste.",
+    title: "What can baby eat?",
+    blurb: "Baby meal ideas, first foods, and soft plates from everyday cooking.",
   },
   {
     app: "tinybundle" as const,

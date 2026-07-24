@@ -8,7 +8,7 @@ const navLinks = [
   { label: "Our Apps", href: "/#apps" },
   { label: "For Parents", href: "/#for-parents" },
   { label: "About", href: "/#about" },
-  { label: "Journal", href: "/#journal" },
+  { label: "Guides", href: "/guides" },
 ];
 
 export function SiteHeader() {
