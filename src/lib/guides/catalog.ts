@@ -526,79 +526,202 @@ function situationPages(): GuidePage[] {
       ],
       relatedSlugs: ["baby-car-seat-clothing", "baby-clothes-10-14-degrees", "winter-baby-carrier-clothes"],
     }),
-    layersPage({
-      slug: "what-should-newborn-wear-outside",
-      category: "age",
-      question: "What should a newborn wear outside?",
-      title: "What Should a Newborn Wear Outside?",
-      metaTitle: "What Should Newborn Wear Outside? Temperature Guide",
-      description:
-        "Newborn outdoor clothing by temperature — sun, cold, carriers, and why shade matters under 6 months.",
-      quickAnswer:
-        "Dress for the outdoor temperature with soft peelable layers. Under 6 months, prioritize shade and a brimmed hat. In a carrier, go one layer lighter.",
-      bullets: [
-        "Match outdoor temperature band",
-        "Shade + brimmed hat under 6 months",
-        "Carrier = one layer lighter",
-      ],
-      sections: [
-        {
-          heading: "Newborns and the weather",
-          paragraphs: [
-            "Start from a temperature band, favor thin adjustable layers, and check the chest.",
-            MEDICAL_DISCLAIMER,
-          ],
-        },
-      ],
-      faqs: [
-        {
-          q: "Does a newborn need a hat outside in summer?",
-          a: "A brimmed hat for sun is useful. Skip hats for indoor sleep.",
-        },
-      ],
-      relatedSlugs: [
-        "baby-clothes-19-21-degrees",
-        "baby-clothes-15-18-degrees",
-        "how-many-layers-should-baby-wear",
-      ],
-    }),
-    layersPage({
-      slug: "what-should-3-month-old-wear",
-      category: "age",
-      question: "What should a 3-month-old wear?",
-      title: "What Should a 3-Month-Old Wear?",
-      metaTitle: "What Should a 3-Month-Old Wear? Temperature & Sleep",
-      description:
-        "Dressing a 3-month-old for sleep and outside — temperature bands, rolling/swaddle notes, and the chest check.",
-      quickAnswer:
-        "Temperature still decides. Use the outdoor or sleep band for today’s number. At three months, watch for rolling — stop swaddling at the first signs.",
-      bullets: [
-        "Use temperature bands, not season myths",
-        "Stop swaddling when rolling starts",
-        "Carrier = one layer lighter",
-      ],
-      sections: [
-        {
-          heading: "Three months, same physics",
-          paragraphs: [
-            "Warmth logic doesn’t change at three months — mobility and swaddle rules do. Pick the temperature band, then confirm on the chest.",
-            MEDICAL_DISCLAIMER,
-          ],
-        },
-      ],
-      faqs: [
-        {
-          q: "Is a 3-month-old dressed like a newborn?",
-          a: "For warmth, yes — temperature-first. Fit and rolling safety matter more than a different TOG chart.",
-        },
-      ],
-      relatedSlugs: [
-        "what-should-newborn-wear-outside",
-        "baby-clothes-19-21-degrees",
-        "what-should-baby-wear-to-sleep",
-      ],
-    }),
+    ...agePages(),
   ];
+}
+
+/** Outfit-by-age guides shown in the hub “By age” chips. */
+export const AGE_GUIDES = [
+  {
+    slug: "what-should-newborn-wear-outside",
+    chip: "Newborn",
+    label: "newborn",
+    questionAge: "a newborn",
+    titleAge: "a Newborn",
+    metaAge: "Newborn",
+    focus: "outside" as const,
+    questionOverride: "What should a newborn wear outside?",
+    titleOverride: "What Should a Newborn Wear Outside?",
+    metaOverride: "What Should Newborn Wear Outside? Temperature Guide",
+    descriptionOverride:
+      "Newborn outdoor clothing by temperature — sun, cold, carriers, and why shade matters under 6 months.",
+    note: "Under 6 months, prioritize shade and a brimmed hat outdoors. Soft peelable layers beat one bulky outfit.",
+    bullets: [
+      "Match the outdoor temperature band",
+      "Shade + brimmed hat under 6 months",
+      "Carrier = one layer lighter",
+    ],
+    faq: {
+      q: "Does a newborn need a hat outside in summer?",
+      a: "A brimmed hat for sun is useful. Skip hats for indoor sleep.",
+    },
+  },
+  {
+    slug: "what-should-1-month-old-wear",
+    chip: "1 month",
+    label: "1-month-old",
+    questionAge: "a 1-month-old",
+    titleAge: "a 1-Month-Old",
+    metaAge: "1-Month-Old",
+    focus: "both" as const,
+    note: "Warmth logic matches newborns. Favor thin layers you can peel, and check the chest — not cold hands.",
+    bullets: [
+      "Temperature band first",
+      "Thin adjustable layers",
+      "Chest check after 10 minutes",
+    ],
+    faq: {
+      q: "Is dressing a 1-month-old different from a newborn?",
+      a: "For warmth, no. Fit and how fussy they get with changes matter more than a new TOG chart.",
+    },
+  },
+  {
+    slug: "what-should-2-month-old-wear",
+    chip: "2 months",
+    label: "2-month-old",
+    questionAge: "a 2-month-old",
+    titleAge: "a 2-Month-Old",
+    metaAge: "2-Month-Old",
+    focus: "both" as const,
+    note: "Still temperature-first. Short outings and carriers are common — go one layer lighter in a carrier.",
+    bullets: [
+      "Use outdoor or sleep band for today",
+      "Carrier = one layer lighter",
+      "Avoid overdressing “just in case”",
+    ],
+    faq: {
+      q: "Should I dress warmer because they’re still small?",
+      a: "Dress for the air temperature and activity, then adjust from the chest. Size alone doesn’t mean extra layers.",
+    },
+  },
+  {
+    slug: "what-should-3-month-old-wear",
+    chip: "3 months",
+    label: "3-month-old",
+    questionAge: "a 3-month-old",
+    titleAge: "a 3-Month-Old",
+    metaAge: "3-Month-Old",
+    focus: "both" as const,
+    note: "Warmth logic doesn’t change — mobility does. Watch for rolling and stop swaddling at the first signs.",
+    bullets: [
+      "Use temperature bands, not season myths",
+      "Stop swaddling when rolling starts",
+      "Carrier = one layer lighter",
+    ],
+    faq: {
+      q: "Is a 3-month-old dressed like a newborn?",
+      a: "For warmth, yes — temperature-first. Fit and rolling safety matter more than a different TOG chart.",
+    },
+  },
+  {
+    slug: "what-should-6-month-old-wear",
+    chip: "6 months",
+    label: "6-month-old",
+    questionAge: "a 6-month-old",
+    titleAge: "a 6-Month-Old",
+    metaAge: "6-Month-Old",
+    focus: "both" as const,
+    note: "More movement means they can warm up on the floor. Still start from the temperature band; skip coats under car-seat harnesses.",
+    bullets: [
+      "Temperature band for outside and sleep",
+      "Active floor time can mean one fewer layer",
+      "No bulky coats under car-seat straps",
+    ],
+    faq: {
+      q: "Can sunscreen replace shade at six months?",
+      a: "Follow your clinician’s sunscreen guidance. Shade and cover still matter — don’t rely on lotion alone.",
+    },
+  },
+  {
+    slug: "what-should-9-month-old-wear",
+    chip: "9 months",
+    label: "9-month-old",
+    questionAge: "a 9-month-old",
+    titleAge: "a 9-Month-Old",
+    metaAge: "9-Month-Old",
+    focus: "both" as const,
+    note: "Crawling and cruising add heat. Prefer layers you can strip mid-park, and keep sleepwear TOG matched to the room.",
+    bullets: [
+      "Peelable layers for active days",
+      "Sleep = room temp, not outdoor forecast",
+      "Chest check still beats cold hands",
+    ],
+    faq: {
+      q: "Do mobile babies need fewer layers?",
+      a: "Often one fewer once they’re moving hard — but start from the weather, then adjust after 10 minutes.",
+    },
+  },
+  {
+    slug: "what-should-12-month-old-wear",
+    chip: "12 months",
+    label: "12-month-old",
+    questionAge: "a 12-month-old",
+    titleAge: "a 12-Month-Old",
+    metaAge: "12-Month-Old",
+    focus: "both" as const,
+    note: "Closer to toddler clothing habits, but the physics is the same: match air temperature, avoid harness bulk, check the chest.",
+    bullets: [
+      "Dress for air temp + activity",
+      "Thin layers under harnesses",
+      "Sleepwear from room temperature",
+    ],
+    faq: {
+      q: "Can they wear the same as me outside?",
+      a: "Similar weight, not identical. Adults often run warmer when walking; babies in strollers need the stroller-mode check.",
+    },
+  },
+] as const;
+
+function agePages(): GuidePage[] {
+  return AGE_GUIDES.map((age, index) => {
+    const prev = AGE_GUIDES[index - 1];
+    const next = AGE_GUIDES[index + 1];
+    const related = [
+      prev?.slug,
+      next?.slug,
+      "baby-clothes-19-21-degrees",
+      age.focus === "outside" ? "how-many-layers-should-baby-wear" : "what-should-baby-wear-to-sleep",
+    ].filter(Boolean) as string[];
+
+    const hasOverride = "questionOverride" in age && age.questionOverride;
+
+    return layersPage({
+      slug: age.slug,
+      category: "age",
+      question: hasOverride
+        ? age.questionOverride!
+        : `What should ${age.questionAge} wear?`,
+      title: hasOverride
+        ? age.titleOverride!
+        : `What Should ${age.titleAge} Wear?`,
+      metaTitle: hasOverride
+        ? age.metaOverride!
+        : `What Should ${age.metaAge} Wear? Temperature Guide`,
+      description: hasOverride
+        ? age.descriptionOverride!
+        : `Dressing ${age.questionAge} for sleep and outside — temperature bands, layers, and the chest check.`,
+      quickAnswer: `Temperature still decides. Pick today’s outdoor or sleep band, then adjust. ${age.note}`,
+      bullets: [...age.bullets],
+      sections: [
+        {
+          heading: `${age.chip}: temperature first`,
+          paragraphs: [
+            age.note,
+            "Hands and feet run cool — check the chest or back of the neck after about 10 minutes.",
+            MEDICAL_DISCLAIMER,
+          ],
+        },
+        {
+          heading: "Where to go next",
+          paragraphs: [
+            "For a specific outdoor reading, open the matching temperature band. For crib sleep, use the sleep room guides — the room, not the forecast, decides.",
+          ],
+        },
+      ],
+      faqs: [age.faq],
+      relatedSlugs: related,
+    });
+  });
 }
 
 function otherAppSeeds(): GuidePage[] {

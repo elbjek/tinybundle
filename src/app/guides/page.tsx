@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GuidesFooter, GuidesHeader } from "@/components/guides/chrome";
 import {
+  AGE_GUIDES,
   OUTDOOR_BANDS,
   SLEEP_BANDS,
   getGuidesByApp,
@@ -221,23 +222,20 @@ export default function GuidesIndexPage() {
 
           <div id="age" className="mt-10 scroll-mt-24">
             <h3 className="text-lg font-extrabold text-ink">By age</h3>
+            <p className="mt-1 text-sm font-medium text-muted">
+              Outfit guides by age — temperature still decides the layers.
+            </p>
             <ul className="mt-4 flex flex-wrap gap-2">
-              <li>
-                <Link
-                  href="/guides/what-should-newborn-wear-outside"
-                  className="inline-block rounded-full border border-line bg-cream px-4 py-2 text-sm font-bold text-ink hover:border-amber/50"
-                >
-                  Newborn outside
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/guides/what-should-3-month-old-wear"
-                  className="inline-block rounded-full border border-line bg-cream px-4 py-2 text-sm font-bold text-ink hover:border-amber/50"
-                >
-                  3-month-old
-                </Link>
-              </li>
+              {AGE_GUIDES.map((age) => (
+                <li key={age.slug}>
+                  <Link
+                    href={`/guides/${age.slug}`}
+                    className="inline-block rounded-full border border-line bg-cream px-4 py-2 text-sm font-bold text-ink hover:border-amber/50"
+                  >
+                    {age.chip}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </section>
