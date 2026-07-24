@@ -324,7 +324,71 @@ function situationPages(): GuidePage[] {
           a: "Not based on hands alone. Check the chest. If warm and dry, you’re fine.",
         },
       ],
-      relatedSlugs: ["what-should-baby-wear-to-sleep", "best-room-temperature-for-baby-sleep", "baby-sleep-20-23c"],
+      relatedSlugs: [
+        "what-should-baby-wear-to-sleep",
+        "best-room-temperature-for-baby-sleep",
+        "feel-baby-neck-to-check-temperature",
+      ],
+    }),
+    layersPage({
+      slug: "feel-baby-neck-to-check-temperature",
+      category: "sleep",
+      question: "Should I feel my baby’s neck to check if they’re warm?",
+      title: "Feel Baby’s Neck to Check Temperature",
+      metaTitle: "Check Baby Temperature by Feeling the Neck",
+      description:
+        "How to check if your baby is too warm by feeling the back of the neck or chest — and why cold hands don’t mean add a layer.",
+      quickAnswer:
+        "Yes. About 10–15 minutes after settling or going outside, feel the back of the neck or the chest: warm and dry is right; sweaty or hot means remove a layer; cool means add one. Cold hands and feet alone are normal.",
+      bullets: [
+        "Back of neck or chest — not hands",
+        "Warm + dry = dressed right",
+        "Sweaty neck/chest = too warm — peel a layer",
+      ],
+      sections: [
+        {
+          heading: "Why the neck (or chest), not the hands",
+          paragraphs: [
+            "Hands and feet often feel cool even when a baby is comfortable — circulation prioritizes the core. The back of the neck and the chest give a truer read of whether they’re overheating or underdressed.",
+            CHEST_CHECK,
+          ],
+        },
+        {
+          heading: "How to do the check",
+          paragraphs: [
+            "Wait 10–15 minutes after you’ve dressed them for sleep or headed out. Slide two fingers under the collar or onto the upper chest. You’re feeling for warmth and dryness — not for a thermometer number.",
+            "If the neck or chest is damp, flushed, or hot, remove one thin layer and check again. If it feels cool to your (warm) hand, add one thin layer. Repeat until warm and dry.",
+            "This is a comfort and overheating check for clothing — not a medical thermometer for fever. If you suspect illness, use a proper thermometer and follow your clinician’s guidance.",
+            MEDICAL_DISCLAIMER,
+          ],
+        },
+        {
+          heading: "When parents get it wrong",
+          paragraphs: [
+            "Adding socks or a blanket because toes feel cold is the usual miss. So is covering a pram for shade in a way that traps heat — keep airflow, and re-check the neck at stops.",
+            "In a carrier, your body heat adds a layer. Dress lighter, then feel the neck when you pause.",
+          ],
+        },
+      ],
+      faqs: [
+        {
+          q: "Is feeling the neck enough, or do I need the chest too?",
+          a: "Either works. Many parents prefer the back of the neck because it’s easy to reach without fully undressing. Use the same warm-and-dry rule.",
+        },
+        {
+          q: "My baby’s neck is sweaty after a feed — are they too hot?",
+          a: "Feeding and settling can cause temporary sweat. Re-check 10 minutes later at rest. If the neck and chest stay damp with flushed cheeks, remove a layer.",
+        },
+        {
+          q: "Can I use this instead of a room thermometer?",
+          a: "Use both. The thermometer picks a starting outfit; the neck/chest check confirms it on your baby.",
+        },
+      ],
+      relatedSlugs: [
+        "baby-too-hot-or-cold-at-night",
+        "what-should-baby-wear-to-sleep",
+        "how-many-layers-should-baby-wear",
+      ],
     }),
     layersPage({
       slug: "how-many-layers-should-baby-wear",
@@ -534,7 +598,7 @@ function situationPages(): GuidePage[] {
 export const AGE_GUIDES = [
   {
     slug: "what-should-newborn-wear-outside",
-    chip: "Newborn",
+    chip: "What should a newborn wear outside?",
     label: "newborn",
     questionAge: "a newborn",
     titleAge: "a Newborn",
@@ -558,7 +622,7 @@ export const AGE_GUIDES = [
   },
   {
     slug: "what-should-1-month-old-wear",
-    chip: "1 month",
+    chip: "What should a 1-month-old wear?",
     label: "1-month-old",
     questionAge: "a 1-month-old",
     titleAge: "a 1-Month-Old",
@@ -577,7 +641,7 @@ export const AGE_GUIDES = [
   },
   {
     slug: "what-should-2-month-old-wear",
-    chip: "2 months",
+    chip: "What should a 2-month-old wear?",
     label: "2-month-old",
     questionAge: "a 2-month-old",
     titleAge: "a 2-Month-Old",
@@ -596,7 +660,7 @@ export const AGE_GUIDES = [
   },
   {
     slug: "what-should-3-month-old-wear",
-    chip: "3 months",
+    chip: "What should a 3-month-old wear?",
     label: "3-month-old",
     questionAge: "a 3-month-old",
     titleAge: "a 3-Month-Old",
@@ -615,7 +679,7 @@ export const AGE_GUIDES = [
   },
   {
     slug: "what-should-6-month-old-wear",
-    chip: "6 months",
+    chip: "What should a 6-month-old wear?",
     label: "6-month-old",
     questionAge: "a 6-month-old",
     titleAge: "a 6-Month-Old",
@@ -634,7 +698,7 @@ export const AGE_GUIDES = [
   },
   {
     slug: "what-should-9-month-old-wear",
-    chip: "9 months",
+    chip: "What should a 9-month-old wear?",
     label: "9-month-old",
     questionAge: "a 9-month-old",
     titleAge: "a 9-Month-Old",
@@ -653,7 +717,7 @@ export const AGE_GUIDES = [
   },
   {
     slug: "what-should-12-month-old-wear",
-    chip: "12 months",
+    chip: "What should a 12-month-old wear?",
     label: "12-month-old",
     questionAge: "a 12-month-old",
     titleAge: "a 12-Month-Old",

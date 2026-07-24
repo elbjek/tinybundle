@@ -44,6 +44,11 @@ const layersCategories = [
     href: "/guides/what-should-baby-wear-to-sleep",
   },
   {
+    id: "neck-check",
+    label: "Neck / chest check",
+    href: "/guides/feel-baby-neck-to-check-temperature",
+  },
+  {
     id: "stroller",
     label: "Stroller",
     href: "/guides/baby-stroller-clothing",
@@ -225,12 +230,12 @@ export default function GuidesIndexPage() {
             <p className="mt-1 text-sm font-medium text-muted">
               Outfit guides by age — temperature still decides the layers.
             </p>
-            <ul className="mt-4 flex flex-wrap gap-2">
+            <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {AGE_GUIDES.map((age) => (
                 <li key={age.slug}>
                   <Link
                     href={`/guides/${age.slug}`}
-                    className="inline-block rounded-full border border-line bg-cream px-4 py-2 text-sm font-bold text-ink hover:border-amber/50"
+                    className="block rounded-2xl border border-line bg-cream px-5 py-4 text-sm font-extrabold text-ink transition-shadow hover:shadow-md"
                   >
                     {age.chip}
                   </Link>
