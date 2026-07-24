@@ -83,7 +83,7 @@ export function HavenFooter() {
           <h2 className="text-sm font-extrabold text-haven-ink">Legal</h2>
           <ul className="mt-4 space-y-2.5 text-sm text-haven-muted">
             <li><Link href="/tinyhaven/privacy" className="hover:text-haven-ink">Privacy Policy</Link></li>
-            <li><span className="cursor-default">Terms of Use</span></li>
+            <li><Link href="/tinyhaven/terms" className="hover:text-haven-ink">Terms of Use</Link></li>
           </ul>
         </nav>
       </div>

@@ -58,6 +58,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly" as const,
       priority: 0.3,
     },
+    {
+      url: `${SITE_URL}/tinyhaven/terms`,
+      lastModified: now,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    },
     ...layersBlog,
     ...guides,
   ];

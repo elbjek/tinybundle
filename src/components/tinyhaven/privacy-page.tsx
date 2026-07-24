@@ -118,6 +118,13 @@ export function HavenPrivacyPage() {
           <Link href="/tinyhaven" className="font-semibold text-haven-amber-text hover:underline">
             tinybundle.app/tinyhaven
           </Link>
+          . Read together with our{" "}
+          <Link
+            href="/tinyhaven/terms"
+            className="font-semibold text-haven-amber-text hover:underline"
+          >
+            Terms of Use
+          </Link>
           . It is general information, not legal advice.
         </p>
 
