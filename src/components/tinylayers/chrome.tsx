@@ -4,7 +4,7 @@ import { LayersMark } from "@/components/tinylayers/mark";
 const nav = [
   { label: "How it works", href: "/tinylayers#how" },
   { label: "Modes", href: "/tinylayers#modes" },
-  { label: "Guide", href: "/tinylayers/blog" },
+  { label: "Guides", href: "/guides" },
   { label: "FAQ", href: "/tinylayers#faq" },
 ];
 
@@ -60,7 +60,8 @@ export function LayersFooter() {
           </div>
         </div>
         <nav className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-semibold text-layers-muted" aria-label="Footer">
-          <Link href="/tinylayers/blog" className="hover:text-layers-ink">Guide</Link>
+          <Link href="/guides" className="hover:text-layers-ink">Guides</Link>
+          <Link href="/tinylayers/blog" className="hover:text-layers-ink">Blog</Link>
           <a href="/tinylayers#safety" className="hover:text-layers-ink">Safety</a>
           <a href="/tinylayers#faq" className="hover:text-layers-ink">FAQ</a>
           <Link href="/#apps" className="hover:text-layers-ink">All apps</Link>

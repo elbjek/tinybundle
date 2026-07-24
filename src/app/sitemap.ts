@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { apps } from "@/lib/apps";
+import { guidePages } from "@/lib/guides/catalog";
 import { SITE_URL } from "@/lib/seo";
 import { layersArticles } from "@/lib/tinylayers/articles";
 
@@ -28,6 +29,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
+  const guides = [
+    {
+      url: `${SITE_URL}/guides`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    ...guidePages.map((guide) => ({
+      url: `${SITE_URL}/guides/${guide.slug}`,
+      lastModified: new Date(guide.modifiedAt),
+      changeFrequency: "monthly" as const,
+      priority: guide.category === "combo" ? 0.6 : 0.75,
+    })),
+  ];
+
   return [
     {
       url: SITE_URL,
@@ -37,5 +53,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...appPages,
     ...layersBlog,
+    ...guides,
   ];
 }

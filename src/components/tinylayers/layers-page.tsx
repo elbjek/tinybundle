@@ -335,12 +335,37 @@ function Guide() {
               seats, and winter walks — grounded in published safe-sleep guidance.
             </p>
           </div>
-          <Link
-            href="/tinylayers/blog"
-            className="shrink-0 text-sm font-extrabold text-layers-blue hover:underline"
-          >
-            Browse all guides →
-          </Link>
+          <div className="flex shrink-0 flex-col gap-2 sm:items-end">
+            <Link
+              href="/guides"
+              className="text-sm font-extrabold text-layers-blue hover:underline"
+            >
+              Browse temperature & situation guides →
+            </Link>
+            <Link
+              href="/tinylayers/blog"
+              className="text-sm font-extrabold text-layers-blue hover:underline"
+            >
+              Long-form TinyLayers Guide →
+            </Link>
+          </div>
+        </div>
+        <div className="mt-8 flex flex-wrap gap-2">
+          {[
+            { href: "/guides/baby-clothes-20-degrees", label: "Baby clothes 20°C" },
+            { href: "/guides/baby-sleep-clothes-22c", label: "Sleep clothes 22°C" },
+            { href: "/guides/what-should-3-month-old-wear-at-20-degrees-outside", label: "3-month-old at 20°C" },
+            { href: "/guides/baby-car-seat-clothing", label: "Car seat clothing" },
+            { href: "/guides/how-many-layers-should-baby-wear", label: "How many layers?" },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="rounded-full border border-layers-border bg-layers-card px-3.5 py-1.5 text-xs font-bold text-layers-muted transition-colors hover:border-layers-blue/40 hover:text-layers-blue"
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
         <div className="mt-10 grid gap-4 md:grid-cols-2">
           {layersArticles.map((article) => (
