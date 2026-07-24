@@ -33,31 +33,46 @@ In the Vercel project: **Settings → Domains → Add**.
 Vercel will flag both domains as "Invalid Configuration" until DNS is
 updated — that's expected; continue below.
 
-## 3. Update DNS records
+## 3. Update DNS
 
-At the DNS provider for `tinybundle.com` (wherever the domain's nameservers
-are managed — check the registrar account), replace the current records:
+Vercel offers two ways to connect the domain — use **one**, not both. Either
+way, the change is made at the **registrar** (the account where
+tinybundle.com was purchased), not in the Vercel dashboard.
 
-| Type  | Name  | Current value     | New value              |
-|-------|-------|-------------------|------------------------|
-| A     | `@`   | `207.148.248.143` | `76.76.21.21`          |
+### Option A — Vercel nameservers (chosen for this project)
+
+Vercel manages the whole DNS zone. The zone already exists on Vercel with
+auto-created ALIAS records for the apex and `*` wildcard.
+
+1. **Before switching**, recreate any records from the old DNS provider
+   that must keep working (MX for email, SPF/DKIM/verification TXT,
+   subdomains) in the Vercel zone: **Domains → tinybundle.com → DNS
+   Records → Add**. The apex/`www` website records are handled
+   automatically — don't recreate those.
+2. At the registrar, replace the domain's nameservers with:
+   - `ns1.vercel-dns.com`
+   - `ns2.vercel-dns.com`
+3. Wait for propagation (minutes to a few hours; the old records have a
+   1-hour TTL). The Domains page flips to "Valid Configuration" and TLS is
+   issued automatically.
+
+A manually added `A @ 76.76.21.21` record in the Vercel zone is redundant —
+the locked ALIAS record already covers the apex; delete the manual one.
+
+### Option B — keep current DNS provider, point records at Vercel
+
+| Type    | Name  | Current value     | New value              |
+|---------|-------|-------------------|------------------------|
+| A       | `@`   | `207.148.248.143` | `216.198.79.1`         |
 | A/CNAME | `www` | `207.148.248.143` | `cname.vercel-dns.com` |
 
-Notes:
-
-- Use exactly the values shown on the Vercel **Domains** page for this
-  project if they differ — newer Vercel accounts are sometimes given
-  `216.198.79.1` for the apex A record instead of `76.76.21.21`. The
-  dashboard is authoritative.
+- The dashboard's **DNS Records** tab is authoritative for the apex IP
+  (`216.198.79.1` is the current recommendation; the legacy `76.76.21.21`
+  also still works).
 - Delete the old A records pointing at `207.148.248.143`; don't just add
   new ones alongside them.
-- If the provider doesn't allow a CNAME on `www` alongside other records,
-  an A record `www → 76.76.21.21` also works.
 - Leave MX/TXT records untouched — only the `@` and `www` address records
   change, so email is unaffected.
-- Propagation is usually minutes but can take up to an hour or two. The
-  Domains page in Vercel flips to "Valid Configuration" and issues the TLS
-  certificate automatically once it sees the new records.
 
 > **Heads-up:** `207.148.248.143` is a Vultr server. Whatever that server
 > is currently hosting at tinybundle.com stops receiving traffic once DNS
