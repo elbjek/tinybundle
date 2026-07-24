@@ -2,10 +2,10 @@ import Link from "next/link";
 import { AppIcon } from "@/components/app-icons";
 
 const nav = [
-  { label: "How it works", href: "#how" },
-  { label: "Features", href: "#features" },
-  { label: "For parents", href: "#for-parents" },
-  { label: "FAQ", href: "#faq" },
+  { label: "How it works", href: "/tinyhaven#how" },
+  { label: "Features", href: "/tinyhaven#features" },
+  { label: "For parents", href: "/tinyhaven#for-parents" },
+  { label: "FAQ", href: "/tinyhaven#faq" },
 ];
 
 export function HavenHeader() {
@@ -21,22 +21,22 @@ export function HavenHeader() {
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="TinyHaven">
           {nav.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               className="text-sm font-semibold text-haven-muted transition-colors hover:text-haven-ink"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
-        <a
-          href="#download"
+        <Link
+          href="/tinyhaven#download"
           className="rounded-full bg-haven-amber px-5 py-2.5 text-sm font-bold text-haven-on-amber shadow-[0_8px_28px_rgba(223,174,109,0.28)] transition-colors hover:bg-haven-amber-bright"
         >
           Get the app
-        </a>
+        </Link>
       </div>
     </header>
   );
@@ -63,10 +63,10 @@ export function HavenFooter() {
         <nav aria-label="App">
           <h2 className="text-sm font-extrabold text-haven-ink">App</h2>
           <ul className="mt-4 space-y-2.5 text-sm text-haven-muted">
-            <li><a href="#how" className="hover:text-haven-ink">How it works</a></li>
-            <li><a href="#features" className="hover:text-haven-ink">Features</a></li>
-            <li><a href="#faq" className="hover:text-haven-ink">FAQ</a></li>
-            <li><a href="#download" className="hover:text-haven-ink">Download</a></li>
+            <li><Link href="/tinyhaven#how" className="hover:text-haven-ink">How it works</Link></li>
+            <li><Link href="/tinyhaven#features" className="hover:text-haven-ink">Features</Link></li>
+            <li><Link href="/tinyhaven#faq" className="hover:text-haven-ink">FAQ</Link></li>
+            <li><Link href="/tinyhaven#download" className="hover:text-haven-ink">Download</Link></li>
           </ul>
         </nav>
 
@@ -82,7 +82,7 @@ export function HavenFooter() {
         <nav aria-label="Legal">
           <h2 className="text-sm font-extrabold text-haven-ink">Legal</h2>
           <ul className="mt-4 space-y-2.5 text-sm text-haven-muted">
-            <li><span className="cursor-default">Privacy Policy</span></li>
+            <li><Link href="/tinyhaven/privacy" className="hover:text-haven-ink">Privacy Policy</Link></li>
             <li><span className="cursor-default">Terms of Use</span></li>
           </ul>
         </nav>
