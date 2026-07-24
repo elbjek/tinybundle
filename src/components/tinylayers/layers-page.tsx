@@ -352,11 +352,11 @@ function Guide() {
         </div>
         <div className="mt-8 flex flex-wrap gap-2">
           {[
-            { href: "/guides/baby-clothes-20-degrees", label: "Baby clothes 20°C" },
-            { href: "/guides/baby-sleep-clothes-22c", label: "Sleep clothes 22°C" },
-            { href: "/guides/what-should-3-month-old-wear-at-20-degrees-outside", label: "3-month-old at 20°C" },
+            { href: "/guides/baby-clothes-19-21-degrees", label: "Outside ~20°C" },
+            { href: "/guides/baby-sleep-20-23c", label: "Sleep 20–23°C" },
             { href: "/guides/baby-car-seat-clothing", label: "Car seat clothing" },
             { href: "/guides/how-many-layers-should-baby-wear", label: "How many layers?" },
+            { href: "/guides", label: "All guides" },
           ].map((item) => (
             <Link
               key={item.href}

@@ -8,6 +8,7 @@ import {
 } from "@/lib/guides/outfits";
 
 const DATE = "2026-07-24";
+
 const LAYERS_CTA = {
   ctaApp: "tinylayers" as const,
   ctaLabel: "Open TinyLayers",
@@ -38,44 +39,54 @@ function layersPage(
   };
 }
 
-const OUTDOOR_TEMPS = [10, 12, 15, 16, 18, 20, 22, 24, 25, 28, 30];
-const SLEEP_TEMPS = [16, 18, 20, 21, 22, 24, 25, 26, 27];
-const COMBO_AGES = [
-  { slug: "newborn", label: "a newborn", titleAge: "a Newborn", months: 0 },
-  { slug: "1-month-old", label: "a 1-month-old", titleAge: "a 1-Month-Old", months: 1 },
-  { slug: "2-month-old", label: "a 2-month-old", titleAge: "a 2-Month-Old", months: 2 },
-  { slug: "3-month-old", label: "a 3-month-old", titleAge: "a 3-Month-Old", months: 3 },
-  { slug: "6-month-old", label: "a 6-month-old", titleAge: "a 6-Month-Old", months: 6 },
-  { slug: "9-month-old", label: "a 9-month-old", titleAge: "a 9-Month-Old", months: 9 },
-  { slug: "12-month-old", label: "a 12-month-old", titleAge: "a 12-Month-Old", months: 12 },
-] as const;
-const COMBO_TEMPS = [15, 18, 20, 22, 24, 28];
-const COMBO_CONTEXTS = [
-  { key: "outside", label: "outside", sleep: false },
-  { key: "to-sleep", label: "to sleep", sleep: true },
+/** Outdoor temperature bands — outfit changes meaningfully between these. */
+export const OUTDOOR_BANDS = [
+  { slug: "baby-clothes-10-14-degrees", min: 10, max: 14, chip: "12°C", label: "10–14°C" },
+  { slug: "baby-clothes-15-18-degrees", min: 15, max: 18, chip: "15°C", label: "15–18°C" },
+  { slug: "baby-clothes-19-21-degrees", min: 19, max: 21, chip: "20°C", label: "19–21°C" },
+  { slug: "baby-clothes-22-23-degrees", min: 22, max: 23, chip: "22°C", label: "22–23°C" },
+  { slug: "baby-clothes-24-26-degrees", min: 24, max: 26, chip: "24°C", label: "24–26°C" },
+  { slug: "baby-clothes-27-30-degrees", min: 27, max: 30, chip: "30°C", label: "27–30°C" },
 ] as const;
 
-function outdoorTempPage(tempC: number): GuidePage {
-  const outfit = outdoorOutfitFor(tempC);
-  const f = cToF(tempC);
-  const slug = `baby-clothes-${tempC}-degrees`;
+/** Sleep room bands aligned to TOG steps. */
+export const SLEEP_BANDS = [
+  { slug: "baby-sleep-under-16c", min: 5, max: 15, chip: "<16°C", label: "under 16°C", mid: 14 },
+  { slug: "baby-sleep-16-19c", min: 16, max: 19, chip: "18°C", label: "16–19°C", mid: 18 },
+  { slug: "baby-sleep-20-23c", min: 20, max: 23, chip: "20°C", label: "20–23°C", mid: 21 },
+  { slug: "baby-sleep-24-26c", min: 24, max: 26, chip: "24°C", label: "24–26°C", mid: 25 },
+  { slug: "baby-sleep-27c-plus", min: 27, max: 32, chip: "27°C+", label: "27°C+", mid: 28 },
+] as const;
+
+/** Old per-degree URLs → live band slug (for redirects). */
+export { GUIDE_REDIRECTS } from "@/lib/guides/redirects";
+
+function outdoorBandPage(band: (typeof OUTDOOR_BANDS)[number]): GuidePage {
+  const mid = Math.round((band.min + band.max) / 2);
+  const cool = outdoorOutfitFor(band.min);
+  const warm = outdoorOutfitFor(band.max);
+  const midOutfit = outdoorOutfitFor(mid);
+  const fMin = cToF(band.min);
+  const fMax = cToF(band.max);
+
   return layersPage({
-    slug,
+    slug: band.slug,
     category: "weather",
-    question: `What should my baby wear at ${tempC}°C?`,
-    title: `What Should My Baby Wear at ${tempC}°C (${f}°F)?`,
-    metaTitle: `Baby Clothes for ${tempC}°C (${f}°F) — Outfit Guide`,
-    description: `Plain-English outfit for dressing a baby at ${tempC}°C / ${f}°F outside — layers, hat guidance, and when to check the chest.`,
-    quickAnswer: outfit.summary,
-    bullets: outfit.layers,
+    question: `What should my baby wear at ${band.label}?`,
+    title: `What Should My Baby Wear at ${band.label} (${fMin}–${fMax}°F)?`,
+    metaTitle: `Baby Clothes for ${band.label} — Outfit Guide`,
+    description: `Plain-English outdoor outfit for dressing a baby around ${band.label} (${fMin}–${fMax}°F) — layers, when to lean cooler or warmer, and the chest check.`,
+    quickAnswer: midOutfit.summary.replace(`${mid}°C`, `${band.label}`),
+    bullets: midOutfit.layers,
     sections: [
       {
-        heading: `Dressing for ${tempC}°C outside`,
+        heading: `Dressing for ${band.label} outside`,
         paragraphs: [
-          `Parents search “baby clothes for ${tempC} degrees” because forecasts don’t tell you how many layers to put on. The useful answer is a starting outfit, then a chest check — not a perfect guess from the doorway.`,
-          outfit.summary,
-          outfit.note ??
-            "If you’re heading out in a stroller, carrier, or car seat, the same temperature needs a slightly different setup — TinyLayers has a mode for each.",
+          `Parents don’t experience weather as a single degree — “about ${band.chip}” is how real mornings feel. This guide covers the ${band.label} band, where the outfit usually stays in the same family.`,
+          midOutfit.summary.replace(`At ${mid}°C`, `Around ${band.label}`),
+          `At the cool end (~${band.min}°C): ${cool.summary} At the warm end (~${band.max}°C): ${warm.summary}`,
+          midOutfit.note ??
+            "Stroller, carrier, and car seat change the setup slightly — TinyLayers has a mode for each.",
         ],
       },
       {
@@ -83,51 +94,53 @@ function outdoorTempPage(tempC: number): GuidePage {
         paragraphs: [CHEST_CHECK],
       },
       {
-        heading: "Common mistakes at this temperature",
+        heading: "Common mistakes in this band",
         paragraphs: [
-          tempC >= 24
-            ? "Overdressing in warm weather is the usual miss. Skip the extra cardigan “just in case” and pack it instead. Under 6 months, prioritize shade over sunscreen."
-            : tempC <= 12
-              ? "In the cold, bulky coats under car-seat harnesses are unsafe — thin layers under the straps, blanket over after buckling. Warm the car if you can."
+          band.max >= 27
+            ? "Overdressing is the usual miss. Pack a spare layer instead of putting it on “just in case.” Under 6 months, prioritize shade over sunscreen."
+            : band.max <= 14
+              ? "In the cold, bulky coats under car-seat harnesses are unsafe — thin layers under the straps, blanket over after buckling."
               : "Matching adult jackets one-for-one often overheats babies. Start with the layers above, then adjust from the chest — not cold hands.",
+          MEDICAL_DISCLAIMER,
         ],
-      },
-      {
-        heading: "Good to know",
-        paragraphs: [MEDICAL_DISCLAIMER],
       },
     ],
     faqs: [
       {
-        q: `Is ${tempC}°C too hot or too cold for a baby outside?`,
-        a:
-          tempC >= 28
-            ? "It’s warm — keep outfits light, seek shade, and check often for a flushed or sweaty chest."
-            : tempC <= 10
-              ? "It’s cold — use stacked layers you can peel, keep the head warm, and limit long exposed waits."
-              : `Around ${tempC}°C is workable for most babies with the layers above. The chest check after 10 minutes settles it.`,
+        q: `How many layers at ${band.label}?`,
+        a: `Start with: ${midOutfit.layers.join("; ")}. Add or remove one thin layer after the chest check.`,
       },
       {
-        q: `How many layers should a baby wear at ${tempC}°C?`,
-        a: `Start with: ${outfit.layers.join("; ")}. Add or remove one thin layer based on the chest check — not on cold hands alone.`,
+        q: `Is this band for sleep or outside?`,
+        a: "This page is for outdoor weather. For crib sleep, use the sleep temperature guides — the room, not the forecast, decides.",
       },
     ],
-    relatedSlugs: relatedOutdoor(tempC),
+    relatedSlugs: [
+      ...OUTDOOR_BANDS.filter((b) => b.slug !== band.slug)
+        .slice(0, 2)
+        .map((b) => b.slug),
+      "how-many-layers-should-baby-wear",
+      "baby-stroller-clothing",
+      "baby-carrier-clothing",
+    ],
   });
 }
 
-function sleepTempPage(tempC: number): GuidePage {
-  const outfit = sleepOutfitFor(tempC);
-  const f = cToF(tempC);
-  const slug = `baby-sleep-clothes-${tempC}c`;
+function sleepBandPage(band: (typeof SLEEP_BANDS)[number]): GuidePage {
+  const outfit = sleepOutfitFor(band.mid);
+  const fMin = cToF(band.min);
+  const fMax = cToF(band.max);
+
   return layersPage({
-    slug,
+    slug: band.slug,
     category: "sleep",
-    question: `What should baby wear to sleep at ${tempC}°C?`,
-    title: `What Should Baby Wear to Sleep at ${tempC}°C (${f}°F)?`,
-    metaTitle: `Baby Sleep Clothes ${tempC}°C (${f}°F) — TOG & Layers`,
-    description: `What your baby should wear to sleep in a ${tempC}°C / ${f}°F room — TOG sleep sack guidance, base layers, and the chest check.`,
-    quickAnswer: outfit.summary,
+    question: `What should baby wear to sleep at ${band.label}?`,
+    title: `What Should Baby Wear to Sleep at ${band.label}?`,
+    metaTitle: `Baby Sleep Clothes ${band.label} — TOG & Layers`,
+    description: `Sleepwear for a ${band.label} nursery (${fMin}–${fMax}°F) — TOG guidance, base layers, and the chest check.`,
+    quickAnswer: outfit.summary
+      .replace(`At ${band.mid}°C`, `Around ${band.label}`)
+      .replace(`In a ${band.mid}°C room`, `In a ${band.label} room`),
     bullets: [
       `${outfit.weight} sleep sack (about ${outfit.tog} TOG)`,
       outfit.layers,
@@ -136,11 +149,13 @@ function sleepTempPage(tempC: number): GuidePage {
     ],
     sections: [
       {
-        heading: `Sleepwear for a ${tempC}°C nursery`,
+        heading: `Sleepwear for a ${band.label} nursery`,
         paragraphs: [
-          `“Baby sleep clothes ${tempC}°C” is one of the most common 2am searches — because the season outside doesn’t match the room you’re actually in.`,
-          outfit.summary,
-          `Look for a sleep sack labeled around ${outfit.tog} TOG. Brands vary slightly; use their chart as a cross-check, then trust the chest.`,
+          `Room temperature bands matter more than exact degrees. Within ${band.label}, the TOG family usually stays the same — then the chest check fine-tunes.`,
+          outfit.summary
+            .replace(`At ${band.mid}°C`, `Around ${band.label}`)
+            .replace(`In a ${band.mid}°C room`, `In a ${band.label} room`),
+          `Look for a sleep sack labeled around ${outfit.tog} TOG. Brands vary; cross-check their chart, then trust the chest.`,
         ],
       },
       {
@@ -148,43 +163,33 @@ function sleepTempPage(tempC: number): GuidePage {
         paragraphs: [CHEST_CHECK],
       },
       {
-        heading: "Safe-sleep reminders that don’t change with TOG",
+        heading: "Safe-sleep reminders",
         paragraphs: [
-          "No loose blankets, pillows, or soft objects in the sleep space for the first year (AAP). A wearable sack does the blanket’s job without the risk.",
-          "No hats indoors during sleep — babies release heat through their heads.",
-          "Stop swaddling at the first signs of rolling.",
+          "No loose blankets, pillows, or soft objects in the sleep space for the first year (AAP).",
+          "No hats indoors during sleep. Stop swaddling at the first signs of rolling.",
           MEDICAL_DISCLAIMER,
         ],
       },
     ],
     faqs: [
       {
-        q: `What TOG sleep sack for ${tempC}°C?`,
-        a: `Around ${outfit.tog} TOG (${outfit.weight}) is the usual starting point at ${tempC}°C, with ${outfit.layers}. Confirm after settling.`,
+        q: `What TOG for ${band.label}?`,
+        a: `Around ${outfit.tog} TOG (${outfit.weight}) is the usual starting point, with ${outfit.layers}. Confirm after settling.`,
       },
       {
-        q: "Should baby wear socks to bed at this temperature?",
-        a: "Usually not needed if the sleepsuit or sack covers the feet. Judge warmth by the chest, not the toes.",
+        q: "Should baby wear socks to bed?",
+        a: "Usually not if the sleepsuit or sack covers the feet. Judge warmth by the chest, not the toes.",
       },
     ],
-    relatedSlugs: relatedSleep(tempC),
+    relatedSlugs: [
+      ...SLEEP_BANDS.filter((b) => b.slug !== band.slug)
+        .slice(0, 2)
+        .map((b) => b.slug),
+      "what-should-baby-wear-to-sleep",
+      "tog-guide-for-baby-sleep",
+      "baby-too-hot-or-cold-at-night",
+    ],
   });
-}
-
-function relatedOutdoor(tempC: number): string[] {
-  const nearby = OUTDOOR_TEMPS.filter((t) => t !== tempC)
-    .sort((a, b) => Math.abs(a - tempC) - Math.abs(b - tempC))
-    .slice(0, 3)
-    .map((t) => `baby-clothes-${t}-degrees`);
-  return [...nearby, "how-many-layers-should-baby-wear", "baby-stroller-clothing", "baby-carrier-clothing"];
-}
-
-function relatedSleep(tempC: number): string[] {
-  const nearby = SLEEP_TEMPS.filter((t) => t !== tempC)
-    .sort((a, b) => Math.abs(a - tempC) - Math.abs(b - tempC))
-    .slice(0, 3)
-    .map((t) => `baby-sleep-clothes-${t}c`);
-  return [...nearby, "what-should-baby-wear-to-sleep", "baby-too-hot-or-cold-at-night", "tog-guide-for-baby-sleep"];
 }
 
 function situationPages(): GuidePage[] {
@@ -208,14 +213,7 @@ function situationPages(): GuidePage[] {
         {
           heading: "The room decides, not the forecast",
           paragraphs: [
-            "Babies sleep in a room, not in the weather app. A July nursery with AC can be colder than a January one with radiators. Put a thermometer near the crib and dress for that number.",
-            "Then jump to the temperature page that matches your room — or open TinyLayers and get tonight’s answer in one glance.",
-          ],
-        },
-        {
-          heading: "Quick room chart",
-          paragraphs: [
-            "Under 16°C: warmer sack + bodysuit + pajamas. 16–19°C: ~2.5 TOG + long sleeves. 20–23°C: ~1.0 TOG + bodysuit/pajamas. 24–25°C: ~0.5 TOG + short sleeves. 26°C+: ultra-light or bodysuit only.",
+            "Babies sleep in a room, not in the weather app. Put a thermometer near the crib and dress for that number — then open the sleep band that matches.",
             CHEST_CHECK,
             MEDICAL_DISCLAIMER,
           ],
@@ -224,17 +222,12 @@ function situationPages(): GuidePage[] {
       faqs: [
         {
           q: "Should baby wear a hat to sleep?",
-          a: "No. Hats indoors during sleep can raise overheating risk. Hats are for outdoors.",
-        },
-        {
-          q: "What about naps?",
-          a: "Use the same room-temperature logic for daytime crib naps. On-the-go naps in a stroller or carrier need outdoor/mode guidance instead.",
+          a: "No. Hats indoors during sleep can raise overheating risk.",
         },
       ],
       relatedSlugs: [
-        "baby-sleep-clothes-20c",
-        "baby-sleep-clothes-22c",
-        "baby-sleep-clothes-24c",
+        "baby-sleep-20-23c",
+        "baby-sleep-24-26c",
         "tog-guide-for-baby-sleep",
         "best-room-temperature-for-baby-sleep",
       ],
@@ -248,19 +241,17 @@ function situationPages(): GuidePage[] {
       description:
         "What TOG means, which rating to start with by room temperature, and why the chest check beats memorizing a chart.",
       quickAnswer:
-        "TOG measures sleep-sack warmth. Higher is warmer. Match TOG to room temperature first, explain layers in plain English second, then confirm on the chest.",
+        "TOG measures sleep-sack warmth. Higher is warmer. Match TOG to room temperature first, then confirm on the chest.",
       bullets: [
         "0.2–0.5 TOG: warm rooms (~24°C+)",
         "1.0 TOG: typical nurseries (~20–23°C)",
         "2.5 TOG: cooler rooms (~16–19°C)",
-        "Never use loose blankets as a TOG substitute",
       ],
       sections: [
         {
           heading: "TOG without the jargon",
           paragraphs: [
-            "TOG (Thermal Overall Grade) is just a warmth label on sleep sacks and swaddles. You don’t need to memorize it — you need a starting point for tonight’s room.",
-            "TinyLayers leads with plain-English layers, then shows the TOG as a helper. It never recommends 4.0 TOG.",
+            "TOG is a warmth label. TinyLayers leads with plain-English layers, then shows TOG as a helper. It never recommends 4.0 TOG.",
             MEDICAL_DISCLAIMER,
           ],
         },
@@ -268,10 +259,10 @@ function situationPages(): GuidePage[] {
       faqs: [
         {
           q: "Is a higher TOG always safer in winter?",
-          a: "No. Overheating is the documented risk. Warm the room if you can; don’t stack endless layers. When torn, go lighter and re-check the chest.",
+          a: "No. Overheating is the documented risk. When torn, go lighter and re-check the chest.",
         },
       ],
-      relatedSlugs: ["what-should-baby-wear-to-sleep", "baby-sleep-clothes-20c", "baby-sleep-clothes-18c"],
+      relatedSlugs: ["what-should-baby-wear-to-sleep", "baby-sleep-20-23c", "baby-sleep-16-19c"],
     }),
     layersPage({
       slug: "best-room-temperature-for-baby-sleep",
@@ -282,7 +273,7 @@ function situationPages(): GuidePage[] {
       description:
         "Why 16–20°C keeps coming up, what to do when you can’t control the nursery, and how layers fix an imperfect thermostat.",
       quickAnswer:
-        "UK safe-sleep bodies often cite about 16–20°C. Slightly warmer is workable if you dress lighter. A comfortably cool room beats a warm, overbundled one.",
+        "UK safe-sleep bodies often cite about 16–20°C. Slightly warmer is workable if you dress lighter.",
       bullets: [
         "Aim comfortably cool, not toasty",
         "If you can’t move the thermostat, move the layers",
@@ -292,8 +283,7 @@ function situationPages(): GuidePage[] {
         {
           heading: "Where 16–20°C comes from",
           paragraphs: [
-            "The Lullaby Trust and NHS name a comfortably cool range tied to reducing overheating risk. The AAP emphasizes avoiding overheating and overbundling rather than one magic number.",
-            "If your flat runs hot in summer, dress down. If radiators won’t cooperate in winter, warm what you can and use a warmer sack — never loose blankets.",
+            "The Lullaby Trust and NHS name a comfortably cool range tied to reducing overheating risk. The AAP emphasizes avoiding overheating rather than one magic number.",
             MEDICAL_DISCLAIMER,
           ],
         },
@@ -301,10 +291,10 @@ function situationPages(): GuidePage[] {
       faqs: [
         {
           q: "Is 22°C too warm for baby sleep?",
-          a: "It’s workable with lighter layers — often a 1.0 TOG sack with a short-sleeve bodysuit. Confirm with the chest check.",
+          a: "Workable with lighter layers — often a 1.0 TOG sack with a short-sleeve bodysuit. Confirm with the chest check.",
         },
       ],
-      relatedSlugs: ["what-should-baby-wear-to-sleep", "baby-sleep-clothes-20c", "baby-too-hot-or-cold-at-night"],
+      relatedSlugs: ["what-should-baby-wear-to-sleep", "baby-sleep-20-23c", "baby-too-hot-or-cold-at-night"],
     }),
     layersPage({
       slug: "baby-too-hot-or-cold-at-night",
@@ -313,32 +303,27 @@ function situationPages(): GuidePage[] {
       title: "Is My Baby Too Hot or Too Cold at Night?",
       metaTitle: "Baby Too Hot or Too Cold? Chest Check Signs",
       description:
-        "How to tell if your baby is overheating or underdressed at night — the chest check, sweat signs, and why cold hands don’t mean add a blanket.",
+        "How to tell if your baby is overheating or underdressed — the chest check, and why cold hands don’t mean add a blanket.",
       quickAnswer:
-        "Feel the chest or back of the neck: warm and dry is right; sweaty or flushed means remove a layer; cool chest means add one. Cold hands alone are normal.",
+        "Feel the chest or back of the neck: warm and dry is right; sweaty means remove a layer; cool chest means add one. Cold hands alone are normal.",
       bullets: [
         "Chest / neck = honest reading",
-        "Sweat, damp hair, flushed cheeks → too warm",
+        "Sweat or flushed cheeks → too warm",
         "Cool chest → add a layer",
-        "Cool hands/feet alone ≠ underdressed",
       ],
       sections: [
         {
           heading: "Signs that actually matter",
-          paragraphs: [
-            "Immature circulation keeps extremities cooler. Bundling because of cold toes is how overheating starts.",
-            CHEST_CHECK,
-            MEDICAL_DISCLAIMER,
-          ],
+          paragraphs: [CHEST_CHECK, MEDICAL_DISCLAIMER],
         },
       ],
       faqs: [
         {
           q: "My baby’s hands are cold — should I add a layer?",
-          a: "Not based on hands alone. Check the chest. If the chest is warm and dry, you’re fine.",
+          a: "Not based on hands alone. Check the chest. If warm and dry, you’re fine.",
         },
       ],
-      relatedSlugs: ["what-should-baby-wear-to-sleep", "best-room-temperature-for-baby-sleep", "baby-sleep-clothes-22c"],
+      relatedSlugs: ["what-should-baby-wear-to-sleep", "best-room-temperature-for-baby-sleep", "baby-sleep-20-23c"],
     }),
     layersPage({
       slug: "how-many-layers-should-baby-wear",
@@ -354,14 +339,12 @@ function situationPages(): GuidePage[] {
         "Temperature + situation first",
         "Carrier = one layer lighter than stroller",
         "Car seat = thin layers under harness",
-        "Chest check beats counting layers",
       ],
       sections: [
         {
           heading: "Layers are a starting point",
           paragraphs: [
-            "“How many layers should baby wear” is the wrong framing if it becomes a fixed count. A windy 12°C walk and a 22°C nap are different problems.",
-            "Use the temperature pages for a starting outfit, then peel or add one thin layer based on the chest.",
+            "Use a temperature band for a starting outfit, then peel or add one thin layer based on the chest.",
             MEDICAL_DISCLAIMER,
           ],
         },
@@ -369,12 +352,12 @@ function situationPages(): GuidePage[] {
       faqs: [
         {
           q: "Should babies wear one more layer than adults?",
-          a: "It’s a rough folk rule, not a law. Babies don’t self-regulate like adults — verify with the chest, especially in warm rooms and carriers.",
+          a: "It’s a rough folk rule, not a law. Verify with the chest, especially in warm rooms and carriers.",
         },
       ],
       relatedSlugs: [
-        "baby-clothes-20-degrees",
-        "baby-clothes-15-degrees",
+        "baby-clothes-19-21-degrees",
+        "baby-clothes-15-18-degrees",
         "baby-carrier-clothing",
         "baby-stroller-clothing",
       ],
@@ -386,19 +369,19 @@ function situationPages(): GuidePage[] {
       title: "What Should Baby Wear in the Stroller?",
       metaTitle: "Baby Stroller Clothing Guide — Layers & Shade",
       description:
-        "How to dress a baby for stroller walks by temperature — including blankets, shade, and why draped covers trap heat.",
+        "How to dress a baby for stroller walks — blankets, shade, and why draped covers trap heat.",
       quickAnswer:
-        "Dress for the outdoor temperature, then add a stroller blanket in cooler weather. Never drape a blanket or muslin over the stroller for shade — it traps heat.",
+        "Dress for the outdoor temperature, then add a stroller blanket in cooler weather. Never drape fabric over the stroller for shade — it traps heat.",
       bullets: [
         "Start with outdoor temperature layers",
-        "Blanket for cooler walks — below the chest, away from the face",
-        "Use canopy/parasol for shade, not draped fabric",
+        "Blanket below the chest, away from the face",
+        "Canopy/parasol for shade — not draped fabric",
       ],
       sections: [
         {
           heading: "Stroller-specific risks",
           paragraphs: [
-            "Strollers create a little microclimate. In heat, draped covers turn the bassinet into a warm box. In cold, a blanket helps — but keep it clear of the face.",
+            "Strollers create a microclimate. In heat, draped covers trap warmth. In cold, a blanket helps if clear of the face.",
             MEDICAL_DISCLAIMER,
           ],
         },
@@ -406,10 +389,15 @@ function situationPages(): GuidePage[] {
       faqs: [
         {
           q: "Can I cover the stroller with a muslin for sun?",
-          a: "Avoid fully draping fabric over the stroller. Use the canopy or a clip-on parasol so air still moves.",
+          a: "Avoid fully draping fabric. Use the canopy or a clip-on parasol so air still moves.",
         },
       ],
-      relatedSlugs: ["baby-carrier-clothing", "baby-car-seat-clothing", "baby-clothes-20-degrees", "baby-clothes-15-degrees"],
+      relatedSlugs: [
+        "baby-carrier-clothing",
+        "baby-car-seat-clothing",
+        "baby-clothes-19-21-degrees",
+        "baby-clothes-15-18-degrees",
+      ],
     }),
     layersPage({
       slug: "baby-carrier-clothing",
@@ -418,19 +406,19 @@ function situationPages(): GuidePage[] {
       title: "What Should Baby Wear in a Baby Carrier?",
       metaTitle: "Baby Carrier Clothing — Dress One Layer Lighter",
       description:
-        "Carrier clothing guidance: your body heat counts as a layer. Dress lighter than for the stroller and watch for overheating.",
+        "Carrier clothing: your body heat counts as a layer. Dress lighter than for the stroller.",
       quickAnswer:
-        "Dress one layer lighter than you would for the stroller — your body heat and the carrier fabric count. Check the chest often, especially in warm weather.",
+        "Dress one layer lighter than for the stroller — your body heat and the carrier fabric count. Check the chest often.",
       bullets: [
         "One layer lighter than stroller outfits",
-        "Keep the face uncovered and airways clear",
-        "Take breaks in heat; watch for flushed/sweaty chest",
+        "Face uncovered, airways clear",
+        "Take breaks in heat",
       ],
       sections: [
         {
           heading: "Shared warmth changes the math",
           paragraphs: [
-            "Babywearing is cozy by design. The outfit that felt right in the stroller is often one layer too much on your chest.",
+            "The outfit that felt right in the stroller is often one layer too much on your chest.",
             MEDICAL_DISCLAIMER,
           ],
         },
@@ -438,10 +426,10 @@ function situationPages(): GuidePage[] {
       faqs: [
         {
           q: "Can baby ride under my coat?",
-          a: "If so, keep the face free, allow airflow, and check often. Don’t bury baby under heavy outerwear.",
+          a: "Keep the face free, allow airflow, and check often.",
         },
       ],
-      relatedSlugs: ["baby-stroller-clothing", "winter-baby-carrier-clothes", "baby-clothes-15-degrees"],
+      relatedSlugs: ["baby-stroller-clothing", "winter-baby-carrier-clothes", "baby-clothes-15-18-degrees"],
     }),
     layersPage({
       slug: "winter-baby-carrier-clothes",
@@ -449,10 +437,9 @@ function situationPages(): GuidePage[] {
       question: "What should baby wear in a carrier in winter?",
       title: "Winter Baby Carrier Clothes",
       metaTitle: "Winter Baby Carrier Outfit — Safe Layering",
-      description:
-        "How to dress a baby for winter babywearing without overheating — base layers, parent coats, and frequent checks.",
+      description: "Winter babywearing without overheating — base layers, parent coats, frequent checks.",
       quickAnswer:
-        "Warm base layers on baby, your coat as the shared outer shell when appropriate, face clear, checks often. Still dress lighter than a solo stroller walk.",
+        "Warm base layers on baby, your coat as the shared outer shell when appropriate, face clear, checks often.",
       bullets: [
         "Warm base on baby, not a puffy under the carrier",
         "Parent coat can act as shared outer layer",
@@ -462,7 +449,7 @@ function situationPages(): GuidePage[] {
         {
           heading: "Winter carrier without the sweat",
           paragraphs: [
-            "The goal is warm extremities and a calm chest — not maximum puff. Thin warm layers beat one bulky snowsuit inside the carrier.",
+            "Thin warm layers beat one bulky snowsuit inside the carrier.",
             MEDICAL_DISCLAIMER,
           ],
         },
@@ -470,10 +457,10 @@ function situationPages(): GuidePage[] {
       faqs: [
         {
           q: "Snowsuit in the carrier?",
-          a: "Usually too much under a winter coat. Prefer layered clothing you can vent, and use your outerwear as the shell.",
+          a: "Usually too much under a winter coat. Prefer layered clothing you can vent.",
         },
       ],
-      relatedSlugs: ["baby-carrier-clothing", "baby-car-seat-clothing", "baby-clothes-10-degrees"],
+      relatedSlugs: ["baby-carrier-clothing", "baby-car-seat-clothing", "baby-clothes-10-14-degrees"],
     }),
     layersPage({
       slug: "baby-car-seat-clothing",
@@ -482,20 +469,19 @@ function situationPages(): GuidePage[] {
       title: "What Should Baby Wear in a Car Seat?",
       metaTitle: "Baby Car Seat Clothing — No Bulky Coats Under Straps",
       description:
-        "Safer car-seat dressing: thin layers under the harness, never bulky coats or snowsuits under straps, blanket over after buckling.",
+        "Thin layers under the harness; never bulky coats under straps; blanket over after buckling.",
       quickAnswer:
-        "Thin, snug layers under the harness. Never put bulky coats or snowsuits under car-seat straps. Buckle first, then add a blanket over the straps if needed.",
+        "Thin, snug layers under the harness. Never put bulky coats under car-seat straps. Buckle first, then add warmth over the straps.",
       bullets: [
         "Thin layers under harness",
         "No puffy coats under straps",
         "Blanket over straps after buckling",
-        "Remove outer layers in a warmed car",
       ],
       sections: [
         {
           heading: "Why the coat rule exists",
           paragraphs: [
-            "Puffy coats compress in a crash and leave harness slack. Warmth belongs over the buckled straps, not under them.",
+            "Puffy coats compress in a crash and leave harness slack. Warmth belongs over the buckled straps.",
             MEDICAL_DISCLAIMER,
           ],
         },
@@ -503,10 +489,10 @@ function situationPages(): GuidePage[] {
       faqs: [
         {
           q: "What about winter car seats?",
-          a: "Dress in thin warm layers, buckle snugly, then add a coat or blanket on top. Keep a car blanket in the footwell for transfers.",
+          a: "Thin warm layers, buckle snugly, then add a coat or blanket on top.",
         },
       ],
-      relatedSlugs: ["winter-car-seat-coat-rule", "baby-stroller-clothing", "baby-clothes-10-degrees"],
+      relatedSlugs: ["winter-car-seat-coat-rule", "baby-stroller-clothing", "baby-clothes-10-14-degrees"],
     }),
     layersPage({
       slug: "winter-car-seat-coat-rule",
@@ -514,12 +500,11 @@ function situationPages(): GuidePage[] {
       question: "Can my baby wear a coat in the car seat?",
       title: "Winter Car Seat Coat Rule (Why Puffy Coats Don’t Mix)",
       metaTitle: "Baby Coat in Car Seat? Why Bulky Coats Are Unsafe",
-      description:
-        "Why puffy coats and car seats don’t mix, and what to do instead on freezing mornings.",
+      description: "Why puffy coats and car seats don’t mix, and what to do instead.",
       quickAnswer:
-        "Don’t put bulky coats or snowsuits under the harness. Thin layers under, warmth over the straps after buckling.",
+        "Don’t put bulky coats under the harness. Thin layers under, warmth over the straps after buckling.",
       bullets: [
-        "Bulk under straps = dangerous slack in a crash",
+        "Bulk under straps = dangerous slack",
         "Thin layers under harness",
         "Coat or blanket over after buckling",
       ],
@@ -527,7 +512,7 @@ function situationPages(): GuidePage[] {
         {
           heading: "The safer winter routine",
           paragraphs: [
-            "Pre-warm the car if you can. Dress baby in thin layers, buckle, then cover. At the destination, reverse the steps.",
+            "Pre-warm the car if you can. Dress in thin layers, buckle, then cover.",
             MEDICAL_DISCLAIMER,
           ],
         },
@@ -535,10 +520,10 @@ function situationPages(): GuidePage[] {
       faqs: [
         {
           q: "Are thin puffer jackets okay under straps?",
-          a: "If it’s compressible/bulky, keep it off the harness path. When unsure, put warmth on top after buckling.",
+          a: "If it’s bulky/compressible, keep it off the harness path. When unsure, put warmth on top after buckling.",
         },
       ],
-      relatedSlugs: ["baby-car-seat-clothing", "baby-clothes-10-degrees", "winter-baby-carrier-clothes"],
+      relatedSlugs: ["baby-car-seat-clothing", "baby-clothes-10-14-degrees", "winter-baby-carrier-clothes"],
     }),
     layersPage({
       slug: "what-should-newborn-wear-outside",
@@ -549,18 +534,17 @@ function situationPages(): GuidePage[] {
       description:
         "Newborn outdoor clothing by temperature — sun, cold, carriers, and why shade matters under 6 months.",
       quickAnswer:
-        "Dress for the outdoor temperature with soft layers you can peel. Under 6 months, prioritize shade and a brimmed hat over sunscreen. In a carrier, go one layer lighter.",
+        "Dress for the outdoor temperature with soft peelable layers. Under 6 months, prioritize shade and a brimmed hat. In a carrier, go one layer lighter.",
       bullets: [
-        "Match outdoor temperature",
+        "Match outdoor temperature band",
         "Shade + brimmed hat under 6 months",
         "Carrier = one layer lighter",
-        "Chest check after ~10 minutes",
       ],
       sections: [
         {
           heading: "Newborns and the weather",
           paragraphs: [
-            "Newborns can’t tell you they’re overheating. Start from the temperature pages, favor thin adjustable layers, and check the chest.",
+            "Start from a temperature band, favor thin adjustable layers, and check the chest.",
             MEDICAL_DISCLAIMER,
           ],
         },
@@ -572,479 +556,315 @@ function situationPages(): GuidePage[] {
         },
       ],
       relatedSlugs: [
-        "baby-clothes-20-degrees",
-        "baby-clothes-15-degrees",
-        "what-should-3-month-old-wear-at-20-degrees-outside",
+        "baby-clothes-19-21-degrees",
+        "baby-clothes-15-18-degrees",
+        "how-many-layers-should-baby-wear",
+      ],
+    }),
+    layersPage({
+      slug: "what-should-3-month-old-wear",
+      category: "age",
+      question: "What should a 3-month-old wear?",
+      title: "What Should a 3-Month-Old Wear?",
+      metaTitle: "What Should a 3-Month-Old Wear? Temperature & Sleep",
+      description:
+        "Dressing a 3-month-old for sleep and outside — temperature bands, rolling/swaddle notes, and the chest check.",
+      quickAnswer:
+        "Temperature still decides. Use the outdoor or sleep band for today’s number. At three months, watch for rolling — stop swaddling at the first signs.",
+      bullets: [
+        "Use temperature bands, not season myths",
+        "Stop swaddling when rolling starts",
+        "Carrier = one layer lighter",
+      ],
+      sections: [
+        {
+          heading: "Three months, same physics",
+          paragraphs: [
+            "Warmth logic doesn’t change at three months — mobility and swaddle rules do. Pick the temperature band, then confirm on the chest.",
+            MEDICAL_DISCLAIMER,
+          ],
+        },
+      ],
+      faqs: [
+        {
+          q: "Is a 3-month-old dressed like a newborn?",
+          a: "For warmth, yes — temperature-first. Fit and rolling safety matter more than a different TOG chart.",
+        },
+      ],
+      relatedSlugs: [
+        "what-should-newborn-wear-outside",
+        "baby-clothes-19-21-degrees",
+        "what-should-baby-wear-to-sleep",
       ],
     }),
   ];
 }
 
-function comboPages(): GuidePage[] {
-  const pages: GuidePage[] = [];
-  for (const age of COMBO_AGES) {
-    for (const tempC of COMBO_TEMPS) {
-      for (const ctx of COMBO_CONTEXTS) {
-        // Skip sleep pages below 16°C — redirect parents to warm-the-room guidance via outdoor or sleep hub
-        if (ctx.sleep && tempC < 16) continue;
-        const outfit = ctx.sleep ? sleepOutfitFor(tempC) : outdoorOutfitFor(tempC);
-        const f = cToF(tempC);
-        const slug = `what-should-${age.slug}-wear-at-${tempC}-degrees-${ctx.key}`;
-        const young = age.months < 6;
-        pages.push(
-          layersPage({
-            slug,
-            category: "combo",
-            question: `What should ${age.label} wear ${ctx.label} at ${tempC}°C?`,
-            title: `What Should ${age.titleAge} Wear ${ctx.sleep ? "to Sleep" : "Outside"} at ${tempC}°C?`,
-            metaTitle: `${age.titleAge} Clothes at ${tempC}°C ${ctx.sleep ? "Sleep" : "Outside"}`,
-            description: `What ${age.label} should wear ${ctx.label} at ${tempC}°C (${f}°F) — plain-English layers${ctx.sleep ? " and TOG" : ""}, plus the chest check.`,
-            quickAnswer: ctx.sleep
-              ? (outfit as ReturnType<typeof sleepOutfitFor>).summary
-              : (outfit as ReturnType<typeof outdoorOutfitFor>).summary,
-            bullets: ctx.sleep
-              ? [
-                  `About ${(outfit as ReturnType<typeof sleepOutfitFor>).tog} TOG sleep sack`,
-                  (outfit as ReturnType<typeof sleepOutfitFor>).layers,
-                  young ? "No swaddle if rolling has started" : "Arms-free sleep sack",
-                ]
-              : [
-                  ...(outfit as ReturnType<typeof outdoorOutfitFor>).layers,
-                  young && tempC >= 20 ? "Shade + brimmed hat over sunscreen" : "Chest check after ~10 minutes",
-                ],
-            sections: [
-              {
-                heading: `For ${age.label} at ${tempC}°C`,
-                paragraphs: [
-                  `This page answers one search: what should ${age.label} wear ${ctx.label} when it’s ${tempC}°C (${f}°F). Age changes fit and mobility; temperature changes warmth. Together they set the starting outfit.`,
-                  ctx.sleep
-                    ? (outfit as ReturnType<typeof sleepOutfitFor>).summary
-                    : (outfit as ReturnType<typeof outdoorOutfitFor>).summary,
-                  age.months === 0
-                    ? "Newborns need soft, adjustable layers and frequent checks — they can’t signal overheating clearly."
-                    : age.months >= 6
-                      ? "At this age, movement and curiosity matter too: skip loose blankets and keep carrier airways clear."
-                      : "In the early months, err slightly cool rather than overbundled, and confirm on the chest.",
-                ],
-              },
-              {
-                heading: "Check, then adjust",
-                paragraphs: [CHEST_CHECK, MEDICAL_DISCLAIMER],
-              },
-            ],
-            faqs: [
-              {
-                q: `Does ${age.label} need different clothes than an older baby at ${tempC}°C?`,
-                a: young
-                  ? "The warmth logic is similar; sun and swaddle/rolling rules are stricter early on. Prefer shade under 6 months in warm weather."
-                  : "Warmth logic stays temperature-first. Fit and mobility matter more as babies move.",
-              },
-            ],
-            relatedSlugs: [
-              ctx.sleep ? `baby-sleep-clothes-${tempC}c` : `baby-clothes-${tempC}-degrees`,
-              ctx.sleep ? "what-should-baby-wear-to-sleep" : "how-many-layers-should-baby-wear",
-              `what-should-${age.slug}-wear-at-${tempC}-degrees-${ctx.key === "outside" ? "to-sleep" : "outside"}`,
-            ].filter((s) => s !== slug),
-          }),
-        );
-      }
-    }
-  }
-  return pages;
-}
-
 function otherAppSeeds(): GuidePage[] {
-  const blooms = (p: Omit<GuidePage, "app" | "ctaApp" | "ctaLabel" | "ctaHref" | "ctaBlurb" | "publishedAt" | "modifiedAt">): GuidePage => ({
-    app: "tinyblooms",
+  const seed = (
+    app: GuidePage["app"],
+    href: string,
+    label: string,
+    blurb: string,
+    p: Omit<
+      GuidePage,
+      "app" | "ctaApp" | "ctaLabel" | "ctaHref" | "ctaBlurb" | "publishedAt" | "modifiedAt"
+    >,
+  ): GuidePage => ({
+    app,
     publishedAt: DATE,
     modifiedAt: DATE,
-    ctaApp: "tinyblooms",
-    ctaLabel: "See TinyBlooms",
-    ctaHref: "/tinyblooms",
-    ctaBlurb:
-      "Tired of scrolling activity lists? TinyBlooms gives one age-right idea at a time — coming soon from TinyBundle.",
-    ...p,
-    relatedSlugs: p.relatedSlugs ?? [],
-  });
-
-  const haven = (p: Omit<GuidePage, "app" | "ctaApp" | "ctaLabel" | "ctaHref" | "ctaBlurb" | "publishedAt" | "modifiedAt">): GuidePage => ({
-    app: "tinyhaven",
-    publishedAt: DATE,
-    modifiedAt: DATE,
-    ctaApp: "tinyhaven",
-    ctaLabel: "Open TinyHaven",
-    ctaHref: "/tinyhaven",
-    ctaBlurb:
-      "Awake and lonely at 2am? TinyHaven shows you’re not the only one — anonymous check-ins, no profiles.",
-    ...p,
-    relatedSlugs: p.relatedSlugs ?? [],
-  });
-
-  const meals = (p: Omit<GuidePage, "app" | "ctaApp" | "ctaLabel" | "ctaHref" | "ctaBlurb" | "publishedAt" | "modifiedAt">): GuidePage => ({
-    app: "tinymeals",
-    publishedAt: DATE,
-    modifiedAt: DATE,
-    ctaApp: "tinymeals",
-    ctaLabel: "See TinyMeals",
-    ctaHref: "/tinymeals",
-    ctaBlurb:
-      "Staring at the fridge after a long day? TinyMeals turns what you already have into something good — coming soon.",
-    ...p,
-    relatedSlugs: p.relatedSlugs ?? [],
-  });
-
-  const bundle = (p: Omit<GuidePage, "app" | "ctaApp" | "ctaLabel" | "ctaHref" | "ctaBlurb" | "publishedAt" | "modifiedAt">): GuidePage => ({
-    app: "tinybundle",
-    publishedAt: DATE,
-    modifiedAt: DATE,
-    ctaApp: "tinybundle",
-    ctaLabel: "Explore TinyBundle",
-    ctaHref: "/",
-    ctaBlurb:
-      "TinyBundle is four calm apps for the questions new parents actually ask — sleep company, outfits, activities, and meals.",
+    ctaApp: app,
+    ctaLabel: label,
+    ctaHref: href,
+    ctaBlurb: blurb,
     ...p,
     relatedSlugs: p.relatedSlugs ?? [],
   });
 
   return [
-    blooms({
-      slug: "what-do-i-do-with-my-baby",
-      category: "development",
-      question: "What do I do with my baby?",
-      title: "What Do I Do With My Baby All Day?",
-      metaTitle: "What Do I Do With My Baby? Easy Age-Right Ideas",
-      description:
-        "When your baby is awake and you’re out of ideas — simple, no-prep activities by age without milestone pressure.",
-      quickAnswer:
-        "You don’t need a curriculum. One small, age-right idea is enough: tummy time, a song, a walk to the window, or quiet face-to-face play.",
-      bullets: [
-        "One idea beats a Pinterest binge",
-        "Match age and energy",
-        "Ordinary moments count",
-      ],
-      sections: [
-        {
-          heading: "The 2pm panic is normal",
-          paragraphs: [
-            "“What do I do with my baby all day” is less about enrichment and more about decision fatigue. Pick one tiny thing, do it, and let the rest of the day be ordinary.",
-          ],
-        },
-      ],
-      faqs: [
-        {
-          q: "How many activities does a baby need per day?",
-          a: "Fewer than social media suggests. Short, responsive play matters more than a packed schedule.",
-        },
-      ],
-      relatedSlugs: ["activities-for-newborn", "tummy-time-ideas", "indoor-baby-activities"],
-    }),
-    blooms({
-      slug: "activities-for-newborn",
-      category: "development",
-      question: "What are good activities for a newborn?",
-      title: "Activities for a Newborn (Simple & Calm)",
-      metaTitle: "Activities for Newborn — Gentle Ideas for Day One",
-      description:
-        "Gentle newborn play ideas that fit real days — face time, soft sounds, tummy time in tiny doses.",
-      quickAnswer:
-        "Talk face-to-face, sing, practice short supervised tummy time, and follow sleepy cues. Skip elaborate setups.",
-      bullets: ["Face-to-face talk and song", "Short supervised tummy time", "Follow cues over schedules"],
-      sections: [
-        {
-          heading: "Newborn days are supposed to be quiet",
-          paragraphs: [
-            "Stimulation for a newborn is often just your voice and face. That’s enough.",
-          ],
-        },
-      ],
-      faqs: [],
-      relatedSlugs: ["what-do-i-do-with-my-baby", "tummy-time-ideas"],
-    }),
-    blooms({
-      slug: "tummy-time-ideas",
-      category: "development",
-      question: "What are tummy time ideas?",
-      title: "Tummy Time Ideas That Don’t Feel Like a Chore",
-      metaTitle: "Tummy Time Ideas — Short, Doable, Age-Right",
-      description: "Short tummy time ideas for real parents — chest-to-chest, towel rolls, and tiny sessions.",
-      quickAnswer:
-        "Start tiny: on your chest, across your lap, or on a mat with a face nearby. Short and often beats long and miserable.",
-      bullets: ["Chest-to-chest counts", "Short sessions, often", "Get on their eye level"],
-      sections: [
-        {
-          heading: "Make it relational",
-          paragraphs: [
-            "Tummy time works better when it’s connection, not a workout timer.",
-          ],
-        },
-      ],
-      faqs: [],
-      relatedSlugs: ["activities-for-newborn", "what-do-i-do-with-my-baby"],
-    }),
-    blooms({
-      slug: "indoor-baby-activities",
-      category: "development",
-      question: "What are easy indoor baby activities?",
-      title: "Easy Indoor Baby Activities (No Prep)",
-      metaTitle: "Indoor Baby Activities — Easy Ideas for Rainy Days",
-      description: "No-prep indoor baby activities for tired parents — sensory play without a craft cupboard.",
-      quickAnswer:
-        "Mirror play, kitchen-floor singing, window watching, scarf peekaboo, and supervised tummy time — no special toys required.",
-      bullets: ["Use what you already own", "Keep sessions short", "Follow their mood"],
-      sections: [
-        {
-          heading: "Rainy-day without the guilt",
-          paragraphs: ["Indoor days don’t need a program. They need one doable idea."],
-        },
-      ],
-      faqs: [],
-      relatedSlugs: ["what-do-i-do-with-my-baby", "activities-for-newborn"],
-    }),
-    haven({
-      slug: "am-i-the-only-one-awake",
-      category: "loneliness",
-      question: "Am I the only one awake with my baby?",
-      title: "Am I the Only One Awake?",
-      metaTitle: "Am I the Only One Awake With Baby? You’re Not Alone",
-      description:
-        "Night feeds feel isolating. You’re not the only parent awake — soft company without social media.",
-      quickAnswer:
-        "No. Night waking is brutally common. You don’t need a feed or a chat — sometimes you just need proof someone else is up too.",
-      bullets: ["Night loneliness is common", "You don’t owe anyone a performance", "Quiet company > advice"],
-      sections: [
-        {
-          heading: "The hardest hour",
-          paragraphs: [
-            "“Am I the only one?” is the question under so many 2am searches. TinyHaven exists for that exact feeling — anonymous presence, not another timeline.",
-          ],
-        },
-      ],
-      faqs: [
-        {
-          q: "Is it normal to feel lonely while breastfeeding at night?",
-          a: "Yes. The house can feel empty even when love is present. Seeking quiet company is human, not weak.",
-        },
-      ],
-      relatedSlugs: ["postpartum-loneliness", "baby-wont-sleep", "motherhood-is-lonely"],
-    }),
-    haven({
-      slug: "postpartum-loneliness",
-      category: "loneliness",
-      question: "Why does motherhood feel so lonely?",
-      title: "Postpartum Loneliness Is Real",
-      metaTitle: "Postpartum Loneliness — Why Motherhood Feels Isolating",
-      description:
-        "Why new parenthood feels isolating at night, and what soft support can look like without social media pressure.",
-      quickAnswer:
-        "Postpartum life shrinks your world while everyone else’s keeps scrolling. Loneliness doesn’t mean you’re failing — it means you need gentler company.",
-      bullets: ["Isolation is common, not a character flaw", "Night magnifies it", "Soft presence helps"],
-      sections: [
-        {
-          heading: "You’re not broken",
-          paragraphs: [
-            "Feeling alone with a baby doesn’t mean you don’t love them. It means the job is heavy and often invisible.",
-          ],
-        },
-      ],
-      faqs: [],
-      relatedSlugs: ["am-i-the-only-one-awake", "motherhood-is-lonely"],
-    }),
-    haven({
-      slug: "motherhood-is-lonely",
-      category: "loneliness",
-      question: "Is motherhood lonely for everyone?",
-      title: "Motherhood Is Lonely (And You’re Not Imagining It)",
-      metaTitle: "Motherhood Is Lonely — Night Support Without Social Media",
-      description: "Validation for lonely new moms and parents — especially during night feeds and sleepless stretches.",
-      quickAnswer:
-        "Many parents feel lonely even with a partner nearby. The night shift is real. You deserve company that doesn’t demand a performance.",
-      bullets: ["Common and under-discussed", "Especially acute at night", "Anonymous support can help"],
-      sections: [
-        {
-          heading: "Not another highlight reel",
-          paragraphs: [
-            "Social feeds often make loneliness worse. TinyHaven is built as moonlight, not a timeline.",
-          ],
-        },
-      ],
-      faqs: [],
-      relatedSlugs: ["postpartum-loneliness", "am-i-the-only-one-awake"],
-    }),
-    haven({
-      slug: "baby-wont-sleep",
-      category: "loneliness",
-      question: "What do I do when my baby won’t sleep?",
-      title: "Baby Won’t Sleep — You’re Still Not Alone",
-      metaTitle: "Baby Won’t Sleep — Survival for the Hard Night",
-      description:
-        "When baby won’t sleep and you’re exhausted: safety first, then soft company for the emotional load.",
-      quickAnswer:
-        "Keep sleep spaces safe, follow your clinician’s guidance for medical concerns, and know the loneliness of the night shift is shared by more parents than it feels.",
-      bullets: ["Safety first", "This night won’t define you", "Company without pressure helps"],
-      sections: [
-        {
-          heading: "Two problems at once",
-          paragraphs: [
-            "Sleep deprivation is practical and emotional. TinyHaven won’t replace safe-sleep guidance — it sits with you in the feeling of being the only one awake.",
-          ],
-        },
-      ],
-      faqs: [],
-      relatedSlugs: ["am-i-the-only-one-awake", "postpartum-loneliness"],
-    }),
-    meals({
-      slug: "what-can-i-cook-with-whats-in-my-fridge",
-      category: "cooking",
-      question: "What can I cook with what’s in my fridge?",
-      title: "What Can I Cook With What’s in My Fridge?",
-      metaTitle: "Recipes From What’s in My Fridge — Leftover Dinner Ideas",
-      description:
-        "Decision-fatigued dinner ideas from ingredients you already have — less waste, less takeout guilt.",
-      quickAnswer:
-        "List what you already have, pick one protein + one veg + one starch or carb, and cook the simplest version. Perfect is not the goal — done is.",
-      bullets: ["Start from inventory, not a recipe blog", "Simple combinations win", "Use-it-up beats ideal menus"],
-      sections: [
-        {
-          heading: "Parent-brain cooking",
-          paragraphs: [
-            "After a long day with a baby, recipe ambition collapses. TinyMeals is being built for that exact fridge-stare moment.",
-          ],
-        },
-      ],
-      faqs: [],
-      relatedSlugs: ["recipes-from-leftovers", "how-to-stop-food-waste"],
-    }),
-    meals({
-      slug: "recipes-from-leftovers",
-      category: "cooking",
-      question: "What can I make with leftovers?",
-      title: "Recipes From Leftovers (Parent Edition)",
-      metaTitle: "Leftover Recipes — Easy Dinners From What You Have",
-      description: "Easy leftover transformations for tired parents — stretch last night’s food into tonight’s dinner.",
-      quickAnswer:
-        "Reheat with a new format: leftover roast → wraps; rice → fried rice; veg → omelette or soup. Change the shape, not the grocery list.",
-      bullets: ["Change the format", "Add one fresh element", "Freeze portions when you can"],
-      sections: [
-        {
-          heading: "Leftovers are a feature",
-          paragraphs: ["Food waste often starts with optimism. Cooking from leftovers is a parenting survival skill."],
-        },
-      ],
-      faqs: [],
-      relatedSlugs: ["what-can-i-cook-with-whats-in-my-fridge", "how-to-stop-food-waste"],
-    }),
-    meals({
-      slug: "how-to-stop-food-waste",
-      category: "cooking",
-      question: "How do I stop food from going bad?",
-      title: "How to Stop Food Waste at Home",
-      metaTitle: "How to Stop Food Waste — Fridge Habits for Busy Parents",
-      description: "Practical ways to reduce food waste with a baby in the house — inventory habits over guilt.",
-      quickAnswer:
-        "Keep a rough fridge inventory, cook the soonest-to-spoil first, and plan one “use-it-up” meal every few days.",
-      bullets: ["See what you own", "Cook the urgent stuff first", "One use-it-up meal per week minimum"],
-      sections: [
-        {
-          heading: "Waste is often a visibility problem",
-          paragraphs: ["If you can’t see it, you’ll buy it again. TinyMeals aims to start from what’s already there."],
-        },
-      ],
-      faqs: [],
-      relatedSlugs: ["what-can-i-cook-with-whats-in-my-fridge", "recipes-from-leftovers"],
-    }),
-    bundle({
-      slug: "best-apps-for-first-time-parents",
-      category: "parenting-apps",
-      question: "What apps do first-time parents actually need?",
-      title: "Best Apps for First-Time Parents (Without the Tracker Overload)",
-      metaTitle: "Best Apps for First-Time Parents — Calm Tools That Help",
-      description:
-        "Which newborn apps are worth it — and how TinyBundle covers outfits, night loneliness, activities, and meals without becoming another chore.",
-      quickAnswer:
-        "You need tools for the questions that actually wake you up: am I alone, what should baby wear, what do we do now, what’s for dinner — not another spreadsheet of ounces.",
-      bullets: [
-        "TinyHaven — night company",
-        "TinyLayers — what to wear",
-        "TinyBlooms — one activity",
-        "TinyMeals — cook from what you have",
-      ],
-      sections: [
-        {
-          heading: "Skip the guilt trackers (unless you love them)",
-          paragraphs: [
-            "Some parents thrive on tracking. Many don’t. TinyBundle is for the emotional and practical questions that don’t need a dashboard.",
-          ],
-        },
-      ],
-      faqs: [
-        {
-          q: "What’s a good baby tracker alternative?",
-          a: "If tracking stresses you out, use intent-based tools instead: outfit guidance, one activity, night presence, and leftover cooking.",
-        },
-      ],
-      relatedSlugs: ["newborn-apps", "must-have-baby-apps"],
-    }),
-    bundle({
-      slug: "newborn-apps",
-      category: "parenting-apps",
-      question: "What newborn apps are worth downloading?",
-      title: "Newborn Apps Worth Downloading",
-      metaTitle: "Newborn Apps — What New Parents Actually Use",
-      description: "A short list of newborn app categories that help at 2am — without overwhelming you.",
-      quickAnswer:
-        "Prioritize sleep safety info, calm company, dressing guidance, and simple activities. Delay anything that turns parenting into data entry unless you want that.",
-      bullets: ["Safety references", "Night support", "Dressing help", "One-idea activities"],
-      sections: [
-        {
-          heading: "Download less, use more",
-          paragraphs: ["The best newborn app is the one you’ll open when you’re exhausted — not the one with the longest feature list."],
-        },
-      ],
-      faqs: [],
-      relatedSlugs: ["best-apps-for-first-time-parents", "must-have-baby-apps"],
-    }),
-    bundle({
-      slug: "must-have-baby-apps",
-      category: "parenting-apps",
-      question: "What are must-have baby apps?",
-      title: "Must-Have Baby Apps for New Parents",
-      metaTitle: "Must-Have Baby Apps — A Shorter, Calmer List",
-      description: "Must-have baby apps reframed around real parent questions — not feature bloat.",
-      quickAnswer:
-        "Must-have means it answers a recurring panic question. TinyBundle’s four apps map to wear, loneliness, “what now,” and dinner.",
-      bullets: ["Wear", "Night company", "One activity", "Fridge dinner"],
-      sections: [
-        {
-          heading: "Four questions, four apps",
-          paragraphs: [
-            "That’s the TinyBundle thesis: own the questions exhausted parents type at 2am.",
-          ],
-        },
-      ],
-      faqs: [],
-      relatedSlugs: ["best-apps-for-first-time-parents", "newborn-apps"],
-    }),
+    seed(
+      "tinyblooms",
+      "/tinyblooms",
+      "See TinyBlooms",
+      "Tired of scrolling activity lists? TinyBlooms gives one age-right idea at a time — coming soon.",
+      {
+        slug: "what-do-i-do-with-my-baby",
+        category: "development",
+        question: "What do I do with my baby?",
+        title: "What Do I Do With My Baby All Day?",
+        metaTitle: "What Do I Do With My Baby? Easy Age-Right Ideas",
+        description:
+          "When your baby is awake and you’re out of ideas — simple activities without milestone pressure.",
+        quickAnswer: "You don’t need a curriculum. One small, age-right idea is enough.",
+        bullets: ["One idea beats a Pinterest binge", "Match age and energy", "Ordinary moments count"],
+        sections: [
+          {
+            heading: "The 2pm panic is normal",
+            paragraphs: ["Pick one tiny thing, do it, and let the rest of the day be ordinary."],
+          },
+        ],
+        faqs: [],
+        relatedSlugs: ["activities-for-newborn", "tummy-time-ideas"],
+      },
+    ),
+    seed(
+      "tinyblooms",
+      "/tinyblooms",
+      "See TinyBlooms",
+      "One age-right idea at a time — coming soon from TinyBundle.",
+      {
+        slug: "activities-for-newborn",
+        category: "development",
+        question: "What are good activities for a newborn?",
+        title: "Activities for a Newborn (Simple & Calm)",
+        metaTitle: "Activities for Newborn — Gentle Ideas",
+        description: "Gentle newborn play — face time, soft sounds, tiny tummy time.",
+        quickAnswer: "Talk face-to-face, sing, short supervised tummy time, follow sleepy cues.",
+        bullets: ["Face-to-face talk and song", "Short supervised tummy time", "Follow cues"],
+        sections: [
+          {
+            heading: "Newborn days are supposed to be quiet",
+            paragraphs: ["Stimulation is often just your voice and face."],
+          },
+        ],
+        faqs: [],
+        relatedSlugs: ["what-do-i-do-with-my-baby", "tummy-time-ideas"],
+      },
+    ),
+    seed(
+      "tinyblooms",
+      "/tinyblooms",
+      "See TinyBlooms",
+      "One age-right idea at a time — coming soon from TinyBundle.",
+      {
+        slug: "tummy-time-ideas",
+        category: "development",
+        question: "What are tummy time ideas?",
+        title: "Tummy Time Ideas That Don’t Feel Like a Chore",
+        metaTitle: "Tummy Time Ideas — Short & Doable",
+        description: "Short tummy time ideas — chest-to-chest, towel rolls, tiny sessions.",
+        quickAnswer: "Start tiny: on your chest, across your lap, or on a mat with a face nearby.",
+        bullets: ["Chest-to-chest counts", "Short sessions, often", "Get on their eye level"],
+        sections: [
+          {
+            heading: "Make it relational",
+            paragraphs: ["Tummy time works better as connection, not a timer."],
+          },
+        ],
+        faqs: [],
+        relatedSlugs: ["activities-for-newborn", "what-do-i-do-with-my-baby"],
+      },
+    ),
+    seed(
+      "tinyhaven",
+      "/tinyhaven",
+      "Open TinyHaven",
+      "Awake and lonely at 2am? TinyHaven shows you’re not the only one — anonymous check-ins, no profiles.",
+      {
+        slug: "am-i-the-only-one-awake",
+        category: "loneliness",
+        question: "Am I the only one awake with my baby?",
+        title: "Am I the Only One Awake?",
+        metaTitle: "Am I the Only One Awake With Baby?",
+        description: "Night feeds feel isolating. You’re not the only parent awake.",
+        quickAnswer: "No. Night waking is common. Sometimes you just need proof someone else is up too.",
+        bullets: ["Night loneliness is common", "Quiet company > advice"],
+        sections: [
+          {
+            heading: "The hardest hour",
+            paragraphs: [
+              "TinyHaven exists for that exact feeling — anonymous presence, not another timeline.",
+            ],
+          },
+        ],
+        faqs: [],
+        relatedSlugs: ["postpartum-loneliness", "baby-wont-sleep"],
+      },
+    ),
+    seed(
+      "tinyhaven",
+      "/tinyhaven",
+      "Open TinyHaven",
+      "Soft company for the night shift — without a social feed.",
+      {
+        slug: "postpartum-loneliness",
+        category: "loneliness",
+        question: "Why does motherhood feel so lonely?",
+        title: "Postpartum Loneliness Is Real",
+        metaTitle: "Postpartum Loneliness — Night Support",
+        description: "Why new parenthood feels isolating, and what soft support can look like.",
+        quickAnswer: "Loneliness doesn’t mean you’re failing — it means you need gentler company.",
+        bullets: ["Isolation is common", "Night magnifies it"],
+        sections: [
+          {
+            heading: "You’re not broken",
+            paragraphs: ["Feeling alone with a baby doesn’t mean you don’t love them."],
+          },
+        ],
+        faqs: [],
+        relatedSlugs: ["am-i-the-only-one-awake", "baby-wont-sleep"],
+      },
+    ),
+    seed(
+      "tinyhaven",
+      "/tinyhaven",
+      "Open TinyHaven",
+      "You’re still not alone in the hard night.",
+      {
+        slug: "baby-wont-sleep",
+        category: "loneliness",
+        question: "What do I do when my baby won’t sleep?",
+        title: "Baby Won’t Sleep — You’re Still Not Alone",
+        metaTitle: "Baby Won’t Sleep — Survival for the Hard Night",
+        description: "When baby won’t sleep: safety first, then soft company for the emotional load.",
+        quickAnswer:
+          "Keep sleep spaces safe, follow clinician guidance for medical concerns, and know the loneliness of the night shift is shared.",
+        bullets: ["Safety first", "Company without pressure helps"],
+        sections: [
+          {
+            heading: "Two problems at once",
+            paragraphs: [
+              "TinyHaven won’t replace safe-sleep guidance — it sits with you in the feeling.",
+            ],
+          },
+        ],
+        faqs: [],
+        relatedSlugs: ["am-i-the-only-one-awake", "postpartum-loneliness"],
+      },
+    ),
+    seed(
+      "tinymeals",
+      "/tinymeals",
+      "See TinyMeals",
+      "Staring at the fridge after a long day? TinyMeals turns what you already have into something good — coming soon.",
+      {
+        slug: "what-can-i-cook-with-whats-in-my-fridge",
+        category: "cooking",
+        question: "What can I cook with what’s in my fridge?",
+        title: "What Can I Cook With What’s in My Fridge?",
+        metaTitle: "Recipes From What’s in My Fridge",
+        description: "Decision-fatigued dinner ideas from ingredients you already have.",
+        quickAnswer:
+          "List what you have, pick one protein + one veg + one carb, cook the simplest version.",
+        bullets: ["Start from inventory", "Simple combinations win"],
+        sections: [
+          {
+            heading: "Parent-brain cooking",
+            paragraphs: ["After a long day with a baby, recipe ambition collapses."],
+          },
+        ],
+        faqs: [],
+        relatedSlugs: ["how-to-stop-food-waste"],
+      },
+    ),
+    seed(
+      "tinymeals",
+      "/tinymeals",
+      "See TinyMeals",
+      "Cook from what you already have — coming soon.",
+      {
+        slug: "how-to-stop-food-waste",
+        category: "cooking",
+        question: "How do I stop food from going bad?",
+        title: "How to Stop Food Waste at Home",
+        metaTitle: "How to Stop Food Waste — Busy Parent Habits",
+        description: "Practical ways to reduce food waste with a baby in the house.",
+        quickAnswer:
+          "Keep a rough fridge inventory, cook the soonest-to-spoil first, plan one use-it-up meal every few days.",
+        bullets: ["See what you own", "Cook the urgent stuff first"],
+        sections: [
+          {
+            heading: "Waste is often a visibility problem",
+            paragraphs: ["If you can’t see it, you’ll buy it again."],
+          },
+        ],
+        faqs: [],
+        relatedSlugs: ["what-can-i-cook-with-whats-in-my-fridge"],
+      },
+    ),
+    seed(
+      "tinybundle",
+      "/",
+      "Explore TinyBundle",
+      "Four calm apps for the questions new parents actually ask.",
+      {
+        slug: "best-apps-for-first-time-parents",
+        category: "parenting-apps",
+        question: "What apps do first-time parents actually need?",
+        title: "Best Apps for First-Time Parents (Without Tracker Overload)",
+        metaTitle: "Best Apps for First-Time Parents — Calm Tools",
+        description:
+          "Which newborn apps are worth it — TinyBundle covers outfits, night loneliness, activities, and meals.",
+        quickAnswer:
+          "Tools for the questions that wake you up: am I alone, what should baby wear, what do we do now, what’s for dinner.",
+        bullets: [
+          "TinyHaven — night company",
+          "TinyLayers — what to wear",
+          "TinyBlooms — one activity",
+          "TinyMeals — cook from what you have",
+        ],
+        sections: [
+          {
+            heading: "Skip the guilt trackers (unless you love them)",
+            paragraphs: [
+              "TinyBundle is for emotional and practical questions that don’t need a dashboard.",
+            ],
+          },
+        ],
+        faqs: [],
+        relatedSlugs: [],
+      },
+    ),
   ];
 }
 
-function buildCatalog(): GuidePage[] {
-  const pages = [
-    ...OUTDOOR_TEMPS.map(outdoorTempPage),
-    ...SLEEP_TEMPS.map(sleepTempPage),
-    ...situationPages(),
-    ...comboPages(),
-    ...otherAppSeeds(),
-  ];
-
-  // Deduplicate by slug (situation hubs may overlap naming)
-  const bySlug = new Map<string, GuidePage>();
-  for (const page of pages) {
-    bySlug.set(page.slug, page);
-  }
-  return [...bySlug.values()];
-}
-
-export const guidePages: GuidePage[] = buildCatalog();
+export const guidePages: GuidePage[] = [
+  ...OUTDOOR_BANDS.map(outdoorBandPage),
+  ...SLEEP_BANDS.map(sleepBandPage),
+  ...situationPages(),
+  ...otherAppSeeds(),
+];
 
 export function getGuide(slug: string): GuidePage | undefined {
   return guidePages.find((p) => p.slug === slug);

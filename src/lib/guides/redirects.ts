@@ -1,0 +1,23 @@
+/** Old per-degree guide URLs → live band slugs. Kept free of @/ imports for next.config. */
+export const GUIDE_REDIRECTS: Record<string, string> = {
+  "baby-clothes-10-degrees": "baby-clothes-10-14-degrees",
+  "baby-clothes-12-degrees": "baby-clothes-10-14-degrees",
+  "baby-clothes-15-degrees": "baby-clothes-15-18-degrees",
+  "baby-clothes-16-degrees": "baby-clothes-15-18-degrees",
+  "baby-clothes-18-degrees": "baby-clothes-15-18-degrees",
+  "baby-clothes-20-degrees": "baby-clothes-19-21-degrees",
+  "baby-clothes-22-degrees": "baby-clothes-22-23-degrees",
+  "baby-clothes-24-degrees": "baby-clothes-24-26-degrees",
+  "baby-clothes-25-degrees": "baby-clothes-24-26-degrees",
+  "baby-clothes-28-degrees": "baby-clothes-27-30-degrees",
+  "baby-clothes-30-degrees": "baby-clothes-27-30-degrees",
+  "baby-sleep-clothes-16c": "baby-sleep-16-19c",
+  "baby-sleep-clothes-18c": "baby-sleep-16-19c",
+  "baby-sleep-clothes-20c": "baby-sleep-20-23c",
+  "baby-sleep-clothes-21c": "baby-sleep-20-23c",
+  "baby-sleep-clothes-22c": "baby-sleep-20-23c",
+  "baby-sleep-clothes-24c": "baby-sleep-24-26c",
+  "baby-sleep-clothes-25c": "baby-sleep-24-26c",
+  "baby-sleep-clothes-26c": "baby-sleep-24-26c",
+  "baby-sleep-clothes-27c": "baby-sleep-27c-plus",
+};
