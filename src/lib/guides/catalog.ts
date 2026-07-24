@@ -1,4 +1,5 @@
 import type { GuidePage } from "@/lib/guides/types";
+import { backlogSeeds } from "@/lib/guides/backlog-seeds";
 import {
   CHEST_CHECK,
   MEDICAL_DISCLAIMER,
@@ -645,7 +646,11 @@ function otherAppSeeds(): GuidePage[] {
           },
         ],
         faqs: [],
-        relatedSlugs: ["activities-for-newborn", "tummy-time-ideas"],
+        relatedSlugs: [
+          "activities-for-newborn",
+          "tummy-time-ideas",
+          "no-prep-baby-activities",
+        ],
       },
     ),
     seed(
@@ -669,7 +674,11 @@ function otherAppSeeds(): GuidePage[] {
           },
         ],
         faqs: [],
-        relatedSlugs: ["what-do-i-do-with-my-baby", "tummy-time-ideas"],
+        relatedSlugs: [
+          "what-do-i-do-with-my-baby",
+          "tummy-time-ideas",
+          "activities-for-2-month-old",
+        ],
       },
     ),
     seed(
@@ -719,7 +728,11 @@ function otherAppSeeds(): GuidePage[] {
           },
         ],
         faqs: [],
-        relatedSlugs: ["postpartum-loneliness", "baby-wont-sleep"],
+        relatedSlugs: [
+          "postpartum-loneliness",
+          "baby-wont-sleep",
+          "awake-breastfeeding-alone",
+        ],
       },
     ),
     seed(
@@ -743,7 +756,11 @@ function otherAppSeeds(): GuidePage[] {
           },
         ],
         faqs: [],
-        relatedSlugs: ["am-i-the-only-one-awake", "baby-wont-sleep"],
+        relatedSlugs: [
+          "am-i-the-only-one-awake",
+          "baby-wont-sleep",
+          "motherhood-is-lonely",
+        ],
       },
     ),
     seed(
@@ -770,7 +787,11 @@ function otherAppSeeds(): GuidePage[] {
           },
         ],
         faqs: [],
-        relatedSlugs: ["am-i-the-only-one-awake", "postpartum-loneliness"],
+        relatedSlugs: [
+          "am-i-the-only-one-awake",
+          "postpartum-loneliness",
+          "baby-wakes-every-hour",
+        ],
       },
     ),
     seed(
@@ -809,7 +830,11 @@ function otherAppSeeds(): GuidePage[] {
             a: "Usually no. Adapt the family meal: remove added salt, adjust texture, and serve a tiny portion.",
           },
         ],
-        relatedSlugs: ["first-baby-foods", "baby-led-weaning-meal-ideas"],
+        relatedSlugs: [
+          "first-baby-foods",
+          "baby-led-weaning-meal-ideas",
+          "baby-breakfast-ideas",
+        ],
       },
     ),
     seed(
@@ -842,7 +867,11 @@ function otherAppSeeds(): GuidePage[] {
           },
         ],
         faqs: [],
-        relatedSlugs: ["baby-meal-ideas", "baby-led-weaning-meal-ideas"],
+        relatedSlugs: [
+          "baby-meal-ideas",
+          "baby-led-weaning-meal-ideas",
+          "6-month-baby-meal-ideas",
+        ],
       },
     ),
     seed(
@@ -874,7 +903,11 @@ function otherAppSeeds(): GuidePage[] {
           },
         ],
         faqs: [],
-        relatedSlugs: ["baby-meal-ideas", "first-baby-foods"],
+        relatedSlugs: [
+          "baby-meal-ideas",
+          "first-baby-foods",
+          "finger-foods-for-babies",
+        ],
       },
     ),
     seed(
@@ -907,7 +940,11 @@ function otherAppSeeds(): GuidePage[] {
           },
         ],
         faqs: [],
-        relatedSlugs: [],
+        relatedSlugs: [
+          "newborn-apps",
+          "must-have-baby-apps",
+          "apps-for-new-moms",
+        ],
       },
     ),
   ];
@@ -918,6 +955,7 @@ export const guidePages: GuidePage[] = [
   ...SLEEP_BANDS.map(sleepBandPage),
   ...situationPages(),
   ...otherAppSeeds(),
+  ...backlogSeeds(),
 ];
 
 export function getGuide(slug: string): GuidePage | undefined {
