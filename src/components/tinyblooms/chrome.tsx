@@ -37,7 +37,10 @@ export function BloomsFooter() {
               <Link href="/" className="font-semibold text-blooms-green-deep hover:underline">
                 TinyBundle
               </Link>
-              . &copy; 2026 @ twobricklabs
+              . &copy; 2026{" "}
+              <a href="https://www.twobricklabs.com" className="hover:text-blooms-ink">
+                Two Brick Labs
+              </a>
             </p>
           </div>
         </div>

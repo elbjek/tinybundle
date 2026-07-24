@@ -40,7 +40,13 @@ export function SiteFooter() {
         <div>
           <Logo />
           <p className="mt-3 text-xs text-muted">
-            &copy; 2026 @ twobricklabs
+            &copy; 2026{" "}
+            <a
+              href="https://www.twobricklabs.com"
+              className="font-semibold transition-colors hover:text-amber-deep"
+            >
+              Two Brick Labs
+            </a>
           </p>
           <p className="mt-2 text-xs text-muted">
             <a

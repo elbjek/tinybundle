@@ -89,7 +89,11 @@ export function HavenFooter() {
       </div>
       <div className="border-t border-haven-border/70">
         <p className="mx-auto max-w-6xl px-5 py-5 text-xs text-haven-soft sm:px-8">
-          &copy; 2026 @ twobricklabs. Built for the 2am club.
+          &copy; 2026{" "}
+          <a href="https://www.twobricklabs.com" className="hover:text-haven-ink">
+            Two Brick Labs
+          </a>
+          . Built for the 2am club.
         </p>
       </div>
     </footer>

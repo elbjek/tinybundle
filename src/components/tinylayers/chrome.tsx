@@ -55,7 +55,10 @@ export function LayersFooter() {
               <Link href="/" className="font-semibold text-layers-blue hover:underline">
                 TinyBundle
               </Link>
-              . &copy; 2026 @ twobricklabs
+              . &copy; 2026{" "}
+              <a href="https://www.twobricklabs.com" className="hover:text-layers-ink">
+                Two Brick Labs
+              </a>
             </p>
           </div>
         </div>

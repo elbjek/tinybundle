@@ -32,7 +32,11 @@ export function GuidesFooter() {
           <Link href="/" className="font-semibold text-amber-deep hover:underline">
             TinyBundle
           </Link>
-          . &copy; 2026 @ twobricklabs. General guidance only — not medical advice.
+          . &copy; 2026{" "}
+          <a href="https://www.twobricklabs.com" className="font-semibold hover:text-ink">
+            Two Brick Labs
+          </a>
+          . General guidance only — not medical advice.
         </p>
         <div className="flex flex-wrap gap-4 font-semibold">
           <a href="mailto:contact@twobricklabs.com" className="hover:text-ink">
