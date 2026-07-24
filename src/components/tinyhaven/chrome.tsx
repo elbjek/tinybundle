@@ -75,7 +75,7 @@ export function HavenFooter() {
           <ul className="mt-4 space-y-2.5 text-sm text-haven-muted">
             <li><Link href="/#about" className="hover:text-haven-ink">About TinyBundle</Link></li>
             <li><Link href="/#apps" className="hover:text-haven-ink">Our apps</Link></li>
-            <li><Link href="/#newsletter" className="hover:text-haven-ink">Contact</Link></li>
+            <li><a href="mailto:contact@twobricklabs.com" className="hover:text-haven-ink">Contact</a></li>
           </ul>
         </nav>
 
@@ -89,7 +89,7 @@ export function HavenFooter() {
       </div>
       <div className="border-t border-haven-border/70">
         <p className="mx-auto max-w-6xl px-5 py-5 text-xs text-haven-soft sm:px-8">
-          &copy; {new Date().getFullYear()} TinyHaven / TinyBundle. Built for the 2am club.
+          &copy; 2026 @ twobricklabs. Built for the 2am club.
         </p>
       </div>
     </footer>

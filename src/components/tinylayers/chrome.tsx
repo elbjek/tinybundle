@@ -55,7 +55,7 @@ export function LayersFooter() {
               <Link href="/" className="font-semibold text-layers-blue hover:underline">
                 TinyBundle
               </Link>
-              . &copy; {new Date().getFullYear()}
+              . &copy; 2026 @ twobricklabs
             </p>
           </div>
         </div>
@@ -65,7 +65,7 @@ export function LayersFooter() {
           <a href="/tinylayers#safety" className="hover:text-layers-ink">Safety</a>
           <a href="/tinylayers#faq" className="hover:text-layers-ink">FAQ</a>
           <Link href="/#apps" className="hover:text-layers-ink">All apps</Link>
-          <a href="mailto:support@twobricklabs.com" className="hover:text-layers-ink">Contact</a>
+          <a href="mailto:contact@twobricklabs.com" className="hover:text-layers-ink">Contact</a>
         </nav>
       </div>
     </footer>

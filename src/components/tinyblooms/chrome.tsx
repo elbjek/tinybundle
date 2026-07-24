@@ -37,7 +37,7 @@ export function BloomsFooter() {
               <Link href="/" className="font-semibold text-blooms-green-deep hover:underline">
                 TinyBundle
               </Link>
-              . &copy; {new Date().getFullYear()}
+              . &copy; 2026 @ twobricklabs
             </p>
           </div>
         </div>
@@ -51,9 +51,9 @@ export function BloomsFooter() {
           <Link href="/#apps" className="hover:text-blooms-ink">
             All apps
           </Link>
-          <Link href="/#newsletter" className="hover:text-blooms-ink">
-            Newsletter
-          </Link>
+          <a href="mailto:contact@twobricklabs.com" className="hover:text-blooms-ink">
+            Contact
+          </a>
         </nav>
       </div>
     </footer>
