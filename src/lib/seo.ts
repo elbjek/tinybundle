@@ -1,4 +1,4 @@
-export const SITE_URL = "https://tinybundle.com";
+export const SITE_URL = "https://www.tinybundle.app";
 
 export const layersOgImage = {
   url: "/tinylayers/og-social.png",

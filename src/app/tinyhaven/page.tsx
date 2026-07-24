@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { absoluteUrl, SITE_URL } from "@/lib/seo";
 import { HavenHeader, HavenFooter } from "@/components/tinyhaven/chrome";
 import { HavenPage, faqs } from "@/components/tinyhaven/haven-page";
 
 const title = "TinyHaven — Late-night companion for parents who feel alone";
 const description =
   "TinyHaven is a calm late-night check-in app for parents. See who else is awake, check in anonymously, and feel less alone during night feeds and sleepless hours — without social media.";
-const url = "https://tinybundle.com/tinyhaven";
+const url = absoluteUrl("/tinyhaven");
 
 export const metadata: Metadata = {
   title,
@@ -45,16 +46,16 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://tinybundle.com/#organization",
+      "@id": `${SITE_URL}/#organization`,
       name: "TinyBundle",
-      url: "https://tinybundle.com/",
+      url: absoluteUrl("/"),
     },
     {
       "@type": "WebSite",
-      "@id": "https://tinybundle.com/tinyhaven#website",
+      "@id": `${url}#website`,
       url,
       name: "TinyHaven",
-      publisher: { "@id": "https://tinybundle.com/#organization" },
+      publisher: { "@id": `${SITE_URL}/#organization` },
     },
     {
       "@type": "SoftwareApplication",
@@ -69,7 +70,7 @@ const jsonLd = {
         priceCurrency: "USD",
         description: "Download free; premium plans available in-app",
       },
-      publisher: { "@id": "https://tinybundle.com/#organization" },
+      publisher: { "@id": `${SITE_URL}/#organization` },
     },
     {
       "@type": "WebPage",
@@ -77,14 +78,14 @@ const jsonLd = {
       url,
       name: title,
       description,
-      isPartOf: { "@id": "https://tinybundle.com/tinyhaven#website" },
+      isPartOf: { "@id": `${url}#website` },
       about: {
         "@type": "Thing",
         name: "Late-night companionship for parents",
       },
       primaryImageOfPage: {
         "@type": "ImageObject",
-        url: "https://tinybundle.com/tinyhaven-phone.png",
+        url: absoluteUrl("/tinyhaven-phone.png"),
       },
     },
     {

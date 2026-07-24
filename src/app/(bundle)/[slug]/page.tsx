@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { apps, getApp } from "@/lib/apps";
+import { absoluteUrl } from "@/lib/seo";
 import { AppIcon } from "@/components/app-icons";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: { canonical: `/${app.slug}` },
     openGraph: {
       type: "website",
-      url: `https://tinybundle.com/${app.slug}`,
+      url: absoluteUrl(`/${app.slug}`),
       title: `${app.name} — ${app.tagline}`,
       description: app.description,
       siteName: "TinyBundle",

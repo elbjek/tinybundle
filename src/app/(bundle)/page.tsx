@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { absoluteUrl } from "@/lib/seo";
 import { Hero } from "@/components/sections/hero";
 import { AppsShowcase } from "@/components/sections/apps-showcase";
 import { Values } from "@/components/sections/values";
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    url: "https://tinybundle.com/",
+    url: absoluteUrl("/"),
     title: "TinyBundle — Four apps. One mission.",
     description:
       "From the late nights to the everyday wins, TinyBundle is here for every tiny moment of parenting.",

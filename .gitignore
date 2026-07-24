@@ -21,3 +21,4 @@ npm-debug.log*
 
 # local SEO backlog (not published)
 articles-todo.md
+.vercel

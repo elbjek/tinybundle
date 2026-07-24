@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { absoluteUrl } from "@/lib/seo";
 
 export type Crumb = { label: string; href?: string };
 
@@ -38,9 +39,7 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: item.path.startsWith("http")
-        ? item.path
-        : `https://tinybundle.com${item.path}`,
+      item: absoluteUrl(item.path),
     })),
   };
 }
