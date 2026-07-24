@@ -7,6 +7,7 @@ export type TinyApp = {
   cardLinkClassName: string;
   tagline: string;
   description: string;
+  comingSoon?: boolean;
   features: { title: string; text: string }[];
   theme: {
     hero: string;
@@ -26,7 +27,7 @@ export const apps: TinyApp[] = [
     cardLinkClassName: "text-butter",
     tagline: "You're not alone tonight.",
     description:
-      "A calm companion for the late nights — gentle company, soft sounds and quiet reassurance for when the house is asleep and you're wide awake.",
+      "A calm late-night check-in for parents — anonymous presence, quiet reassurance, and soft company when the house is asleep and you're wide awake.",
     features: [
       {
         title: "Night-friendly by design",
@@ -86,9 +87,10 @@ export const apps: TinyApp[] = [
     cardClassName: "bg-sage",
     cardTextClassName: "text-ink/70",
     cardLinkClassName: "text-amber-deep",
-    tagline: "Help your baby bloom.",
+    comingSoon: true,
+    tagline: "One lovely thing to do with baby.",
     description:
-      "Age-based ideas and tiny activities that fit real days — no pressure, just little moments of growth.",
+      "Age-based ideas and tiny activities that fit real days — one idea at a time, no milestones, no guilt.",
     features: [
       {
         title: "Made for their age",
@@ -117,6 +119,7 @@ export const apps: TinyApp[] = [
     cardClassName: "bg-peach",
     cardTextClassName: "text-ink/70",
     cardLinkClassName: "text-amber-deep",
+    comingSoon: true,
     tagline: "Something good from what you have.",
     description:
       "Turn the ingredients already in your kitchen into baby-friendly meals. Less waste, less stress, more happy plates.",

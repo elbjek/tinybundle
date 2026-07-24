@@ -14,6 +14,49 @@
   --color-sage: #dfe4d1;
   --color-peach: #f6dfc9;
   --color-line: #ecdfcc;
+
+  /* TinyHaven night palette */
+  --color-haven: #16202a;
+  --color-haven-elevated: #1e2a36;
+  --color-haven-deep: #08121a;
+  --color-haven-border: #2c3b49;
+  --color-haven-ink: #f3ede0;
+  --color-haven-muted: #93a7b6;
+  --color-haven-soft: #5a6e7e;
+  --color-haven-amber: #dfae6d;
+  --color-haven-amber-bright: #f2c98b;
+  --color-haven-amber-text: #e8c08a;
+  --color-haven-on-amber: #241c0f;
+
+  /* TinyLayers warm sand palette */
+  --color-layers: #f8f4ec;
+  --color-layers-card: #ffffff;
+  --color-layers-ink: #2b2823;
+  --color-layers-muted: #756e62;
+  --color-layers-soft: #6b6355;
+  --color-layers-border: #ebe3d5;
+  --color-layers-sand: #f1eadd;
+  --color-layers-blue: #567f97;
+  --color-layers-blue-deep: #3d6478;
+  --color-layers-blue-tint: #e4eef3;
+  --color-layers-green: #587d6a;
+  --color-layers-green-deep: #3e5c4d;
+  --color-layers-green-tint: #e9f0e9;
+  --color-layers-gold: #c99048;
+
+  /* TinyBlooms soft sage palette (TinyBundle cream + app green) */
+  --color-blooms: #faf6ef;
+  --color-blooms-card: #ffffff;
+  --color-blooms-ink: #2b2823;
+  --color-blooms-muted: #756e62;
+  --color-blooms-border: #ebe3d5;
+  --color-blooms-sand: #f1eadd;
+  --color-blooms-sage: #dfe4d1;
+  --color-blooms-green: #7a8a5a;
+  --color-blooms-green-deep: #5f6c45;
+  --color-blooms-green-tint: #e7f1e4;
+  --color-blooms-amber: #e2a13d;
+  --color-blooms-amber-deep: #b97f26;
 }
 
 @theme inline {
@@ -27,4 +70,129 @@ body {
 ::selection {
   background-color: var(--color-butter);
   color: var(--color-navy);
+}
+
+@keyframes haven-breathe {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes haven-twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes haven-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.haven-breathe {
+  animation: haven-breathe 4.5s ease-in-out infinite;
+}
+
+.haven-twinkle {
+  animation: haven-twinkle 3.2s ease-in-out infinite;
+}
+
+.haven-rise {
+  animation: haven-rise 0.8s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .haven-breathe,
+  .haven-twinkle,
+  .haven-rise {
+    animation: none;
+  }
+}
+
+/* TinyLayers article prose */
+.layers-prose h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-layers-ink);
+}
+
+.layers-prose p {
+  margin-top: 0.85rem;
+  font-size: 0.975rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--color-layers-muted);
+}
+
+.layers-prose ul,
+.layers-prose ol {
+  margin-top: 0.85rem;
+  padding-left: 1.2rem;
+  font-size: 0.975rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--color-layers-muted);
+}
+
+.layers-prose li + li {
+  margin-top: 0.35rem;
+}
+
+.layers-prose a {
+  font-weight: 700;
+  color: var(--color-layers-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.layers-prose table {
+  width: 100%;
+  margin-top: 1.25rem;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.layers-prose th,
+.layers-prose td {
+  border: 1px solid var(--color-layers-border);
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+}
+
+.layers-prose th {
+  background: var(--color-layers-sand);
+  font-weight: 800;
+  color: var(--color-layers-ink);
+}
+
+.layers-prose .refs,
+.layers-prose .disclaimer,
+.layers-prose aside {
+  margin-top: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--color-layers-border);
+  background: var(--color-layers-sand);
+  padding: 1rem 1.1rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--color-layers-muted);
 }

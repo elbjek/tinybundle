@@ -5,13 +5,13 @@ const callouts = [
   {
     title: "Late nights",
     text: "You're not alone.",
-    className: "left-[52%] top-[16%] bg-navy text-cream",
+    className: "left-[52%] top-[8%] bg-navy text-cream",
     subClassName: "text-cream/70",
   },
   {
     title: "Right choices",
     text: "Answers when you need them.",
-    className: "right-[2%] top-[50%] bg-powder text-ink",
+    className: "right-[2%] top-[48%] bg-powder text-ink",
     subClassName: "text-ink/70",
   },
   {
@@ -23,43 +23,42 @@ const callouts = [
   {
     title: "Real life",
     text: "Make the most of what you have.",
-    className: "left-[48%] top-[84%] bg-peach text-ink",
+    className: "left-[48%] top-[91%] bg-peach text-ink",
     subClassName: "text-ink/70",
   },
 ];
 
 const trustItems = [
-  { label: "Private by design", icon: LockIcon },
+  { label: "Built for calm", icon: LockIcon },
   { label: "Made for parents", icon: HeartIcon },
   { label: "For every season", icon: SunIcon },
 ];
-
 export function Hero() {
   return (
-    <section className="flex w-full flex-col items-center gap-10 px-5 pb-14 pt-6 sm:px-8 lg:grid lg:grid-cols-2 lg:items-center lg:gap-0 lg:px-0 lg:pb-0">
-      <div className="max-w-xl lg:mr-16 lg:max-w-md lg:justify-self-end lg:pb-16 xl:mr-24">
-        <HeartIcon className="mb-5 h-7 w-7 text-amber" />
-        <h1 className="text-[2.6rem] font-bold leading-[1.12] tracking-tight sm:text-5xl lg:text-[3.4rem]">
+    <section className="flex w-full flex-col items-center gap-10 px-5 pb-14 pt-6 sm:px-8 lg:grid lg:h-[calc(100vh-4.5rem+1.875rem)] lg:grid-cols-2 lg:items-start lg:gap-0 lg:overflow-visible lg:px-0 lg:pt-0 lg:pb-0">
+      <div className="max-w-xl self-center lg:mr-12 lg:max-w-md lg:justify-self-end xl:mr-16">
+        <HeartIcon className="mb-4 h-6 w-6 text-amber" />
+        <h1 className="text-[2.6rem] font-extrabold leading-[1.12] tracking-tight sm:text-5xl lg:text-[3rem]">
           Four moments.
           <br />
           One journey.
           <br />
           <span className="text-amber">We&rsquo;ve got you.</span>
         </h1>
-        <p className="mt-6 max-w-md text-lg leading-relaxed text-muted">
+        <p className="mt-5 max-w-md text-base leading-relaxed text-muted">
           From the late nights to the everyday wins, TinyBundle is here for
           every tiny moment of parenting.
         </p>
         <Link
           href="/#apps"
-          className="mt-8 inline-flex items-center gap-2.5 rounded-full bg-butter px-6 py-3.5 text-sm font-bold text-navy shadow-sm transition-colors hover:bg-amber"
+          className="mt-7 inline-flex items-center gap-2.5 rounded-full bg-butter px-6 py-3.5 text-sm font-bold text-navy shadow-sm transition-colors hover:bg-amber"
         >
           Explore the Bundle
           <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden="true">
             <path d="M3 10h13m0 0-4.5-4.5M16 10l-4.5 4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </Link>
-        <ul className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3">
+        <ul className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-3">
           {trustItems.map(({ label, icon: Icon }) => (
             <li key={label} className="flex items-center gap-2 text-xs font-semibold text-ink/70">
               <Icon className="h-4 w-4 text-amber" />
@@ -69,15 +68,16 @@ export function Hero() {
         </ul>
       </div>
 
-      <div className="relative w-full max-w-[340px] shrink-0 sm:max-w-md lg:max-w-[460px] lg:justify-self-end xl:max-w-[500px]">
-        <div className="relative aspect-[2/3] w-full">
+      <div className="relative w-full shrink-0 sm:max-w-md lg:h-full lg:w-auto lg:max-w-none lg:justify-self-start lg:pb-[1.875rem]">
+        <div className="relative aspect-[1024/1273] w-full lg:h-full lg:w-auto">
           <Image
-            src="/hero-scene.png"
+            src="/hero-path.png"
             alt="A winding path from a starry night sky through cozy scenes of baby clothes, a teddy bear and a bowl of baby food"
             fill
             priority
-            sizes="(min-width: 1024px) 34rem, (min-width: 640px) 28rem, 90vw"
-            className="object-contain"
+            unoptimized
+            sizes="(min-width: 1024px) 38rem, (min-width: 640px) 28rem, 90vw"
+            className="object-contain object-top"
           />
           {callouts.map((c) => (
             <div

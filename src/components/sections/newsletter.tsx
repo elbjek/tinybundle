@@ -11,7 +11,7 @@ export function Newsletter() {
               </svg>
             </span>
             <div>
-              <h2 className="text-xl font-bold leading-snug sm:text-2xl">
+              <h2 className="text-xl font-extrabold leading-snug sm:text-2xl">
                 Tiny tips. Real support.
                 <br />
                 Right in your inbox.

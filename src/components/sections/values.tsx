@@ -1,7 +1,7 @@
 const values = [
   {
-    title: "Private by design",
-    text: "No profiles. No pressure. Just a safe space for you.",
+    title: "Built for calm",
+    text: "Quiet tools for real parenting — not another social app.",
     icon: LockIcon,
   },
   {
@@ -20,7 +20,6 @@ const values = [
     icon: SparkleIcon,
   },
 ];
-
 export function Values() {
   return (
     <section id="for-parents" className="bg-[#fffcf6] pb-20 sm:pb-24">
@@ -29,7 +28,7 @@ export function Values() {
           {values.map(({ title, text, icon: Icon }) => (
             <div key={title} className="text-center lg:px-6">
               <Icon className="mx-auto h-8 w-8 text-amber" />
-              <h3 className="mt-4 text-sm font-bold text-ink">{title}</h3>
+              <h3 className="mt-4 text-sm font-extrabold text-ink">{title}</h3>
               <p className="mt-2 text-xs leading-relaxed text-muted">{text}</p>
             </div>
           ))}

@@ -1,0 +1,41 @@
+import type { MetadataRoute } from "next";
+import { apps } from "@/lib/apps";
+import { SITE_URL } from "@/lib/seo";
+import { layersArticles } from "@/lib/tinylayers/articles";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+
+  const appPages = apps.map((app) => ({
+    url: `${SITE_URL}/${app.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: app.comingSoon ? 0.5 : 0.8,
+  }));
+
+  const layersBlog = [
+    {
+      url: `${SITE_URL}/tinylayers/blog`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+    ...layersArticles.map((article) => ({
+      url: `${SITE_URL}/tinylayers/blog/${article.slug}`,
+      lastModified: new Date(article.modifiedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+  ];
+
+  return [
+    {
+      url: SITE_URL,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 1,
+    },
+    ...appPages,
+    ...layersBlog,
+  ];
+}

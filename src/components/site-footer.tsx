@@ -5,7 +5,13 @@ import { apps } from "@/lib/apps";
 const columns = [
   {
     heading: "Our Apps",
-    links: apps.map((app) => ({ label: app.name, href: `/${app.slug}` })),
+    links: apps.map((app) => ({
+      label: app.comingSoon && app.slug !== "tinyblooms" ? `${app.name} (soon)` : app.name,
+      href:
+        app.slug === "tinyblooms" || !app.comingSoon
+          ? `/${app.slug}`
+          : "/#apps",
+    })),
   },
   {
     heading: "Company",
@@ -38,7 +44,7 @@ export function SiteFooter() {
 
         {columns.map((column) => (
           <nav key={column.heading} aria-label={column.heading}>
-            <h3 className="text-sm font-bold text-ink">{column.heading}</h3>
+            <h3 className="text-sm font-extrabold text-ink">{column.heading}</h3>
             <ul className="mt-4 space-y-2.5">
               {column.links.map((link) => (
                 <li key={link.label}>
@@ -55,7 +61,7 @@ export function SiteFooter() {
         ))}
 
         <div>
-          <h3 className="text-sm font-bold text-ink">Follow along</h3>
+          <h3 className="text-sm font-extrabold text-ink">Follow along</h3>
           <div className="mt-4 flex gap-2.5">
             <SocialLink label="Instagram">
               <rect x="4" y="4" width="16" height="16" rx="4.5" stroke="currentColor" strokeWidth="1.7" />

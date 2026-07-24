@@ -29,7 +29,7 @@ export function Logo({ className = "" }: { className?: string }) {
       className={`flex items-center gap-2.5 text-ink ${className}`}
     >
       <LogoMark className="h-8 w-8 text-amber" />
-      <span className="text-2xl font-bold tracking-tight">
+      <span className="text-2xl font-extrabold tracking-tight">
         TinyBundle
       </span>
     </Link>

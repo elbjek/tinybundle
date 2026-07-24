@@ -1,16 +1,14 @@
 const icons: Record<string, (className: string) => React.ReactNode> = {
   tinyhaven: (className) => (
-    <svg viewBox="0 0 48 48" fill="none" className={className} aria-hidden="true">
+    <svg viewBox="0 0 64 64" fill="none" className={className} aria-hidden="true">
       <path
-        d="M9 21.5 24 9l15 12.5V36a3.5 3.5 0 0 1-3.5 3.5h-23A3.5 3.5 0 0 1 9 36V21.5Z"
-        stroke="#e2a13d"
-        strokeWidth="2.5"
+        d="M32 9 53 27.5V49a4 4 0 0 1-4 4H15a4 4 0 0 1-4-4V27.5Z"
+        stroke="#D9A968"
+        strokeWidth="3.25"
         strokeLinejoin="round"
+        strokeLinecap="round"
       />
-      <path
-        d="M28.5 23.5a6.5 6.5 0 1 1-6.9 9.4 7.5 7.5 0 0 0 6.9-9.4Z"
-        fill="#e2a13d"
-      />
+      <path d="M41 39A11 11 0 1 1 28 26a9 9 0 0 0 13 13Z" fill="#F2C98B" />
     </svg>
   ),
   tinylayers: (className) => (
