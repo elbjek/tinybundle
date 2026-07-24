@@ -5,7 +5,7 @@ import { AppIcon } from "@/components/app-icons";
 const features = [
   {
     title: "Late-night check-in",
-    text: "Tell TinyHaven what’s keeping you up — feeding, rocking, walking the hallway, or just surviving — and step into a quiet room of parents awake for the same reason.",
+    text: "Tell TinyHaven what’s keeping you up — feeding, rocking, walking the hallway, or just surviving — and step into a quiet haven of parents awake for the same reason.",
     icon: HeartIcon,
   },
   {
@@ -34,12 +34,30 @@ const steps = [
   {
     n: "02",
     title: "Check in anonymously",
-    text: "Choose what you’re doing. Your presence joins a temporary shared room — no name, no photo, nothing that follows you into daylight.",
+    text: "Choose what you’re doing. Your presence joins a temporary shared haven — no name, no photo, nothing that follows you into daylight.",
   },
   {
     n: "03",
     title: "Feel the company, then rest",
     text: "See who’s here, send a quiet signal if you want, and go to bed when you’re ready. The night ends. The session ends with it.",
+  },
+];
+
+const globalStats = [
+  {
+    label: "Parents awake worldwide",
+    value: "4,218",
+    icon: "🌍",
+  },
+  {
+    label: "Hearts sent worldwide tonight",
+    value: "12,640",
+    icon: "💛",
+  },
+  {
+    label: "Little lights shared tonight",
+    value: "3,091",
+    icon: "✨",
   },
 ];
 
@@ -67,7 +85,7 @@ const voices = [
 const faqs = [
   {
     q: "What is TinyHaven?",
-    a: "TinyHaven is a late-night companion app for parents. It answers one question — am I the only one awake? — through anonymous check-ins, quiet presence, and soft encouragement. It is not a social network, chat app, or parenting forum.",
+    a: "TinyHaven is a late-night companion app for parents. It answers one question — am I the only one awake? — through anonymous check-ins, quiet presence, and soft encouragement inside a shared haven. It is not a social network, chat app, or parenting forum.",
   },
   {
     q: "Who is TinyHaven for?",
@@ -78,12 +96,16 @@ const faqs = [
     a: "No. There are no profiles, followers, feeds, comments, rankings, or streaks. Check-ins are anonymous and temporary. Support is ambient — a presence count, a quiet note, a heart or sparkle — not a conversation you have to manage.",
   },
   {
+    q: "What do the global stats mean?",
+    a: "TinyHaven shows live worldwide presence for the night — how many parents are awake, how many hearts have been sent, and how many little lights have been shared. It’s soft proof that you’re part of a larger night, without turning the app into a feed or a map.",
+  },
+  {
     q: "Does TinyHaven track my location?",
-    a: "TinyHaven is about shared night-time presence, not geography. It does not use “near you” language without real location context, and it is not built as a location-tracking or dating-style proximity product.",
+    a: "No. TinyHaven is about shared night-time presence, not geography. It does not track where you are, and it is not built as a location-tracking or dating-style proximity product.",
   },
   {
     q: "What happens to my check-in in the morning?",
-    a: "Nightly sessions expire by morning. Presence, notes, and reactions belong to the night and fade with it — so the app stays calm, temporary, and free of daytime residue.",
+    a: "Nightly sessions expire by morning. Presence, notes, and reactions belong to the night and fade with it — so the haven stays calm, temporary, and free of daytime residue.",
   },
   {
     q: "Do I need an account to use TinyHaven?",
@@ -308,7 +330,7 @@ function Presence() {
       className="relative overflow-hidden border-y border-haven-border bg-haven-deep px-5 py-20 sm:px-8 sm:py-24"
     >
       <Starfield sparse />
-      <div className="relative mx-auto max-w-3xl text-center">
+      <div className="relative mx-auto max-w-5xl text-center">
         <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-haven-amber-text">
           Right now
         </p>
@@ -317,22 +339,28 @@ function Presence() {
           <span className="text-haven-amber">parents are awake too.</span>
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-base font-medium leading-relaxed text-haven-muted sm:text-lg">
-          TinyHaven shows live presence in temporary rooms — feeding, rocking,
-          walking, surviving — so the night feels shared instead of sealed shut.
-          You&rsquo;re in good company.
+          TinyHaven shows live presence across the night — feeding, rocking,
+          walking, surviving — so the hard hour feels shared instead of sealed
+          shut. You&rsquo;re in good company.
         </p>
-        <div className="mx-auto mt-10 inline-flex flex-col items-center rounded-[1.75rem] border border-haven-border bg-haven-elevated px-10 py-8">
-          <span className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.14em] text-haven-amber-text">
-            <span className="h-2 w-2 rounded-full bg-haven-amber-bright shadow-[0_0_12px_rgba(242,201,139,0.85)]" />
-            Awake with you
-          </span>
-          <p className="mt-3 text-5xl font-extrabold tracking-tight text-haven-ink sm:text-6xl">
-            533
-          </p>
-          <p className="mt-2 text-sm font-semibold text-haven-muted">
-            parents are awake with you
-          </p>
-        </div>
+        <ul className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-3">
+          {globalStats.map((stat) => (
+            <li
+              key={stat.label}
+              className="rounded-[1.75rem] border border-haven-border bg-haven-elevated px-6 py-8"
+            >
+              <span className="text-2xl" aria-hidden="true">
+                {stat.icon}
+              </span>
+              <p className="mt-4 text-4xl font-extrabold tracking-tight text-haven-ink tabular-nums sm:text-[2.5rem]">
+                {stat.value}
+              </p>
+              <p className="mt-2 text-sm font-semibold leading-snug text-haven-muted">
+                {stat.label}
+              </p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
