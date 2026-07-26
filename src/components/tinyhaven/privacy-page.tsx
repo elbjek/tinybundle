@@ -1,51 +1,64 @@
 import Link from "next/link";
 
-const updated = "July 24, 2026";
+const updated = "July 26, 2026";
 
 const sections: { id: string; title: string; paragraphs: string[] }[] = [
   {
     id: "who",
     title: "Who we are",
     paragraphs: [
-      "TinyHaven is a late-night companion app for parents, published by Two Brick Labs (“we”, “us”). This Privacy Policy explains what information we collect when you use TinyHaven, how we use it, and the choices you have.",
-      "TinyHaven is designed to feel anonymous: no public profiles, no follower graphs, and no social feed that follows you into daylight. We still need a small amount of data to run the app safely and reliably.",
+      "TinyHaven is a late-night companion for parents, published by Two Brick Labs (“we”, “us”). This Privacy Policy explains what we collect when you use TinyHaven, how we use it, and the choices you have.",
+      "TinyHaven is built to feel anonymous: no public profiles, no follower lists, no daylight feed. We still need a small amount of data to run the app, keep the haven safe, and support your account.",
     ],
   },
   {
     id: "collect",
     title: "Information we collect",
     paragraphs: [
-      "Account and contact details. If you create an account or contact us, we may collect an email address, authentication identifiers from your sign-in provider (such as Apple or Google), and basic account settings.",
-      "Check-ins and presence. When you check in, we process the reason you select (for example feeding or rocking), that you are present in a shared haven, and soft interactions such as a heart or sparkle. We do not ask for your real name or photo for these moments.",
-      "Device and technical data. Like most apps, we may collect device type, operating system, app version, language, approximate time zone, crash logs, and diagnostic events needed to keep TinyHaven working.",
-      "Purchase information. If you buy a subscription through the App Store, payment is handled by Apple. We receive entitlement status (for example whether Premium is active), not your full payment card details.",
-      "Communications. If you email us at contact@twobricklabs.com, we keep the content of that conversation so we can help you.",
+      "Account and sign-in. If you create an account, we may collect an email address, authentication identifiers from your sign-in provider (such as Apple), and basic account settings.",
+      "Check-ins and presence. When you check in, we process the reason you choose (for example feeding or rocking), that you are present in a shared haven, and soft gestures such as a heart or sparkle.",
+      "Quiet notes. If you leave a note, we process the text you typed so it can be shown anonymously in your haven, checked for safety before it posts, and — if reported — reviewed. Notes are not tied to a public name or photo.",
+      "Reports and blocks. If you report a note or block another parent, we process that action so we can hide content for you, apply community thresholds, and review abuse. Blocking does not reveal anyone’s identity to you.",
+      "Device and technical data. We may collect device type, operating system, app version, language, approximate time zone, crash logs, and diagnostics needed to keep TinyHaven working.",
+      "Purchase information. If you buy a subscription through the App Store, Apple handles payment. We receive entitlement status (for example whether Premium is active), not your full card details.",
+      "Communications. If you email support@twobricklabs.com or contact@twobricklabs.com, we keep that conversation so we can help you.",
+    ],
+  },
+  {
+    id: "moderation",
+    title: "How we check notes (moderation)",
+    paragraphs: [
+      "Every quiet note is checked automatically before it is posted. If it is likely to contain material we do not allow (see the Terms of Use), it is refused and never reaches the haven.",
+      "To score a note, we send the note text to a third-party content moderation service. We send only the text — not your name, email, account identifier, or which haven you are in.",
+      "That service returns a safety score or classification so we can allow or refuse the note. It acts as our processor for this purpose and may only use what we send to provide that scoring. If you want the current provider’s name, email support@twobricklabs.com — we will tell you, and we update this policy when the provider changes.",
+      "Automatic checking misses things and sometimes refuses a kind note. That is why reporting exists.",
     ],
   },
   {
     id: "use",
     title: "How we use information",
     paragraphs: [
-      "We use information to operate TinyHaven: show who else is awake, power anonymous check-ins and soft support gestures, maintain accounts, process subscriptions, fix bugs, prevent abuse, and improve the product.",
-      "We do not sell your personal information. We do not use TinyHaven check-ins to build advertising profiles or run third-party ad networks inside the night experience.",
-      "Night content is meant to stay in the night. We design features so presence and notes are temporary and not turned into a lasting public timeline.",
+      "We use information to run TinyHaven: show who else is awake, power check-ins and soft gestures, show quiet notes in a haven, moderate and review content, honour reports and blocks, maintain accounts, process subscriptions, fix bugs, prevent abuse, and improve the product.",
+      "We do not sell your personal information. We do not use TinyHaven check-ins or notes to build advertising profiles or run third-party ad networks inside the night experience.",
+      "Night content is meant to stay in the night. Presence and notes are temporary by design — not a lasting public timeline.",
     ],
   },
   {
     id: "share",
     title: "When we share information",
     paragraphs: [
-      "Other parents in a haven may see anonymous presence and the soft signals you choose to send. They do not see your email, legal name, or profile photo from TinyHaven’s design of the product.",
-      "Service providers help us host infrastructure, send transactional email, analyze crashes, and process App Store subscriptions. They are allowed to process data only to provide those services to us.",
+      "Other parents in a haven may see anonymous presence, soft gestures, and quiet notes. They do not see your email, legal name, or profile photo from how TinyHaven is built.",
+      "Service providers help us host infrastructure, score notes for safety, send transactional email, analyze crashes, and process App Store subscriptions. They may process data only to provide those services to us.",
       "We may disclose information if required by law, to protect someone’s safety, or to defend our legal rights. If TinyHaven or Two Brick Labs is involved in a merger or acquisition, information may transfer as part of that transaction under continued privacy protections.",
     ],
   },
   {
     id: "retention",
-    title: "Retention",
+    title: "How long we keep things",
     paragraphs: [
-      "We keep account data while your account is active and for a reasonable period afterward if needed for security, accounting, or legal reasons.",
-      "Ephemeral night activity is not intended to live forever. We delete or anonymize temporary haven content on a short schedule consistent with how TinyHaven is built — typically clearing with the morning reset described in the app.",
+      "Quiet notes are deleted roughly six hours after they are posted. Your presence in a haven ends by 6am in your own timezone.",
+      "If a note is reported, we may keep a copy longer so we can review it and decide whether an account should be limited. We keep that material only as long as needed for safety and integrity.",
+      "We keep account data while your account is active and for a reasonable period afterward if needed for security, accounting, or legal reasons. You can delete your account from Settings.",
       "Crash logs and diagnostics are kept only as long as useful for reliability.",
     ],
   },
@@ -53,30 +66,30 @@ const sections: { id: string; title: string; paragraphs: string[] }[] = [
     id: "security",
     title: "Security",
     paragraphs: [
-      "We use administrative, technical, and organizational measures appropriate to the sensitivity of the data — including encrypted transit and access controls. No method of transmission or storage is perfectly secure; please use a strong device passcode and keep your OS updated.",
+      "We use measures appropriate to the data — including encrypted transit and access controls. No method of transmission or storage is perfectly secure; please use a strong device passcode and keep your OS updated.",
     ],
   },
   {
     id: "children",
     title: "Children",
     paragraphs: [
-      "TinyHaven is for parents and caregivers, not for children. We do not knowingly collect personal information from children under 13 (or the equivalent minimum age in your region). If you believe a child has provided us information, contact us and we will delete it.",
+      "TinyHaven is for parents and caregivers, not for children. We do not knowingly collect personal information from children under 13 (or the equivalent minimum age where you live). If you believe a child has given us information, contact us and we will delete it.",
     ],
   },
   {
     id: "rights",
     title: "Your choices and rights",
     paragraphs: [
-      "Depending on where you live, you may have rights to access, correct, delete, or export personal information, or to object to or restrict certain processing. You can also withdraw consent where processing is based on consent.",
-      "You can request deletion of your TinyHaven account and associated personal data by emailing contact@twobricklabs.com. App Store subscriptions are managed in your Apple ID settings.",
-      "If we rely on cookies or similar technologies on related websites, you can control them through your browser settings.",
+      "Depending on where you live, you may have rights to access, correct, delete, or export personal information, or to object to or restrict certain processing.",
+      "You can delete your TinyHaven account and associated data from Settings, or email support@twobricklabs.com. App Store subscriptions are managed in your Apple ID settings.",
+      "If we use cookies on related websites, you can control them in your browser.",
     ],
   },
   {
     id: "international",
     title: "International transfers",
     paragraphs: [
-      "Two Brick Labs may process information in the European Economic Area, the United Kingdom, the United States, or other countries where we or our providers operate. Where required, we use appropriate safeguards for cross-border transfers.",
+      "Two Brick Labs may process information in the European Economic Area, the United Kingdom, the United States, or other countries where we or our providers operate — including the moderation service that scores note text. Where required, we use appropriate safeguards for cross-border transfers.",
     ],
   },
   {
@@ -90,7 +103,7 @@ const sections: { id: string; title: string; paragraphs: string[] }[] = [
     id: "contact",
     title: "Contact",
     paragraphs: [
-      "Questions about privacy or this policy: contact@twobricklabs.com. Controller: Two Brick Labs — https://www.twobricklabs.com.",
+      "Privacy or data questions: contact@twobricklabs.com. Haven safety and reports: support@twobricklabs.com. Controller: Two Brick Labs — https://www.twobricklabs.com. What you may post is described in the Terms of Use.",
     ],
   },
 ];
@@ -114,18 +127,18 @@ export function HavenPrivacyPage() {
           TinyHaven by Two Brick Labs. Last updated {updated}.
         </p>
         <p className="mt-3 text-sm leading-relaxed text-haven-soft">
-          This page covers the TinyHaven app and related TinyHaven pages on{" "}
+          Covers the TinyHaven app and{" "}
           <Link href="/tinyhaven" className="font-semibold text-haven-amber-text hover:underline">
             tinybundle.app/tinyhaven
           </Link>
-          . Read together with our{" "}
+          . Read with the{" "}
           <Link
             href="/tinyhaven/terms"
             className="font-semibold text-haven-amber-text hover:underline"
           >
             Terms of Use
           </Link>
-          . It is general information, not legal advice.
+          . General information — not legal advice.
         </p>
 
         <nav
@@ -157,7 +170,7 @@ export function HavenPrivacyPage() {
               </h2>
               <div className="mt-4 space-y-4 text-sm leading-relaxed text-haven-muted sm:text-[15px]">
                 {section.paragraphs.map((p) => (
-                  <p key={p.slice(0, 48)}>{p}</p>
+                  <p key={p.slice(0, 56)}>{p}</p>
                 ))}
               </div>
             </section>
