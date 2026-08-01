@@ -8,11 +8,8 @@ const columns = [
   {
     heading: "Our Apps",
     links: apps.map((app) => ({
-      label: app.comingSoon && app.slug !== "tinyblooms" ? `${app.name} (soon)` : app.name,
-      href:
-        app.slug === "tinyblooms" || !app.comingSoon
-          ? `/${app.slug}`
-          : "/#apps",
+      label: app.comingSoon ? `${app.name} (soon)` : app.name,
+      href: `/${app.slug}`,
     })),
   },
   {

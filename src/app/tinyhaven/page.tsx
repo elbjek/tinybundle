@@ -64,6 +64,10 @@ const jsonLd = {
       operatingSystem: "iOS",
       description,
       url,
+      downloadUrl:
+        "https://apps.apple.com/us/app/tinyhaven-late-night-parents/id6793665465",
+      installUrl:
+        "https://apps.apple.com/us/app/tinyhaven-late-night-parents/id6793665465",
       offers: {
         "@type": "Offer",
         price: "0",

@@ -31,12 +31,14 @@ export function HavenHeader() {
           ))}
         </nav>
 
-        <Link
-          href="/tinyhaven#download"
+        <a
+          href="https://apps.apple.com/us/app/tinyhaven-late-night-parents/id6793665465"
+          target="_blank"
+          rel="noopener noreferrer"
           className="rounded-full bg-haven-amber px-5 py-2.5 text-sm font-bold text-haven-on-amber shadow-[0_8px_28px_rgba(223,174,109,0.28)] transition-colors hover:bg-haven-amber-bright"
         >
           Get the app
-        </Link>
+        </a>
       </div>
     </header>
   );
@@ -66,7 +68,16 @@ export function HavenFooter() {
             <li><Link href="/tinyhaven#how" className="hover:text-haven-ink">How it works</Link></li>
             <li><Link href="/tinyhaven#features" className="hover:text-haven-ink">Features</Link></li>
             <li><Link href="/tinyhaven#faq" className="hover:text-haven-ink">FAQ</Link></li>
-            <li><Link href="/tinyhaven#download" className="hover:text-haven-ink">Download</Link></li>
+            <li>
+              <a
+                href="https://apps.apple.com/us/app/tinyhaven-late-night-parents/id6793665465"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-haven-ink"
+              >
+                Download
+              </a>
+            </li>
           </ul>
         </nav>
 

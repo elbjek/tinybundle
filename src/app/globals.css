@@ -57,6 +57,20 @@
   --color-blooms-green-tint: #e7f1e4;
   --color-blooms-amber: #e2a13d;
   --color-blooms-amber-deep: #b97f26;
+
+  /* TinyMeals warm peach palette (TinyBundle cream + app orange) */
+  --color-meals: #faf6ef;
+  --color-meals-card: #ffffff;
+  --color-meals-ink: #2b2823;
+  --color-meals-muted: #756e62;
+  --color-meals-border: #ebe3d5;
+  --color-meals-sand: #f1eadd;
+  --color-meals-peach: #f6dfc9;
+  --color-meals-orange: #c97b4a;
+  --color-meals-orange-deep: #a86338;
+  --color-meals-orange-tint: #f8ebe0;
+  --color-meals-amber: #e2a13d;
+  --color-meals-amber-deep: #b97f26;
 }
 
 @theme inline {

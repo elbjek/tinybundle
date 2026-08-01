@@ -51,6 +51,9 @@ export function BloomsFooter() {
           <Link href="/tinylayers" className="hover:text-blooms-ink">
             TinyLayers
           </Link>
+          <Link href="/tinymeals" className="hover:text-blooms-ink">
+            TinyMeals
+          </Link>
           <Link href="/#apps" className="hover:text-blooms-ink">
             All apps
           </Link>

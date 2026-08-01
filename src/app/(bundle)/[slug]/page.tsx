@@ -13,7 +13,8 @@ export function generateStaticParams() {
       (app) =>
         app.slug !== "tinyhaven" &&
         app.slug !== "tinylayers" &&
-        app.slug !== "tinyblooms",
+        app.slug !== "tinyblooms" &&
+        app.slug !== "tinymeals",
     )
     .map((app) => ({ slug: app.slug }));
 }
@@ -46,7 +47,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function AppPage({ params }: Props) {
   const { slug } = await params;
-  if (slug === "tinyhaven" || slug === "tinylayers" || slug === "tinyblooms") {
+  if (
+    slug === "tinyhaven" ||
+    slug === "tinylayers" ||
+    slug === "tinyblooms" ||
+    slug === "tinymeals"
+  ) {
     notFound();
   }
   const app = getApp(slug);
@@ -126,11 +132,7 @@ export default async function AppPage({ params }: Props) {
             {otherApps.map((other) => {
               const titleClass =
                 other.slug === "tinyhaven" ? "text-cream" : "text-ink";
-              const className = `flex flex-col items-center rounded-2xl px-6 py-8 text-center shadow-sm ${other.cardClassName} ${
-                other.comingSoon && other.slug !== "tinyblooms"
-                  ? ""
-                  : "group transition-transform duration-300 hover:-translate-y-1 hover:shadow-md"
-              }`;
+              const className = `flex flex-col items-center rounded-2xl px-6 py-8 text-center shadow-sm ${other.cardClassName} group transition-transform duration-300 hover:-translate-y-1 hover:shadow-md`;
               const body = (
                 <>
                   <AppIcon slug={other.slug} className="h-10 w-10" />
@@ -142,14 +144,6 @@ export default async function AppPage({ params }: Props) {
                   </span>
                 </>
               );
-
-              if (other.comingSoon && other.slug !== "tinyblooms") {
-                return (
-                  <div key={other.slug} className={className} aria-label={`${other.name}, coming soon`}>
-                    {body}
-                  </div>
-                );
-              }
 
               return (
                 <Link key={other.slug} href={`/${other.slug}`} className={className}>
