@@ -24,19 +24,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const app = getApp(slug);
   if (!app) return {};
   return {
-    title: `${app.name} — ${app.tagline}`,
+    title: `${app.name} - ${app.tagline}`,
     description: app.description,
     alternates: { canonical: `/${app.slug}` },
     openGraph: {
       type: "website",
       url: absoluteUrl(`/${app.slug}`),
-      title: `${app.name} — ${app.tagline}`,
+      title: `${app.name} - ${app.tagline}`,
       description: app.description,
       siteName: "TinyBundle",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${app.name} — ${app.tagline}`,
+      title: `${app.name} - ${app.tagline}`,
       description: app.description,
     },
     ...(app.comingSoon

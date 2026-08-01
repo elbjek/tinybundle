@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { MealsHeader, MealsFooter } from "@/components/tinymeals/chrome";
 import { MealsPage } from "@/components/tinymeals/meals-page";
-import { absoluteUrl, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, mealsOgImage, SITE_URL } from "@/lib/seo";
 
-const title = "TinyMeals — Something good from what you have";
+const title = "TinyMeals - Something good from what you have";
 const description =
   "Turn what’s already in your kitchen into baby-friendly meals. Less waste, less stress, more happy plates. Coming soon from TinyBundle.";
+const ogTitle = "Something good from what you have.";
+const ogDescription =
+  "Baby-friendly plates from what’s already in your kitchen. Less waste, less decision fatigue. TinyMeals is coming soon.";
 const path = "/tinymeals";
 const url = absoluteUrl(path);
 
@@ -25,15 +28,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url,
-    title,
-    description,
+    title: ogTitle,
+    description: ogDescription,
     siteName: "TinyMeals",
     locale: "en_US",
+    images: [mealsOgImage],
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
+    title: ogTitle,
+    description: ogDescription,
+    images: [mealsOgImage.url],
   },
   robots: {
     index: true,
@@ -57,6 +62,12 @@ const jsonLd = {
       name: title,
       description,
       isPartOf: { "@id": `${SITE_URL}/#organization` },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: absoluteUrl(mealsOgImage.url),
+        width: mealsOgImage.width,
+        height: mealsOgImage.height,
+      },
       about: {
         "@type": "SoftwareApplication",
         name: "TinyMeals",

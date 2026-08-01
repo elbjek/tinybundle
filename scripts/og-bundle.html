@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+        background: #fbf5ec;
+        color: #263048;
+      }
+      .frame {
+        width: 1200px;
+        height: 630px;
+        display: grid;
+        grid-template-columns: 1fr 1.05fr;
+        background:
+          radial-gradient(ellipse at 100% 0%, rgba(242, 193, 115, 0.3), transparent 48%),
+          radial-gradient(ellipse at 0% 100%, rgba(220, 230, 241, 0.6), transparent 42%),
+          #fbf5ec;
+        padding: 40px 44px 36px;
+        gap: 32px;
+      }
+      .left {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .brand svg { width: 42px; height: 42px; color: #e2a13d; }
+      .brand span {
+        font-size: 30px;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+      h1 {
+        margin-top: 22px;
+        font-size: 50px;
+        font-weight: 800;
+        line-height: 1.04;
+        letter-spacing: -0.04em;
+      }
+      h1 em {
+        font-style: normal;
+        color: #e2a13d;
+      }
+      .sub {
+        margin-top: 14px;
+        max-width: 500px;
+        font-size: 19px;
+        font-weight: 500;
+        line-height: 1.35;
+        color: #5f6a80;
+      }
+      .trust {
+        display: flex;
+        gap: 10px;
+        margin-top: 22px;
+      }
+      .trust-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        border-radius: 16px;
+        border: 1px solid #ecdfcc;
+        background: #fff;
+        padding: 12px 12px 14px;
+        box-shadow: 0 1px 0 rgba(38, 48, 72, 0.04);
+      }
+      .icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f7eee0;
+        color: #b97f26;
+      }
+      .icon svg { width: 18px; height: 18px; }
+      .trust-item span {
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+        color: #263048;
+      }
+      .apps {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .app {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-radius: 16px;
+        padding: 12px 14px;
+        border: 1px solid transparent;
+      }
+      .app-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.92);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .app-mark svg {
+        width: 24px;
+        height: 24px;
+        display: block;
+      }
+      .app-copy {
+        min-width: 0;
+      }
+      .app b {
+        display: block;
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+      .app span {
+        display: block;
+        margin-top: 2px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .right {
+        position: relative;
+        display: flex;
+        align-items: stretch;
+        min-height: 0;
+      }
+      .visual {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 28px;
+        overflow: hidden;
+        background: #f7eee0;
+        border: 1px solid #ecdfcc;
+        box-shadow: 0 24px 50px rgba(38, 48, 72, 0.14);
+      }
+      .visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 55% 8%;
+      }
+      .callout {
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: rgba(255, 252, 246, 0.96);
+        border: 1px solid #ecdfcc;
+        border-radius: 18px;
+        padding: 14px 16px;
+        box-shadow: 0 12px 28px rgba(38, 48, 72, 0.14);
+      }
+      .heart {
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        background: #f2c173;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: #232f44;
+      }
+      .heart svg { width: 16px; height: 16px; }
+      .callout p {
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: #263048;
+        line-height: 1.25;
+      }
+      .callout small {
+        display: block;
+        margin-top: 2px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #5f6a80;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="left">
+        <div class="brand">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M6 14.5 16 6l10 8.5V24a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 6 24v-9.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M16 21.5s-3.4-2.1-3.4-4.3c0-1.2.9-2 2-2 .7 0 1.2.4 1.4.9.2-.5.7-.9 1.4-.9 1.1 0 2 .8 2 2 0 2.2-3.4 4.3-3.4 4.3Z" fill="currentColor"/>
+          </svg>
+          <span>TinyBundle</span>
+        </div>
+        <h1>Four moments.<br />One journey.<br /><em>We've got you.</em></h1>
+        <p class="sub">
+          From the late nights to the everyday wins. Four calm apps for every tiny moment of parenting.
+        </p>
+        <div class="trust">
+          <div class="trust-item">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5c1 3.4 2.6 5 6 6-3.4 1-5 2.6-6 6-1-3.4-2.6-5-6-6 3.4-1 5-2.6 6-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Built for calm</span>
+          </div>
+          <div class="trust-item">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-7.5-4.6-7.5-9.7C4.5 7.6 6.5 6 8.7 6c1.4 0 2.7.8 3.3 2 .6-1.2 1.9-2 3.3-2 2.2 0 4.2 1.6 4.2 4.3C19.5 15.4 12 20 12 20Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Made for parents</span>
+          </div>
+          <div class="trust-item">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <span>For every season</span>
+          </div>
+        </div>
+        <div class="apps">
+          <div class="app" style="background:#232f44;color:#fbf5ec">
+            <div class="app-mark">
+              <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <path d="M32 9 53 27.5V49a4 4 0 0 1-4 4H15a4 4 0 0 1-4-4V27.5Z" stroke="#D9A968" stroke-width="3.25" stroke-linejoin="round" stroke-linecap="round"/>
+                <path d="M41 39A11 11 0 1 1 28 26a9 9 0 0 0 13 13Z" fill="#F2C98B"/>
+              </svg>
+            </div>
+            <div class="app-copy"><b>TinyHaven</b><span style="color:#f2c173">Late nights</span></div>
+          </div>
+          <div class="app" style="background:#dce6f1;color:#263048">
+            <div class="app-mark">
+              <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                <path d="M10 32a14 14 0 0 1 28 0" stroke="#3f6ea5" stroke-width="3" stroke-linecap="round"/>
+                <path d="M16 32a8 8 0 0 1 16 0" stroke="#7ba3cc" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="24" cy="32" r="3.5" fill="#e2a13d"/>
+              </svg>
+            </div>
+            <div class="app-copy"><b>TinyLayers</b><span style="color:#5f6a80">Dressing</span></div>
+          </div>
+          <div class="app" style="background:#dfe4d1;color:#263048">
+            <div class="app-mark">
+              <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                <path d="M24 39V22" stroke="#7a8a5a" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M24 24c0-6-4-9.5-10-10 0 6 4 9.5 10 10Zm0-4c0-6 4-9.5 10-10 0 6-4 9.5-10 10Z" stroke="#7a8a5a" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M16 39h16" stroke="#7a8a5a" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="app-copy"><b>TinyBlooms</b><span style="color:#5f6a80">Everyday growth</span></div>
+          </div>
+          <div class="app" style="background:#f6dfc9;color:#263048">
+            <div class="app-mark">
+              <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                <path d="M9 24h30a15 15 0 0 1-30 0Z" stroke="#c97b4a" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M24 19s-4.2-2.6-4.2-5.4c0-1.5 1.1-2.6 2.5-2.6.8 0 1.4.5 1.7 1.1.3-.6.9-1.1 1.7-1.1 1.4 0 2.5 1.1 2.5 2.6 0 2.8-4.2 5.4-4.2 5.4Z" stroke="#c97b4a" stroke-width="2.2" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="app-copy"><b>TinyMeals</b><span style="color:#5f6a80">Happy plates</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="visual">
+          <img src="../public/hero-path.png" alt="" />
+          <div class="callout">
+            <div class="heart">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20s-7.5-4.6-7.5-9.7C4.5 7.6 6.5 6 8.7 6c1.4 0 2.7.8 3.3 2 .6-1.2 1.9-2 3.3-2 2.2 0 4.2 1.6 4.2 4.3C19.5 15.4 12 20 12 20Z"/></svg>
+            </div>
+            <div>
+              <p>Four apps. One mission.</p>
+              <small>Tiny moments of parenting, covered.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+        background: #16202a;
+        color: #f3ede0;
+      }
+      .frame {
+        width: 1200px;
+        height: 630px;
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        background:
+          radial-gradient(ellipse at 85% 15%, rgba(223, 174, 109, 0.16), transparent 42%),
+          radial-gradient(ellipse at 10% 90%, rgba(30, 42, 54, 0.9), transparent 45%),
+          #16202a;
+        padding: 48px 52px;
+        gap: 24px;
+        position: relative;
+      }
+      .stars {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          radial-gradient(1px 1px at 12% 18%, rgba(243, 237, 224, 0.45), transparent),
+          radial-gradient(1px 1px at 28% 42%, rgba(243, 237, 224, 0.3), transparent),
+          radial-gradient(1.5px 1.5px at 68% 22%, rgba(243, 237, 224, 0.35), transparent),
+          radial-gradient(1px 1px at 82% 58%, rgba(243, 237, 224, 0.28), transparent),
+          radial-gradient(1px 1px at 45% 12%, rgba(243, 237, 224, 0.25), transparent),
+          radial-gradient(1px 1px at 90% 80%, rgba(243, 237, 224, 0.22), transparent);
+      }
+      .left {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 0;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .brand svg { width: 40px; height: 40px; }
+      .brand span {
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 22px;
+        border-radius: 999px;
+        border: 1px solid #2c3b49;
+        background: #1e2a36;
+        padding: 8px 14px;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #e8c08a;
+      }
+      .badge i {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: #dfae6d;
+        display: block;
+      }
+      h1 {
+        margin-top: 18px;
+        font-size: 52px;
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+      }
+      h1 em {
+        font-style: normal;
+        color: #dfae6d;
+      }
+      .sub {
+        margin-top: 16px;
+        max-width: 480px;
+        font-size: 19px;
+        font-weight: 500;
+        line-height: 1.4;
+        color: #93a7b6;
+      }
+      .features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 26px;
+      }
+      .feature {
+        border-radius: 14px;
+        border: 1px solid #2c3b49;
+        background: rgba(30, 42, 54, 0.85);
+        padding: 12px 14px;
+      }
+      .feature b {
+        display: block;
+        font-size: 14px;
+        font-weight: 800;
+        color: #f3ede0;
+      }
+      .feature span {
+        display: block;
+        margin-top: 3px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #93a7b6;
+      }
+      .cta-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: auto;
+        padding-top: 22px;
+      }
+      .store {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 56px;
+        border-radius: 10px;
+        background: #000;
+        color: #fff;
+        padding: 8px 16px 8px 12px;
+      }
+      .store svg { width: 28px; height: 28px; fill: currentColor; }
+      .store small {
+        display: block;
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 1;
+      }
+      .store strong {
+        display: block;
+        margin-top: 3px;
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1;
+      }
+      .qr {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 56px;
+        border-radius: 10px;
+        border: 1px solid #2c3b49;
+        background: #1e2a36;
+        padding: 6px 14px 6px 6px;
+      }
+      .qr img {
+        width: 44px;
+        height: 44px;
+        border-radius: 6px;
+        background: #fff;
+      }
+      .qr span {
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 1.25;
+        color: #93a7b6;
+      }
+      .right {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .phone-wrap {
+        position: relative;
+        width: 270px;
+      }
+      .glow {
+        position: absolute;
+        left: 50%;
+        bottom: -10px;
+        transform: translateX(-50%);
+        width: 220px;
+        height: 70px;
+        background: radial-gradient(ellipse at center, rgba(0,0,0,0.7), transparent 70%);
+        filter: blur(8px);
+      }
+      .phone {
+        position: relative;
+        aspect-ratio: 9 / 19.5;
+        width: 100%;
+        border-radius: 42px;
+        background: linear-gradient(145deg, #3a3a3c, #1c1c1e 45%, #0a0a0a);
+        padding: 10px;
+        box-shadow:
+          0 40px 80px rgba(0, 0, 0, 0.55),
+          inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      }
+      .screen {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 32px;
+        background: #000;
+      }
+      .screen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+      }
+      .island {
+        position: absolute;
+        top: 11px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 88px;
+        height: 24px;
+        border-radius: 999px;
+        background: #000;
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
+      }
+      .float {
+        position: absolute;
+        right: -8px;
+        top: 72px;
+        width: 190px;
+        border-radius: 16px;
+        border: 1px solid #2c3b49;
+        background: rgba(30, 42, 54, 0.95);
+        padding: 12px 14px;
+        box-shadow: 0 16px 32px rgba(0,0,0,0.35);
+      }
+      .float b {
+        display: block;
+        font-size: 13px;
+        font-weight: 800;
+        color: #e8c08a;
+      }
+      .float span {
+        display: block;
+        margin-top: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #93a7b6;
+        line-height: 1.3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="stars"></div>
+      <div class="left">
+        <div>
+          <div class="brand">
+            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <path d="M32 9 53 27.5V49a4 4 0 0 1-4 4H15a4 4 0 0 1-4-4V27.5Z" stroke="#D9A968" stroke-width="3.25" stroke-linejoin="round" stroke-linecap="round"/>
+              <path d="M41 39A11 11 0 1 1 28 26a9 9 0 0 0 13 13Z" fill="#F2C98B"/>
+            </svg>
+            <span>TinyHaven</span>
+          </div>
+          <div class="badge"><i></i> For the 2am club</div>
+          <h1>You're not the only<br /><em>one awake.</em></h1>
+          <p class="sub">
+            A late-night check-in for parents. Anonymous presence, quiet company, and proof that someone else is up too.
+          </p>
+          <div class="features">
+            <div class="feature"><b>Late-night check-in</b><span>One tap when you're up</span></div>
+            <div class="feature"><b>You're not alone</b><span>See parents awake now</span></div>
+            <div class="feature"><b>Send a little light</b><span>Quiet notes, no threads</span></div>
+            <div class="feature"><b>Fades by morning</b><span>No endless scroll</span></div>
+          </div>
+        </div>
+        <div class="cta-row">
+          <div class="store">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div><small>Download on the</small><strong>App Store</strong></div>
+          </div>
+          <div class="qr">
+            <img src="../public/tinyhaven/app-store-qr.svg" alt="" />
+            <span>Scan to<br />download</span>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="phone-wrap">
+          <div class="glow"></div>
+          <div class="phone">
+            <div class="screen">
+              <img src="../public/tinyhaven-phone.png" alt="" />
+              <div class="island"></div>
+            </div>
+          </div>
+          <div class="float">
+            <b>Moonlight, not a timeline</b>
+            <span>Anonymous · your haven fades by morning</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { BloomsHeader, BloomsFooter } from "@/components/tinyblooms/chrome";
 import { BloomsPage } from "@/components/tinyblooms/blooms-page";
-import { absoluteUrl, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, bloomsOgImage, SITE_URL } from "@/lib/seo";
 
-const title = "TinyBlooms — One lovely thing to do with baby";
+const title = "TinyBlooms - One lovely thing to do with baby";
 const description =
-  "Age-based ideas and tiny activities that fit real days. One idea at a time — no milestones, no guilt. Coming soon from TinyBundle.";
+  "Age-based ideas and tiny activities that fit real days. One idea at a time, no milestones, no guilt. Coming soon from TinyBundle.";
+const ogTitle = "One lovely thing to do with baby.";
+const ogDescription =
+  "One age-right idea at a time. No browsing, no milestones, no guilt. TinyBlooms is coming soon.";
 const path = "/tinyblooms";
 const url = absoluteUrl(path);
 
@@ -25,15 +28,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url,
-    title,
-    description,
+    title: ogTitle,
+    description: ogDescription,
     siteName: "TinyBlooms",
     locale: "en_US",
+    images: [bloomsOgImage],
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
+    title: ogTitle,
+    description: ogDescription,
+    images: [bloomsOgImage.url],
   },
   robots: {
     index: true,
@@ -57,6 +62,12 @@ const jsonLd = {
       name: title,
       description,
       isPartOf: { "@id": `${SITE_URL}/#organization` },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: absoluteUrl(bloomsOgImage.url),
+        width: bloomsOgImage.width,
+        height: bloomsOgImage.height,
+      },
       about: {
         "@type": "SoftwareApplication",
         name: "TinyBlooms",

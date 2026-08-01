@@ -1,29 +1,34 @@
 import type { Metadata } from "next";
-import { absoluteUrl, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, havenOgImage, SITE_URL } from "@/lib/seo";
 import { HavenHeader, HavenFooter } from "@/components/tinyhaven/chrome";
 import { HavenPage, faqs } from "@/components/tinyhaven/haven-page";
 
-const title = "TinyHaven — Late-night companion for parents who feel alone";
+const title = "TinyHaven - You're not the only one awake";
 const description =
-  "TinyHaven is a calm late-night check-in app for parents. See who else is awake, check in anonymously, and feel less alone during night feeds and sleepless hours — without social media.";
+  "A late-night check-in for parents in the hard hour. Anonymous presence, quiet company, and proof that someone else is up too. Moonlight, not a timeline.";
+const ogTitle = "You're not the only one awake.";
+const ogDescription =
+  "Anonymous late-night check-ins for parents. See who's awake, leave a quiet note, and feel less alone during night feeds.";
 const url = absoluteUrl("/tinyhaven");
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   alternates: { canonical: "/tinyhaven" },
   openGraph: {
     type: "website",
     url,
-    title,
-    description,
+    title: ogTitle,
+    description: ogDescription,
     siteName: "TinyHaven",
     locale: "en_US",
+    images: [havenOgImage],
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
+    title: ogTitle,
+    description: ogDescription,
+    images: [havenOgImage.url],
   },
   keywords: [
     "TinyHaven",
@@ -68,6 +73,7 @@ const jsonLd = {
         "https://apps.apple.com/us/app/tinyhaven-late-night-parents/id6793665465",
       installUrl:
         "https://apps.apple.com/us/app/tinyhaven-late-night-parents/id6793665465",
+      image: absoluteUrl(havenOgImage.url),
       offers: {
         "@type": "Offer",
         price: "0",
@@ -89,7 +95,9 @@ const jsonLd = {
       },
       primaryImageOfPage: {
         "@type": "ImageObject",
-        url: absoluteUrl("/tinyhaven-phone.png"),
+        url: absoluteUrl(havenOgImage.url),
+        width: havenOgImage.width,
+        height: havenOgImage.height,
       },
     },
     {
