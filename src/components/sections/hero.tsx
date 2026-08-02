@@ -21,8 +21,8 @@ const callouts = [
     subClassName: "text-ink/70",
   },
   {
-    title: "Real life",
-    text: "Make the most of what you have.",
+    title: "First foods",
+    text: "What can baby eat today?",
     className: "left-[48%] top-[91%] bg-peach text-ink",
     subClassName: "text-ink/70",
   },

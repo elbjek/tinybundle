@@ -298,10 +298,10 @@ export const bloomsOg = {
 
 export const mealsOg = {
   brand: "TinyMeals",
-  title: "Something good",
-  titleAccent: "from what you have.",
+  title: "What can I safely",
+  titleAccent: "make for baby today?",
   subtitle:
-    "Turn the ingredients already in your kitchen into baby-friendly meals. Less waste, less stress, more happy plates.",
+    "A calm, evidence-based cookbook for introducing solids. Simple recipes written for babies, matched to their stage.",
   badge: "Coming soon",
   theme: {
     background: "#faf6ef",
@@ -314,8 +314,8 @@ export const mealsOg = {
     glow: "rgba(246, 223, 201, 0.9)",
   },
   pills: [
-    { label: "What's there", bg: "#f8ebe0", color: "#a86338" },
-    { label: "Age-right", bg: "#f6dfc9", color: "#a86338" },
-    { label: "Less waste", bg: "#f7edd8", color: "#b97f26" },
+    { label: "Stage-right", bg: "#f8ebe0", color: "#a86338" },
+    { label: "Baby-first", bg: "#f6dfc9", color: "#a86338" },
+    { label: "Real ingredients", bg: "#f7edd8", color: "#b97f26" },
   ],
 } satisfies OgConfig;

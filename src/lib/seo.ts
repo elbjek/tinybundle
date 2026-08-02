@@ -44,7 +44,7 @@ export const bloomsOgImage = routeOgImage(
 
 export const mealsOgImage = routeOgImage(
   "/tinymeals",
-  "TinyMeals - Something good from what you have. Baby-friendly meals, coming soon.",
+  "TinyMeals - What can I safely make for baby today? Stage-right baby recipes, coming soon.",
 );
 
 export function absoluteUrl(path: string) {

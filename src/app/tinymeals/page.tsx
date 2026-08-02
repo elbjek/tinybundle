@@ -3,12 +3,12 @@ import { MealsHeader, MealsFooter } from "@/components/tinymeals/chrome";
 import { MealsPage } from "@/components/tinymeals/meals-page";
 import { absoluteUrl, mealsOgImage, SITE_URL } from "@/lib/seo";
 
-const title = "TinyMeals - Something good from what you have";
+const title = "TinyMeals - What can I safely make for baby today?";
 const description =
-  "Turn what’s already in your kitchen into baby-friendly meals. Less waste, less stress, more happy plates. Coming soon from TinyBundle.";
-const ogTitle = "Something good from what you have.";
+  "A calm, evidence-based cookbook for introducing solids. Simple, developmentally appropriate baby recipes matched to their stage. Coming soon from TinyBundle.";
+const ogTitle = "What can I safely make for baby today?";
 const ogDescription =
-  "Baby-friendly plates from what’s already in your kitchen. Less waste, less decision fatigue. TinyMeals is coming soon.";
+  "Simple baby recipes written for their stage. Safety, texture, and real kitchen ingredients. TinyMeals is coming soon.";
 const path = "/tinymeals";
 const url = absoluteUrl(path);
 
@@ -17,11 +17,12 @@ export const metadata: Metadata = {
   description,
   keywords: [
     "TinyMeals",
+    "introducing solids",
+    "baby recipes",
+    "first baby foods",
     "baby meal ideas",
-    "baby food from leftovers",
-    "what to feed baby",
-    "reduce food waste baby",
-    "baby-friendly recipes",
+    "age appropriate baby food",
+    "infant feeding recipes",
     "TinyBundle",
   ],
   alternates: { canonical: path },

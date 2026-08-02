@@ -115,26 +115,26 @@ export const apps: TinyApp[] = [
   {
     slug: "tinymeals",
     name: "TinyMeals",
-    card: "Turn what you have into something good. No more food waste.",
+    card: "A calm cookbook for introducing solids. Stage-right recipes written for babies.",
     cardClassName: "bg-peach",
     cardTextClassName: "text-ink/70",
     cardLinkClassName: "text-amber-deep",
     comingSoon: true,
-    tagline: "Something good from what you have.",
+    tagline: "What can I safely make for baby today?",
     description:
-      "Turn the ingredients already in your kitchen into baby-friendly meals. Less waste, less stress, more happy plates.",
+      "A calm, evidence-based cookbook for introducing solids. Simple, developmentally appropriate recipes written for babies, not adapted from adult meals.",
     features: [
       {
-        title: "Cook with what's there",
-        text: "Tell us what's in the fridge — we'll do the thinking.",
+        title: "Stage-right recipes",
+        text: "Ideas matched to where your baby is with solids.",
       },
       {
-        title: "Age-appropriate recipes",
-        text: "Textures and portions that match every stage.",
+        title: "Written for babies",
+        text: "Safety, texture, and nutrition built in from the start.",
       },
       {
-        title: "No more food waste",
-        text: "Use it up before it goes off, one tiny meal at a time.",
+        title: "Real kitchen cooking",
+        text: "Ingredients you can actually buy and prepare at home.",
       },
     ],
     theme: {

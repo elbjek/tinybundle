@@ -120,7 +120,7 @@ const faqs = [
   },
   {
     q: "How is TinyHaven different from TinyBundle’s other apps?",
-    a: "TinyHaven holds the late nights. TinyLayers helps with dressing, TinyBlooms with everyday growth, and TinyMeals with feeding from what you have. Together they cover the tiny moments of parenting — TinyHaven is the one that sits with you in the dark.",
+    a: "TinyHaven holds the late nights. TinyLayers helps with dressing, TinyBlooms with everyday growth, and TinyMeals with introducing solids. Together they cover the tiny moments of parenting. TinyHaven is the one that sits with you in the dark.",
   },
 ];
 

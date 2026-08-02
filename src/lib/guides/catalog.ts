@@ -985,7 +985,7 @@ function otherAppSeeds(): GuidePage[] {
       "tinymeals",
       "/tinymeals",
       "See TinyMeals",
-      "Need something baby can actually eat from what you already have? TinyMeals is coming soon.",
+      "Need a calm, stage-right baby recipe? TinyMeals is coming soon.",
       {
         slug: "baby-meal-ideas",
         category: "cooking",
@@ -1007,7 +1007,7 @@ function otherAppSeeds(): GuidePage[] {
             paragraphs: [
               "“Baby meal ideas” searches spike when lunch hits and the fridge looks empty of inspiration. You rarely need a special recipe — you need today’s food made soft and safe enough.",
               "Start from what you’re already cooking. Soften, mash, or cut to the right size. Keep salt low. Sit with them.",
-              "TinyMeals is being built to turn what’s in your kitchen into baby-friendly plates — less decision fatigue, less waste.",
+              "TinyMeals is being built as a calm cookbook for introducing solids: recipes written for babies, matched to their stage.",
             ],
           },
         ],
@@ -1028,7 +1028,7 @@ function otherAppSeeds(): GuidePage[] {
       "tinymeals",
       "/tinymeals",
       "See TinyMeals",
-      "Age-right plates from what you already have — coming soon.",
+      "Stage-right first foods written for babies. TinyMeals is coming soon.",
       {
         slug: "first-baby-foods",
         category: "cooking",
@@ -1065,7 +1065,7 @@ function otherAppSeeds(): GuidePage[] {
       "tinymeals",
       "/tinymeals",
       "See TinyMeals",
-      "Family food, baby-sized — coming soon from TinyBundle.",
+      "Calm baby recipes for introducing solids. TinyMeals is coming soon.",
       {
         slug: "baby-led-weaning-meal-ideas",
         category: "cooking",
@@ -1116,7 +1116,7 @@ function otherAppSeeds(): GuidePage[] {
           "TinyHaven — night company",
           "TinyLayers — what to wear",
           "TinyBlooms — one activity",
-          "TinyMeals — baby meal ideas from what you have",
+          "TinyMeals - stage-right baby recipes",
         ],
         sections: [
           {

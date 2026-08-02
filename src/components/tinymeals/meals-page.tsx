@@ -3,29 +3,29 @@ import { MealsMark } from "@/components/tinymeals/mark";
 
 const benefits = [
   {
-    label: "What’s there",
-    title: "Cook with what’s there",
-    text: "Tell us what’s in the fridge — TinyMeals suggests a baby-friendly plate. No second cookbook, no empty stare.",
+    label: "Stage-right",
+    title: "Made for their stage",
+    text: "Recipes matched to where your baby is with solids. Soft first tastes today, finger foods when they’re ready.",
     tint: "bg-meals-orange-tint text-meals-orange-deep",
   },
   {
-    label: "Age-right",
-    title: "Right texture, right stage",
-    text: "Textures and portions that match where your baby is — soft mash today, finger food when they’re ready.",
+    label: "Baby-first",
+    title: "Written for babies",
+    text: "Every recipe is built for babies, not adapted from adult cooking. Safety, texture, and nutrition come first.",
     tint: "bg-meals-peach text-meals-orange-deep",
   },
   {
-    label: "Less waste",
-    title: "No more food waste",
-    text: "Use it up before it goes off. Adapt the family meal instead of cooking twice.",
+    label: "Realistic",
+    title: "Real kitchen ingredients",
+    text: "Food you can actually buy and prepare at home. No fancy meal plans, no endless recipe rabbit holes.",
     tint: "bg-[#f7edd8] text-meals-amber-deep",
   },
 ];
 
 const steps = [
-  { n: "01", title: "Share", text: "What’s already in the kitchen." },
-  { n: "02", title: "Get", text: "One baby-friendly idea matched to age." },
-  { n: "03", title: "Serve", text: "Happy plate. Less waste. Done." },
+  { n: "01", title: "Choose stage", text: "Where your baby is with introducing solids." },
+  { n: "02", title: "Pick a recipe", text: "Simple, developmentally appropriate ideas." },
+  { n: "03", title: "Cook calmly", text: "Safe textures. Balanced plates. Done." },
 ];
 
 export function MealsPage() {
@@ -59,13 +59,13 @@ function Hero() {
           <MealsMark className="mt-8 h-[4.5rem] w-[4.5rem] sm:h-24 sm:w-24" />
 
           <h1 className="mt-6 text-[2.6rem] font-extrabold leading-[1.08] tracking-tight text-meals-ink sm:text-5xl lg:text-[3.25rem]">
-            Something good
+            What can I safely
             <br />
-            from what you have.
+            make for baby today?
           </h1>
           <p className="mt-5 max-w-md text-base font-medium leading-relaxed text-meals-muted sm:text-lg">
-            Turn the ingredients already in your kitchen into baby-friendly meals.
-            Less waste, less stress, more happy plates.
+            A calm, evidence-based cookbook for introducing solids. Simple recipes
+            written for babies, matched to their stage.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -87,16 +87,16 @@ function Hero() {
         <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
           <div className="rounded-[2rem] border border-meals-border bg-meals-peach/70 p-6 shadow-[0_24px_50px_-28px_rgba(43,40,35,0.35)] sm:p-8">
             <p className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-meals-orange-deep">
-              Tonight
+              Today
             </p>
             <p className="mt-3 text-2xl font-extrabold tracking-tight text-meals-ink sm:text-3xl">
-              One plate from your fridge
+              One stage-right recipe
             </p>
             <div className="mt-6 space-y-3">
               {[
-                { label: "Sweet potato", note: "Already cooked" },
-                { label: "Yogurt", note: "In the fridge" },
-                { label: "Soft banana", note: "On the counter" },
+                { label: "Safety first", note: "Current feeding guidance" },
+                { label: "Right texture", note: "Matched to their stage" },
+                { label: "Real ingredients", note: "Easy to buy and prep" },
               ].map((item) => (
                 <div
                   key={item.label}
@@ -108,7 +108,7 @@ function Hero() {
               ))}
             </div>
             <p className="mt-5 text-center text-xs font-semibold text-meals-muted">
-              What’s there → one baby-friendly idea.
+              Baby recipes. Not adult leftovers rewritten.
             </p>
           </div>
         </div>
@@ -148,11 +148,11 @@ function HowItWorks() {
           How it works
         </p>
         <h2 className="mt-3 max-w-xl text-3xl font-extrabold tracking-tight text-meals-ink sm:text-4xl">
-          Fridge stare. One idea. Happy plate.
+          One question. One recipe. One calm cook.
         </h2>
         <p className="mt-4 max-w-xl text-base font-medium leading-relaxed text-meals-muted">
-          Lunch hits and inspiration is gone. TinyMeals turns what’s already yours into
-          something baby can eat — without a second kitchen.
+          Instead of Pinterest rabbit holes or AI meal plans, TinyMeals answers what you
+          can safely make for your baby today, with recipes written for them.
         </p>
         <ol className="mt-10 grid gap-4 md:grid-cols-3">
           {steps.map((step) => (
@@ -183,7 +183,7 @@ function Waitlist() {
             Be first when TinyMeals is ready.
           </h2>
           <p className="mx-auto mt-4 max-w-md text-base font-medium leading-relaxed text-meals-muted">
-            Join the TinyBundle newsletter for launch notes — and soft updates from
+            Join the TinyBundle newsletter for launch notes, and soft updates from
             the rest of the family of apps.
           </p>
           <Link
@@ -206,7 +206,7 @@ function BundleNote() {
         <Link href="/" className="font-extrabold text-meals-orange-deep hover:underline">
           TinyBundle
         </Link>
-        {" — "}
+        {": "}
         four calm apps for the tiny moments of parenting. Meanwhile, try{" "}
         <Link href="/tinyhaven" className="font-extrabold text-meals-orange-deep hover:underline">
           TinyHaven

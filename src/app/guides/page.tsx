@@ -84,7 +84,7 @@ const otherHubs = [
   {
     app: "tinymeals" as const,
     title: "What can baby eat?",
-    blurb: "Baby meal ideas, first foods, and soft plates from everyday cooking.",
+    blurb: "Stage-right recipes for introducing solids, written for babies.",
   },
   {
     app: "tinybundle" as const,

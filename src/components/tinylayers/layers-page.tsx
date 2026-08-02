@@ -469,7 +469,7 @@ function BundleNote() {
           <Link href="/" className="font-extrabold text-layers-ink hover:underline">
             TinyBundle
           </Link>
-          — four apps for the tiny moments of parenting, from late nights to everyday meals.
+          — four apps for the tiny moments of parenting, from late nights to first foods.
         </p>
         <Link href="/#apps" className="text-sm font-extrabold text-layers-blue hover:underline">
           See all apps →

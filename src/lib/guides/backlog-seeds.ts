@@ -40,7 +40,7 @@ const HAVEN = {
 const MEALS = {
   href: "/tinymeals",
   label: "See TinyMeals",
-  blurb: "Baby-friendly plates from what you already have — TinyMeals is coming soon.",
+  blurb: "A calm cookbook for introducing solids. Stage-right recipes written for babies.",
 } as const;
 
 const BUNDLE = {
