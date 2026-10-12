@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { MealsHeader, MealsFooter } from "@/components/tinymeals/chrome";
-import { MealsPage } from "@/components/tinymeals/meals-page";
+import { MealsBackdrop } from "@/components/tinymeals/backdrop";
+import { MealsFooter, MealsHeader } from "@/components/tinymeals/chrome";
+import { MEALS_FAQS, MealsPage } from "@/components/tinymeals/meals-page";
 import { absoluteUrl, mealsOgImage, SITE_URL } from "@/lib/seo";
+import { MEALS_APP_STORE_URL } from "@/lib/tinymeals";
 
-const title = "TinyMeals - What can I safely make for baby today?";
+const title = "TinyMeals: Baby-Led Weaning and First Foods App for Starting Solids";
 const description =
-  "A calm, evidence-based cookbook for introducing solids. Simple, developmentally appropriate baby recipes matched to their stage. Coming soon from TinyBundle.";
-const ogTitle = "What can I safely make for baby today?";
-const ogDescription =
-  "Simple baby recipes written for their stage. Safety, texture, and real kitchen ingredients. TinyMeals is coming soon.";
+  "TinyMeals is a calm baby-led weaning and purée planner: one meal a day for your baby’s age and stage, a 10-week first foods plan and allergen tracking.";
 const path = "/tinymeals";
 const url = absoluteUrl(path);
 
@@ -17,88 +16,80 @@ export const metadata: Metadata = {
   description,
   keywords: [
     "TinyMeals",
-    "introducing solids",
-    "baby recipes",
-    "first baby foods",
+    "baby-led weaning app",
+    "first foods app",
+    "starting solids",
     "baby meal ideas",
-    "age appropriate baby food",
-    "infant feeding recipes",
+    "allergen introduction",
+    "weaning plan",
     "TinyBundle",
   ],
   alternates: { canonical: path },
   openGraph: {
     type: "website",
     url,
-    title: ogTitle,
-    description: ogDescription,
-    siteName: "TinyMeals",
+    title,
+    description,
+    siteName: "TinyBundle",
     locale: "en_US",
     images: [mealsOgImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: ogTitle,
-    description: ogDescription,
+    title,
+    description,
     images: [mealsOgImage.url],
   },
   robots: {
     index: true,
     follow: true,
+    "max-image-preview": "large",
   },
+  itunes: { appId: "6818279922" },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
-      "@id": `${SITE_URL}/#organization`,
-      name: "TinyBundle",
-      url: `${SITE_URL}/`,
+      "@type": "MobileApplication",
+      name: "TinyMeals",
+      url,
+      description,
+      applicationCategory: "LifestyleApplication",
+      operatingSystem: "iOS",
+      installUrl: MEALS_APP_STORE_URL,
+      publisher: { "@type": "Organization", name: "Two Brick Labs", url: `${SITE_URL}/` },
     },
     {
-      "@type": "WebPage",
-      "@id": `${url}#webpage`,
-      url,
-      name: title,
-      description,
-      isPartOf: { "@id": `${SITE_URL}/#organization` },
-      primaryImageOfPage: {
-        "@type": "ImageObject",
-        url: absoluteUrl(mealsOgImage.url),
-        width: mealsOgImage.width,
-        height: mealsOgImage.height,
-      },
-      about: {
-        "@type": "SoftwareApplication",
-        name: "TinyMeals",
-        applicationCategory: "LifestyleApplication",
-        operatingSystem: "iOS",
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/PreOrder",
-          price: "0",
-          priceCurrency: "USD",
-        },
-      },
-      inLanguage: "en-US",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "TinyBundle", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: "TinyMeals", item: url },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: MEALS_FAQS.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
     },
   ],
 };
 
 export default function TinyMealsRoute() {
   return (
-    <div className="min-h-screen bg-meals font-sans text-meals-ink antialiased selection:bg-meals-orange-tint selection:text-meals-orange-deep">
+    <div className="tm-motion relative isolate min-h-screen bg-meals text-meals-ink antialiased selection:bg-meals-peach selection:text-meals-orange-deep">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-meals-orange focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-meals-sage focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
       >
         Skip to content
       </a>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <MealsBackdrop />
       <MealsHeader />
       <main id="main">
         <MealsPage />

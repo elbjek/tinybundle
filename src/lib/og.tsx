@@ -298,24 +298,24 @@ export const bloomsOg = {
 
 export const mealsOg = {
   brand: "TinyMeals",
-  title: "What can I safely",
-  titleAccent: "make for baby today?",
+  title: "Today’s meal,",
+  titleAccent: "worked out for you.",
   subtitle:
-    "A calm, evidence-based cookbook for introducing solids. Simple recipes written for babies, matched to their stage.",
-  badge: "Coming soon",
+    "One gentle recipe a day, matched to your baby’s age and texture stage, from first spoons to family meals.",
+  badge: "Built on NHS, WHO & CDC guidance",
   theme: {
-    background: "#faf6ef",
-    ink: "#2b2823",
-    muted: "#756e62",
-    accent: "#c97b4a",
-    accentSoft: "#f8ebe0",
+    background: "#fef8f3",
+    ink: "#2e2e2e",
+    muted: "#5a5245",
+    accent: "#5f6f4b",
+    accentSoft: "#eef3e8",
     card: "#ffffff",
-    border: "#ebe3d5",
+    border: "#f3e7d3",
     glow: "rgba(246, 223, 201, 0.9)",
   },
   pills: [
-    { label: "Stage-right", bg: "#f8ebe0", color: "#a86338" },
-    { label: "Baby-first", bg: "#f6dfc9", color: "#a86338" },
-    { label: "Real ingredients", bg: "#f7edd8", color: "#b97f26" },
+    { label: "First spoons", bg: "#fbeedc", color: "#8a4f14" },
+    { label: "Finger foods", bg: "#eef3e8", color: "#47523b" },
+    { label: "First allergens", bg: "#f3eadf", color: "#8a4f14" },
   ],
 } satisfies OgConfig;

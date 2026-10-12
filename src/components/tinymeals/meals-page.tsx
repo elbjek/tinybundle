@@ -1,227 +1,426 @@
-import Link from "next/link";
+import Image from "next/image";
+import { FirstFoodsPlan } from "@/components/tinymeals/first-foods-plan";
 import { MealsMark } from "@/components/tinymeals/mark";
-import { getGuidesByApp } from "@/lib/guides/catalog";
+import { FavouritesCard, FirstFoodCard, TriedCard } from "@/components/tinymeals/share-card";
+import { TryToday } from "@/components/tinymeals/try-today";
+import { MEALS_APP_STORE_URL } from "@/lib/tinymeals";
 
-const benefits = [
+const BABY = "Mila";
+
+export const MEALS_FAQS = [
   {
-    label: "Stage-right",
-    title: "Made for their stage",
-    text: "Recipes matched to where your baby is with solids. Soft first tastes today, finger foods when they’re ready.",
-    tint: "bg-meals-orange-tint text-meals-orange-deep",
+    q: "What does TinyMeals actually do?",
+    a: "It suggests one meal a day that suits your baby’s age, texture stage and the foods they’ve already tried. Log how it went with one tap, and the history builds itself: first tried, last served, favourites.",
   },
   {
-    label: "Baby-first",
-    title: "Written for babies",
-    text: "Every recipe is built for babies, not adapted from adult cooking. Safety, texture, and nutrition come first.",
-    tint: "bg-meals-peach text-meals-orange-deep",
+    q: "How much does it cost?",
+    a: "Start with 7 days free, then $29.99 a year or $6.99 a month. Cancel anytime. Family Sharing is included, so a partner or grandparent can see the same plan.",
   },
   {
-    label: "Realistic",
-    title: "Real kitchen ingredients",
-    text: "Food you can actually buy and prepare at home. No fancy meal plans, no endless recipe rabbit holes.",
-    tint: "bg-[#f7edd8] text-meals-amber-deep",
+    q: "What ages is it for?",
+    a: "From getting ready for solids at around 4 months through to toddler family meals. The plan and textures change as your baby grows.",
+  },
+  {
+    q: "Do I need to follow a schedule?",
+    a: "No. The first-foods plan is grouped by week, not by day. Miss a few days and you simply carry on where you were.",
+  },
+  {
+    q: "How does it handle allergens?",
+    a: "The common allergens are introduced one at a time, a few days apart, once first tastes are going well. TinyMeals keeps a clear record but never diagnoses or assesses reactions. Always speak to your doctor if you’re worried.",
+  },
+  {
+    q: "Can the rest of the family follow along?",
+    a: "Yes. Everyone in your household sees the same food history and gets a gentle note at milestones, like the first food or the tenth.",
   },
 ];
 
-const steps = [
-  { n: "01", title: "Choose stage", text: "Where your baby is with introducing solids." },
-  { n: "02", title: "Pick a recipe", text: "Simple, developmentally appropriate ideas." },
-  { n: "03", title: "Cook calmly", text: "Safe textures. Balanced plates. Done." },
+const CHIPS = [
+  { label: "First spoons", className: "bg-meals-peach text-meals-orange-ink" },
+  { label: "Finger foods", className: "bg-meals-sage-tint text-meals-sage-ink" },
+  { label: "First allergens", className: "bg-meals-sand text-meals-orange-ink" },
+  { label: "Family meals", className: "bg-meals-sage-tint text-meals-sage-ink" },
 ];
 
-export function MealsPage() {
+const VALUES = [
+  {
+    title: "One meal, not a hundred",
+    body: "Open the app and today’s idea is already there, sized to their age and the textures they can manage.",
+    tile: "bg-meals-sage-tint",
+    icon: (
+      <path
+        d="M4 11h16a8 8 0 0 1-16 0ZM9 7c0-1.5 3-1.5 3-3M14 7c0-1 1.5-1.2 1.5-2.5"
+        stroke="#5F6F4B"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    ),
+  },
+  {
+    title: "Remembers what they loved",
+    body: "One tap after a meal. The next ideas lean on favourites and gently bring back the “not yet” foods.",
+    tile: "bg-meals-peach",
+    icon: (
+      <path
+        d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z"
+        stroke="#B45F1F"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+    ),
+  },
+  {
+    title: "Allergens, calmly",
+    body: "The common allergens introduced one at a time, with a record you can show your health visitor.",
+    tile: "bg-meals-sand",
+    icon: (
+      <>
+        <path d="M12 3.5 19 6v5.5c0 4.4-3 7.7-7 9-4-1.3-7-4.6-7-9V6l7-2.5Z" stroke="#B45F1F" strokeWidth="1.8" strokeLinejoin="round" />
+        <path d="m9 12 2.2 2.2L15.5 10" stroke="#B45F1F" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </>
+    ),
+  },
+];
+
+const STEPS = [
+  { title: "Tell us about your baby", body: "Age, how they eat, anything to work around. Two minutes, once.", dot: "bg-meals-sage", blob: "bg-meals-mint rounded-[42px]" },
+  {
+    title: "Cook today’s meal",
+    body: "One clear idea with a familiarity badge, so you know when something new is in it.",
+    dot: "bg-meals-orange",
+    blob: "bg-meals-apricot rounded-[24px]",
+  },
+  { title: "Tap how it went", body: "Loved, liked or not yet. Optional, and it shapes tomorrow’s idea.", dot: "bg-meals-sage", blob: "bg-meals-sage-tint rounded-[42px]" },
+];
+
+const SECTION = "mx-auto box-border w-full max-w-[1180px] px-[clamp(18px,4vw,40px)]";
+
+function Kicker({ children }: { children: React.ReactNode }) {
+  return <p className="text-[11px] font-extrabold uppercase tracking-[0.09em] text-meals-muted">{children}</p>;
+}
+
+function SectionTitle({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
-    <>
-      <Hero />
-      <Benefits />
-      <HowItWorks />
-      <Waitlist />
-      <Guides />
-      <BundleNote />
-    </>
+    <h2 className={`mt-2.5 text-balance text-[clamp(30px,4vw,44px)] font-extrabold leading-[1.12] ${className}`}>{children}</h2>
+  );
+}
+
+function AppleLogo({ className }: { className: string }) {
+  return (
+    <svg viewBox="0 0 18 22" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M14.7 11.6c0-2.3 1.9-3.5 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.7 2.3 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.2-2.6 0 0-2.4-.9-2.4-3.6ZM12.5 4.3c.6-.8 1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.9 1 .1 2-.5 2.7-1.3Z" />
+    </svg>
+  );
+}
+
+function HomeCardPreview() {
+  return (
+    <div className="relative min-w-0 px-0 pb-16 pt-7 sm:pl-[18px]">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="absolute -right-3.5 -top-2 h-[150px] w-[150px] rotate-[14deg] rounded-[40px] bg-meals-apricot [animation:tm-float-a_7s_ease-in-out_infinite]" />
+        <div className="absolute -left-[34px] bottom-0 h-[200px] w-[200px] rounded-full bg-meals-mint [animation:tm-float-b_8s_ease-in-out_infinite]" />
+        <div className="absolute -right-[22px] top-[44%] h-[58px] w-[58px] rounded-full bg-meals-sage-tint [animation:tm-float-b_6s_ease-in-out_1s_infinite]" />
+        <div className="absolute left-[30%] top-1.5 h-[9px] w-[9px] rounded-full bg-meals-amber [animation:tm-twinkle_2.2s_ease-in-out_infinite]" />
+        <div className="absolute bottom-6 right-[30%] h-2 w-2 rounded-full bg-meals-moss [animation:tm-twinkle_2.2s_ease-in-out_.7s_infinite]" />
+      </div>
+      <figure
+        aria-label="The TinyMeals Home screen"
+        className="relative mx-auto max-w-[400px] rounded-[34px] bg-meals px-[18px] pb-[18px] pt-5 shadow-[0_18px_40px_rgba(120,80,40,0.14)] [animation:tm-screen-in_.6s_cubic-bezier(.34,1.2,.64,1)_.1s_both]"
+      >
+        <div className="flex items-center gap-2.5">
+          <div className="flex flex-none items-center gap-1.5">
+            <MealsMark className="h-[22px] w-[22px]" />
+            <span className="text-[15px] font-extrabold">TinyMeals</span>
+          </div>
+          <div className="flex min-w-0 flex-1 justify-end">
+            <span className="flex h-[34px] items-center gap-[7px] rounded-[17px] bg-white px-3 text-[12.5px] font-extrabold shadow-[0_2px_8px_rgba(90,60,20,0.06)]">
+              <span className="h-[7px] w-[7px] flex-none rounded-full bg-meals-sage" />
+              {BABY} · 7 mo
+              <svg width="10" height="7" viewBox="0 0 12 8" fill="none" className="flex-none" aria-hidden="true">
+                <path d="m1 1.5 5 5 5-5" stroke="#8C8676" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div className="mt-3.5 rounded-2xl bg-meals-peach px-3.5 py-2.5">
+          <div className="flex items-baseline justify-between gap-2">
+            <span className="whitespace-nowrap text-[10.5px] font-extrabold uppercase tracking-[0.07em] text-meals-orange-deep">
+              First foods · Week 3 of 10
+            </span>
+            <span className="whitespace-nowrap text-[11.5px] font-extrabold text-[#8A4513]">7 of 30</span>
+          </div>
+          <div className="mt-[7px] h-1.5 overflow-hidden rounded-[3px] bg-[#EFD3B4]">
+            <div className="h-full w-[23%] rounded-[3px] bg-meals-orange" />
+          </div>
+          <p className="mt-1.5 truncate text-xs text-[#7A5230]">Next up: Pear</p>
+        </div>
+        <div className="mt-3 rounded-[22px] bg-white px-[18px] pt-[18px] shadow-[0_8px_22px_rgba(120,80,40,0.07)]">
+          <div className="flex gap-3.5">
+            <div className="min-w-0 flex-1">
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.07em] text-meals-orange-deep">Today for {BABY} · 7 mo</p>
+              <p className="mt-[7px] text-balance text-[22px] font-extrabold leading-[1.18]">Courgette &amp; carrot fritters</p>
+              <p className="mt-[5px] text-pretty text-[13.5px] leading-normal text-meals-sage">Soft, grippable and ready in 15 minutes.</p>
+              <p className="mt-2 text-[12.5px] font-bold text-meals-orange-deep">All familiar foods</p>
+            </div>
+            <div className="relative h-24 w-24 flex-none overflow-hidden rounded-[20px] bg-meals-sage-tint">
+              <Image
+                src="/tinymeals/hero-fritters.png"
+                alt="Courgette and carrot fritters"
+                fill
+                sizes="96px"
+                priority
+                className="object-cover object-[42%_50%]"
+              />
+            </div>
+          </div>
+          <a
+            href="#try"
+            className="mt-4 flex h-[50px] items-center justify-center rounded-[18px] bg-meals-sage text-[15.5px] font-extrabold text-white transition-colors hover:bg-meals-sage-deep active:scale-[0.97]"
+          >
+            Cook this today
+          </a>
+          <p className="mt-3 flex items-center justify-center gap-1.5">
+            <span className="text-[13px] text-meals-muted">Not feeling it?</span>
+            <a href="#try" className="text-[13.5px] font-extrabold text-meals-orange">
+              See more suggestions &rarr;
+            </a>
+          </p>
+          <a href="#try" className="mt-3.5 flex h-[50px] items-center justify-center gap-2 border-t border-meals-line">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 5v14M5 12h14" stroke="#D17A2A" strokeWidth="2.4" strokeLinecap="round" />
+            </svg>
+            <span className="text-sm font-extrabold text-meals-orange-deep">Log what {BABY} ate</span>
+          </a>
+        </div>
+      </figure>
+      <div aria-hidden="true" className="absolute bottom-1 left-0 [animation:tm-float-in_.6s_cubic-bezier(.34,1.3,.64,1)_.6s_both]">
+        <div className="flex items-center gap-2.5 rounded-[20px] bg-white py-2.5 pl-2.5 pr-4 shadow-[0_12px_28px_rgba(120,80,40,0.14)] [animation:tm-float-a_7s_ease-in-out_1.2s_infinite]">
+          <span className="flex h-[34px] w-[34px] flex-none items-center justify-center rounded-xl bg-meals-peach">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z" fill="#D17A2A" />
+            </svg>
+          </span>
+          <span className="block">
+            <span className="block text-[13.5px] font-extrabold text-meals-orange-ink">{BABY} loved it</span>
+            <span className="block text-[11px] font-bold text-meals-muted">Saved to food history</span>
+          </span>
+        </div>
+      </div>
+      <div aria-hidden="true" className="absolute -right-2.5 top-[42%] z-[2] hidden [animation:tm-float-in_.6s_cubic-bezier(.34,1.3,.64,1)_1s_both] min-[560px]:block">
+        <div className="flex items-center gap-2.5 rounded-[20px] bg-white py-2.5 pl-2.5 pr-4 shadow-[0_12px_28px_rgba(120,80,40,0.14)] [animation:tm-float-b_6.5s_ease-in-out_1.6s_infinite]">
+          <span className="flex h-[34px] w-[34px] flex-none items-center justify-center rounded-xl bg-meals-sage-tint text-sm font-extrabold text-meals-sage-ink">
+            24
+          </span>
+          <span className="block">
+            <span className="block text-[13.5px] font-extrabold text-meals-sage-ink">Foods tried</span>
+            <span className="block text-[11px] font-bold text-meals-muted">3 new this week</span>
+          </span>
+        </div>
+      </div>
+    </div>
   );
 }
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden px-5 pb-16 pt-12 sm:px-8 sm:pb-20 sm:pt-16">
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(246,223,201,0.9),_transparent_55%),radial-gradient(ellipse_at_bottom_left,_rgba(248,235,224,0.75),_transparent_50%)]"
-        aria-hidden="true"
-      />
-      <div className="relative mx-auto grid w-full max-w-[1100px] items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-        <div className="max-w-xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-meals-border bg-meals-card/80 px-3.5 py-1.5 shadow-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-meals-orange" aria-hidden="true" />
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-meals-orange-deep">
-              Coming soon
-            </p>
-          </div>
-
-          <MealsMark className="mt-8 h-[4.5rem] w-[4.5rem] sm:h-24 sm:w-24" />
-
-          <h1 className="mt-6 text-[2.6rem] font-extrabold leading-[1.08] tracking-tight text-meals-ink sm:text-5xl lg:text-[3.25rem]">
-            What can I safely
-            <br />
-            make for baby today?
-          </h1>
-          <p className="mt-5 max-w-md text-base font-medium leading-relaxed text-meals-muted sm:text-lg">
-            A calm, evidence-based cookbook for introducing solids. Simple recipes
-            written for babies, matched to their stage.
+    <section id="top" className="relative overflow-hidden">
+      <div className="mx-auto box-border grid max-w-[1240px] items-center gap-[clamp(36px,5vw,72px)] px-[clamp(18px,4vw,40px)] pb-[clamp(48px,6vw,88px)] pt-[clamp(36px,5vw,72px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))]">
+        <div className="z-[1] min-w-0 [animation:tm-rise_.5s_ease_both]">
+          <p className="inline-flex min-h-8 items-center gap-2 rounded-2xl bg-meals-sage-tint px-3.5 py-1.5 text-xs font-extrabold tracking-[0.02em] text-meals-sage-ink">
+            <span className="h-[7px] w-[7px] rounded-full bg-meals-sage" />
+            Built on NHS, WHO &amp; CDC weaning guidance
           </p>
-
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link
-              href="/#newsletter"
-              className="inline-flex rounded-full bg-meals-orange px-6 py-3.5 text-sm font-extrabold text-white transition-colors hover:bg-meals-orange-deep"
+          <h1 className="mt-[18px] max-w-[14ch] text-balance text-[clamp(38px,5.4vw,60px)] font-extrabold leading-[1.05] tracking-[-0.025em]">
+            Today&rsquo;s meal, worked out for you.
+          </h1>
+          <p className="mt-4 max-w-[42ch] text-pretty text-[clamp(16px,1.5vw,19px)] leading-relaxed text-meals-body">
+            One gentle recipe a day, matched to your baby&rsquo;s age and texture stage, from first spoons to family meals.
+            No food journal to keep.
+          </p>
+          <div className="mt-[30px] flex flex-wrap items-center gap-5">
+            <a
+              href={MEALS_APP_STORE_URL}
+              className="flex h-[54px] items-center gap-[11px] rounded-[18px] bg-meals-sage px-6 text-white transition-colors hover:bg-meals-sage-deep active:scale-[0.97]"
             >
-              Get launch updates
-            </Link>
-            <Link
-              href="/#apps"
-              className="inline-flex rounded-full border border-meals-border bg-meals-card px-6 py-3.5 text-sm font-extrabold text-meals-ink transition-colors hover:border-meals-orange/40"
+              <AppleLogo className="h-6 w-5" />
+              <span className="block">
+                <span className="block text-[11px] font-bold leading-[1.1] opacity-85">Download on the</span>
+                <span className="block text-[17px] font-extrabold leading-[1.2]">App Store</span>
+              </span>
+            </a>
+            <a
+              href="#try"
+              className="border-b-2 border-meals-orange-deep/30 pb-0.5 text-[15px] font-extrabold text-meals-orange-deep transition-colors hover:border-meals-orange hover:text-meals-orange"
             >
-              Explore TinyBundle
-            </Link>
+              Try today&rsquo;s meal &rarr;
+            </a>
           </div>
+          <ul className="mt-[26px] flex flex-wrap gap-2">
+            {CHIPS.map((chip, i) => (
+              <li
+                key={chip.label}
+                className={`inline-flex h-8 items-center rounded-2xl px-3.5 text-[12.5px] font-extrabold ${chip.className}`}
+                style={{ animation: `tm-chip .5s cubic-bezier(.34,1.4,.64,1) ${0.5 + i * 0.08}s both` }}
+              >
+                {chip.label}
+              </li>
+            ))}
+          </ul>
         </div>
-
-        <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
-          <div className="rounded-[2rem] border border-meals-border bg-meals-peach/70 p-6 shadow-[0_24px_50px_-28px_rgba(43,40,35,0.35)] sm:p-8">
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-meals-orange-deep">
-              Today
-            </p>
-            <p className="mt-3 text-2xl font-extrabold tracking-tight text-meals-ink sm:text-3xl">
-              One stage-right recipe
-            </p>
-            <div className="mt-6 space-y-3">
-              {[
-                { label: "Safety first", note: "Current feeding guidance" },
-                { label: "Right texture", note: "Matched to their stage" },
-                { label: "Real ingredients", note: "Easy to buy and prep" },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="flex items-center justify-between rounded-2xl border border-meals-border/80 bg-meals-card px-4 py-3.5"
-                >
-                  <span className="text-sm font-extrabold text-meals-ink">{item.label}</span>
-                  <span className="text-xs font-semibold text-meals-muted">{item.note}</span>
-                </div>
-              ))}
-            </div>
-            <p className="mt-5 text-center text-xs font-semibold text-meals-muted">
-              Baby recipes. Not adult leftovers rewritten.
-            </p>
-          </div>
-        </div>
+        <HomeCardPreview />
       </div>
     </section>
   );
 }
 
-function Benefits() {
+function Values() {
   return (
-    <section className="px-5 py-8 sm:px-8">
-      <div className="mx-auto grid w-full max-w-[1100px] gap-4 md:grid-cols-3">
-        {benefits.map((card) => (
-          <article
-            key={card.title}
-            className="rounded-[1.25rem] border border-meals-border bg-meals-card px-6 py-7 shadow-sm"
-          >
-            <span
-              className={`inline-flex rounded-xl px-3 py-2 text-[11px] font-extrabold uppercase tracking-[0.08em] ${card.tint}`}
-            >
-              {card.label}
-            </span>
-            <h2 className="mt-4 text-xl font-extrabold text-meals-ink">{card.title}</h2>
-            <p className="mt-2 text-sm font-medium leading-relaxed text-meals-muted">{card.text}</p>
-          </article>
-        ))}
-      </div>
+    <section
+      aria-label="Why TinyMeals"
+      className={`${SECTION} grid gap-3.5 pb-[clamp(40px,6vw,72px)] pt-[clamp(16px,3vw,32px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))]`}
+    >
+      {VALUES.map((card) => (
+        <div key={card.title} className="rounded-[22px] bg-white p-6 shadow-[0_2px_10px_rgba(90,60,20,0.06)]">
+          <div className={`flex h-[46px] w-[46px] items-center justify-center rounded-2xl ${card.tile}`}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              {card.icon}
+            </svg>
+          </div>
+          <h2 className="mt-4 text-[19px] font-extrabold">{card.title}</h2>
+          <p className="mt-[7px] text-pretty text-[14.5px] leading-relaxed text-meals-body">{card.body}</p>
+        </div>
+      ))}
     </section>
   );
 }
 
 function HowItWorks() {
   return (
-    <section className="px-5 py-16 sm:px-8 sm:py-20">
-      <div className="mx-auto w-full max-w-[1100px]">
-        <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-meals-orange-deep">
-          How it works
-        </p>
-        <h2 className="mt-3 max-w-xl text-3xl font-extrabold tracking-tight text-meals-ink sm:text-4xl">
-          One question. One recipe. One calm cook.
-        </h2>
-        <p className="mt-4 max-w-xl text-base font-medium leading-relaxed text-meals-muted">
-          Instead of Pinterest rabbit holes or AI meal plans, TinyMeals answers what you
-          can safely make for your baby today, with recipes written for them.
-        </p>
-        <ol className="mt-10 grid gap-4 md:grid-cols-3">
-          {steps.map((step) => (
-            <li
-              key={step.n}
-              className="rounded-[1.25rem] border border-meals-border bg-meals-card px-6 py-7"
-            >
-              <span className="text-sm font-extrabold text-meals-amber-deep">{step.n}</span>
-              <h3 className="mt-3 text-lg font-extrabold text-meals-ink">{step.title}</h3>
-              <p className="mt-2 text-sm font-medium leading-relaxed text-meals-muted">{step.text}</p>
-            </li>
-          ))}
-        </ol>
-      </div>
+    <section id="how" className={`${SECTION} scroll-mt-20 pb-[clamp(20px,3vw,32px)] pt-[clamp(48px,7vw,88px)]`}>
+      <Kicker>How it works</Kicker>
+      <SectionTitle className="max-w-[20ch]">A food history that writes itself.</SectionTitle>
+      <p className="mt-3.5 max-w-[58ch] text-pretty text-base leading-relaxed text-meals-body">
+        TinyMeals is built for one-handed, half-asleep parents. You never fill in a journal. The history builds from the
+        meals you cook.
+      </p>
+      <ol className="mt-7 grid gap-3.5 [grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr))]">
+        {STEPS.map((step, i) => (
+          <li key={step.title} className="relative overflow-hidden rounded-[22px] bg-white p-6 shadow-[0_2px_10px_rgba(90,60,20,0.06)]">
+            <div aria-hidden="true" className={`absolute -right-[26px] -top-[26px] h-[84px] w-[84px] rotate-[14deg] ${step.blob}`} />
+            <span className={`relative flex h-[30px] w-[30px] items-center justify-center rounded-full text-[13px] font-extrabold text-white ${step.dot}`}>
+              {i + 1}
+            </span>
+            <h3 className="relative mt-3.5 text-[19px] font-extrabold">{step.title}</h3>
+            <p className="relative mt-[7px] text-pretty text-[14.5px] leading-relaxed text-meals-body">{step.body}</p>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }
 
-function Waitlist() {
+function SplitHeading({ kicker, title, body }: { kicker: string; title: string; body: string }) {
   return (
-    <section className="px-5 pb-16 sm:px-8 sm:pb-20">
-      <div className="mx-auto w-full max-w-[1100px]">
-        <div className="rounded-[1.75rem] border border-meals-border bg-meals-peach/60 px-6 py-10 text-center sm:px-10 sm:py-12">
-          <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-meals-orange-deep">
-            Coming soon to iOS
-          </p>
-          <h2 className="mx-auto mt-3 max-w-lg text-3xl font-extrabold tracking-tight text-meals-ink sm:text-4xl">
-            Be first when TinyMeals is ready.
-          </h2>
-          <p className="mx-auto mt-4 max-w-md text-base font-medium leading-relaxed text-meals-muted">
-            Join the TinyBundle newsletter for launch notes, and soft updates from
-            the rest of the family of apps.
-          </p>
-          <Link
-            href="/#newsletter"
-            className="mt-8 inline-flex rounded-full bg-meals-orange px-7 py-3.5 text-sm font-extrabold text-white transition-colors hover:bg-meals-orange-deep"
-          >
-            Notify me
-          </Link>
+    <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-5">
+      <div className="min-w-0 flex-[1_1_min(100%,440px)]">
+        <Kicker>{kicker}</Kicker>
+        <SectionTitle className="max-w-[18ch]">{title}</SectionTitle>
+      </div>
+      <p className="max-w-[42ch] flex-[0_1_400px] text-pretty text-base leading-relaxed text-meals-body">{body}</p>
+    </div>
+  );
+}
+
+function Plan() {
+  return (
+    <section id="plan" className={`${SECTION} scroll-mt-20 pb-[clamp(20px,3vw,32px)] pt-[clamp(48px,7vw,88px)]`}>
+      <SplitHeading
+        kicker="The first-foods plan"
+        title="Ten calm weeks, from first spoon to allergens."
+        body="About three new foods a week, grouped so a missed day never puts you behind. Tap a week to see what’s in it."
+      />
+      <FirstFoodsPlan />
+    </section>
+  );
+}
+
+function Notification({ badge, badgeClass, time, text }: { badge: React.ReactNode; badgeClass: string; time: string; text: string }) {
+  return (
+    <div className="flex min-w-0 flex-[1_1_300px] items-center gap-3 rounded-[20px] bg-white/85 px-4 py-3 shadow-[0_2px_10px_rgba(90,60,20,0.06)] backdrop-blur-sm">
+      <span className={`flex h-[38px] w-[38px] flex-none items-center justify-center rounded-[11px] ${badgeClass}`}>{badge}</span>
+      <span className="min-w-0 flex-1">
+        <span className="flex justify-between gap-2 text-xs font-extrabold text-meals-muted">
+          <span>TINYMEALS</span>
+          <span>{time}</span>
+        </span>
+        <span className="mt-px block text-[14.5px] font-extrabold">{text}</span>
+      </span>
+    </div>
+  );
+}
+
+function Sharing() {
+  const cards = [
+    { key: "first", tilt: "-rotate-[1.5deg]", card: <FirstFoodCard baby={BABY} title="Sweet Potato Mash" date="9 October" /> },
+    { key: "tried", tilt: "", card: <TriedCard baby={BABY} count={24} theme="dark" /> },
+    { key: "favs", tilt: "rotate-[1.5deg]", card: <FavouritesCard baby={BABY} /> },
+  ];
+  return (
+    <section id="share" className="relative scroll-mt-20 overflow-hidden">
+      <div className={`${SECTION} pb-[clamp(20px,3vw,32px)] pt-[clamp(52px,7vw,96px)]`}>
+        <SplitHeading
+          kicker="Moments worth sharing"
+          title="First foods deserve a little fanfare."
+          body="Milestones turn into cards you can post or send to the grandparents. Everyone in the household gets a gentle note when they happen."
+        />
+        <ul
+          aria-label="Example milestone cards"
+          className="-mx-[clamp(18px,4vw,40px)] mt-[18px] flex snap-x snap-mandatory items-start gap-4 overflow-x-auto px-[clamp(18px,4vw,40px)] pb-7 pt-3.5 [scroll-padding:0_clamp(18px,4vw,40px)] [scrollbar-width:none]"
+        >
+          {cards.map(({ key, tilt, card }) => (
+            <li
+              key={key}
+              className={`flex-[1_0_min(78%,300px)] snap-start overflow-hidden rounded-3xl shadow-[0_14px_32px_rgba(120,80,40,0.12)] ${tilt}`}
+            >
+              {card}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-1 flex flex-wrap gap-3" aria-label="Example household notifications">
+          <Notification
+            badge={<MealsMark className="h-[22px] w-[22px]" />}
+            badgeClass="bg-meals-peach"
+            time="now"
+            text={`${BABY} just had her first food`}
+          />
+          <Notification
+            badge={<span className="text-sm font-extrabold text-meals-sage-ink">10</span>}
+            badgeClass="bg-meals-sage-tint"
+            time="2h ago"
+            text={`${BABY} just tried her 10th food`}
+          />
         </div>
       </div>
     </section>
   );
 }
 
-function Guides() {
+function Safety() {
   return (
-    <section className="px-5 pb-16 sm:px-8 sm:pb-20" aria-labelledby="meals-guides-title">
-      <div className="mx-auto w-full max-w-[1100px]">
-        <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-meals-orange-deep">
-          Guides
-        </p>
-        <h2
-          id="meals-guides-title"
-          className="mt-3 max-w-xl text-3xl font-extrabold tracking-tight text-meals-ink sm:text-4xl"
-        >
-          Questions parents ask about solids
-        </h2>
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-          {getGuidesByApp("tinymeals").map((guide) => (
-            <li key={guide.slug}>
-              <Link
-                href={`/guides/${guide.slug}`}
-                className="text-sm font-bold text-meals-orange-deep hover:underline"
-              >
-                {guide.question}
-              </Link>
+    <section id="safety" className={`${SECTION} scroll-mt-20 pt-[clamp(40px,6vw,64px)]`}>
+      <div className="flex flex-wrap items-center gap-x-8 gap-y-4 rounded-3xl bg-meals-sage-tint p-[clamp(22px,3vw,32px)]">
+        <div className="min-w-0 flex-[1_1_min(100%,380px)]">
+          <h2 className="text-[19px] font-extrabold text-[#3F4A33]">Every safety tip shows its source.</h2>
+          <p className="mt-1.5 max-w-[64ch] text-pretty text-[14.5px] font-bold leading-relaxed text-meals-sage-ink">
+            Serving and allergen guidance is written from NHS, WHO, CDC and national paediatric sources, with the date we
+            last reviewed it. TinyMeals never diagnoses allergies or replaces advice from your health visitor or
+            paediatrician.
+          </p>
+        </div>
+        <ul className="flex flex-wrap gap-1.5">
+          {["NHS", "WHO", "CDC"].map((source) => (
+            <li key={source} className="flex h-[30px] items-center rounded-[15px] bg-white px-3 text-[12.5px] font-extrabold text-meals-sage-ink">
+              {source}
             </li>
           ))}
         </ul>
@@ -230,29 +429,73 @@ function Guides() {
   );
 }
 
-function BundleNote() {
+function Faq() {
   return (
-    <section className="border-t border-meals-border px-5 py-10 sm:px-8">
-      <p className="mx-auto max-w-[1100px] text-center text-sm font-medium text-meals-muted">
-        TinyMeals is part of{" "}
-        <Link href="/" className="font-extrabold text-meals-orange-deep hover:underline">
-          TinyBundle
-        </Link>
-        {": "}
-        four calm apps for the tiny moments of parenting. Meanwhile, try{" "}
-        <Link href="/tinyhaven" className="font-extrabold text-meals-orange-deep hover:underline">
-          TinyHaven
-        </Link>
-        {", "}
-        <Link href="/tinylayers" className="font-extrabold text-meals-orange-deep hover:underline">
-          TinyLayers
-        </Link>
-        {", and "}
-        <Link href="/tinyblooms" className="font-extrabold text-meals-orange-deep hover:underline">
-          TinyBlooms
-        </Link>
-        .
-      </p>
+    <section id="faq" className="mx-auto box-border max-w-[840px] scroll-mt-20 px-[clamp(18px,4vw,40px)] py-[clamp(48px,7vw,88px)]">
+      <h2 className="text-balance text-center text-[clamp(30px,4vw,44px)] font-extrabold leading-[1.12]">Questions, answered</h2>
+      <div className="mt-7 flex flex-col gap-2.5">
+        {MEALS_FAQS.map((item) => (
+          <details
+            key={item.q}
+            className="group rounded-[20px] bg-white px-[22px] py-[18px] shadow-[0_2px_10px_rgba(90,60,20,0.06)]"
+          >
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
+              <span className="text-pretty text-base font-extrabold">{item.q}</span>
+              <span aria-hidden="true" className="flex-none text-xl font-bold leading-none text-meals-orange">
+                <span className="group-open:hidden">+</span>
+                <span className="hidden group-open:inline">&minus;</span>
+              </span>
+            </summary>
+            <p className="mt-2.5 max-w-[64ch] text-pretty text-[14.5px] leading-[1.65] text-meals-body">{item.a}</p>
+          </details>
+        ))}
+      </div>
     </section>
+  );
+}
+
+function GetTheApp() {
+  return (
+    <section id="get" className={`${SECTION} scroll-mt-20 pb-[clamp(48px,6vw,80px)]`}>
+      <div className="relative flex flex-wrap items-center justify-between gap-6 overflow-hidden rounded-[28px] bg-meals-sage p-[clamp(30px,4vw,52px)]">
+        <div aria-hidden="true" className="pointer-events-none absolute -top-[50px] right-[18%] h-[140px] w-[140px] rotate-[16deg] rounded-[38px] bg-[#6E7F59]" />
+        <div aria-hidden="true" className="pointer-events-none absolute -bottom-[70px] -right-10 h-[180px] w-[180px] rounded-full bg-[#55643F]" />
+        <div aria-hidden="true" className="pointer-events-none absolute right-[34%] top-7 h-[9px] w-[9px] rounded-full bg-meals-amber [animation:tm-twinkle_2.4s_ease-in-out_infinite]" />
+        <div className="relative min-w-0 flex-[1_1_min(100%,380px)]">
+          <h2 className="text-balance text-[clamp(26px,3.2vw,38px)] font-extrabold leading-[1.14] text-white">
+            Know what&rsquo;s for lunch before they&rsquo;re hungry.
+          </h2>
+          <p className="mt-3 max-w-[46ch] text-pretty text-base leading-relaxed text-white">
+            7 days free, then $29.99 a year. Family Sharing included, so everyone who feeds your baby sees the same plan.
+          </p>
+        </div>
+        <a
+          href={MEALS_APP_STORE_URL}
+          className="relative box-border flex h-14 max-w-full flex-[1_0_auto] items-center justify-center rounded-[20px] bg-white px-7 text-base font-extrabold text-meals-sage-ink transition-colors hover:text-meals-ink active:scale-[0.97]"
+        >
+          Download on the App Store
+        </a>
+      </div>
+    </section>
+  );
+}
+
+export function MealsPage() {
+  return (
+    <>
+      <Hero />
+      <Values />
+      <section id="try" className="scroll-mt-20 border-y border-meals-border bg-meals-oat/70">
+        <div className={`${SECTION} py-[clamp(40px,6vw,76px)]`}>
+          <TryToday baby={BABY} />
+        </div>
+      </section>
+      <HowItWorks />
+      <Plan />
+      <Sharing />
+      <Safety />
+      <Faq />
+      <GetTheApp />
+    </>
   );
 }

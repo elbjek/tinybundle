@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import { AppStoreBadge } from "@/components/app-store-badge";
 import { MealsFooter, MealsHeader } from "@/components/tinymeals/chrome";
 import { MealsMark } from "@/components/tinymeals/mark";
+import { MEALS_APP_STORE_URL } from "@/lib/tinymeals";
 
-const APP_STORE_URL = "https://apps.apple.com/app/id6818279922";
 /** Shapes the app creates (create_family_invite): 24 random bytes as hex, 6 unambiguous characters. */
 const TOKEN = /^[0-9a-f]{48}$/;
 const CODE = /^[A-HJ-NP-Z2-9]{6}$/;
@@ -23,7 +23,7 @@ export default async function JoinFamilyRoute(props: PageProps<"/tinymeals/join/
   const shownCode = typeof code === "string" && CODE.test(code) ? code : null;
 
   return (
-    <div className="min-h-screen bg-meals font-sans text-meals-ink antialiased selection:bg-meals-orange-tint selection:text-meals-orange-deep">
+    <div className="min-h-screen bg-meals text-meals-ink antialiased selection:bg-meals-orange-tint selection:text-meals-orange-deep">
       <MealsHeader />
       <main id="main" className="px-5 py-12 sm:px-8 sm:py-16">
         <div className="mx-auto w-full max-w-md">
@@ -43,7 +43,7 @@ export default async function JoinFamilyRoute(props: PageProps<"/tinymeals/join/
               <p className="text-sm font-extrabold">1. Get TinyMeals</p>
               <p className="mt-1 text-sm font-medium text-meals-muted">Free on iPhone.</p>
               <div className="mt-4">
-                <AppStoreBadge href={APP_STORE_URL} />
+                <AppStoreBadge href={MEALS_APP_STORE_URL} />
               </div>
             </li>
             <li className="rounded-[1.5rem] border border-meals-border bg-meals-card p-5">
@@ -53,7 +53,7 @@ export default async function JoinFamilyRoute(props: PageProps<"/tinymeals/join/
               </p>
               <a
                 href={`tinymeals://join?invite=${token}`}
-                className="mt-4 inline-flex rounded-full bg-meals-orange px-6 py-3.5 text-sm font-extrabold text-white transition-colors hover:bg-meals-orange-deep"
+                className="mt-4 inline-flex rounded-full bg-meals-sage px-6 py-3.5 text-sm font-extrabold text-white transition-colors hover:bg-meals-sage-deep"
               >
                 Open in TinyMeals
               </a>
