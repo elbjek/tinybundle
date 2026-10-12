@@ -62,8 +62,3 @@ export function BundleArcs() {
     </>
   );
 }
-
-/** Reading time at about 200 words a minute, never under a minute. */
-export function readMinutes(words: number) {
-  return Math.max(1, Math.round(words / 200));
-}

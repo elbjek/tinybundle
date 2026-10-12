@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { APP_IDENTITY, AppMark, readMinutes } from "@/components/guides/app-identity";
+import { APP_IDENTITY, AppMark } from "@/components/guides/app-identity";
 import { GuidesFooter, GuidesHeader } from "@/components/guides/chrome";
 import { AGE_GUIDES, OUTDOOR_BANDS, SLEEP_BANDS, getGuidesByApp, guidePages } from "@/lib/guides/catalog";
 import type { GuideApp, GuidePage } from "@/lib/guides/types";
@@ -39,102 +39,79 @@ const HUBS: { app: GuideApp; title: string; blurb: string }[] = [
 /** TinyLayers pages listed as temperature and age pills rather than cards. */
 const PILL_SLUGS = new Set<string>([...OUTDOOR_BANDS, ...SLEEP_BANDS, ...AGE_GUIDES].map((page) => page.slug));
 
-function wordCount(guide: GuidePage) {
-  const text = [
-    guide.quickAnswer,
-    ...guide.bullets,
-    ...guide.sections.flatMap((section) => [section.heading, ...section.paragraphs]),
-    ...guide.faqs.flatMap((faq) => [faq.q, faq.a]),
-  ].join(" ");
-  return text.split(/\s+/).filter(Boolean).length;
-}
-
-function GuideCard({ guide }: { guide: GuidePage }) {
-  const identity = APP_IDENTITY[guide.app];
+function GuideList({ guides }: { guides: GuidePage[] }) {
   return (
-    <li className="min-w-0">
-      <Link
-        href={`/guides/${guide.slug}`}
-        className="flex h-full flex-col overflow-hidden rounded-[26px] bg-white text-tb-ink shadow-[0_8px_22px_rgba(120,80,40,0.06)] transition-transform duration-200 hover:-translate-y-1"
-      >
-        <span className={`flex h-24 items-center justify-center ${identity.tile}`}>
-          <AppMark app={guide.app} className="h-11 w-11" />
-        </span>
-        <span className="flex flex-1 flex-col gap-2 px-5 pb-5 pt-4">
-          <span className="flex items-center justify-between gap-2.5">
-            <span className={`text-[11.5px] font-extrabold uppercase tracking-[0.06em] ${identity.ink}`}>{identity.name}</span>
-            <span className="text-[12.5px] font-bold text-tb-muted">{readMinutes(wordCount(guide))} min read</span>
-          </span>
-          <span className="text-balance text-[17px] font-extrabold leading-[1.3]">{guide.question}</span>
-        </span>
-      </Link>
-    </li>
+    <ul className="grid gap-x-10 sm:grid-cols-2">
+      {guides.map((guide) => (
+        <li key={guide.slug} className="border-t border-tb-border">
+          <Link
+            href={`/guides/${guide.slug}`}
+            className="group flex min-h-[52px] items-center justify-between gap-4 py-3 text-[15px] font-bold text-tb-ink"
+          >
+            <span className="text-pretty group-hover:text-tb-amber-ink">{guide.question}</span>
+            <span aria-hidden="true" className="flex-none text-tb-muted transition-transform group-hover:translate-x-0.5">
+              &rarr;
+            </span>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }
 
-function Pill({ href, children }: { href: string; children: React.ReactNode }) {
+function TemperatureLinks() {
+  const groups = [
+    { title: "Outside", items: OUTDOOR_BANDS.map((band) => ({ slug: band.slug, label: band.label })) },
+    { title: "Sleep", items: SLEEP_BANDS.map((band) => ({ slug: band.slug, label: band.label })) },
+    { title: "By age", items: AGE_GUIDES.map((age) => ({ slug: age.slug, label: age.label })) },
+  ];
   return (
-    <Link
-      href={href}
-      className="inline-flex h-9 items-center rounded-[18px] bg-[#EAF1F8] px-3.5 text-[13px] font-extrabold text-[#2F5B8A] transition-colors hover:bg-[#DCE6F2]"
-    >
-      {children}
-    </Link>
+    <div id="temperature" className="mb-6 grid scroll-mt-24 gap-5 sm:grid-cols-3">
+      {groups.map((group) => (
+        <div key={group.title} id={group.title === "By age" ? "age" : undefined} className="scroll-mt-24">
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.08em] text-tb-muted">{group.title}</p>
+          <p className="mt-2 flex flex-wrap gap-x-3 gap-y-1.5 text-[14px] font-bold">
+            {group.items.map((item) => (
+              <Link key={item.slug} href={`/guides/${item.slug}`} className="text-[#2F5B8A] hover:text-tb-ink">
+                {item.label}
+              </Link>
+            ))}
+          </p>
+        </div>
+      ))}
+    </div>
   );
 }
 
-function HubHeading({ app, title, blurb }: { app: GuideApp; title: string; blurb: string }) {
+function Hub({ app, title, blurb }: { app: GuideApp; title: string; blurb: string }) {
   const identity = APP_IDENTITY[app];
+  const guides = getGuidesByApp(app).filter((guide) => !PILL_SLUGS.has(guide.slug));
   return (
-    <div className="max-w-2xl">
-      <p className={`flex items-center gap-2.5 text-xs font-extrabold uppercase tracking-[0.06em] ${identity.ink}`}>
-        <span className={`flex h-10 w-10 flex-none items-center justify-center rounded-[13px] ${identity.tile}`}>
-          <AppMark app={app} className="h-7 w-7" />
-        </span>
-        {identity.name}
-      </p>
-      <h2 id={`hub-${app}`} className="mt-4 scroll-mt-24 text-balance text-[clamp(26px,3.2vw,36px)] font-extrabold leading-[1.12]">
-        {title}
-      </h2>
-      <p className="mt-2.5 text-pretty text-[15.5px] leading-relaxed text-tb-body">{blurb}</p>
-    </div>
-  );
-}
-
-function LayersPills() {
-  return (
-    <div className="mt-7 grid gap-6 rounded-[32px] bg-white p-[clamp(22px,3.4vw,36px)] shadow-[0_10px_28px_rgba(120,80,40,0.06)] md:grid-cols-3">
-      <div id="temperature" className="scroll-mt-24">
-        <h3 className="text-[15px] font-extrabold">Outside, by temperature</h3>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {OUTDOOR_BANDS.map((band) => (
-            <Pill key={band.slug} href={`/guides/${band.slug}`}>
-              {band.label}
-            </Pill>
-          ))}
+    <section
+      aria-labelledby={`hub-${app}`}
+      className="rounded-[32px] bg-white p-[clamp(22px,3.4vw,40px)] shadow-[0_10px_28px_rgba(120,80,40,0.06)]"
+    >
+      <div className="mb-6 flex flex-wrap items-start justify-between gap-x-10 gap-y-4">
+        <div className="min-w-0 max-w-xl">
+          <p className={`flex items-center gap-2.5 text-xs font-extrabold uppercase tracking-[0.06em] ${identity.ink}`}>
+            <span className={`flex h-9 w-9 flex-none items-center justify-center rounded-xl ${identity.tile}`}>
+              <AppMark app={app} className="h-6 w-6" />
+            </span>
+            {identity.name}
+          </p>
+          <h2 id={`hub-${app}`} className="mt-3.5 scroll-mt-40 text-balance text-[clamp(24px,3vw,32px)] font-extrabold leading-[1.15]">
+            {title}
+          </h2>
+          <p className="mt-2 text-pretty text-[15px] leading-relaxed text-tb-body">{blurb}</p>
         </div>
+        <Link href={identity.href} className="flex flex-none gap-1.5 pt-1 text-sm font-extrabold text-tb-amber-ink hover:text-tb-ink">
+          {app === "tinybundle" ? "See all apps" : `About ${identity.name}`}
+          <span aria-hidden="true">&rarr;</span>
+        </Link>
       </div>
-      <div>
-        <h3 className="text-[15px] font-extrabold">Sleep, by room temperature</h3>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {SLEEP_BANDS.map((band) => (
-            <Pill key={band.slug} href={`/guides/${band.slug}`}>
-              {band.label}
-            </Pill>
-          ))}
-        </div>
-      </div>
-      <div id="age" className="scroll-mt-24">
-        <h3 className="text-[15px] font-extrabold">By age</h3>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {AGE_GUIDES.map((age) => (
-            <Pill key={age.slug} href={`/guides/${age.slug}`}>
-              {age.label}
-            </Pill>
-          ))}
-        </div>
-      </div>
-    </div>
+      {app === "tinylayers" ? <TemperatureLinks /> : null}
+      <GuideList guides={guides} />
+    </section>
   );
 }
 
@@ -175,39 +152,18 @@ export default function GuidesIndexPage() {
         <p className="mt-4 max-w-[52ch] text-pretty text-[clamp(16px,1.5vw,18px)] leading-relaxed text-tb-body">
           Each guide answers one question well, then points to the TinyBundle app made for it.
         </p>
-        <nav aria-label="Guide topics" className="mt-7 flex flex-wrap gap-2">
-          {HUBS.map((hub) => {
-            const identity = APP_IDENTITY[hub.app];
-            return (
-              <a
-                key={hub.app}
-                href={`#hub-${hub.app}`}
-                className="inline-flex h-10 items-center gap-2 rounded-[20px] bg-white pl-1.5 pr-4 text-[13.5px] font-extrabold shadow-[0_2px_10px_rgba(90,60,20,0.06)] hover:text-tb-amber-ink"
-              >
-                <span className={`flex h-7 w-7 items-center justify-center rounded-full ${identity.tile}`}>
-                  <AppMark app={hub.app} className="h-[18px] w-[18px]" />
-                </span>
-                {identity.name}
-              </a>
-            );
-          })}
-        </nav>
+        <p className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-bold text-tb-body">
+          {HUBS.map((hub) => (
+            <a key={hub.app} href={`#hub-${hub.app}`} className="hover:text-tb-ink">
+              {APP_IDENTITY[hub.app].name}
+            </a>
+          ))}
+        </p>
 
-        <div className="mt-[clamp(48px,7vw,88px)] space-y-[clamp(56px,8vw,104px)]">
-          {HUBS.map((hub) => {
-            const cards = getGuidesByApp(hub.app).filter((guide) => !PILL_SLUGS.has(guide.slug));
-            return (
-              <section key={hub.app} aria-labelledby={`hub-${hub.app}`}>
-                <HubHeading {...hub} />
-                {hub.app === "tinylayers" ? <LayersPills /> : null}
-                <ul className="mt-7 grid gap-4 [grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr))]">
-                  {cards.map((guide) => (
-                    <GuideCard key={guide.slug} guide={guide} />
-                  ))}
-                </ul>
-              </section>
-            );
-          })}
+        <div className="mt-[clamp(40px,6vw,72px)] space-y-5">
+          {HUBS.map((hub) => (
+            <Hub key={hub.app} {...hub} />
+          ))}
         </div>
       </main>
       <GuidesFooter />
