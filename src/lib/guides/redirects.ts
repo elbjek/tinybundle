@@ -1,4 +1,4 @@
-/** Old per-degree guide URLs → live band slugs. Kept free of @/ imports for next.config. */
+/** Retired guide URLs → the guide that now covers them. Kept free of @/ imports for next.config. */
 export const GUIDE_REDIRECTS: Record<string, string> = {
   "baby-clothes-10-degrees": "baby-clothes-10-14-degrees",
   "baby-clothes-12-degrees": "baby-clothes-10-14-degrees",
@@ -20,8 +20,27 @@ export const GUIDE_REDIRECTS: Record<string, string> = {
   "baby-sleep-clothes-25c": "baby-sleep-24-26c",
   "baby-sleep-clothes-26c": "baby-sleep-24-26c",
   "baby-sleep-clothes-27c": "baby-sleep-27c-plus",
-  "what-can-i-cook-with-whats-in-my-fridge": "baby-meal-ideas",
-  "how-to-stop-food-waste": "baby-meal-ideas",
+  "what-can-i-cook-with-whats-in-my-fridge": "recipes-from-leftovers",
+  "how-to-stop-food-waste": "recipes-from-leftovers",
+  // Thin guides merged into one stronger guide each.
+  "baby-puree-ideas": "first-baby-foods",
+  "finger-foods-for-babies": "baby-led-weaning-meal-ideas",
+  "baby-lunch-ideas": "baby-dinner-ideas",
+  "dinner-with-whats-in-my-fridge": "recipes-from-leftovers",
+  "pantry-recipes": "recipes-from-leftovers",
+  "no-prep-baby-activities": "what-do-i-do-with-my-baby",
+  "play-with-baby-by-age": "what-do-i-do-with-my-baby",
+  "how-to-stimulate-my-baby": "baby-sensory-activities",
+  "rainy-day-baby-activities": "indoor-baby-activities",
+  "awake-breastfeeding-alone": "am-i-the-only-one-awake",
+  "postpartum-loneliness": "motherhood-is-lonely",
+  "everyone-else-seems-to-have-it-together": "motherhood-is-lonely",
+  "baby-wont-sleep": "baby-wakes-every-hour",
+  "best-apps-for-first-time-parents": "must-have-baby-apps",
+  "newborn-apps": "must-have-baby-apps",
+  "apps-for-new-moms": "must-have-baby-apps",
+  "postpartum-apps": "must-have-baby-apps",
+  "winter-baby-carrier-clothes": "baby-carrier-clothing",
 };
 
 /** Guides that duplicated a TinyLayers blog post → that post's slug. */

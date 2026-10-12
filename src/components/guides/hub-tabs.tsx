@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type ReactNode,
+} from "react";
 
 type Tab = { id: string; label: string; icon: ReactNode; panel: ReactNode };
 
@@ -28,7 +34,8 @@ export function HubTabs({ tabs }: { tabs: Tab[] }) {
   };
 
   const onKeyDown = (event: KeyboardEvent, index: number) => {
-    const step = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+    const step =
+      event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
     if (!step) return;
     event.preventDefault();
     const next = (index + step + tabs.length) % tabs.length;
@@ -60,7 +67,9 @@ export function HubTabs({ tabs }: { tabs: Tab[] }) {
               onClick={() => select(tab.id)}
               onKeyDown={(event) => onKeyDown(event, i)}
               className={`inline-flex h-11 flex-none items-center gap-2 rounded-[22px] pl-1.5 pr-4 text-[14px] font-extrabold transition-colors ${
-                on ? "bg-tb-ink text-white" : "bg-white text-tb-ink shadow-[0_2px_10px_rgba(90,60,20,0.06)] hover:bg-[#FBF3EA]"
+                on
+                  ? "bg-tb-ink text-white"
+                  : "bg-white text-tb-ink shadow-[0_2px_10px_rgba(90,60,20,0.06)] hover:bg-[#FBF3EA]"
               }`}
             >
               {tab.icon}

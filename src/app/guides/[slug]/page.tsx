@@ -80,6 +80,16 @@ export default async function GuidePageRoute({ params }: Props) {
         },
         mainEntityOfPage: url,
         about: guide.question,
+        ...(guide.sources.length
+          ? {
+              citation: guide.sources.map((source) => ({
+                "@type": "WebPage",
+                name: source.title,
+                url: source.url,
+                publisher: { "@type": "Organization", name: source.org },
+              })),
+            }
+          : {}),
       },
       ...(guide.faqs.length
         ? [
@@ -97,7 +107,10 @@ export default async function GuidePageRoute({ params }: Props) {
   };
 
   const ldScript = (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
   );
 
   if (guide.app === "tinymeals") {
