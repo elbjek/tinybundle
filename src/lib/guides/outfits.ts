@@ -64,7 +64,8 @@ export function sleepOutfitFor(tempC: number): SleepOutfit {
     return {
       tog: "1.0",
       weight: "medium",
-      layers: "a cotton sleepsuit (or long-sleeved vest) under a 1.0 TOG sleeping bag",
+      layers:
+        "a cotton sleepsuit (or long-sleeved vest) under a 1.0 TOG sleeping bag",
       summary: `At ${tempC}°C, a cotton sleepsuit or long-sleeved vest under a 1.0 TOG sleeping bag is the common answer.`,
       list: [
         "Nappy",
@@ -92,7 +93,8 @@ export function sleepOutfitFor(tempC: number): SleepOutfit {
     return {
       tog: "2.5",
       weight: "warm",
-      layers: "a vest plus a long-sleeved sleepsuit under a 2.5 TOG sleeping bag",
+      layers:
+        "a vest plus a long-sleeved sleepsuit under a 2.5 TOG sleeping bag",
       summary: `At ${tempC}°C, use a warm 2.5 TOG sleeping bag with a vest and a long-sleeved sleepsuit underneath.`,
       list: [
         "Nappy",

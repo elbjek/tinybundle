@@ -7,7 +7,7 @@ import type {
 } from "@/lib/guides/types";
 import { BLOOMS_GUIDES } from "@/lib/guides/content/tinyblooms";
 import { BUNDLE_GUIDES } from "@/lib/guides/content/tinybundle";
-import { HAVEN_GUIDES } from "@/lib/guides/content/tinyhaven";
+import { NAPS_GUIDES } from "@/lib/guides/content/tinynaps";
 import { LAYERS_GUIDES } from "@/lib/guides/content/tinylayers";
 import { MEALS_GUIDES } from "@/lib/guides/content/tinymeals";
 import { GUIDES_MOVED_TO_BLOG } from "@/lib/guides/redirects";
@@ -19,6 +19,17 @@ import {
   outdoorOutfitFor,
   sleepOutfitFor,
 } from "@/lib/guides/outfits";
+import {
+  AAP_CAR_SEAT_WINTER,
+  AAP_SAFE_SLEEP,
+  AAP_SUN,
+  AAP_WINTER,
+  NHS_DRESS,
+  NHS_HEAT,
+  NHS_HEATWAVE,
+  NHS_SIDS,
+  NHS_SUN_BABY,
+} from "@/lib/guides/content/sources";
 
 const DATE = "2026-07-24";
 
@@ -54,52 +65,6 @@ function layersPage(
 
 /** Date the generated temperature and age guides were last reviewed. */
 const GENERATED_REVIEWED = "2026-10-12";
-
-const NHS_DRESS: GuideSource = {
-  org: "NHS",
-  title: "How to dress a newborn baby",
-  url: "https://www.nhs.uk/best-start-in-life/baby/baby-basics/caring-for-your-baby/how-to-dress-a-newborn/",
-};
-const NHS_SIDS: GuideSource = {
-  org: "NHS",
-  title: "Sudden infant death syndrome (SIDS)",
-  url: "https://www.nhs.uk/baby/caring-for-a-newborn/sudden-infant-death-syndrome-sids/",
-};
-const NHS_SUN_BABY: GuideSource = {
-  org: "NHS",
-  title: "Keeping your baby safe in the sun",
-  url: "https://www.nhs.uk/baby/first-aid-and-safety/safety/safety-in-the-sun/",
-};
-const NHS_HEAT: GuideSource = {
-  org: "NHS",
-  title: "Heat exhaustion and heatstroke",
-  url: "https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/",
-};
-const NHS_HEATWAVE: GuideSource = {
-  org: "NHS",
-  title: "Heatwave: how to cope in hot weather",
-  url: "https://www.nhs.uk/live-well/seasonal-health/heatwave-how-to-cope-in-hot-weather/",
-};
-const AAP_SAFE_SLEEP: GuideSource = {
-  org: "AAP",
-  title: "How to Keep Your Sleeping Baby Safe: AAP Policy Explained",
-  url: "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/a-parents-guide-to-safe-sleep.aspx",
-};
-const AAP_WINTER: GuideSource = {
-  org: "AAP",
-  title: "Playing Outside in Winter: Tips to Keep Kids Warm & Safe",
-  url: "https://www.healthychildren.org/English/safety-prevention/at-play/Pages/Winter-Safety.aspx",
-};
-const AAP_CAR_SEAT_WINTER: GuideSource = {
-  org: "AAP",
-  title: "Winter Car Seat Safety Tips: Keeping Kids Safe & Warm",
-  url: "https://www.healthychildren.org/English/safety-prevention/on-the-go/Pages/Winter-Car-Seat-Safety-Tips.aspx",
-};
-const AAP_SUN: GuideSource = {
-  org: "AAP",
-  title: "Sun Safety: Information for Parents About Sunburn & Sunscreen",
-  url: "https://www.healthychildren.org/English/safety-prevention/at-play/Pages/Sun-Safety.aspx",
-};
 
 /** TOG ratings are TinyLayers starting points; health bodies do not set them. */
 const TOG_NOTE =
@@ -909,7 +874,9 @@ function outdoorBandPage(band: OutdoorBand): GuidePage {
         },
         {
           heading: band.extraHeading,
-          paragraphs: band.extraList ? band.extra : [...band.extra, MEDICAL_DISCLAIMER],
+          paragraphs: band.extraList
+            ? band.extra
+            : [...band.extra, MEDICAL_DISCLAIMER],
           list: band.extraList,
         },
       ],
@@ -1304,7 +1271,8 @@ export const AGE_GUIDES: readonly AgeGuide[] = [
       "Many 9-month-olds are crawling, pulling up or bottom-shuffling. Moving around warms them up, while sitting still in a pram cools them down, so the same baby can need different layers on the playground and on the walk home.",
       "They are also more likely to pull off hats and mittens and to get wet in puddles, sand or snow. The AAP advises changing children out of wet clothes straight away, and notes that wet mittens can make a child colder, so a spare set in the bag helps.",
     ],
-    outsideIntro: "Use the outdoor temperature, then adjust for how active they are. As a guide:",
+    outsideIntro:
+      "Use the outdoor temperature, then adjust for how active they are. As a guide:",
     sleepIntro:
       "For sleep, dress for the room, not the day's weather. A sleeping bag keeps a moving baby covered all night without loose blankets. As a guide:",
     checkTip:
@@ -1361,7 +1329,8 @@ export const AGE_GUIDES: readonly AgeGuide[] = [
       "Around their first birthday, many babies are cruising or taking first steps. They switch between running about and sitting still in a buggy, so how warm they are changes through the day. Layers you can take off quickly still work best.",
       "Drinks change too. From 12 months, the NHS says water and breast milk or whole cows' milk should be their main drinks, which matters on hot days. If your baby was born prematurely, the NHS advises following safer sleep advice until a year from their due date, which may be after their first birthday.",
     ],
-    outsideIntro: "Use the outdoor temperature, then adjust for how active they are. As a guide:",
+    outsideIntro:
+      "Use the outdoor temperature, then adjust for how active they are. As a guide:",
     sleepIntro:
       "For sleep, the NHS ideal room temperature of about 16–20°C still applies. A sleeping bag stays on all night, however much a toddler moves. As a guide:",
     checkTip:
@@ -1435,7 +1404,10 @@ function agePages(): GuidePage[] {
       },
       ...age.extra.map((section, i) =>
         i === age.extra.length - 1
-          ? { ...section, paragraphs: [...section.paragraphs, MEDICAL_DISCLAIMER] }
+          ? {
+              ...section,
+              paragraphs: [...section.paragraphs, MEDICAL_DISCLAIMER],
+            }
           : section,
       ),
     );
@@ -1480,12 +1452,12 @@ const APP_CTA: Record<
     ctaBlurb:
       "One age-right play idea at a time, for the awake windows you actually have.",
   },
-  tinyhaven: {
-    ctaApp: "tinyhaven",
-    ctaLabel: "Open TinyHaven",
-    ctaHref: "/tinyhaven",
+  tinynaps: {
+    ctaApp: "tinynaps",
+    ctaLabel: "See TinyNaps",
+    ctaHref: "/tinynaps",
     ctaBlurb:
-      "Soft company for the night feeds: see who else is awake, with no profiles and no feed.",
+      "A calm tracker for sleep, feeds and nappies, quick enough to use one-handed at 3am. Coming soon to iPhone.",
   },
   tinybundle: {
     ctaApp: "tinybundle",
@@ -1512,7 +1484,7 @@ export const guidePages: GuidePage[] = [
   ...fromContent("tinylayers", LAYERS_GUIDES),
   ...fromContent("tinymeals", MEALS_GUIDES),
   ...fromContent("tinyblooms", BLOOMS_GUIDES),
-  ...fromContent("tinyhaven", HAVEN_GUIDES),
+  ...fromContent("tinynaps", NAPS_GUIDES),
   ...fromContent("tinybundle", BUNDLE_GUIDES),
 ];
 

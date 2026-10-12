@@ -52,18 +52,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     ...appPages,
-    {
-      url: `${SITE_URL}/tinyhaven/privacy`,
-      lastModified: now,
-      changeFrequency: "yearly" as const,
-      priority: 0.3,
-    },
-    {
-      url: `${SITE_URL}/tinyhaven/terms`,
-      lastModified: now,
-      changeFrequency: "yearly" as const,
-      priority: 0.3,
-    },
     ...["privacy", "terms"].map((page) => ({
       url: `${SITE_URL}/tinymeals/${page}`,
       lastModified: now,

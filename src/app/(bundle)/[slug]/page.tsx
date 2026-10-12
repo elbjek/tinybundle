@@ -11,7 +11,7 @@ export function generateStaticParams() {
   return apps
     .filter(
       (app) =>
-        app.slug !== "tinyhaven" &&
+        app.slug !== "tinynaps" &&
         app.slug !== "tinylayers" &&
         app.slug !== "tinyblooms" &&
         app.slug !== "tinymeals",
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function AppPage({ params }: Props) {
   const { slug } = await params;
   if (
-    slug === "tinyhaven" ||
+    slug === "tinynaps" ||
     slug === "tinylayers" ||
     slug === "tinyblooms" ||
     slug === "tinymeals"
@@ -130,13 +130,11 @@ export default async function AppPage({ params }: Props) {
           </h2>
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {otherApps.map((other) => {
-              const titleClass =
-                other.slug === "tinyhaven" ? "text-cream" : "text-ink";
               const className = `flex flex-col items-center rounded-2xl px-6 py-8 text-center shadow-sm ${other.cardClassName} group transition-transform duration-300 hover:-translate-y-1 hover:shadow-md`;
               const body = (
                 <>
                   <AppIcon slug={other.slug} className="h-10 w-10" />
-                  <h3 className={`mt-4 text-lg font-extrabold ${titleClass}`}>
+                  <h3 className="mt-4 text-lg font-extrabold text-ink">
                     {other.name}
                   </h3>
                   <span className={`mt-2 text-xs font-bold ${other.cardLinkClassName}`}>

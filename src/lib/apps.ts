@@ -19,34 +19,35 @@ export type TinyApp = {
 
 export const apps: TinyApp[] = [
   {
-    slug: "tinyhaven",
-    name: "TinyHaven",
-    card: "A late-night haven for when you just need to know you're not alone.",
-    cardClassName: "bg-navy",
-    cardTextClassName: "text-cream/75",
-    cardLinkClassName: "text-butter",
-    tagline: "You're not alone tonight.",
+    slug: "tinynaps",
+    name: "TinyNaps",
+    card: "Sleep, feeds, nappies and health in one calm tracker you can use one-handed at 3am.",
+    cardClassName: "bg-naps-lavender",
+    cardTextClassName: "text-ink/70",
+    cardLinkClassName: "text-naps-lavender-deep",
+    comingSoon: true,
+    tagline: "All the little things, in one place.",
     description:
-      "A calm late-night check-in for parents — anonymous presence, quiet reassurance, and soft company when the house is asleep and you're wide awake.",
+      "A calm baby care tracker for sleep, feeds, nappies, growth and health. See when your baby last ate, slept or had a change, at a glance.",
     features: [
       {
-        title: "Night-friendly by design",
-        text: "A soft, dark interface that keeps the room calm and your eyes rested.",
+        title: "One-tap logging",
+        text: "Sleep timers, feeds and nappies in a tap, with big buttons for one-handed use.",
       },
       {
-        title: "Gentle reassurance",
-        text: "Real words from real parents who have sat in the same dark room.",
+        title: "Today at a glance",
+        text: "Last sleep, last feed, nappies and total sleep on one calm dashboard.",
       },
       {
-        title: "Soft sounds",
-        text: "Lullabies, white noise and quiet stories to carry you both through.",
+        title: "Shared with your people",
+        text: "Partners and grandparents log to the same timeline, coming soon after launch.",
       },
     ],
     theme: {
-      hero: "bg-navy",
-      heroHeading: "text-cream",
-      heroText: "text-cream/70",
-      accent: "text-butter",
+      hero: "bg-naps-lavender",
+      heroHeading: "text-ink",
+      heroText: "text-ink/70",
+      accent: "text-naps-lavender-deep",
     },
   },
   {
@@ -83,26 +84,26 @@ export const apps: TinyApp[] = [
   {
     slug: "tinyblooms",
     name: "TinyBlooms",
-    card: "Age-based ideas and activities to help your baby bloom every day.",
+    card: "Play ideas, milestones and memories for your child's first five years.",
     cardClassName: "bg-sage",
     cardTextClassName: "text-ink/70",
     cardLinkClassName: "text-amber-deep",
     comingSoon: true,
-    tagline: "One lovely thing to do with baby.",
+    tagline: "Little moments, big discoveries.",
     description:
-      "Age-based ideas and tiny activities that fit real days — one idea at a time, no milestones, no guilt.",
+      "Age-right activities for babies and young children, gentle milestones with no scores, and a memory journal for the moments you want to keep.",
     features: [
       {
-        title: "Made for their age",
-        text: "Ideas that match exactly where your baby is right now.",
+        title: "What to do today",
+        text: "Activity ideas matched to your child's age and what they enjoy, with clear steps and safety notes.",
       },
       {
-        title: "Five-minute activities",
-        text: "Small, doable play that fits between naps and feeds.",
+        title: "Gentle milestones",
+        text: "Record first smiles and first steps, with no scores and no behind-schedule warnings.",
       },
       {
-        title: "Grow together",
-        text: "Gentle guidance that turns everyday routines into discovery.",
+        title: "Memories that last",
+        text: "A personal timeline of photos, first words and funny moments.",
       },
     ],
     theme: {

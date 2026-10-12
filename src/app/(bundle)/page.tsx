@@ -7,10 +7,10 @@ import { Newsletter } from "@/components/sections/newsletter";
 
 const title = "TinyBundle - Four moments. One journey.";
 const description =
-  "From the late nights to the everyday wins, TinyBundle is here for every tiny moment of parenting. Meet TinyHaven, TinyLayers, TinyBlooms, and TinyMeals.";
+  "From the late nights to the everyday wins, TinyBundle is here for every tiny moment of parenting. Meet TinyNaps, TinyLayers, TinyBlooms and TinyMeals.";
 const ogTitle = "Four moments. One journey. We've got you.";
 const ogDescription =
-  "Four calm apps for late nights, dressing, everyday growth, and meals. TinyHaven, TinyLayers, TinyBlooms, and TinyMeals.";
+  "Four calm apps for sleep and daily care, dressing, play and first foods: TinyNaps, TinyLayers, TinyBlooms and TinyMeals.";
 
 export const metadata: Metadata = {
   title: { absolute: title },

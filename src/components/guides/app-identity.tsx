@@ -1,3 +1,4 @@
+import { NapsMark } from "@/components/tinynaps/mark";
 import type { GuideApp } from "@/lib/guides/types";
 
 /** Each app's name, colours and mark, as the TinyBundle landing design shows them. */
@@ -26,12 +27,12 @@ export const APP_IDENTITY: Record<
     tile: "bg-[#E3EBDC]",
     soft: "bg-[#EEF3E8]",
   },
-  tinyhaven: {
-    name: "TinyHaven",
-    href: "/tinyhaven",
-    ink: "text-[#9A6C1E]",
-    tile: "bg-[#232F48]",
-    soft: "bg-[#F3EADF]",
+  tinynaps: {
+    name: "TinyNaps",
+    href: "/tinynaps",
+    ink: "text-naps-lavender-ink",
+    tile: "bg-naps-lavender",
+    soft: "bg-naps-lavender",
   },
   tinybundle: {
     name: "TinyBundle",
@@ -49,6 +50,7 @@ export function AppMark({
   app: GuideApp;
   className: string;
 }) {
+  if (app === "tinynaps") return <NapsMark className={className} />;
   return (
     <svg
       viewBox="0 0 64 64"
@@ -120,18 +122,6 @@ export function AppMark({
             strokeLinejoin="round"
             fill="#A9C9A4"
           />
-        </>
-      ) : null}
-      {app === "tinyhaven" ? (
-        <>
-          <path
-            d="M32 9 53 27.5V49a4 4 0 0 1-4 4H15a4 4 0 0 1-4-4V27.5Z"
-            stroke="#E0A867"
-            strokeWidth="4.5"
-            strokeLinejoin="round"
-            strokeLinecap="round"
-          />
-          <path d="M41 39A11 11 0 1 1 28 26a9 9 0 0 0 13 13Z" fill="#F2C98B" />
         </>
       ) : null}
       {app === "tinybundle" ? <BundleArcs /> : null}

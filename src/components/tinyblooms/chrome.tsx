@@ -45,8 +45,8 @@ export function BloomsFooter() {
           </div>
         </div>
         <nav className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-semibold text-blooms-muted" aria-label="Footer">
-          <Link href="/tinyhaven" className="hover:text-blooms-ink">
-            TinyHaven
+          <Link href="/tinynaps" className="hover:text-blooms-ink">
+            TinyNaps
           </Link>
           <Link href="/tinylayers" className="hover:text-blooms-ink">
             TinyLayers

@@ -15,19 +15,6 @@
   --color-peach: #f6dfc9;
   --color-line: #ecdfcc;
 
-  /* TinyHaven night palette */
-  --color-haven: #16202a;
-  --color-haven-elevated: #1e2a36;
-  --color-haven-deep: #08121a;
-  --color-haven-border: #2c3b49;
-  --color-haven-ink: #f3ede0;
-  --color-haven-muted: #93a7b6;
-  --color-haven-soft: #5a6e7e;
-  --color-haven-amber: #dfae6d;
-  --color-haven-amber-bright: #f2c98b;
-  --color-haven-amber-text: #e8c08a;
-  --color-haven-on-amber: #241c0f;
-
   /* TinyLayers warm sand palette */
   --color-layers: #f8f4ec;
   --color-layers-card: #ffffff;
@@ -66,6 +53,17 @@
   --color-tb-border: #f3e7d3;
   --color-tb-amber: #e2a03f;
   --color-tb-amber-ink: #9a6c1e;
+
+  /* TinyNaps (cream, muted lavender, powder blue, desaturated sage) */
+  --color-naps-lavender: #ebe6f5;
+  --color-naps-lavender-mid: #c9c0e6;
+  --color-naps-lavender-deep: #6f64a8;
+  --color-naps-lavender-ink: #4b4380;
+  --color-naps-powder: #e1ebf3;
+  --color-naps-powder-deep: #4e6e8a;
+  --color-naps-sage: #e4eadf;
+  --color-naps-sage-deep: #5e7258;
+  --color-naps-night: #232038;
 
   /* TinyMeals (Landing design: cream, sage, warm orange) */
   --color-meals: #fef8f3;
@@ -121,59 +119,6 @@ body {
 ::selection {
   background-color: var(--color-butter);
   color: var(--color-navy);
-}
-
-@keyframes haven-breathe {
-  0%,
-  100% {
-    opacity: 0.45;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.75;
-    transform: scale(1.06);
-  }
-}
-
-@keyframes haven-twinkle {
-  0%,
-  100% {
-    opacity: 0.25;
-  }
-  50% {
-    opacity: 0.9;
-  }
-}
-
-@keyframes haven-rise {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.haven-breathe {
-  animation: haven-breathe 4.5s ease-in-out infinite;
-}
-
-.haven-twinkle {
-  animation: haven-twinkle 3.2s ease-in-out infinite;
-}
-
-.haven-rise {
-  animation: haven-rise 0.8s ease-out both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .haven-breathe,
-  .haven-twinkle,
-  .haven-rise {
-    animation: none;
-  }
 }
 
 /* TinyLayers article prose */

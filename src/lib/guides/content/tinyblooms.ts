@@ -1,82 +1,19 @@
-import type { GuideContent, GuideSource } from "@/lib/guides/types";
-
-const NHS_BABY_MOVES: GuideSource = {
-  org: "NHS",
-  title: "Baby moves",
-  url: "https://www.nhs.uk/best-start-in-life/baby/baby-moves/",
-};
-
-const NHS_KEEP_ACTIVE: GuideSource = {
-  org: "NHS",
-  title: "How to keep your baby or toddler active",
-  url: "https://www.nhs.uk/baby/babys-development/play-and-learning/keep-baby-or-toddler-active/",
-};
-
-const NHS_UNDERSTANDING_BABY: GuideSource = {
-  org: "NHS",
-  title: "Understanding your baby",
-  url: "https://www.nhs.uk/best-start-in-life/baby/baby-basics/bonding-with-your-baby/understanding-your-baby/",
-};
-
-const NHS_FIRST_SOUNDS: GuideSource = {
-  org: "NHS",
-  title: "Baby's first sounds: 0 to 6 months",
-  url: "https://www.nhs.uk/best-start-in-life/baby/learning-to-talk/first-sounds-0-to-6-months/",
-};
-
-const NHS_PLAY_IDEAS: GuideSource = {
-  org: "NHS",
-  title: "Baby and toddler play ideas",
-  url: "https://www.nhs.uk/baby/babys-development/play-and-learning/baby-and-toddler-play-ideas/",
-};
-
-const AAP_TUMMY_TO_PLAY: GuideSource = {
-  org: "AAP",
-  title: "Back to Sleep, Tummy to Play: Give Your Baby a Safe, Strong Start",
-  url: "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/back-to-sleep-tummy-to-play.aspx",
-};
-
-const AAP_HOW_ACTIVE: GuideSource = {
-  org: "AAP",
-  title: "How Active is Your Baby? Tips to Get Infants Learning, Moving & Thriving",
-  url: "https://www.healthychildren.org/English/ages-stages/baby/Pages/How-Active-is-Your-Baby.aspx",
-};
-
-const WHO_SIT_LESS_PLAY_MORE: GuideSource = {
-  org: "WHO",
-  title: "To grow up healthy, children need to sit less and play more",
-  url: "https://www.who.int/news/item/24-04-2019-to-grow-up-healthy-children-need-to-sit-less-and-play-more",
-};
-
-const CDC_2_MONTHS: GuideSource = {
-  org: "CDC",
-  title: "Milestones by 2 Months",
-  url: "https://www.cdc.gov/act-early/milestones/2-months.html",
-};
-
-const CDC_4_MONTHS: GuideSource = {
-  org: "CDC",
-  title: "Milestones by 4 Months",
-  url: "https://www.cdc.gov/act-early/milestones/4-months.html",
-};
-
-const CDC_9_MONTHS: GuideSource = {
-  org: "CDC",
-  title: "Milestones by 9 Months",
-  url: "https://www.cdc.gov/act-early/milestones/9-months.html",
-};
-
-const NHS_SAFETY: GuideSource = {
-  org: "NHS",
-  title: "Baby and toddler safety",
-  url: "https://www.nhs.uk/baby/first-aid-and-safety/safety/baby-and-toddler-safety/",
-};
-
-const AAP_WATER_BEADS: GuideSource = {
-  org: "AAP",
-  title: "Water Beads: Harmful if Swallowed, Put in Ears",
-  url: "https://www.healthychildren.org/English/safety-prevention/at-home/Pages/Water-Beads-Harmful.aspx",
-};
+import type { GuideContent } from "@/lib/guides/types";
+import {
+  AAP_HOW_ACTIVE,
+  AAP_TUMMY_TO_PLAY,
+  AAP_WATER_BEADS,
+  CDC_2_MONTHS,
+  CDC_4_MONTHS,
+  CDC_9_MONTHS,
+  NHS_BABY_MOVES,
+  NHS_FIRST_SOUNDS,
+  NHS_KEEP_ACTIVE,
+  NHS_PLAY_IDEAS,
+  NHS_SAFETY,
+  NHS_UNDERSTANDING_BABY,
+  WHO_SIT_LESS_PLAY_MORE,
+} from "@/lib/guides/content/sources";
 
 const REVIEWED = "2026-10-12";
 
@@ -303,7 +240,8 @@ export const BLOOMS_GUIDES: GuideContent[] = [
     slug: "tummy-time-ideas",
     category: "development",
     question: "What are tummy time ideas?",
-    title: "Tummy time ideas: how to do it, how long, and what if baby hates it",
+    title:
+      "Tummy time ideas: how to do it, how long, and what if baby hates it",
     metaTitle: "Tummy time ideas: how long, and what if baby hates it",
     description:
       "Easy tummy time ideas, how much your baby needs each day, when to start and what to try if your baby hates tummy time. Based on NHS, AAP and WHO advice.",

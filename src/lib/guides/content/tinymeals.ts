@@ -1,101 +1,22 @@
-import type { GuideContent, GuideSource } from "@/lib/guides/types";
-
-const NHS_FIRST_FOODS: GuideSource = {
-  org: "NHS",
-  title: "Your baby's first solid foods",
-  url: "https://www.nhs.uk/baby/weaning-and-feeding/babys-first-solid-foods/",
-};
-
-const NHS_FOODS_TO_AVOID: GuideSource = {
-  org: "NHS",
-  title: "Foods to avoid giving babies and young children",
-  url: "https://www.nhs.uk/baby/weaning-and-feeding/foods-to-avoid-giving-babies-and-young-children/",
-};
-
-const NHS_ALLERGIES: GuideSource = {
-  org: "NHS",
-  title: "Food allergies in babies and young children",
-  url: "https://www.nhs.uk/baby/weaning-and-feeding/food-allergies-in-babies-and-young-children/",
-};
-
-const NHS_DRINKS: GuideSource = {
-  org: "NHS",
-  title: "Drinks and cups for babies and young children",
-  url: "https://www.nhs.uk/baby/weaning-and-feeding/drinks-and-cups-for-babies-and-young-children/",
-};
-
-const NHS_MEAL_IDEAS: GuideSource = {
-  org: "NHS",
-  title: "Baby and toddler meal ideas",
-  url: "https://www.nhs.uk/baby/weaning-and-feeding/baby-and-toddler-meal-ideas/",
-};
-
-const NHS_YOUNG_CHILDREN: GuideSource = {
-  org: "NHS",
-  title: "What to feed young children",
-  url: "https://www.nhs.uk/baby/weaning-and-feeding/what-to-feed-young-children/",
-};
-
-const NHS_FROM_6_MONTHS: GuideSource = {
-  org: "NHS",
-  title: "6 months: feeding your baby",
-  url: "https://www.nhs.uk/best-start-in-life/baby/weaning/what-to-feed-your-baby/from-around-6-months/",
-};
-
-const NHS_7_TO_9_MONTHS: GuideSource = {
-  org: "NHS",
-  title: "7 to 9 months: feeding your baby",
-  url: "https://www.nhs.uk/best-start-in-life/baby/weaning/what-to-feed-your-baby/7-to-9-months/",
-};
-
-const NHS_PREPARING_FOOD: GuideSource = {
-  org: "NHS",
-  title: "Preparing food safely for babies",
-  url: "https://www.nhs.uk/best-start-in-life/baby/weaning/safe-weaning/preparing-food-safely/",
-};
-
-const NHS_CHOKING_GAGGING: GuideSource = {
-  org: "NHS",
-  title: "Choking and gagging on food",
-  url: "https://www.nhs.uk/best-start-in-life/baby/weaning/safe-weaning/choking-and-gagging-on-food/",
-};
-
-const NHS_STOP_CHOKING: GuideSource = {
-  org: "NHS",
-  title: "How to stop a child from choking",
-  url: "https://www.nhs.uk/baby/first-aid-and-safety/first-aid/how-to-stop-a-child-from-choking/",
-};
-
-const NHS_STORING_REHEATING: GuideSource = {
-  org: "NHS",
-  title: "Storing and reheating baby food",
-  url: "https://www.nhs.uk/best-start-in-life/baby/weaning/safe-weaning/storing-and-reheating-food/",
-};
-
-const NHS_FOOD_HYGIENE: GuideSource = {
-  org: "NHS",
-  title: "Children's food: safety and hygiene",
-  url: "https://www.nhs.uk/baby/weaning-and-feeding/childrens-food-safety-and-hygiene/",
-};
-
-const AAP_ALLERGENS: GuideSource = {
-  org: "AAP",
-  title:
-    "When to Introduce Egg, Peanut Butter & Other Common Food Allergens to a Baby",
-  url: "https://www.healthychildren.org/English/healthy-living/nutrition/Pages/when-to-introduce-egg-peanut-butter-and-other-common-food-allergens-to-your-baby-food-allergy-prevention-tips.aspx",
-};
-
-const CDC_INTRODUCE_SOLIDS: GuideSource = {
-  org: "CDC",
-  title: "When, What, and How to Introduce Solid Foods",
-  url: "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/when-what-and-how-to-introduce-solid-foods.html",
-};
-
-const WHO_FEEDING: GuideSource = {
-  org: "WHO",
-  title: "Infant and young child feeding",
-  url: "https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding",
-};
+import type { GuideContent } from "@/lib/guides/types";
+import {
+  AAP_ALLERGENS,
+  CDC_INTRODUCE_SOLIDS,
+  NHS_7_TO_9_MONTHS,
+  NHS_ALLERGIES,
+  NHS_CHOKING_GAGGING,
+  NHS_DRINKS,
+  NHS_FIRST_FOODS,
+  NHS_FOODS_TO_AVOID,
+  NHS_FOOD_HYGIENE,
+  NHS_FROM_6_MONTHS,
+  NHS_MEAL_IDEAS,
+  NHS_PREPARING_FOOD,
+  NHS_STOP_CHOKING,
+  NHS_STORING_REHEATING,
+  NHS_YOUNG_CHILDREN,
+  WHO_FEEDING,
+} from "@/lib/guides/content/sources";
 
 export const MEALS_GUIDES: GuideContent[] = [
   {
@@ -211,14 +132,20 @@ export const MEALS_GUIDES: GuideContent[] = [
       "baby-dinner-ideas",
       "baby-led-weaning-meal-ideas",
     ],
-    sources: [NHS_MEAL_IDEAS, NHS_FIRST_FOODS, NHS_FOODS_TO_AVOID, NHS_FROM_6_MONTHS],
+    sources: [
+      NHS_MEAL_IDEAS,
+      NHS_FIRST_FOODS,
+      NHS_FOODS_TO_AVOID,
+      NHS_FROM_6_MONTHS,
+    ],
     modifiedAt: "2026-10-12",
   },
   {
     slug: "first-baby-foods",
     category: "cooking",
     question: "What should baby's first foods be?",
-    title: "First baby foods: when to start, what to offer and simple puree ideas",
+    title:
+      "First baby foods: when to start, what to offer and simple puree ideas",
     metaTitle: "First baby foods: what to offer and when to start",
     description:
       "What your baby's first foods should be, the 3 signs they are ready for solids around 6 months, and simple puree ideas to try, based on NHS advice.",
@@ -1058,9 +985,7 @@ export const MEALS_GUIDES: GuideContent[] = [
       },
       {
         heading: "Allergen meal ideas",
-        paragraphs: [
-          "Mix each allergen into a food your baby already enjoys.",
-        ],
+        paragraphs: ["Mix each allergen into a food your baby already enjoys."],
         list: [
           "Egg: a little well-mashed hard-boiled egg in mashed potato, or soft scrambled British Lion egg",
           "Peanut: smooth peanut butter thinned with breast milk, formula or water and stirred into porridge or fruit puree",
@@ -1118,7 +1043,12 @@ export const MEALS_GUIDES: GuideContent[] = [
       "baby-breakfast-ideas",
       "baby-meal-ideas",
     ],
-    sources: [NHS_ALLERGIES, NHS_FROM_6_MONTHS, NHS_FOODS_TO_AVOID, AAP_ALLERGENS],
+    sources: [
+      NHS_ALLERGIES,
+      NHS_FROM_6_MONTHS,
+      NHS_FOODS_TO_AVOID,
+      AAP_ALLERGENS,
+    ],
     modifiedAt: "2026-10-12",
   },
   {

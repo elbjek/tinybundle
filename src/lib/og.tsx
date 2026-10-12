@@ -241,34 +241,34 @@ export const bundleOg = {
     glow: "rgba(242, 193, 115, 0.35)",
   },
   pills: [
-    { label: "TinyHaven", bg: "#232f44", color: "#fbf5ec" },
+    { label: "TinyNaps", bg: "#ebe6f5", color: "#4b4380" },
     { label: "TinyLayers", bg: "#dce6f1", color: "#263048" },
     { label: "TinyBlooms", bg: "#dfe4d1", color: "#263048" },
     { label: "TinyMeals", bg: "#f6dfc9", color: "#263048" },
   ],
 } satisfies OgConfig;
 
-export const havenOg = {
-  brand: "TinyHaven",
-  title: "You're not the only",
-  titleAccent: "one awake.",
+export const napsOg = {
+  brand: "TinyNaps",
+  title: "All the little things,",
+  titleAccent: "in one place.",
   subtitle:
-    "A late-night check-in for parents. Anonymous presence, quiet company, and proof that someone else is up too.",
-  badge: "For the 2am club",
+    "Sleep, feeds, nappies, growth and health in one calm tracker, quick enough to use one-handed at 3am.",
+  badge: "Coming soon to iOS",
   theme: {
-    background: "#16202a",
-    ink: "#f3ede0",
-    muted: "#93a7b6",
-    accent: "#dfae6d",
-    accentSoft: "rgba(223, 174, 109, 0.18)",
-    card: "#1e2a36",
-    border: "#2c3b49",
-    glow: "rgba(223, 174, 109, 0.16)",
+    background: "#fef8f3",
+    ink: "#2e2e2e",
+    muted: "#5a5245",
+    accent: "#6f64a8",
+    accentSoft: "#ebe6f5",
+    card: "#ffffff",
+    border: "#f3e7d3",
+    glow: "rgba(201, 192, 230, 0.45)",
   },
   pills: [
-    { label: "Anonymous", bg: "#1e2a36", color: "#e8c08a" },
-    { label: "Fades by morning", bg: "#1e2a36", color: "#e8c08a" },
-    { label: "On the App Store", bg: "#dfae6d", color: "#241c0f" },
+    { label: "Sleep", bg: "#ebe6f5", color: "#4b4380" },
+    { label: "Feeds", bg: "#e1ebf3", color: "#4e6e8a" },
+    { label: "Nappies", bg: "#e4eadf", color: "#5e7258" },
   ],
 } satisfies OgConfig;
 

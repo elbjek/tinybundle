@@ -1,4 +1,20 @@
 import type { GuideContent } from "@/lib/guides/types";
+import {
+  CDC_HOW_MUCH_AND_HOW_OFTEN_TO_BREASTFEED,
+  CDC_MILESTONE_TRACKER_APP,
+  NHS_BEST_START_IN_LIFE_HEALTH_ADVICE,
+  NHS_BREASTFEEDING_IS_MY_BABY_GETTING_ENO,
+  NHS_BREASTFEEDING_THE_FIRST_FEW_DAYS,
+  NHS_HELPING_SLEEP,
+  NHS_HOW_TO_GET_FAMILY_AND_CARER_ACCESS_F,
+  NHS_LONELINESS_EVERY_MIND_MATTERS,
+  NHS_POSTNATAL_DEPRESSION,
+  NHS_SIDS,
+  NHS_URGENT_MENTAL_HEALTH,
+  NHS_YOUR_BABY_S_WEIGHT_AND_HEIGHT,
+  WHO_PERINATAL_MENTAL_HEALTH,
+} from "@/lib/guides/content/sources";
+import { URGENT_HELP_LINE } from "@/lib/guides/content/shared";
 
 export const BUNDLE_GUIDES: GuideContent[] = [
   {
@@ -33,9 +49,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       },
       {
         heading: "Which free NHS and official apps should you get first?",
-        paragraphs: [
-          "Start with the free official resources.",
-        ],
+        paragraphs: ["Start with the free official resources."],
         list: [
           "The NHS App (England). If you and your baby are registered at the same GP surgery, ask the surgery for family and carer access (also called proxy access). Depending on what it allows, you may be able to book appointments, order repeat prescriptions and view test results or vaccinations.",
           "NHS Best Start in Life (the new home of Start for Life) on nhs.uk. It covers feeding, newborn care, bonding, weaning and toddler development, and you can sign up for emails tailored to your stage of pregnancy or your baby’s age.",
@@ -75,7 +89,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       {
         heading: "Where do the TinyBundle apps fit?",
         paragraphs: [
-          "TinyBundle is four small iPhone apps, each built around one question. TinyLayers suggests what to dress your baby in for sleep, naps, going out, the pram, a carrier or the car seat, with a free plan of one sleep check a day. TinyHaven is quiet, anonymous company during night feeds, with other parents awake at the same time. TinyMeals offers simple recipes matched to your baby’s stage of starting solids, and TinyBlooms, coming soon, offers one age-right play idea at a time.",
+          "TinyBundle is four small iPhone apps, each built around one question. TinyLayers suggests what to dress your baby in for sleep, naps, going out, the pram, a carrier or the car seat, with a free plan of one sleep check a day. TinyNaps is a calm tracker for sleep, feeds and nappies, coming soon. TinyMeals offers simple recipes matched to your baby’s stage of starting solids, and TinyBlooms, coming soon, offers one age-right play idea at a time.",
         ],
       },
       {
@@ -110,26 +124,10 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       "first-baby-foods",
     ],
     sources: [
-      {
-        org: "NHS",
-        title: "Best Start in Life health advice",
-        url: "https://www.nhs.uk/best-start-in-life/",
-      },
-      {
-        org: "NHS",
-        title: "How to get family and carer access for children under 16",
-        url: "https://www.nhs.uk/nhs-services/gps/health-services-for-someone-else-family-carer-access/how-to-get-family-carer-access-children-under-16/",
-      },
-      {
-        org: "NHS",
-        title: "Postnatal depression",
-        url: "https://www.nhs.uk/mental-health/conditions/postnatal-depression/",
-      },
-      {
-        org: "CDC",
-        title: "Milestone Tracker App",
-        url: "https://www.cdc.gov/act-early/milestones-app/index.html",
-      },
+      NHS_BEST_START_IN_LIFE_HEALTH_ADVICE,
+      NHS_HOW_TO_GET_FAMILY_AND_CARER_ACCESS_F,
+      NHS_POSTNATAL_DEPRESSION,
+      CDC_MILESTONE_TRACKER_APP,
     ],
     modifiedAt: "2026-10-12",
   },
@@ -159,9 +157,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       },
       {
         heading: "When is tracking genuinely useful?",
-        paragraphs: [
-          "Short-term tracking helps in a few situations:",
-        ],
+        paragraphs: ["Short-term tracking helps in a few situations:"],
         list: [
           "The first week or two of breastfeeding, while you are learning what enough milk looks like",
           "When your midwife, health visitor or GP asks you to note feeds, nappies or symptoms",
@@ -198,9 +194,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       },
       {
         heading: "Simple alternatives to baby tracking apps",
-        paragraphs: [
-          "Keep any record as small as the question it answers.",
-        ],
+        paragraphs: ["Keep any record as small as the question it answers."],
         list: [
           "A paper sheet on the fridge with ticks for wet and dirty nappies",
           "One line in your phone’s notes app per feed, only while a professional asks",
@@ -212,7 +206,6 @@ export const BUNDLE_GUIDES: GuideContent[] = [
         heading: "When can you stop tracking?",
         paragraphs: [
           "You can usually stop once feeding is established, nappies look like the NHS signs above, and your baby is gaining weight at their checks. If your health visitor asked you to keep notes, check with them first.",
-          "If what you miss is the reassurance a tracker gave you at night, TinyHaven offers quiet, anonymous company with other parents awake, without asking you to log anything.",
         ],
       },
     ],
@@ -245,26 +238,225 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       "am-i-the-only-one-awake",
     ],
     sources: [
+      NHS_BREASTFEEDING_IS_MY_BABY_GETTING_ENO,
+      NHS_BREASTFEEDING_THE_FIRST_FEW_DAYS,
+      NHS_YOUR_BABY_S_WEIGHT_AND_HEIGHT,
+      CDC_HOW_MUCH_AND_HOW_OFTEN_TO_BREASTFEED,
+    ],
+    modifiedAt: "2026-10-12",
+  },
+  {
+    slug: "am-i-the-only-one-awake",
+    category: "loneliness",
+    question: "Am I the only one awake with my baby?",
+    title: "Am I the only one awake? Why night feeds feel so lonely",
+    metaTitle: "Am I the only one awake? Lonely night feeds explained",
+    description:
+      "You are not the only one awake with your baby. Why night feeds feel so lonely, how to make them easier and when low mood needs help from your GP.",
+    quickAnswer:
+      "No, you are not the only one awake. The NHS says newborns usually wake repeatedly in the night for the first few months, so many parents are feeding and settling at the same hour as you. Night feeds feel lonely because the house is dark and quiet, and nobody sees the work you are doing.",
+    bullets: [
+      "Frequent night waking is normal for newborns",
+      "Loneliness at 3am is common and does not mean you are failing",
+      "Small changes can make night feeds easier and safer",
+      "Share the nights if you can, and rest when your baby rests",
+      "Low mood that lasts beyond 2 weeks, gets worse or stops you coping needs a chat with your GP, midwife or health visitor",
+    ],
+    sections: [
       {
-        org: "NHS",
-        title: "Breastfeeding: is my baby getting enough milk?",
-        url: "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/breastfeeding-problems/enough-milk/",
+        heading: "Am I the only one awake with my baby at night?",
+        paragraphs: [
+          "Almost certainly not. The NHS describes newborns as sleeping for around 18 hours a day in short stretches, waking often in the night to feed. That pattern repeats in homes all over the country, every night.",
+          "Between 3 and 6 months, babies need fewer night feeds as they grow, and some sleep for 5 to 8 hours or longer at night. Many do not, and that is normal too. Hunger, being too hot or too cold, growth spurts, teething and illness can all bring extra wake-ups.",
+        ],
       },
       {
-        org: "NHS",
-        title: "Breastfeeding: the first few days",
-        url: "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/breastfeeding/the-first-few-days/",
+        heading: "Why do night feeds feel so lonely?",
+        paragraphs: [
+          "Night feeds are tender and isolating at the same time. You are holding someone you love, yet you may not have spoken to another adult for hours. The house is dark and your partner, if you have one, may be asleep.",
+          "Tiredness makes every feeling louder. A worry that seems small at noon can feel huge at 3am. Feeling lonely during night feeds is a common part of early parenthood, whether you breastfeed, bottle feed or do both.",
+        ],
       },
       {
-        org: "NHS",
-        title: "Your baby's weight and height",
-        url: "https://www.nhs.uk/baby/babys-development/height-weight-and-reviews/baby-height-and-weight/",
+        heading: "How to make night feeds easier",
+        paragraphs: [
+          "The NHS suggests teaching your baby the difference between night and day early on. Keeping nights calm and dull helps your baby settle back to sleep sooner, which helps you too.",
+        ],
+        list: [
+          "Keep the lights low and speak quietly",
+          "Settle your baby soon after feeding and changing",
+          "Only change a nappy at night if it is really needed",
+          "Avoid playing at night; save chatter and games for the daytime",
+          "Try to sleep when your baby sleeps, once they are back in their cot",
+          "Keep water and a snack within reach before you sit down",
+        ],
       },
       {
-        org: "CDC",
-        title: "How Much and How Often to Breastfeed",
-        url: "https://www.cdc.gov/infant-toddler-nutrition/breastfeeding/how-much-and-how-often.html",
+        heading: "How to stay safe if you are very tired",
+        paragraphs: [
+          "When you are exhausted, it is easy to drift off during a feed. The NHS advises never sleeping on a sofa or in an armchair with your baby, as this raises the risk of SIDS. If you feel yourself falling asleep, put your baby down on their back in their own cot.",
+        ],
+        list: [
+          "Keep your baby in a cot or Moses basket in your room for at least the first 6 months",
+          "Always place your baby on their back, with their feet at the foot of the cot",
+          "Use a firm, flat mattress with nothing loose in the cot",
+          "Keep the room between 16°C and 20°C (61°F to 68°F)",
+          "Do not share a bed if you or your partner smoke, have had 2 or more units of alcohol, or have taken recreational drugs or medicine that makes you drowsy, or if your baby was born premature or weighed under 2.5kg (5.5lb)",
+        ],
       },
+      {
+        heading: "Who can help with the night shift?",
+        paragraphs: [
+          "The NHS suggests sharing the load where you can. If you formula feed, a partner can share the feeds. If you breastfeed, they can take over the early morning changing and dressing, or occasionally give a bottle of expressed breast milk once feeding is going well. On your own, a friend or relative could stay for a few days. For ongoing sleep worries, your health visitor can help.",
+        ],
+      },
+      {
+        heading: "When loneliness at night is more than tiredness",
+        paragraphs: [
+          "Feeling down, anxious or irritable for a few days after the birth is very common and is often called the baby blues. The NHS says it usually passes within 2 weeks. If low mood lasts longer, gets worse, or you are struggling to cope, talk to your GP, midwife or health visitor. Fathers and partners can also have depression after having a baby.",
+          URGENT_HELP_LINE,
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is it normal to cry during night feeds?",
+        a: "Yes, many parents cry during night feeds, especially in the first weeks when tiredness is at its peak. The NHS says the baby blues usually pass within 2 weeks of the birth. If you are still low most days after that, feel hopeless or feel unable to cope, talk to your GP, midwife or health visitor.",
+      },
+      {
+        q: "When will my baby stop waking at night?",
+        a: "There is no fixed age. The NHS says newborns wake often for feeds, some babies sleep 5 to 8 hours at night between 3 and 6 months, and some babies aged 6 to 12 months still wake from teething or hunger. Every baby is different, and frequent waking is not a sign you are doing anything wrong.",
+      },
+      {
+        q: "Is it safe to fall asleep feeding my baby on the sofa?",
+        a: "No. The NHS advises never sleeping on a sofa or in an armchair with your baby, because it raises the risk of SIDS. If you are likely to doze, feed somewhere you can easily put your baby back in their cot, then lay them on their back in their own clear, flat sleep space.",
+      },
+      {
+        q: "How can I feel less alone at 3am?",
+        a: "Prepare a few things before the feed: water, a snack and something gentle to listen to. Message a friend you know is up, or plan a morning call to look forward to. Remind yourself that many parents are awake right now. If loneliness turns into low mood that lasts, talk to your health visitor or GP.",
+      },
+    ],
+    relatedSlugs: [
+      "motherhood-is-lonely",
+      "baby-wakes-every-hour",
+      "4-month-sleep-regression",
+    ],
+    sources: [
+      NHS_HELPING_SLEEP,
+      NHS_SIDS,
+      NHS_POSTNATAL_DEPRESSION,
+      NHS_URGENT_MENTAL_HEALTH,
+    ],
+    modifiedAt: "2026-10-12",
+  },
+  {
+    slug: "motherhood-is-lonely",
+    category: "loneliness",
+    question: "Why does motherhood feel so lonely?",
+    title: "Motherhood is lonely: why new parents feel isolated and what helps",
+    metaTitle: "Motherhood is lonely: why it happens and what helps",
+    description:
+      "Why motherhood and new parenthood can feel so lonely, why everyone else seems to cope, the signs of postnatal depression and where to find support.",
+    quickAnswer:
+      "Motherhood can feel lonely because your days change overnight: fewer adult conversations, broken sleep and less time for the people and things that made you feel like yourself. The NHS lists staying at home with a newborn as a life change that can bring loneliness. It can affect mums, dads and partners, and support is available.",
+    bullets: [
+      "Loneliness after having a baby is common for all new parents",
+      "Other parents' posts rarely show their hardest moments",
+      "Small, regular contact with others helps",
+      "Baby blues usually pass within 2 weeks; postnatal depression needs support",
+      "Your GP, midwife or health visitor can help, even if you only have some signs",
+    ],
+    sections: [
+      {
+        heading: "Why does motherhood feel so lonely?",
+        paragraphs: [
+          "You can be with your baby every minute and still feel alone. Babies need constant care but cannot talk back, and your old routines, work friendships and evenings out may stop all at once. The NHS Every Mind Matters service names staying at home to look after a newborn as one of the life changes that can lead to loneliness.",
+          "Loving your baby and feeling lonely can sit side by side. The WHO lists low social support as one of the factors that raise the risk of mental health problems around pregnancy and birth, so staying connected matters for you, not only for your baby.",
+        ],
+      },
+      {
+        heading: "Why does postpartum loneliness affect partners and dads too?",
+        paragraphs: [
+          "Loneliness after a baby is not only a mum's experience. The NHS says fathers and partners can get depression after having a baby too, so it is worth checking in with each other, not just with the baby.",
+        ],
+      },
+      {
+        heading: "Why does everyone else seem to have it together?",
+        paragraphs: [
+          "Mostly because you only see the outside. The NHS advises against comparing yourself with others, because people often share only their best moments, especially on social media. A tidy photo at a baby class does not show the 4am wake-ups, the tears in the car or the meals eaten standing up.",
+          "Many parents who look calm feel exactly like you.",
+        ],
+      },
+      {
+        heading: "What helps with loneliness as a new parent",
+        paragraphs: [
+          "Small, regular contact often helps more than waiting for energy for something big. These ideas come from NHS advice on loneliness and postnatal depression.",
+        ],
+        list: [
+          "Keep in touch with friends and family, even with a short message or group chat",
+          "Try a local parent and baby group or support group",
+          "Talk about how you feel with someone you trust",
+          "Get outside for a short daily walk or some exercise if you can",
+          "Get as much sleep and rest as you can",
+          "Look for free or low-cost local events and invite someone along",
+        ],
+      },
+      {
+        heading: "Baby blues or postnatal depression: what is the difference?",
+        paragraphs: [
+          "The baby blues are feelings of being down, anxious or irritable for a few days after the birth. The NHS says they are very common and usually pass within 2 weeks. Postnatal depression lasts longer and can start during pregnancy, soon after birth or at any point up to a year after. Signs the NHS lists include:",
+        ],
+        list: [
+          "Low mood, or finding it hard to enjoy anything",
+          "Feeling hopeless, or that you cannot cope",
+          "Feeling guilty, worthless or like a bad parent",
+          "Fear, anxiety or constant worry",
+          "Difficulty sleeping, even when you have time to rest",
+          "Difficulty bonding with your baby",
+          "Thoughts of suicide, or of harming yourself or your baby",
+        ],
+      },
+      {
+        heading: "When to get help for loneliness or low mood",
+        paragraphs: [
+          "Talk to your GP, midwife or health visitor if you think you might have postnatal depression, even if you only have some of the signs. In England, if you are 18 or over (16 or over in some areas), you can also refer yourself to NHS talking therapies without seeing a GP. The NHS says postnatal depression usually gets better in 3 to 6 months, though it can sometimes last longer.",
+          "Some parents worry that asking for help means their baby will be taken away. The NHS says this is very rare.",
+          URGENT_HELP_LINE,
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is it normal to feel lonely after having a baby?",
+        a: "Yes. Staying at home with a newborn is one of the life changes the NHS links with loneliness, and not having enough social support is a known risk factor for postnatal depression. Feeling lonely is common and is not a sign you are a bad parent. If it comes with low mood that lasts, talk to your GP or health visitor.",
+      },
+      {
+        q: "How long do the baby blues last?",
+        a: "The NHS says the baby blues happen in the first few days after the birth and usually pass within 2 weeks. If you still feel low, anxious or unable to cope after that, or the feelings get worse, it could be postnatal depression. Talk to your GP, midwife or health visitor so they can help.",
+      },
+      {
+        q: "Can dads and partners feel lonely or depressed after a baby?",
+        a: "Yes. The NHS says fathers and partners can also get depression after having a baby. Partners may feel left out or unsure who to talk to. The same help is available to them: a GP, NHS talking therapies, or Samaritans on 116 123 if they need to talk to someone straight away.",
+      },
+      {
+        q: "How do I make mum friends when I feel shy or exhausted?",
+        a: "Start small. Go to one local parent and baby group and aim for one short conversation. Ask your health visitor what runs nearby. Online groups can help on days you cannot leave the house. Other parents there are often looking for company too, so a simple question about their baby is a good start.",
+      },
+      {
+        q: "Who can I talk to about postnatal depression?",
+        a: "Your GP, midwife or health visitor is the best first step, and you can contact them even if you only have some of the signs. In England you can refer yourself to NHS talking therapies if you are 18 or over. If you need someone to talk to straight away, Samaritans are on 116 123.",
+      },
+    ],
+    relatedSlugs: [
+      "am-i-the-only-one-awake",
+      "is-this-normal-baby",
+      "what-do-i-do-with-my-baby",
+    ],
+    sources: [
+      NHS_POSTNATAL_DEPRESSION,
+      NHS_LONELINESS_EVERY_MIND_MATTERS,
+      NHS_URGENT_MENTAL_HEALTH,
+      WHO_PERINATAL_MENTAL_HEALTH,
     ],
     modifiedAt: "2026-10-12",
   },

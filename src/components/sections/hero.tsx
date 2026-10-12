@@ -3,10 +3,10 @@ import Link from "next/link";
 
 const callouts = [
   {
-    title: "Late nights",
-    text: "You're not alone.",
-    className: "left-[52%] top-[8%] bg-navy text-cream",
-    subClassName: "text-cream/70",
+    title: "Sleep and feeds",
+    text: "All the little things, in one place.",
+    className: "left-[52%] top-[8%] bg-naps-lavender text-ink",
+    subClassName: "text-ink/70",
   },
   {
     title: "Right choices",
@@ -15,8 +15,8 @@ const callouts = [
     subClassName: "text-ink/70",
   },
   {
-    title: "Everyday growth",
-    text: "Ideas to help your baby bloom.",
+    title: "Play and memories",
+    text: "Little moments, big discoveries.",
     className: "left-[6%] top-[64%] bg-sage text-ink",
     subClassName: "text-ink/70",
   },

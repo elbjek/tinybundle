@@ -208,8 +208,8 @@ function BundleNote() {
         </Link>
         {" — "}
         four calm apps for the tiny moments of parenting. Meanwhile, try{" "}
-        <Link href="/tinyhaven" className="font-extrabold text-blooms-green-deep hover:underline">
-          TinyHaven
+        <Link href="/tinynaps" className="font-extrabold text-blooms-green-deep hover:underline">
+          TinyNaps
         </Link>{" "}
         and{" "}
         <Link href="/tinylayers" className="font-extrabold text-blooms-green-deep hover:underline">

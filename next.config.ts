@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
       // The TinyMeals app links to these site-wide paths.
       { source: "/privacy", destination: "/tinymeals/privacy", permanent: false },
       { source: "/terms", destination: "/tinymeals/terms", permanent: false },
+      // TinyHaven was replaced by TinyNaps.
+      { source: "/tinyhaven/:path*", destination: "/tinynaps", permanent: true },
       ...Object.entries(GUIDE_REDIRECTS).map(([from, to]) => ({
         source: `/guides/${from}`,
         destination: `/guides/${to}`,

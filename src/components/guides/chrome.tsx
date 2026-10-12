@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { APP_IDENTITY, BundleArcs } from "@/components/guides/app-identity";
 
-const APPS = ["tinyhaven", "tinylayers", "tinyblooms", "tinymeals"] as const;
+const APPS = ["tinynaps", "tinylayers", "tinyblooms", "tinymeals"] as const;
 
 export function GuidesHeader() {
   return (

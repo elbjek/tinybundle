@@ -16,12 +16,10 @@ export function AppsShowcase() {
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {apps.map((app) => {
-            const titleClass =
-              app.slug === "tinyhaven" ? "text-cream" : "text-ink";
             const body = (
               <>
                 <AppIcon slug={app.slug} className="h-14 w-14" />
-                <h3 className={`mt-5 text-xl font-extrabold ${titleClass}`}>
+                <h3 className="mt-5 text-xl font-extrabold text-ink">
                   {app.name}
                 </h3>
                 <p className={`mt-3 text-sm leading-relaxed ${app.cardTextClassName}`}>

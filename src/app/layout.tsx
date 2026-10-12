@@ -12,7 +12,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 const defaultTitle = "TinyBundle - Four moments. One journey.";
 const defaultDescription =
-  "From the late nights to the everyday wins, TinyBundle is here for every tiny moment of parenting. Meet TinyHaven, TinyLayers, TinyBlooms, and TinyMeals.";
+  "From the late nights to the everyday wins, TinyBundle is here for every tiny moment of parenting. Meet TinyNaps, TinyLayers, TinyBlooms and TinyMeals.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   keywords: [
     "TinyBundle",
     "parenting apps",
-    "TinyHaven",
+    "TinyNaps",
     "TinyLayers",
     "TinyBlooms",
     "TinyMeals",

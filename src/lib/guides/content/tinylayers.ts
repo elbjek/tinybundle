@@ -1,46 +1,13 @@
 import type { GuideContent } from "@/lib/guides/types";
-
-const NHS_SIDS = {
-  org: "NHS",
-  title: "Sudden infant death syndrome (SIDS)",
-  url: "https://www.nhs.uk/baby/caring-for-a-newborn/sudden-infant-death-syndrome-sids/",
-} as const;
-
-const NHS_DRESS_NEWBORN = {
-  org: "NHS",
-  title: "How to dress a newborn baby",
-  url: "https://www.nhs.uk/best-start-in-life/baby/baby-basics/caring-for-your-baby/how-to-dress-a-newborn/",
-} as const;
-
-const NHS_SUN = {
-  org: "NHS",
-  title: "Keeping your baby safe in the sun",
-  url: "https://www.nhs.uk/baby/first-aid-and-safety/safety/safety-in-the-sun/",
-} as const;
-
-const NHS_FEVER = {
-  org: "NHS",
-  title: "High temperature (fever) in children",
-  url: "https://www.nhs.uk/symptoms/fever-in-children/",
-} as const;
-
-const AAP_SAFE_SLEEP = {
-  org: "AAP",
-  title: "How to Keep Your Sleeping Baby Safe: AAP Policy Explained",
-  url: "https://www.healthychildren.org/English/ages-stages/baby/sleep/Pages/a-parents-guide-to-safe-sleep.aspx",
-} as const;
-
-const AAP_WINTER_CAR_SEAT = {
-  org: "AAP",
-  title: "Winter Car Seat Safety Tips: Keeping Kids Safe & Warm",
-  url: "https://www.healthychildren.org/English/safety-prevention/on-the-go/Pages/Winter-Car-Seat-Safety-Tips.aspx",
-} as const;
-
-const AAP_BABY_CARRIERS = {
-  org: "AAP",
-  title: "Baby Carriers: Backpacks, Front Packs & Slings",
-  url: "https://www.healthychildren.org/English/safety-prevention/on-the-go/Pages/Baby-Carriers.aspx",
-} as const;
+import {
+  AAP_BABY_CARRIERS,
+  AAP_CAR_SEAT_WINTER,
+  AAP_SAFE_SLEEP,
+  NHS_DRESS,
+  NHS_HIGH_TEMPERATURE_FEVER_IN_CHILDREN,
+  NHS_SIDS,
+  NHS_SUN_BABY,
+} from "@/lib/guides/content/sources";
 
 export const LAYERS_GUIDES: GuideContent[] = [
   {
@@ -144,7 +111,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
       "baby-sleep-24-26c",
       "feel-baby-neck-to-check-temperature",
     ],
-    sources: [NHS_SIDS, NHS_DRESS_NEWBORN, NHS_SUN, AAP_SAFE_SLEEP],
+    sources: [NHS_SIDS, NHS_DRESS, NHS_SUN_BABY, AAP_SAFE_SLEEP],
     modifiedAt: "2026-10-12",
   },
   {
@@ -234,7 +201,12 @@ export const LAYERS_GUIDES: GuideContent[] = [
       "baby-sleep-20-23c",
       "baby-carrier-clothing",
     ],
-    sources: [NHS_SIDS, NHS_DRESS_NEWBORN, NHS_FEVER, AAP_SAFE_SLEEP],
+    sources: [
+      NHS_SIDS,
+      NHS_DRESS,
+      NHS_HIGH_TEMPERATURE_FEVER_IN_CHILDREN,
+      AAP_SAFE_SLEEP,
+    ],
     modifiedAt: "2026-10-12",
   },
   {
@@ -333,7 +305,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
       "baby-stroller-clothing",
       "baby-carrier-clothing",
     ],
-    sources: [NHS_DRESS_NEWBORN, NHS_SIDS, NHS_SUN, AAP_WINTER_CAR_SEAT],
+    sources: [NHS_DRESS, NHS_SIDS, NHS_SUN_BABY, AAP_CAR_SEAT_WINTER],
     modifiedAt: "2026-10-12",
   },
   {
@@ -432,7 +404,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
       "baby-car-seat-clothing",
       "baby-clothes-10-14-degrees",
     ],
-    sources: [NHS_SUN, NHS_DRESS_NEWBORN, NHS_SIDS, AAP_SAFE_SLEEP],
+    sources: [NHS_SUN_BABY, NHS_DRESS, NHS_SIDS, AAP_SAFE_SLEEP],
     modifiedAt: "2026-10-12",
   },
   {
@@ -524,7 +496,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
       "feel-baby-neck-to-check-temperature",
       "baby-clothes-10-14-degrees",
     ],
-    sources: [NHS_SIDS, NHS_SUN, AAP_BABY_CARRIERS, AAP_SAFE_SLEEP],
+    sources: [NHS_SIDS, NHS_SUN_BABY, AAP_BABY_CARRIERS, AAP_SAFE_SLEEP],
     modifiedAt: "2026-10-12",
   },
   {
@@ -613,7 +585,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
       "how-many-layers-should-baby-wear",
       "baby-clothes-10-14-degrees",
     ],
-    sources: [AAP_WINTER_CAR_SEAT, NHS_SIDS, NHS_SUN, AAP_SAFE_SLEEP],
+    sources: [AAP_CAR_SEAT_WINTER, NHS_SIDS, NHS_SUN_BABY, AAP_SAFE_SLEEP],
     modifiedAt: "2026-10-12",
   },
 ];

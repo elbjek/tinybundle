@@ -32,9 +32,9 @@ export const metadata: Metadata = {
 const HUBS: { app: GuideApp; title: string; blurb: string }[] = [
   { app: "tinylayers", title: "What should my baby wear?", blurb: "Outfits and sleep layers for the temperature, the room and the trip ahead." },
   { app: "tinymeals", title: "What can my baby eat?", blurb: "First foods, meal ideas and allergens, one calm step at a time." },
-  { app: "tinyblooms", title: "What do I do with my baby?", blurb: "One idea at a time for awake windows, without milestone guilt." },
-  { app: "tinyhaven", title: "Am I the only one awake?", blurb: "Night feeds, loneliness and the 2am questions nobody warns you about." },
-  { app: "tinybundle", title: "What apps do new parents need?", blurb: "Calm tools for real questions, not another tracker." },
+  { app: "tinyblooms", title: "What do I do with my baby?", blurb: "Play ideas by age, from newborn to five, without milestone pressure." },
+  { app: "tinynaps", title: "When will my baby sleep?", blurb: "Night waking, sleep regressions and what is normal in the early months." },
+  { app: "tinybundle", title: "For you, the parent", blurb: "Lonely nights, low mood and the few apps that genuinely help." },
 ];
 
 /** TinyLayers pages listed as temperature and age pills rather than cards. */

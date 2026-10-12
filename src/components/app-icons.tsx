@@ -1,16 +1,7 @@
+import { NapsMark } from "@/components/tinynaps/mark";
+
 const icons: Record<string, (className: string) => React.ReactNode> = {
-  tinyhaven: (className) => (
-    <svg viewBox="0 0 64 64" fill="none" className={className} aria-hidden="true">
-      <path
-        d="M32 9 53 27.5V49a4 4 0 0 1-4 4H15a4 4 0 0 1-4-4V27.5Z"
-        stroke="#D9A968"
-        strokeWidth="3.25"
-        strokeLinejoin="round"
-        strokeLinecap="round"
-      />
-      <path d="M41 39A11 11 0 1 1 28 26a9 9 0 0 0 13 13Z" fill="#F2C98B" />
-    </svg>
-  ),
+  tinynaps: (className) => <NapsMark className={className} />,
   tinylayers: (className) => (
     <svg viewBox="0 0 48 48" fill="none" className={className} aria-hidden="true">
       <path d="M10 32a14 14 0 0 1 28 0" stroke="#3f6ea5" strokeWidth="3" strokeLinecap="round" />

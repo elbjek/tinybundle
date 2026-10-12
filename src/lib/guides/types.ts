@@ -1,5 +1,5 @@
 export type GuideApp =
-  "tinylayers" | "tinyblooms" | "tinyhaven" | "tinymeals" | "tinybundle";
+  "tinylayers" | "tinyblooms" | "tinynaps" | "tinymeals" | "tinybundle";
 
 export type GuideCategory =
   | "weather"
