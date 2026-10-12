@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { APP_IDENTITY, AppMark, readMinutes } from "@/components/guides/app-identity";
 import { GuidesFooter, GuidesHeader } from "@/components/guides/chrome";
-import {
-  AGE_GUIDES,
-  OUTDOOR_BANDS,
-  SLEEP_BANDS,
-  getGuidesByApp,
-  guidePages,
-} from "@/lib/guides/catalog";
+import { AGE_GUIDES, OUTDOOR_BANDS, SLEEP_BANDS, getGuidesByApp, guidePages } from "@/lib/guides/catalog";
+import type { GuideApp, GuidePage } from "@/lib/guides/types";
 import { absoluteUrl, SITE_URL } from "@/lib/seo";
 
 const title = "Parenting Guides — Questions Parents Ask at 2am";
@@ -32,81 +28,115 @@ export const metadata: Metadata = {
   },
 };
 
-const layersCategories = [
-  {
-    id: "temperature",
-    label: "By temperature",
-    href: "#temperature",
-  },
-  {
-    id: "sleep",
-    label: "Sleep",
-    href: "/tinylayers/blog/what-should-baby-wear-to-sleep",
-  },
-  {
-    id: "tog",
-    label: "Sleep sack TOG",
-    href: "/guides/tog-guide-for-baby-sleep",
-  },
-  {
-    id: "layers",
-    label: "How many layers",
-    href: "/guides/how-many-layers-should-baby-wear",
-  },
-  {
-    id: "neck-check",
-    label: "Neck / chest check",
-    href: "/guides/feel-baby-neck-to-check-temperature",
-  },
-  {
-    id: "stroller",
-    label: "Stroller",
-    href: "/guides/baby-stroller-clothing",
-  },
-  {
-    id: "carrier",
-    label: "Carrier",
-    href: "/guides/baby-carrier-clothing",
-  },
-  {
-    id: "winter-carrier",
-    label: "Winter carrier",
-    href: "/guides/winter-baby-carrier-clothes",
-  },
-  {
-    id: "car-seat",
-    label: "Car seat",
-    href: "/guides/baby-car-seat-clothing",
-  },
-  {
-    id: "age",
-    label: "By age",
-    href: "#age",
-  },
+const HUBS: { app: GuideApp; title: string; blurb: string }[] = [
+  { app: "tinylayers", title: "What should my baby wear?", blurb: "Outfits and sleep layers for the temperature, the room and the trip ahead." },
+  { app: "tinymeals", title: "What can my baby eat?", blurb: "First foods, meal ideas and allergens, one calm step at a time." },
+  { app: "tinyblooms", title: "What do I do with my baby?", blurb: "One idea at a time for awake windows, without milestone guilt." },
+  { app: "tinyhaven", title: "Am I the only one awake?", blurb: "Night feeds, loneliness and the 2am questions nobody warns you about." },
+  { app: "tinybundle", title: "What apps do new parents need?", blurb: "Calm tools for real questions, not another tracker." },
 ];
 
-const otherHubs = [
-  {
-    app: "tinyblooms" as const,
-    title: "What do I do with my baby?",
-    blurb: "One idea at a time for awake windows — without milestone guilt.",
-  },
-  {
-    app: "tinyhaven" as const,
-    title: "Am I the only one?",
-    blurb: "Night loneliness and soft company without a social feed.",
-  },
-  {
-    app: "tinymeals" as const,
-    title: "What can baby eat?",
-    blurb: "Stage-right recipes for introducing solids, written for babies.",
-  },
-  {
-    app: "tinybundle" as const,
-    title: "What apps do new parents need?",
-    blurb: "Calm tools for real questions — not another tracker.",
-  },
-];
+/** TinyLayers pages listed as temperature and age pills rather than cards. */
+const PILL_SLUGS = new Set<string>([...OUTDOOR_BANDS, ...SLEEP_BANDS, ...AGE_GUIDES].map((page) => page.slug));
+
+function wordCount(guide: GuidePage) {
+  const text = [
+    guide.quickAnswer,
+    ...guide.bullets,
+    ...guide.sections.flatMap((section) => [section.heading, ...section.paragraphs]),
+    ...guide.faqs.flatMap((faq) => [faq.q, faq.a]),
+  ].join(" ");
+  return text.split(/\s+/).filter(Boolean).length;
+}
+
+function GuideCard({ guide }: { guide: GuidePage }) {
+  const identity = APP_IDENTITY[guide.app];
+  return (
+    <li className="min-w-0">
+      <Link
+        href={`/guides/${guide.slug}`}
+        className="flex h-full flex-col overflow-hidden rounded-[26px] bg-white text-tb-ink shadow-[0_8px_22px_rgba(120,80,40,0.06)] transition-transform duration-200 hover:-translate-y-1"
+      >
+        <span className={`flex h-24 items-center justify-center ${identity.tile}`}>
+          <AppMark app={guide.app} className="h-11 w-11" />
+        </span>
+        <span className="flex flex-1 flex-col gap-2 px-5 pb-5 pt-4">
+          <span className="flex items-center justify-between gap-2.5">
+            <span className={`text-[11.5px] font-extrabold uppercase tracking-[0.06em] ${identity.ink}`}>{identity.name}</span>
+            <span className="text-[12.5px] font-bold text-tb-muted">{readMinutes(wordCount(guide))} min read</span>
+          </span>
+          <span className="text-balance text-[17px] font-extrabold leading-[1.3]">{guide.question}</span>
+        </span>
+      </Link>
+    </li>
+  );
+}
+
+function Pill({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      className="inline-flex h-9 items-center rounded-[18px] bg-[#EAF1F8] px-3.5 text-[13px] font-extrabold text-[#2F5B8A] transition-colors hover:bg-[#DCE6F2]"
+    >
+      {children}
+    </Link>
+  );
+}
+
+function HubHeading({ app, title, blurb }: { app: GuideApp; title: string; blurb: string }) {
+  const identity = APP_IDENTITY[app];
+  return (
+    <div className="max-w-2xl">
+      <p className={`flex items-center gap-2.5 text-xs font-extrabold uppercase tracking-[0.06em] ${identity.ink}`}>
+        <span className={`flex h-10 w-10 flex-none items-center justify-center rounded-[13px] ${identity.tile}`}>
+          <AppMark app={app} className="h-7 w-7" />
+        </span>
+        {identity.name}
+      </p>
+      <h2 id={`hub-${app}`} className="mt-4 scroll-mt-24 text-balance text-[clamp(26px,3.2vw,36px)] font-extrabold leading-[1.12]">
+        {title}
+      </h2>
+      <p className="mt-2.5 text-pretty text-[15.5px] leading-relaxed text-tb-body">{blurb}</p>
+    </div>
+  );
+}
+
+function LayersPills() {
+  return (
+    <div className="mt-7 grid gap-6 rounded-[32px] bg-white p-[clamp(22px,3.4vw,36px)] shadow-[0_10px_28px_rgba(120,80,40,0.06)] md:grid-cols-3">
+      <div id="temperature" className="scroll-mt-24">
+        <h3 className="text-[15px] font-extrabold">Outside, by temperature</h3>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {OUTDOOR_BANDS.map((band) => (
+            <Pill key={band.slug} href={`/guides/${band.slug}`}>
+              {band.label}
+            </Pill>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h3 className="text-[15px] font-extrabold">Sleep, by room temperature</h3>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {SLEEP_BANDS.map((band) => (
+            <Pill key={band.slug} href={`/guides/${band.slug}`}>
+              {band.label}
+            </Pill>
+          ))}
+        </div>
+      </div>
+      <div id="age" className="scroll-mt-24">
+        <h3 className="text-[15px] font-extrabold">By age</h3>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {AGE_GUIDES.map((age) => (
+            <Pill key={age.slug} href={`/guides/${age.slug}`}>
+              {age.label}
+            </Pill>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -134,151 +164,45 @@ const jsonLd = {
 
 export default function GuidesIndexPage() {
   return (
-    <div className="min-h-screen bg-[#fffcf6] font-sans text-ink antialiased">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+    <div className="min-h-screen bg-tb font-nunito text-tb-ink antialiased">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <GuidesHeader />
-      <main className="mx-auto w-full max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
-        <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-amber-deep">
-          TinyBundle Guides
-        </p>
-        <h1 className="mt-3 max-w-2xl text-4xl font-extrabold tracking-tight sm:text-5xl">
+      <main className="mx-auto w-full max-w-[1180px] px-[clamp(18px,4vw,40px)] pt-[clamp(40px,6vw,80px)]">
+        <p className="text-[11px] font-extrabold uppercase tracking-[0.09em] text-tb-muted">Parent guides</p>
+        <h1 className="mt-2.5 max-w-[20ch] text-balance text-[clamp(36px,5vw,56px)] font-extrabold leading-[1.06] tracking-[-0.02em]">
           Answers to the questions parents type at 2am.
         </h1>
-        <p className="mt-4 max-w-xl text-base font-medium leading-relaxed text-muted sm:text-lg">
-          Each guide answers one question well — then points to the TinyBundle app
-          that owns that category.
+        <p className="mt-4 max-w-[52ch] text-pretty text-[clamp(16px,1.5vw,18px)] leading-relaxed text-tb-body">
+          Each guide answers one question well, then points to the TinyBundle app made for it.
         </p>
+        <nav aria-label="Guide topics" className="mt-7 flex flex-wrap gap-2">
+          {HUBS.map((hub) => {
+            const identity = APP_IDENTITY[hub.app];
+            return (
+              <a
+                key={hub.app}
+                href={`#hub-${hub.app}`}
+                className="inline-flex h-10 items-center gap-2 rounded-[20px] bg-white pl-1.5 pr-4 text-[13.5px] font-extrabold shadow-[0_2px_10px_rgba(90,60,20,0.06)] hover:text-tb-amber-ink"
+              >
+                <span className={`flex h-7 w-7 items-center justify-center rounded-full ${identity.tile}`}>
+                  <AppMark app={hub.app} className="h-[18px] w-[18px]" />
+                </span>
+                {identity.name}
+              </a>
+            );
+          })}
+        </nav>
 
-        <section className="mt-14" aria-labelledby="wear-title">
-          <h2 id="wear-title" className="text-2xl font-extrabold text-ink sm:text-3xl">
-            What should my baby wear?
-          </h2>
-          <p className="mt-2 max-w-2xl text-sm font-medium text-muted">
-            Find outfit guides for:
-          </p>
-
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {layersCategories.map((cat) => (
-              <li key={cat.id}>
-                <Link
-                  href={cat.href}
-                  className="flex items-center rounded-2xl border border-line bg-cream px-5 py-4 text-sm font-extrabold text-ink transition-shadow hover:shadow-md"
-                >
-                  {cat.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <div id="temperature" className="mt-10 scroll-mt-24">
-            <h3 className="text-lg font-extrabold text-ink">By temperature</h3>
-            <p className="mt-1 text-sm font-medium text-muted">
-              Common outdoor bands — pick the range that matches today.
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {OUTDOOR_BANDS.map((band) => (
-                <Link
-                  key={band.slug}
-                  href={`/guides/${band.slug}`}
-                  className="rounded-full border border-line bg-cream px-4 py-2 text-sm font-bold text-ink transition-colors hover:border-amber/50 hover:text-amber-deep"
-                >
-                  {band.chip}
-                  <span className="ml-1.5 font-medium text-muted">{band.label}</span>
-                </Link>
-              ))}
-            </div>
-            <Link
-              href="#all-temps"
-              className="mt-4 inline-block text-sm font-extrabold text-amber-deep hover:underline"
-            >
-              View all temperature guides →
-            </Link>
-          </div>
-
-          <div id="all-temps" className="mt-10 scroll-mt-24 rounded-2xl border border-line bg-cream/80 px-5 py-6 sm:px-6">
-            <h3 className="text-sm font-extrabold uppercase tracking-[0.12em] text-muted">
-              All temperature guides
-            </h3>
-            <div className="mt-4 grid gap-6 sm:grid-cols-2">
-              <div>
-                <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-amber-deep">
-                  Outside
-                </p>
-                <ul className="mt-3 space-y-2">
-                  {OUTDOOR_BANDS.map((band) => (
-                    <li key={band.slug}>
-                      <Link
-                        href={`/guides/${band.slug}`}
-                        className="text-sm font-bold text-ink hover:text-amber-deep hover:underline"
-                      >
-                        Baby clothes {band.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-amber-deep">
-                  Sleep (room)
-                </p>
-                <ul className="mt-3 space-y-2">
-                  {SLEEP_BANDS.map((band) => (
-                    <li key={band.slug}>
-                      <Link
-                        href={`/guides/${band.slug}`}
-                        className="text-sm font-bold text-ink hover:text-amber-deep hover:underline"
-                      >
-                        Sleep clothes {band.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div id="age" className="mt-10 scroll-mt-24">
-            <h3 className="text-lg font-extrabold text-ink">By age</h3>
-            <p className="mt-1 text-sm font-medium text-muted">
-              Outfit guides by age — temperature still decides the layers.
-            </p>
-            <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {AGE_GUIDES.map((age) => (
-                <li key={age.slug}>
-                  <Link
-                    href={`/guides/${age.slug}`}
-                    className="block rounded-2xl border border-line bg-cream px-5 py-4 text-sm font-extrabold text-ink transition-shadow hover:shadow-md"
-                  >
-                    {age.chip}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <div className="mt-16 space-y-12">
-          {otherHubs.map((hub) => {
-            const guides = getGuidesByApp(hub.app);
+        <div className="mt-[clamp(48px,7vw,88px)] space-y-[clamp(56px,8vw,104px)]">
+          {HUBS.map((hub) => {
+            const cards = getGuidesByApp(hub.app).filter((guide) => !PILL_SLUGS.has(guide.slug));
             return (
               <section key={hub.app} aria-labelledby={`hub-${hub.app}`}>
-                <h2 id={`hub-${hub.app}`} className="text-2xl font-extrabold text-ink">
-                  {hub.title}
-                </h2>
-                <p className="mt-2 max-w-2xl text-sm font-medium text-muted">{hub.blurb}</p>
-                <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {guides.map((guide) => (
-                    <li key={guide.slug}>
-                      <Link
-                        href={`/guides/${guide.slug}`}
-                        className="block rounded-2xl border border-line bg-cream px-5 py-4 transition-shadow hover:shadow-md"
-                      >
-                        <span className="text-sm font-extrabold text-ink">{guide.question}</span>
-                      </Link>
-                    </li>
+                <HubHeading {...hub} />
+                {hub.app === "tinylayers" ? <LayersPills /> : null}
+                <ul className="mt-7 grid gap-4 [grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr))]">
+                  {cards.map((guide) => (
+                    <GuideCard key={guide.slug} guide={guide} />
                   ))}
                 </ul>
               </section>

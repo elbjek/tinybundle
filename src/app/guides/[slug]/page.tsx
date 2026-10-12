@@ -5,7 +5,6 @@ import { GuidesFooter, GuidesHeader } from "@/components/guides/chrome";
 import { GuideArticle } from "@/components/guides/guide-article";
 import { MealsFooter, MealsHeader } from "@/components/tinymeals/chrome";
 import { getGuide, getGuideSlugs } from "@/lib/guides/catalog";
-import { nunitoSans } from "@/lib/fonts";
 import { absoluteUrl, SITE_URL } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -103,7 +102,7 @@ export default async function GuidePageRoute({ params }: Props) {
 
   if (guide.app === "tinymeals") {
     return (
-      <div className={`${nunitoSans.variable} min-h-screen bg-meals font-meals text-meals-ink antialiased`}>
+      <div className="min-h-screen bg-meals font-nunito text-meals-ink antialiased">
         {ldScript}
         <MealsHeader />
         <main className="px-[clamp(18px,4vw,40px)] pb-16 pt-[clamp(36px,5vw,64px)]">
@@ -123,14 +122,14 @@ export default async function GuidePageRoute({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-[#fffcf6] font-sans text-ink antialiased">
+    <div className="min-h-screen bg-tb font-nunito text-tb-ink antialiased">
       {ldScript}
       <GuidesHeader />
-      <main className="px-5 py-12 sm:px-8 sm:py-16">
+      <main className="px-[clamp(18px,4vw,40px)] pt-[clamp(36px,5vw,64px)]">
         <div className="mx-auto mb-6 w-full max-w-[720px]">
           <Link
-            href="/guides"
-            className="text-xs font-extrabold uppercase tracking-[0.14em] text-amber-deep hover:underline"
+            href={`/guides#hub-${guide.app}`}
+            className="text-xs font-extrabold uppercase tracking-[0.14em] text-tb-amber-ink hover:text-tb-ink"
           >
             ← All guides
           </Link>

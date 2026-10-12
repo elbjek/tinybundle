@@ -58,6 +58,15 @@
   --color-blooms-amber: #e2a13d;
   --color-blooms-amber-deep: #b97f26;
 
+  /* TinyBundle (Landing design: shared cream and ink) */
+  --color-tb: #fef8f3;
+  --color-tb-ink: #2e2e2e;
+  --color-tb-body: #5a5245;
+  --color-tb-muted: #8c8676;
+  --color-tb-border: #f3e7d3;
+  --color-tb-amber: #e2a03f;
+  --color-tb-amber-ink: #9a6c1e;
+
   /* TinyMeals (Landing design: cream, sage, warm orange) */
   --color-meals: #fef8f3;
   --color-meals-card: #ffffff;
@@ -86,7 +95,7 @@
 
 @theme inline {
   --font-sans: var(--font-jakarta), system-ui, sans-serif;
-  --font-meals: var(--font-nunito), system-ui, sans-serif;
+  --font-nunito: var(--font-nunito-sans), system-ui, sans-serif;
 }
 
 @keyframes tm-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }

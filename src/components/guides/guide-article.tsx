@@ -1,32 +1,26 @@
 import Link from "next/link";
 import type { GuidePage } from "@/lib/guides/types";
+import { APP_IDENTITY, AppMark } from "@/components/guides/app-identity";
 import { getRelatedLink } from "@/lib/guides/catalog";
 
-const appNames: Record<GuidePage["ctaApp"], string> = {
-  tinylayers: "TinyLayers",
-  tinyblooms: "TinyBlooms",
-  tinyhaven: "TinyHaven",
-  tinymeals: "TinyMeals",
-  tinybundle: "TinyBundle",
-};
 
 /** Class names per look: the shared TinyBundle guides, or TinyMeals guides in the TinyMeals design. */
 const THEMES = {
   bundle: {
-    kicker: "text-amber-deep",
-    title: "text-ink",
-    meta: "text-muted",
-    quickBox: "rounded-2xl border border-line bg-blush",
-    quickText: "text-ink",
-    bulletText: "text-ink/90",
-    bullet: "bg-amber",
-    heading: "text-ink",
-    body: "text-muted",
-    divider: "border-line",
-    faq: "rounded-2xl border border-line bg-cream",
-    cta: "rounded-2xl bg-navy text-cream",
-    ctaButton: "rounded-full bg-amber text-navy hover:bg-butter",
-    link: "text-amber-deep hover:underline",
+    kicker: "",
+    title: "text-tb-ink",
+    meta: "text-tb-muted",
+    quickBox: "rounded-[26px]",
+    quickText: "text-tb-ink",
+    bulletText: "text-tb-body",
+    bullet: "bg-tb-amber",
+    heading: "text-tb-ink",
+    body: "text-tb-body",
+    divider: "border-tb-border",
+    faq: "rounded-[20px] bg-white shadow-[0_2px_10px_rgba(90,60,20,0.06)]",
+    cta: "rounded-[28px] bg-[#232F48] text-white",
+    ctaButton: "rounded-[19px] bg-tb-amber text-[#232F48] hover:brightness-95",
+    link: "text-tb-amber-ink hover:text-tb-ink",
   },
   meals: {
     kicker: "text-meals-orange-deep",
@@ -49,7 +43,12 @@ const THEMES = {
 export type GuideTheme = keyof typeof THEMES;
 
 export function GuideArticle({ guide, theme = "bundle" }: { guide: GuidePage; theme?: GuideTheme }) {
-  const t = THEMES[theme];
+  const identity = APP_IDENTITY[guide.app];
+  // TinyBundle guides take their app's colour for the kicker and quick answer.
+  const t =
+    theme === "bundle"
+      ? { ...THEMES.bundle, kicker: identity.ink, quickBox: `${THEMES.bundle.quickBox} ${identity.soft}` }
+      : THEMES[theme];
   const related = guide.relatedSlugs
     .map((slug) => getRelatedLink(slug))
     .filter((link) => link !== undefined)
@@ -58,8 +57,11 @@ export function GuideArticle({ guide, theme = "bundle" }: { guide: GuidePage; th
   return (
     <article className="mx-auto w-full max-w-[720px]">
       <header>
-        <p className={`text-xs font-extrabold uppercase tracking-[0.14em] ${t.kicker}`}>
-          {appNames[guide.app]} guide
+        <p className={`flex items-center gap-2.5 text-xs font-extrabold uppercase tracking-[0.12em] ${t.kicker}`}>
+          <span className={`flex h-9 w-9 flex-none items-center justify-center rounded-xl ${identity.tile}`}>
+            <AppMark app={guide.app} className="h-6 w-6" />
+          </span>
+          {identity.name} guide
         </p>
         <h1 className={`mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl ${t.title}`}>
           {guide.title}

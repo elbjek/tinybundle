@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { nunitoSans } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: {
@@ -17,5 +18,5 @@ export const metadata: Metadata = {
 export default function GuidesLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return children;
+  return <div className={nunitoSans.variable}>{children}</div>;
 }
