@@ -64,6 +64,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly" as const,
       priority: 0.3,
     },
+    ...["privacy", "terms"].map((page) => ({
+      url: `${SITE_URL}/tinymeals/${page}`,
+      lastModified: now,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    })),
     ...layersBlog,
     ...guides,
   ];

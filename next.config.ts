@@ -4,6 +4,9 @@ import { GUIDE_REDIRECTS, GUIDES_MOVED_TO_BLOG } from "./src/lib/guides/redirect
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      // The TinyMeals app links to these site-wide paths.
+      { source: "/privacy", destination: "/tinymeals/privacy", permanent: false },
+      { source: "/terms", destination: "/tinymeals/terms", permanent: false },
       ...Object.entries(GUIDE_REDIRECTS).map(([from, to]) => ({
         source: `/guides/${from}`,
         destination: `/guides/${to}`,

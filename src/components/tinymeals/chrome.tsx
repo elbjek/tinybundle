@@ -100,7 +100,9 @@ const FOOTER_GROUPS = [
     title: "More",
     links: [
       { href: "/", label: "All apps" },
-      { href: "mailto:contact@twobricklabs.com", label: "Contact" },
+      { href: "mailto:support@twobricklabs.com", label: "Contact" },
+      { href: "/tinymeals/privacy", label: "Privacy" },
+      { href: "/tinymeals/terms", label: "Terms" },
     ],
   },
 ];
