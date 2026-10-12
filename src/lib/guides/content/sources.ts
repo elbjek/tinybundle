@@ -177,11 +177,6 @@ export const NHS_YOUR_BABY_S_WEIGHT_AND_HEIGHT: GuideSource = {
   url: "https://www.nhs.uk/baby/babys-development/height-weight-and-reviews/baby-height-and-weight/",
 };
 
-export const CDC_HOW_MUCH_AND_HOW_OFTEN_TO_BREASTFEED: GuideSource = {
-  org: "CDC",
-  title: "How Much and How Often to Breastfeed",
-  url: "https://www.cdc.gov/infant-toddler-nutrition/breastfeeding/how-much-and-how-often.html",
-};
 
 export const NHS_URGENT_MENTAL_HEALTH: GuideSource = {
   org: "NHS",
