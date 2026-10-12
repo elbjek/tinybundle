@@ -1,45 +1,86 @@
 import type { Metadata } from "next";
-import { absoluteUrl, bundleOgImage } from "@/lib/seo";
-import { Hero } from "@/components/sections/hero";
-import { AppsShowcase } from "@/components/sections/apps-showcase";
-import { Values } from "@/components/sections/values";
-import { Newsletter } from "@/components/sections/newsletter";
+import { AppsSection } from "@/components/home/apps-section";
+import { HomeTop } from "@/components/home/home-top";
+import { GuidesSpotlight, HomeFaq, HomeFooter, HowItWorks, LatestGuides, WhyTinyBundle, homeFaqs } from "@/components/home/home-sections";
+import { Newsletter } from "@/components/home/newsletter";
+import { getApp } from "@/lib/apps";
+import { absoluteUrl, bundleOgImage, SITE_URL } from "@/lib/seo";
 
-const title = "TinyBundle - Four moments. One journey.";
+const title = "TinyBundle: Calm Parenting Apps for Baby Sleep, First Foods, Play and Daily Care";
 const description =
-  "From the late nights to the everyday wins, TinyBundle is here for every tiny moment of parenting. Meet TinyNaps, TinyLayers, TinyBlooms and TinyMeals.";
-const ogTitle = "Four moments. One journey. We've got you.";
-const ogDescription =
-  "Four calm apps for sleep and daily care, dressing, play and first foods: TinyNaps, TinyLayers, TinyBlooms and TinyMeals.";
+  "Four calm iPhone apps for parents: TinyLayers for what your baby should wear, TinyMeals for starting solids, TinyBlooms for play and milestones, and TinyNaps for sleep, feeds and nappies.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
   alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    url: absoluteUrl("/"),
-    title: ogTitle,
-    description: ogDescription,
-    siteName: "TinyBundle",
-    locale: "en_US",
-    images: [bundleOgImage],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: ogTitle,
-    description: ogDescription,
-    images: [bundleOgImage.url],
-  },
+  openGraph: { type: "website", url: absoluteUrl("/"), title, description, siteName: "TinyBundle", locale: "en_GB", images: [bundleOgImage] },
+  twitter: { card: "summary_large_image", title, description, images: [bundleOgImage.url] },
 };
+
+const APPS = ["tinylayers", "tinymeals", "tinyblooms", "tinynaps"] as const;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "Two Brick Labs", url: `${SITE_URL}/`, brand: { "@type": "Brand", name: "TinyBundle" } },
+    { "@type": "WebSite", "@id": `${SITE_URL}/#website`, url: `${SITE_URL}/`, name: "TinyBundle", publisher: { "@id": `${SITE_URL}/#organization` } },
+    {
+      "@type": "ItemList",
+      name: "TinyBundle parenting apps",
+      itemListElement: APPS.map((slug, i) => {
+        const app = getApp(slug);
+        return {
+          "@type": "ListItem",
+          position: i + 1,
+          url: absoluteUrl(`/${slug}`),
+          item: {
+            "@type": "MobileApplication",
+            name: app?.name,
+            url: absoluteUrl(`/${slug}`),
+            description: app?.description,
+            applicationCategory: "LifestyleApplication",
+            operatingSystem: "iOS",
+            ...(app?.appStoreUrl && !app.comingSoon ? { installUrl: app.appStoreUrl } : {}),
+            publisher: { "@id": `${SITE_URL}/#organization` },
+          },
+        };
+      }),
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: homeFaqs().map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: item.a } })),
+    },
+  ],
+};
+
+const BLOBS = [
+  "-left-20 -top-[60px] h-[260px] w-[260px] rounded-full bg-[#FBE4CF] opacity-60 [animation:tm-float-a_10s_ease-in-out_infinite]",
+  "-right-[110px] top-[30%] h-[300px] w-[300px] rounded-full bg-[#DCE6F2] opacity-65 [animation:tm-float-b_11s_ease-in-out_infinite]",
+  "-bottom-[90px] left-[12%] h-[280px] w-[280px] rounded-full bg-[#E3EBDC] opacity-70 [animation:tm-float-b_9s_ease-in-out_1s_infinite]",
+  "-left-5 top-[62%] h-[54px] w-[54px] rotate-[14deg] rounded-2xl bg-meals-apricot opacity-60 [animation:tm-float-a_7.5s_ease-in-out_.6s_infinite]",
+];
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <AppsShowcase />
-      <Values />
-      <Newsletter />
-    </main>
+    <div className="tm-motion relative isolate min-h-screen overflow-x-clip bg-tb font-nunito text-tb-ink antialiased">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        {BLOBS.map((blob) => (
+          <div key={blob} className={`absolute ${blob}`} />
+        ))}
+      </div>
+      <HomeTop />
+      <main>
+        <AppsSection />
+        <HowItWorks />
+        <GuidesSpotlight />
+        <WhyTinyBundle />
+        <HomeFaq />
+        <LatestGuides />
+        <Newsletter />
+      </main>
+      <HomeFooter />
+    </div>
   );
 }

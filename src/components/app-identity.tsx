@@ -1,7 +1,7 @@
 import { NapsMark } from "@/components/tinynaps/mark";
 import type { GuideApp } from "@/lib/guides/types";
 
-/** Each app's name, colours and mark, as the TinyBundle landing design shows them. */
+/** Each app's name, colours and mark, as the TinyBundle landing design shows them. Used by the homepage and the guides. */
 export const APP_IDENTITY: Record<
   GuideApp,
   { name: string; href: string; ink: string; tile: string; soft: string }

@@ -70,7 +70,7 @@ function Hero() {
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
-              href="/#newsletter"
+              href="/#tips"
               className="inline-flex rounded-full bg-blooms-green px-6 py-3.5 text-sm font-extrabold text-white transition-colors hover:bg-blooms-green-deep"
             >
               Get launch updates
@@ -187,7 +187,7 @@ function Waitlist() {
             the rest of the family of apps.
           </p>
           <Link
-            href="/#newsletter"
+            href="/#tips"
             className="mt-8 inline-flex rounded-full bg-blooms-green px-7 py-3.5 text-sm font-extrabold text-white transition-colors hover:bg-blooms-green-deep"
           >
             Notify me

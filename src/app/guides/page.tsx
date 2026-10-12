@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { APP_IDENTITY, AppMark } from "@/components/guides/app-identity";
+import { APP_IDENTITY, AppMark } from "@/components/app-identity";
 import { GuidesFooter, GuidesHeader } from "@/components/guides/chrome";
 import { HubTabs } from "@/components/guides/hub-tabs";
 import { AGE_GUIDES, OUTDOOR_BANDS, SLEEP_BANDS, getGuidesByApp, guidePages } from "@/lib/guides/catalog";

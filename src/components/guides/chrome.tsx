@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { APP_IDENTITY, BundleArcs } from "@/components/guides/app-identity";
+import { APP_IDENTITY, BundleArcs } from "@/components/app-identity";
 
 const APPS = ["tinynaps", "tinylayers", "tinyblooms", "tinymeals"] as const;
 

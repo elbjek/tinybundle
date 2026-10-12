@@ -147,7 +147,7 @@ function Hero() {
           </p>
           <div className="mt-[30px] flex flex-wrap items-center gap-5">
             <Link
-              href="/#newsletter"
+              href="/#tips"
               className="flex h-[54px] items-center rounded-[18px] bg-naps-lavender-deep px-6 text-base font-extrabold text-white transition-colors hover:bg-naps-lavender-ink active:scale-[0.97]"
             >
               Get notified at launch

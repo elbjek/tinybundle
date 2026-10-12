@@ -51,6 +51,7 @@
   --color-tb-body: #5a5245;
   --color-tb-muted: #8c8676;
   --color-tb-border: #f3e7d3;
+  --color-tb-sand: #f3eadf;
   --color-tb-amber: #e2a03f;
   --color-tb-amber-ink: #9a6c1e;
 
@@ -96,6 +97,7 @@
   --font-nunito: var(--font-nunito-sans), system-ui, sans-serif;
 }
 
+@keyframes tb-swap { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: none; } }
 @keyframes tm-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @keyframes tm-screen-in { from { opacity: 0; transform: translateY(14px) scale(0.985); } to { opacity: 1; transform: none; } }
 @keyframes tm-float-a { 0%, 100% { translate: 0 0; } 50% { translate: 6px 8px; } }

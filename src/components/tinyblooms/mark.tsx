@@ -1,4 +1,4 @@
-/** TinyBlooms sprout — matches homepage AppIcon. */
+/** TinyBlooms sprout. */
 export function BloomsMark({ className = "h-8 w-8" }: { className?: string }) {
   return (
     <svg viewBox="0 0 48 48" fill="none" className={className} aria-hidden="true">

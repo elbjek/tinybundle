@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { GuidePage } from "@/lib/guides/types";
-import { APP_IDENTITY, AppMark } from "@/components/guides/app-identity";
+import { APP_IDENTITY, AppMark } from "@/components/app-identity";
 import { getRelatedLink } from "@/lib/guides/catalog";
 
 /** Class names per look: the shared TinyBundle guides, or TinyMeals guides in the TinyMeals design. */

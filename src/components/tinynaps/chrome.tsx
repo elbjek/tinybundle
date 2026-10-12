@@ -24,7 +24,7 @@ export function NapsHeader() {
         </nav>
         <div className="flex-1 min-[820px]:hidden" />
         <Link
-          href="/#newsletter"
+          href="/#tips"
           className="flex h-11 flex-none items-center whitespace-nowrap rounded-[22px] bg-naps-lavender-deep px-[clamp(16px,2vw,22px)] text-[14.5px] font-extrabold text-white transition-colors hover:bg-naps-lavender-ink active:scale-[0.97]"
         >
           Get notified
