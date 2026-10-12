@@ -776,7 +776,6 @@ export function backlogSeeds(): GuidePage[] {
       ],
       faqs: [],
       relatedSlugs: [
-        "how-to-stop-food-waste",
         "baby-lunch-ideas",
         "dinner-with-whats-in-my-fridge",
       ],
@@ -833,38 +832,7 @@ export function backlogSeeds(): GuidePage[] {
       faqs: [],
       relatedSlugs: [
         "dinner-with-whats-in-my-fridge",
-        "how-to-stop-food-waste",
         "baby-meal-ideas",
-      ],
-    }),
-    seed("tinymeals", MEALS.href, MEALS.label, MEALS.blurb, {
-      slug: "how-to-stop-food-waste",
-      category: "cooking",
-      question: "How do I stop food waste with a baby?",
-      title: "How to Stop Food Waste at Home",
-      metaTitle: "Stop Food Waste — Busy Parent Habits",
-      description:
-        "Practical ways to reduce food waste with a baby — visibility, use-it-up meals, and baby adaptations.",
-      quickAnswer:
-        "Keep a rough fridge inventory, cook soon-to-spoil first, plan one leftover remix, and share adult food with baby when textures allow.",
-      bullets: [
-        "See what you own",
-        "Cook the urgent stuff first",
-        "Baby portions from the same pot",
-      ],
-      sections: [
-        {
-          heading: "Waste is often a visibility problem",
-          paragraphs: [
-            "If you can’t see it, you’ll buy it again. A clear bin and one weekly “fridge dinner” cut waste more than perfect meal plans.",
-          ],
-        },
-      ],
-      faqs: [],
-      relatedSlugs: [
-        "recipes-from-leftovers",
-        "dinner-with-whats-in-my-fridge",
-        "pantry-recipes",
       ],
     }),
 

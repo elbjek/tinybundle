@@ -23,3 +23,11 @@ export const GUIDE_REDIRECTS: Record<string, string> = {
   "what-can-i-cook-with-whats-in-my-fridge": "baby-meal-ideas",
   "how-to-stop-food-waste": "baby-meal-ideas",
 };
+
+/** Guides that duplicated a TinyLayers blog post → that post's slug. */
+export const GUIDES_MOVED_TO_BLOG: Record<string, string> = {
+  "what-should-baby-wear-to-sleep": "what-should-baby-wear-to-sleep",
+  "best-room-temperature-for-baby-sleep": "best-room-temperature-for-baby",
+  "baby-too-hot-or-cold-at-night": "baby-too-hot-or-cold-at-night",
+  "winter-car-seat-coat-rule": "winter-car-seat-coat-rule",
+};

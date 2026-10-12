@@ -41,7 +41,17 @@ const layersCategories = [
   {
     id: "sleep",
     label: "Sleep",
-    href: "/guides/what-should-baby-wear-to-sleep",
+    href: "/tinylayers/blog/what-should-baby-wear-to-sleep",
+  },
+  {
+    id: "tog",
+    label: "Sleep sack TOG",
+    href: "/guides/tog-guide-for-baby-sleep",
+  },
+  {
+    id: "layers",
+    label: "How many layers",
+    href: "/guides/how-many-layers-should-baby-wear",
   },
   {
     id: "neck-check",
@@ -57,6 +67,11 @@ const layersCategories = [
     id: "carrier",
     label: "Carrier",
     href: "/guides/baby-carrier-clothing",
+  },
+  {
+    id: "winter-carrier",
+    label: "Winter carrier",
+    href: "/guides/winter-baby-carrier-clothes",
   },
   {
     id: "car-seat",

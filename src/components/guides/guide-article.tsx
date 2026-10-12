@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { GuidePage } from "@/lib/guides/types";
-import { getGuide } from "@/lib/guides/catalog";
+import { getRelatedLink } from "@/lib/guides/catalog";
 
 const appNames: Record<GuidePage["ctaApp"], string> = {
   tinylayers: "TinyLayers",
@@ -12,8 +12,8 @@ const appNames: Record<GuidePage["ctaApp"], string> = {
 
 export function GuideArticle({ guide }: { guide: GuidePage }) {
   const related = guide.relatedSlugs
-    .map((slug) => getGuide(slug))
-    .filter((g): g is GuidePage => Boolean(g))
+    .map((slug) => getRelatedLink(slug))
+    .filter((link) => link !== undefined)
     .slice(0, 6);
 
   return (
@@ -98,12 +98,9 @@ export function GuideArticle({ guide }: { guide: GuidePage }) {
           </h2>
           <ul className="mt-4 space-y-3">
             {related.map((item) => (
-              <li key={item.slug}>
-                <Link
-                  href={`/guides/${item.slug}`}
-                  className="text-sm font-bold text-amber-deep hover:underline"
-                >
-                  {item.question}
+              <li key={item.href}>
+                <Link href={item.href} className="text-sm font-bold text-amber-deep hover:underline">
+                  {item.label}
                 </Link>
               </li>
             ))}

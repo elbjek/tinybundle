@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MealsMark } from "@/components/tinymeals/mark";
+import { getGuidesByApp } from "@/lib/guides/catalog";
 
 const benefits = [
   {
@@ -35,6 +36,7 @@ export function MealsPage() {
       <Benefits />
       <HowItWorks />
       <Waitlist />
+      <Guides />
       <BundleNote />
     </>
   );
@@ -193,6 +195,36 @@ function Waitlist() {
             Notify me
           </Link>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function Guides() {
+  return (
+    <section className="px-5 pb-16 sm:px-8 sm:pb-20" aria-labelledby="meals-guides-title">
+      <div className="mx-auto w-full max-w-[1100px]">
+        <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-meals-orange-deep">
+          Guides
+        </p>
+        <h2
+          id="meals-guides-title"
+          className="mt-3 max-w-xl text-3xl font-extrabold tracking-tight text-meals-ink sm:text-4xl"
+        >
+          Questions parents ask about solids
+        </h2>
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+          {getGuidesByApp("tinymeals").map((guide) => (
+            <li key={guide.slug}>
+              <Link
+                href={`/guides/${guide.slug}`}
+                className="text-sm font-bold text-meals-orange-deep hover:underline"
+              >
+                {guide.question}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

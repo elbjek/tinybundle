@@ -1,5 +1,7 @@
 import type { GuidePage } from "@/lib/guides/types";
 import { backlogSeeds } from "@/lib/guides/backlog-seeds";
+import { GUIDES_MOVED_TO_BLOG } from "@/lib/guides/redirects";
+import { getLayersArticle } from "@/lib/tinylayers/articles";
 import {
   CHEST_CHECK,
   MEDICAL_DISCLAIMER,
@@ -196,44 +198,6 @@ function sleepBandPage(band: (typeof SLEEP_BANDS)[number]): GuidePage {
 function situationPages(): GuidePage[] {
   return [
     layersPage({
-      slug: "what-should-baby-wear-to-sleep",
-      category: "sleep",
-      question: "What should my baby wear to sleep?",
-      title: "What Should My Baby Wear to Sleep Tonight?",
-      metaTitle: "What Should Baby Wear to Sleep? Room Temp Chart",
-      description:
-        "Dress your baby for the room temperature, not the season. Plain-English TOG and layer guidance, plus the chest check.",
-      quickAnswer:
-        "Dress for the room temperature. In a typical 20–22°C nursery, that’s usually a bodysuit under a 1.0 TOG sleep sack — then confirm with the chest check.",
-      bullets: [
-        "Room temperature decides — not the calendar",
-        "Use a wearable sleep sack, not loose blankets",
-        "Chest check 10–15 minutes after settling",
-      ],
-      sections: [
-        {
-          heading: "The room decides, not the forecast",
-          paragraphs: [
-            "Babies sleep in a room, not in the weather app. Put a thermometer near the crib and dress for that number — then open the sleep band that matches.",
-            CHEST_CHECK,
-            MEDICAL_DISCLAIMER,
-          ],
-        },
-      ],
-      faqs: [
-        {
-          q: "Should baby wear a hat to sleep?",
-          a: "No. Hats indoors during sleep can raise overheating risk.",
-        },
-      ],
-      relatedSlugs: [
-        "baby-sleep-20-23c",
-        "baby-sleep-24-26c",
-        "tog-guide-for-baby-sleep",
-        "best-room-temperature-for-baby-sleep",
-      ],
-    }),
-    layersPage({
       slug: "tog-guide-for-baby-sleep",
       category: "sleep",
       question: "What TOG sleep sack should I use?",
@@ -264,71 +228,6 @@ function situationPages(): GuidePage[] {
         },
       ],
       relatedSlugs: ["what-should-baby-wear-to-sleep", "baby-sleep-20-23c", "baby-sleep-16-19c"],
-    }),
-    layersPage({
-      slug: "best-room-temperature-for-baby-sleep",
-      category: "sleep",
-      question: "What’s the best room temperature for a sleeping baby?",
-      title: "Best Room Temperature for a Sleeping Baby",
-      metaTitle: "Best Baby Room Temperature for Sleep (16–20°C Guide)",
-      description:
-        "Why 16–20°C keeps coming up, what to do when you can’t control the nursery, and how layers fix an imperfect thermostat.",
-      quickAnswer:
-        "UK safe-sleep bodies often cite about 16–20°C. Slightly warmer is workable if you dress lighter.",
-      bullets: [
-        "Aim comfortably cool, not toasty",
-        "If you can’t move the thermostat, move the layers",
-        "Chest check settles the debate",
-      ],
-      sections: [
-        {
-          heading: "Where 16–20°C comes from",
-          paragraphs: [
-            "The Lullaby Trust and NHS name a comfortably cool range tied to reducing overheating risk. The AAP emphasizes avoiding overheating rather than one magic number.",
-            MEDICAL_DISCLAIMER,
-          ],
-        },
-      ],
-      faqs: [
-        {
-          q: "Is 22°C too warm for baby sleep?",
-          a: "Workable with lighter layers — often a 1.0 TOG sack with a short-sleeve bodysuit. Confirm with the chest check.",
-        },
-      ],
-      relatedSlugs: ["what-should-baby-wear-to-sleep", "baby-sleep-20-23c", "baby-too-hot-or-cold-at-night"],
-    }),
-    layersPage({
-      slug: "baby-too-hot-or-cold-at-night",
-      category: "sleep",
-      question: "Is my baby too hot or too cold?",
-      title: "Is My Baby Too Hot or Too Cold at Night?",
-      metaTitle: "Baby Too Hot or Too Cold? Chest Check Signs",
-      description:
-        "How to tell if your baby is overheating or underdressed — the chest check, and why cold hands don’t mean add a blanket.",
-      quickAnswer:
-        "Feel the chest or back of the neck: warm and dry is right; sweaty means remove a layer; cool chest means add one. Cold hands alone are normal.",
-      bullets: [
-        "Chest / neck = honest reading",
-        "Sweat or flushed cheeks → too warm",
-        "Cool chest → add a layer",
-      ],
-      sections: [
-        {
-          heading: "Signs that actually matter",
-          paragraphs: [CHEST_CHECK, MEDICAL_DISCLAIMER],
-        },
-      ],
-      faqs: [
-        {
-          q: "My baby’s hands are cold — should I add a layer?",
-          a: "Not based on hands alone. Check the chest. If warm and dry, you’re fine.",
-        },
-      ],
-      relatedSlugs: [
-        "what-should-baby-wear-to-sleep",
-        "best-room-temperature-for-baby-sleep",
-        "feel-baby-neck-to-check-temperature",
-      ],
     }),
     layersPage({
       slug: "feel-baby-neck-to-check-temperature",
@@ -558,37 +457,6 @@ function situationPages(): GuidePage[] {
         },
       ],
       relatedSlugs: ["winter-car-seat-coat-rule", "baby-stroller-clothing", "baby-clothes-10-14-degrees"],
-    }),
-    layersPage({
-      slug: "winter-car-seat-coat-rule",
-      category: "situation",
-      question: "Can my baby wear a coat in the car seat?",
-      title: "Winter Car Seat Coat Rule (Why Puffy Coats Don’t Mix)",
-      metaTitle: "Baby Coat in Car Seat? Why Bulky Coats Are Unsafe",
-      description: "Why puffy coats and car seats don’t mix, and what to do instead.",
-      quickAnswer:
-        "Don’t put bulky coats under the harness. Thin layers under, warmth over the straps after buckling.",
-      bullets: [
-        "Bulk under straps = dangerous slack",
-        "Thin layers under harness",
-        "Coat or blanket over after buckling",
-      ],
-      sections: [
-        {
-          heading: "The safer winter routine",
-          paragraphs: [
-            "Pre-warm the car if you can. Dress in thin layers, buckle, then cover.",
-            MEDICAL_DISCLAIMER,
-          ],
-        },
-      ],
-      faqs: [
-        {
-          q: "Are thin puffer jackets okay under straps?",
-          a: "If it’s bulky/compressible, keep it off the harness path. When unsure, put warmth on top after buckling.",
-        },
-      ],
-      relatedSlugs: ["baby-car-seat-clothing", "baby-clothes-10-14-degrees", "winter-baby-carrier-clothes"],
     }),
     ...agePages(),
   ];
@@ -1147,6 +1015,14 @@ export const guidePages: GuidePage[] = [
 
 export function getGuide(slug: string): GuidePage | undefined {
   return guidePages.find((p) => p.slug === slug);
+}
+
+/** A related slug as a link: a live guide, or the blog post that replaced a removed guide. */
+export function getRelatedLink(slug: string): { href: string; label: string } | undefined {
+  const guide = getGuide(slug);
+  if (guide) return { href: `/guides/${guide.slug}`, label: guide.question };
+  const post = getLayersArticle(GUIDES_MOVED_TO_BLOG[slug] ?? "");
+  return post ? { href: `/tinylayers/blog/${post.slug}`, label: post.title } : undefined;
 }
 
 export function getGuideSlugs(): string[] {
