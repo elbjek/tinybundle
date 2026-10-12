@@ -81,7 +81,7 @@ const jsonLd = {
 
 export default function TinyMealsRoute() {
   return (
-    <div className="tm-motion relative isolate min-h-screen bg-meals text-meals-ink antialiased selection:bg-meals-peach selection:text-meals-orange-deep">
+    <div className="tm-motion relative isolate min-h-screen font-nunito bg-meals text-meals-ink antialiased selection:bg-meals-peach selection:text-meals-orange-deep">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-meals-sage focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white"

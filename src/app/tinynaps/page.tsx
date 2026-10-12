@@ -51,7 +51,7 @@ const jsonLd = {
 
 export default function TinyNapsRoute() {
   return (
-    <div className="min-h-screen bg-tb text-tb-ink antialiased">
+    <div className="min-h-screen font-nunito bg-tb text-tb-ink antialiased">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <NapsHeader />
       <main>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { MealsFooter, MealsHeader } from "@/components/tinymeals/chrome";
-import { MealsLegalPage, type LegalSection } from "@/components/tinymeals/legal-page";
+import { LegalPage, type LegalSection } from "@/components/legal-page";
 
 export const metadata: Metadata = {
   title: "TinyMeals Privacy Policy",
@@ -110,10 +110,12 @@ const sections: LegalSection[] = [
 
 export default function TinyMealsPrivacyRoute() {
   return (
-    <div className="min-h-screen bg-meals text-meals-ink antialiased">
+    <div className="min-h-screen font-nunito bg-meals text-meals-ink antialiased">
       <MealsHeader />
       <main>
-        <MealsLegalPage
+        <LegalPage
+          app="TinyMeals"
+          linkClassName="text-meals-orange-deep hover:text-meals-orange"
           title="Privacy Policy"
           updated="October 12, 2026"
           intro="Covers the TinyMeals app and tinybundle.app/tinymeals."

@@ -23,7 +23,7 @@ export default async function JoinFamilyRoute(props: PageProps<"/tinymeals/join/
   const shownCode = typeof code === "string" && CODE.test(code) ? code : null;
 
   return (
-    <div className="min-h-screen bg-meals text-meals-ink antialiased selection:bg-meals-orange-tint selection:text-meals-orange-deep">
+    <div className="min-h-screen font-nunito bg-meals text-meals-ink antialiased selection:bg-meals-orange-tint selection:text-meals-orange-deep">
       <MealsHeader />
       <main id="main" className="px-5 py-12 sm:px-8 sm:py-16">
         <div className="mx-auto w-full max-w-md">

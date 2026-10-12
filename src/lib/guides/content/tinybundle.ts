@@ -1,11 +1,11 @@
 import type { GuideContent } from "@/lib/guides/types";
 import {
-  CDC_HOW_MUCH_AND_HOW_OFTEN_TO_BREASTFEED,
   CDC_MILESTONE_TRACKER_APP,
   NHS_BEST_START_IN_LIFE_HEALTH_ADVICE,
   NHS_BREASTFEEDING_IS_MY_BABY_GETTING_ENO,
   NHS_BREASTFEEDING_THE_FIRST_FEW_DAYS,
   NHS_HELPING_SLEEP,
+  NHS_HIGH_TEMPERATURE_FEVER_IN_CHILDREN,
   NHS_HOW_TO_GET_FAMILY_AND_CARER_ACCESS_F,
   NHS_LONELINESS_EVERY_MIND_MATTERS,
   NHS_POSTNATAL_DEPRESSION,
@@ -134,97 +134,98 @@ export const BUNDLE_GUIDES: GuideContent[] = [
   {
     slug: "baby-tracker-alternatives",
     category: "parenting-apps",
-    question: "What are alternatives to baby trackers?",
-    title: "Baby tracker alternatives: what to track, and when to stop",
-    metaTitle: "Baby tracker alternatives: what to track and when to stop",
+    question: "What should I track for my newborn baby?",
+    title: "Baby tracker guide: what is worth tracking for your baby, and what to skip",
+    metaTitle: "Baby tracker: what is worth tracking and what to skip",
     description:
-      "Tired of logging every feed and nap? When baby tracking genuinely helps, what the NHS says to watch in the early days, and simpler alternatives to apps.",
+      "What is worth tracking for a newborn or young baby, what you can skip, the NHS feeding and nappy signs to watch, and how to keep a baby tracker light.",
     quickAnswer:
-      "The best baby tracker alternatives are lighter habits: watch nappies and feeding signs in the first weeks, keep a few notes only when your midwife or health visitor asks, and let the red book hold weight and checks. Most babies do not need every feed and nap logged.",
+      "A baby tracker is most useful for a few things in the early weeks: feeds, wet nappies and dirty nappies. Weight lives in the red book. You can skip logging every minute. Track more when feeding is new, a professional asks, your baby is unwell or you share care, then ease off.",
     bullets: [
-      "Tracking helps most in the first days of feeding and when a professional asks.",
-      "The NHS signs to watch are nappies, feeding and steady weight gain, not minute-by-minute data.",
-      "A notes app, a fridge sheet or the red book can replace a tracker.",
-      "Stopping tracking is fine once feeding is going well.",
+      "Worth tracking early on: feeds, wet nappies and dirty nappies.",
+      "Weight is checked by professionals and kept in the red book.",
+      "Track more for a while when your baby is unwell, a professional asks or you share care.",
+      "Keep it light: a few things, one tap each, and stop when it stops helping.",
     ],
     sections: [
       {
-        heading: "Do you need a baby tracker at all?",
+        heading: "What is worth tracking for a newborn?",
         paragraphs: [
-          "No. Baby trackers are optional. NHS feeding guidance focuses on how your baby feeds, their nappies and their weight, and does not ask you to keep a log of every feed.",
-          "For some parents, data is calming. For others, a dashboard of short naps becomes a nightly worry. If logging makes you feel worse, stop, or keep only what answers a real question.",
-        ],
-      },
-      {
-        heading: "When is tracking genuinely useful?",
-        paragraphs: ["Short-term tracking helps in a few situations:"],
-        list: [
-          "The first week or two of breastfeeding, while you are learning what enough milk looks like",
-          "When your midwife, health visitor or GP asks you to note feeds, nappies or symptoms",
-          "If your baby is unwell, so you can tell NHS 111 or your GP what has changed and when",
-          "When you are giving a medicine and need to remember the last dose",
-          "When you share care overnight and need to hand over clearly",
-        ],
-      },
-      {
-        heading: "What should you watch in the first days of feeding?",
-        paragraphs: [
-          "In the first weeks, nappies tell you more than a feeding timer. The NHS gives these signs that a breastfed baby is getting enough milk:",
+          "In the first weeks, feeds and nappies are worth tracking. They are how the NHS suggests you tell whether a breastfed baby is getting enough milk, and what your midwife or health visitor will likely ask about.",
+          "If you are worried, ask your midwife, health visitor or a breastfeeding specialist for help early, or call the National Breastfeeding Helpline (24 hours) on 0300 100 0212. The NHS signs that a breastfed baby is getting enough milk:",
         ],
         list: [
           "Feeds: as a very rough guide, at least 8 to 12 times or more every 24 hours in the first few weeks, and it could be every 1 to 3 hours in the first few days",
           "Wet nappies: only 2 or 3 in the first 48 hours, then from day 5 at least 6 heavy, wet nappies every 24 hours",
           "Poos: from the fourth day, at least 2 soft, yellow poos about the size of a £2 coin every day for the first few weeks",
-          "Weight: some loss in the first few days is normal, then steady gain",
+          "Weight: some loss in the first 3 to 4 days is normal, then steady gain",
         ],
       },
       {
-        heading: "What to do if the signs worry you",
+        heading: "What can you skip tracking?",
         paragraphs: [
-          "Ask for help early if you are worried about how much milk your baby is getting. Talk to your midwife, health visitor or a breastfeeding specialist, who can watch a feed and check positioning and attachment. The National Breastfeeding Helpline is open 24 hours a day on 0300 100 0212.",
-          "If your baby seems unwell, call NHS 111 or your GP. In an emergency, call 999 or your local emergency number.",
+          "Skip anything that does not answer a question you actually have. The NHS signs to watch are feeding, nappies and weight, which do not mean timing every feed or logging every nap.",
+          "Sleep is the easiest thing to over-track. The NHS says newborns usually wake repeatedly at night for the first few months, and every baby has their own pattern. No chart or wake window can promise when your baby will sleep.",
         ],
       },
       {
-        heading: "How is weight tracked without an app?",
+        heading: "When does baby tracking genuinely help?",
         paragraphs: [
-          "Your baby’s growth is recorded by professionals in the red book (the personal child health record), on centile charts, at their health and development reviews.",
-          "It is normal for babies to lose some weight in the first few days. They are weighed in their first 2 weeks, and most are at or above their birthweight by 3 weeks. After that, the NHS suggests weighing no more than once a month up to 6 months, once every 2 months from 6 to 12 months, and once every 3 months after 1 year, unless there is a concern.",
+          "Tracking helps most when it answers one question for a short time.",
+        ],
+        list: [
+          "The first week or two of breastfeeding",
+          "When your midwife, health visitor or GP asks you to note something",
+          "When your baby is unwell, so you can say what changed and when",
+          "When you give a medicine and need to remember the last dose",
+          "When you share care, so whoever takes over knows what happened last",
         ],
       },
       {
-        heading: "Simple alternatives to baby tracking apps",
-        paragraphs: ["Keep any record as small as the question it answers."],
+        heading: "What to note if your baby is unwell",
+        paragraphs: [
+          "When your baby is ill, timed notes of temperatures, feeds, wet nappies and medicines help NHS 111 or your GP. The NHS says a high temperature is 38°C (100.4°F) or more.",
+          "Call NHS 111 if your baby is under 3 months with a temperature of 38°C or higher, 3 to 6 months with 39°C or higher, or shows signs of dehydration, such as nappies that are not very wet. Call 999 or your local emergency number if your baby is hard to wake, struggling to breathe or has a rash that does not fade under a glass.",
+        ],
+      },
+      {
+        heading: "How is your baby’s weight tracked?",
+        paragraphs: [
+          "Professionals track it for you, on centile charts in the red book (the personal child health record). Babies are weighed in their first 2 weeks, and most are at or above their birthweight by 3 weeks. After that, the NHS suggests weighing no more than once a month up to 6 months, every 2 months from 6 to 12 months, and every 3 months after 1 year, unless there is a concern.",
+        ],
+      },
+      {
+        heading: "Baby tracker alternatives: how to keep it light",
+        paragraphs: [
+          "Track two or three things, not everything, and keep each entry quick enough to do with a baby in your arms. TinyNaps from TinyBundle, coming soon to iPhone, is a calm tracker for sleep, feeds and nappies where most logs take a single tap.",
+        ],
         list: [
           "A paper sheet on the fridge with ticks for wet and dirty nappies",
-          "One line in your phone’s notes app per feed, only while a professional asks",
-          "A photo of anything unusual in a nappy, to show your midwife or health visitor",
-          "The red book for weights, checks and questions to raise at your next review",
+          "A line in your phone’s notes app, only while you need it",
+          "A photo of an unusual nappy to show your midwife or health visitor",
+          "A one-tap tracker app, for logging one-handed in the dark",
         ],
       },
       {
-        heading: "When can you stop tracking?",
+        heading: "When can you stop tracking your baby?",
         paragraphs: [
-          "You can usually stop once feeding is established, nappies look like the NHS signs above, and your baby is gaining weight at their checks. If your health visitor asked you to keep notes, check with them first.",
+          "You can usually ease off once feeding is established, nappies match the NHS signs above and your baby is gaining weight at their checks. If your health visitor asked for notes, check with them first.",
+          "If logging makes you anxious or keeps you awake, that is reason enough to stop. You can always restart for a few days if your baby is unwell.",
         ],
       },
     ],
     faqs: [
       {
-        q: "How many wet nappies should a newborn have?",
-        a: "The NHS says a breastfed baby is likely to have only 2 or 3 wet nappies in the first 48 hours. From day 5, expect at least 6 heavy, wet nappies every 24 hours. If you are worried about how much milk your baby is getting, ask your midwife, health visitor or a breastfeeding specialist for help early.",
-      },
-      {
         q: "How often should a newborn feed?",
-        a: "As a very rough guide, the NHS says a breastfed baby should feed at least 8 to 12 times or more every 24 hours in the first few weeks, possibly every 1 to 3 hours in the first days. The CDC gives a similar range of about 8 to 12 feeds in 24 hours. Feed whenever your baby shows they want to.",
+        a: "As a very rough guide, the NHS says a breastfed baby should feed at least 8 to 12 times or more every 24 hours in the first few weeks, and it could be every 1 to 3 hours in the first few days. Feed whenever your baby shows they want to, for as long as they want.",
       },
       {
         q: "Should I write down every feed?",
-        a: "Usually not. NHS feeding guidance asks you to watch nappies, feeding signs and weight rather than log every feed. Writing feeds down can help for a few days while breastfeeding settles, or if your midwife or health visitor asks. Once feeding is going well, many parents stop and feel calmer for it.",
+        a: "Usually not. NHS feeding guidance asks you to watch nappies, feeding signs and weight rather than log every feed. Notes can help for a few days while breastfeeding settles, or if your midwife or health visitor asks. Once feeding is going well, you can stop.",
       },
       {
-        q: "Do I need to weigh my baby at home?",
-        a: "Usually not. Your midwife or health visitor weighs your baby and records it in the red book, so ask them if you have a worry about weight. After the first 2 weeks, the NHS suggests weighing no more than once a month up to 6 months, every 2 months from 6 to 12 months, and every 3 months after 1 year, unless there is a concern.",
+        q: "Should I track my baby’s sleep?",
+        a: "You do not have to. Newborns usually wake repeatedly in the night for the first few months, and every baby has their own pattern, so a log cannot tell you what is normal. It can help you notice your baby’s rhythm or answer your health visitor. Treat any wake window as a rough guide, never a promise.",
       },
       {
         q: "Is it bad to use a baby tracker app?",
@@ -232,16 +233,17 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       },
     ],
     relatedSlugs: [
-      "must-have-baby-apps",
-      "is-this-normal-baby",
+      "4-month-sleep-regression",
       "baby-wakes-every-hour",
-      "am-i-the-only-one-awake",
+      "is-this-normal-baby",
+      "must-have-baby-apps",
     ],
     sources: [
       NHS_BREASTFEEDING_IS_MY_BABY_GETTING_ENO,
       NHS_BREASTFEEDING_THE_FIRST_FEW_DAYS,
       NHS_YOUR_BABY_S_WEIGHT_AND_HEIGHT,
-      CDC_HOW_MUCH_AND_HOW_OFTEN_TO_BREASTFEED,
+      NHS_HELPING_SLEEP,
+      NHS_HIGH_TEMPERATURE_FEVER_IN_CHILDREN,
     ],
     modifiedAt: "2026-10-12",
   },
