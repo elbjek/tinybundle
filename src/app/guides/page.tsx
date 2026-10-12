@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { APP_IDENTITY, AppMark } from "@/components/guides/app-identity";
 import { GuidesFooter, GuidesHeader } from "@/components/guides/chrome";
+import { HubTabs } from "@/components/guides/hub-tabs";
 import { AGE_GUIDES, OUTDOOR_BANDS, SLEEP_BANDS, getGuidesByApp, guidePages } from "@/lib/guides/catalog";
 import type { GuideApp, GuidePage } from "@/lib/guides/types";
 import { absoluteUrl, SITE_URL } from "@/lib/seo";
@@ -93,13 +94,7 @@ function Hub({ app, title, blurb }: { app: GuideApp; title: string; blurb: strin
     >
       <div className="mb-6 flex flex-wrap items-start justify-between gap-x-10 gap-y-4">
         <div className="min-w-0 max-w-xl">
-          <p className={`flex items-center gap-2.5 text-xs font-extrabold uppercase tracking-[0.06em] ${identity.ink}`}>
-            <span className={`flex h-9 w-9 flex-none items-center justify-center rounded-xl ${identity.tile}`}>
-              <AppMark app={app} className="h-6 w-6" />
-            </span>
-            {identity.name}
-          </p>
-          <h2 id={`hub-${app}`} className="mt-3.5 scroll-mt-40 text-balance text-[clamp(24px,3vw,32px)] font-extrabold leading-[1.15]">
+          <h2 id={`hub-${app}`} className="scroll-mt-40 text-balance text-[clamp(24px,3vw,32px)] font-extrabold leading-[1.15]">
             {title}
           </h2>
           <p className="mt-2 text-pretty text-[15px] leading-relaxed text-tb-body">{blurb}</p>
@@ -152,18 +147,19 @@ export default function GuidesIndexPage() {
         <p className="mt-4 max-w-[52ch] text-pretty text-[clamp(16px,1.5vw,18px)] leading-relaxed text-tb-body">
           Each guide answers one question well, then points to the TinyBundle app made for it.
         </p>
-        <p className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-bold text-tb-body">
-          {HUBS.map((hub) => (
-            <a key={hub.app} href={`#hub-${hub.app}`} className="hover:text-tb-ink">
-              {APP_IDENTITY[hub.app].name}
-            </a>
-          ))}
-        </p>
-
-        <div className="mt-[clamp(40px,6vw,72px)] space-y-5">
-          {HUBS.map((hub) => (
-            <Hub key={hub.app} {...hub} />
-          ))}
+        <div className="mt-8">
+          <HubTabs
+            tabs={HUBS.map((hub) => ({
+              id: hub.app,
+              label: APP_IDENTITY[hub.app].name,
+              icon: (
+                <span className={`flex h-8 w-8 items-center justify-center rounded-full ${APP_IDENTITY[hub.app].tile}`}>
+                  <AppMark app={hub.app} className="h-5 w-5" />
+                </span>
+              ),
+              panel: <Hub {...hub} />,
+            }))}
+          />
         </div>
       </main>
       <GuidesFooter />
