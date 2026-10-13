@@ -1,7 +1,6 @@
 import { bloomsOg, createOgImage, ogSize } from "@/lib/og";
 
-export const alt =
-  "TinyBlooms: One lovely thing to do with baby. Age-based ideas, coming soon.";
+export const alt = "TinyBlooms: baby activities, milestones and memories, ages 0 to 5.";
 export const size = ogSize;
 export const contentType = "image/png";
 
