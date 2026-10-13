@@ -3,6 +3,7 @@ import { BundleQuads } from "@/components/app-identity";
 import { launch } from "@/components/home/launch-copy";
 import { WaitlistForm } from "@/components/site/waitlist-form";
 import { CONTACT_EMAIL, getApp, type AppSlug } from "@/lib/apps";
+import { COOKIE_SETTINGS_HREF } from "@/lib/consent";
 
 const STEPS = [
   { color: "#55915E", title: "Add your baby", text: "Their name and age, so each app matches this month, not last. Syncing between the apps is something we’re exploring." },
@@ -101,6 +102,7 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
       { href: "#faq", label: "FAQs" },
       { href: "/privacy", label: "Privacy" },
       { href: "/terms", label: "Terms" },
+      { href: COOKIE_SETTINGS_HREF, label: "Cookie settings" },
     ],
   },
 ];
