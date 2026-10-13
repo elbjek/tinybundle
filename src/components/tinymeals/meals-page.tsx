@@ -18,7 +18,7 @@ export const MEALS_FAQS: FaqItem[] = [
   },
   {
     q: "How much does it cost?",
-    a: "Getting ready is free: the readiness checklist, starter guides, gear list and dated check-ins. From first tastes, TinyMeals Premium adds first foods week by week, allergen pacing and a record, and meals, logging and sharing. Choose yearly, with 7 days free, or monthly with no trial. Cancel anytime, and share it with up to 6 caregivers.",
+    a: "Getting ready is free: the readiness checklist, starter guides, gear list and dated check-ins. From first tastes, TinyMeals Premium adds first foods week by week, allergen pacing and a record, and meals, logging and sharing. Choose yearly at $29.99 with a 7-day free trial, or $6.99 a month. Cancel anytime, and share it with up to 6 caregivers.",
   },
   {
     q: "What ages is it for?",
@@ -455,8 +455,8 @@ function GetTheApp() {
             Know what&rsquo;s for lunch before they&rsquo;re hungry.
           </h2>
           <p className="mt-3 max-w-[46ch] text-pretty text-base leading-relaxed text-white">
-            Free while you get ready for solids. From first tastes, Premium starts with 7 days free on the yearly plan, and
-            you can share it with up to 6 caregivers.
+            Free while you get ready for solids. From first tastes, Premium is $29.99 a year with a 7-day free trial, or $6.99
+            a month, shared with up to 6 caregivers.
           </p>
         </div>
         <AppStoreCta app={app} waitlistHref="/#join" />
