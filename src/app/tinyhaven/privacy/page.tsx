@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { GuidesFooter, GuidesHeader } from "@/components/guides/chrome";
 import { LegalPage, type LegalSection } from "@/components/legal-page";
 
 export const metadata: Metadata = {
-  title: { absolute: "TinyHaven Privacy Policy" },
+  title: { absolute: "Privacy policy | TinyHaven" },
   description: "How TinyHaven and Two Brick Labs collect, use and protect information in the late-night parent companion app.",
   alternates: { canonical: "/tinyhaven/privacy" },
   robots: { index: true, follow: true },
@@ -117,20 +116,20 @@ const sections: LegalSection[] = [
 
 export default function TinyHavenPrivacyRoute() {
   return (
-    <div className="min-h-screen bg-tb font-nunito text-tb-ink antialiased">
-      <GuidesHeader />
-      <main>
-        <LegalPage
-          app="TinyHaven"
-          title="Privacy Policy"
-          updated="July 26, 2026"
-          intro="Covers the TinyHaven app."
-          sections={sections}
-          related={{ href: "/tinyhaven/terms", label: "Terms of Use" }}
-          linkClassName="text-tb-amber-ink hover:text-tb-ink"
-        />
-      </main>
-      <GuidesFooter />
-    </div>
+    <LegalPage
+      app="TinyHaven"
+      base="/tinyhaven"
+      doc="privacy"
+      title="Privacy policy"
+      updated="26 July 2026"
+      intro="What TinyHaven collects, how we use it to run and protect the haven, and the choices you have. Covers the TinyHaven app."
+      short={[
+        { h: "Built to feel anonymous", p: "No public profiles or follower lists. Other parents never see your email or name." },
+        { h: "Notes don’t last", p: "Quiet notes are deleted about six hours after posting, and your presence ends by 6am." },
+        { h: "No selling, no ad profiles", p: "We don’t sell your information or use check-ins and notes to build advertising profiles." },
+      ]}
+      sections={sections}
+      email="contact@twobricklabs.com"
+    />
   );
 }

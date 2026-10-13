@@ -121,7 +121,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
               style={{ color: cur.deep }}
             >
               <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
-                Check out the {cur.name} page
+                {`Check out the ${cur.name} page`}
               </span>
               <span aria-hidden="true">&rarr;</span>
             </Link>
@@ -136,46 +136,49 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
             </div>
           </div>
 
-          <div className="hidden min-w-0 items-center gap-3.5 pb-1.5 min-[1100px]:flex">
-            {cur.live ? (
-              <QrLink
-                key={hero}
-                app={cur.app}
-                name={cur.name}
-                href={cur.ctaHref}
-                className="h-[124px] w-[124px] rounded-2xl p-3 [animation:tb-swap_.4s_ease_both]"
-              />
-            ) : null}
-            <div className="flex min-w-0 flex-1 flex-col items-stretch gap-2.5">
-              <a
-                href={cur.ctaHref}
-                rel={cur.live ? "noopener" : undefined}
-                className="flex h-14 items-center justify-center gap-2.5 rounded-[18px] px-5 text-center text-base font-extrabold text-white transition-[background-color] duration-[600ms] hover:text-white hover:brightness-[0.92] active:scale-[0.97]"
-                style={{ background: cur.btn }}
-              >
-                {cur.live ? (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M12 4v11M7 10l5 5 5-5M5 20h14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                ) : null}
-                <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
-                  {cur.ctaLabel}
-                </span>
-              </a>
-              <Link
-                href={`/${cur.app}`}
-                className="flex h-[54px] items-center justify-center gap-2 rounded-[18px] bg-white text-[15.5px] font-extrabold shadow-[0_2px_10px_rgba(90,60,20,0.08)] transition-[color,box-shadow] duration-[600ms] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)] active:scale-[0.98]"
-                style={{ color: cur.deep }}
-              >
-                <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
-                  Check out the {cur.name} page
-                </span>
-                <span aria-hidden="true">&rarr;</span>
-              </Link>
-              <p className="m-0 flex items-center justify-center gap-2 text-center text-[12.5px] font-bold text-tb-muted">
-                <span className="h-[7px] w-[7px] flex-none rounded-full bg-[#5F6F4B]" />
-                {moreSoon ? `${outNow} · ${moreSoon}` : outNow}
-              </p>
+          <div className="hidden min-w-0 flex-col gap-2.5 pb-1.5 min-[1100px]:flex">
+            <a
+              href={cur.ctaHref}
+              rel={cur.live ? "noopener" : undefined}
+              className="flex h-14 items-center justify-center gap-2.5 whitespace-nowrap rounded-[18px] px-5 text-center text-base font-extrabold text-white transition-[background-color] duration-[600ms] hover:text-white hover:brightness-[0.92] active:scale-[0.97]"
+              style={{ background: cur.btn }}
+            >
+              {cur.live ? (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="flex-none">
+                  <path d="M12 4v11M7 10l5 5 5-5M5 20h14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              ) : null}
+              <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
+                {cur.ctaLabel}
+              </span>
+            </a>
+            <Link
+              href={`/${cur.app}`}
+              className="flex h-[54px] items-center justify-center gap-2 whitespace-nowrap rounded-[18px] bg-white px-5 text-[15.5px] font-extrabold shadow-[0_2px_10px_rgba(90,60,20,0.08)] transition-[color,box-shadow] duration-[600ms] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)] active:scale-[0.98]"
+              style={{ color: cur.deep }}
+            >
+              <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
+                {`Check out the ${cur.name} page`}
+              </span>
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+            <div className="mt-1.5 flex min-h-[84px] min-w-0 items-center gap-3.5">
+              {cur.live ? (
+                <QrLink
+                  key={hero}
+                  app={cur.app}
+                  name={cur.name}
+                  href={cur.ctaHref}
+                  className="h-[84px] w-[84px] rounded-2xl p-2 [animation:tb-swap_.4s_ease_both]"
+                />
+              ) : null}
+              <div className="flex min-w-0 flex-col gap-1">
+                {cur.live ? <p className="m-0 text-[13px] font-bold text-tb-body">Scan with your iPhone camera</p> : null}
+                <p className="m-0 flex items-center gap-2 text-[12.5px] font-bold text-tb-muted">
+                  <span className="h-[7px] w-[7px] flex-none rounded-full bg-[#5F6F4B]" />
+                  {moreSoon ? `${outNow} · ${moreSoon}` : outNow}
+                </p>
+              </div>
             </div>
           </div>
 

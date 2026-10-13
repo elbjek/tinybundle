@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { GuidesFooter, GuidesHeader } from "@/components/guides/chrome";
 import { LegalPage, type LegalSection } from "@/components/legal-page";
 
 export const metadata: Metadata = {
-  title: { absolute: "TinyHaven Terms of Use" },
+  title: { absolute: "Terms of use | TinyHaven" },
   description: "The terms for using TinyHaven, the late-night companion app for parents from Two Brick Labs.",
   alternates: { canonical: "/tinyhaven/terms" },
   robots: { index: true, follow: true },
@@ -172,20 +171,20 @@ const sections: LegalSection[] = [
 
 export default function TinyHavenTermsRoute() {
   return (
-    <div className="min-h-screen bg-tb font-nunito text-tb-ink antialiased">
-      <GuidesHeader />
-      <main>
-        <LegalPage
-          app="TinyHaven"
-          title="Terms of Use"
-          updated="July 26, 2026"
-          intro="Covers the TinyHaven app."
-          sections={sections}
-          related={{ href: "/tinyhaven/privacy", label: "Privacy Policy" }}
-          linkClassName="text-tb-amber-ink hover:text-tb-ink"
-        />
-      </main>
-      <GuidesFooter />
-    </div>
+    <LegalPage
+      app="TinyHaven"
+      base="/tinyhaven"
+      doc="terms"
+      title="Terms of use"
+      updated="26 July 2026"
+      intro="The agreement between you and Two Brick Labs for the TinyHaven app, including what belongs in quiet notes and how reports work."
+      short={[
+        { h: "Company, not care", p: "TinyHaven isn’t a medical, counselling or emergency service. If you’re in danger, contact your local emergency number." },
+        { h: "Keep notes kind", p: "No attacks, hate, threats, sexual content, self-harm encouragement, ads or anyone’s private information." },
+        { h: "Report or block any note", p: "Reporting hides a note from you straight away, and enough reports hide it from everyone." },
+      ]}
+      sections={sections}
+      email="support@twobricklabs.com"
+    />
   );
 }

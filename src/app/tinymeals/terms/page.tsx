@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { MealsFooter, MealsHeader } from "@/components/tinymeals/chrome";
 import { LegalPage, type LegalSection } from "@/components/legal-page";
 
 export const metadata: Metadata = {
-  title: "TinyMeals Terms of Use",
+  title: { absolute: "Terms of use | TinyMeals" },
   description: "The terms for using TinyMeals, including subscriptions, family sharing and why TinyMeals is not medical advice.",
   alternates: { canonical: "/tinymeals/terms" },
 };
@@ -119,20 +118,20 @@ const sections: LegalSection[] = [
 
 export default function TinyMealsTermsRoute() {
   return (
-    <div className="min-h-screen font-nunito bg-meals text-meals-ink antialiased">
-      <MealsHeader />
-      <main>
-        <LegalPage
-          app="TinyMeals"
-          linkClassName="text-meals-orange-deep hover:text-meals-orange"
-          title="Terms of Use"
-          updated="October 12, 2026"
-          intro="Covers the TinyMeals app and tinybundle.app/tinymeals."
-          sections={sections}
-          related={{ href: "/tinymeals/privacy", label: "Privacy Policy" }}
-        />
-      </main>
-      <MealsFooter />
-    </div>
+    <LegalPage
+      app="TinyMeals"
+      base="/tinymeals"
+      doc="terms"
+      title="Terms of use"
+      updated="12 October 2026"
+      intro="The agreement between you and Two Brick Labs for the TinyMeals app and tinybundle.app/tinymeals, including subscriptions and health guidance."
+      short={[
+        { h: "Guidance, not medical advice", p: "TinyMeals gives general feeding information. It doesn’t replace your doctor, health visitor or dietitian." },
+        { h: "Subscriptions go through Apple", p: "Premium renews automatically. Cancel in your Apple ID settings at least 24 hours before it renews." },
+        { h: "Your food history is yours", p: "You own what you log. We store it only to run the app for you and your family." },
+      ]}
+      sections={sections}
+      email="support@twobricklabs.com"
+    />
   );
 }

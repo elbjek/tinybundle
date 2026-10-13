@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { MealsFooter, MealsHeader } from "@/components/tinymeals/chrome";
 import { LegalPage, type LegalSection } from "@/components/legal-page";
 
 export const metadata: Metadata = {
-  title: "TinyMeals Privacy Policy",
+  title: { absolute: "Privacy policy | TinyMeals" },
   description: "What TinyMeals collects, why, who processes it and how to export or delete your baby’s food history.",
   alternates: { canonical: "/tinymeals/privacy" },
 };
@@ -110,20 +109,20 @@ const sections: LegalSection[] = [
 
 export default function TinyMealsPrivacyRoute() {
   return (
-    <div className="min-h-screen font-nunito bg-meals text-meals-ink antialiased">
-      <MealsHeader />
-      <main>
-        <LegalPage
-          app="TinyMeals"
-          linkClassName="text-meals-orange-deep hover:text-meals-orange"
-          title="Privacy Policy"
-          updated="October 12, 2026"
-          intro="Covers the TinyMeals app and tinybundle.app/tinymeals."
-          sections={sections}
-          related={{ href: "/tinymeals/terms", label: "Terms of Use" }}
-        />
-      </main>
-      <MealsFooter />
-    </div>
+    <LegalPage
+      app="TinyMeals"
+      base="/tinymeals"
+      doc="privacy"
+      title="Privacy policy"
+      updated="12 October 2026"
+      intro="What TinyMeals collects, why, who processes it for us and how to export or delete your baby’s food history. Covers the TinyMeals app and tinybundle.app/tinymeals."
+      short={[
+        { h: "Works without an account", p: "Your baby’s profile and food log stay on your phone unless you sign in to sync and share with family." },
+        { h: "No ads, no selling", p: "We don’t sell your information, show ads or track you across other companies’ apps and websites." },
+        { h: "Export or delete any time", p: "Export your food history as a CSV file, or delete your account in Settings or by email." },
+      ]}
+      sections={sections}
+      email="support@twobricklabs.com"
+    />
   );
 }
