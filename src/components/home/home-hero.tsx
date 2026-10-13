@@ -12,7 +12,7 @@ import { QrLink } from "@/components/home/qr-link";
 const ADVANCE_MS = 5200;
 const QUAD_RADII = ["3px 1.5px 1.5px 1.5px", "1.5px 3px 1.5px 1.5px", "1.5px 1.5px 1.5px 3px", "1.5px 1.5px 3px 1.5px"];
 const QUAD_COLORS = ["#55915E", "#D17A2A", "#3D6DA8", "#232F48"];
-const PHONE_FRAME = "absolute w-[260px] overflow-hidden rounded-[40px] origin-top";
+const PHONE_FRAME = "absolute h-[520px] w-[260px] overflow-hidden rounded-[40px] origin-top";
 /** How far every door phone runs past the card's bottom edge, so a tall screen never leaves an empty strip under it. */
 const PHONE_BLEED = 40;
 
@@ -154,10 +154,10 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
               </span>
               Calm parenting apps for baby sleep, first foods, play and daily care
             </h1>
-            <p className="m-0 mt-3 min-h-[2.16em] max-w-[15ch] text-balance text-[clamp(32px,8.2vw,46px)] font-extrabold leading-[1.08] text-tb-ink min-[1100px]:mt-[18px] min-[1100px]:min-h-[2.1em] min-[1100px]:max-w-[20ch] min-[1100px]:text-[clamp(36px,min(4.3vw,7vh),56px)] min-[1100px]:leading-[1.05]">
+            <p className="m-0 mt-3 min-h-[2.16em] text-[length:min(8.9vw,46px)] font-extrabold min-[760px]:text-[length:min(calc((92vw_-_444px)/10.2),46px)] leading-[1.08] text-tb-ink min-[1100px]:mt-[18px] min-[1100px]:min-h-[2.1em] min-[1100px]:max-w-[20ch] min-[1100px]:text-[clamp(36px,min(4.3vw,7vh),56px)] min-[1100px]:leading-[1.05]">
               <span key={hero} className="block [animation:tb-swap_.45s_ease_both]">
-                <span className="block min-[1100px]:whitespace-nowrap">{cur.title}</span>
-                <span className="block transition-colors duration-[800ms] min-[1100px]:whitespace-nowrap" style={{ color: cur.deep }}>
+                <span className="block whitespace-nowrap">{cur.title}</span>
+                <span className="block whitespace-nowrap transition-colors duration-[800ms]" style={{ color: cur.deep }}>
                   {cur.title2}
                 </span>
               </span>
@@ -234,7 +234,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
             {cur.live ? <p className="m-0 text-[13px] font-bold text-tb-body">Scan the code with your iPhone camera</p> : null}
           </div>
 
-          <div className="w-full min-w-0 max-w-[420px] justify-self-center min-[1100px]:hidden">
+          <div className="w-full min-w-0 max-w-[420px] justify-self-center min-[760px]:flex min-[760px]:flex-col min-[760px]:self-stretch min-[1100px]:hidden">
             <div
               role="tablist"
               aria-label="The four TinyBundle apps"
@@ -267,7 +267,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
               })}
             </div>
             <div
-              className="mt-2.5 grid"
+              className="mt-2.5 grid min-[760px]:min-h-0 min-[760px]:flex-1"
               onTouchStart={(e) => {
                 touchX.current = e.touches[0].clientX;
               }}
@@ -284,7 +284,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
                     id={`hero-card-${p.app}`}
                     role="tabpanel"
                     aria-labelledby={`hero-tab-${p.app}`}
-                    className="relative h-[450px] overflow-hidden rounded-[28px] [grid-area:1/1] max-[379px]:h-[480px] min-[760px]:h-[470px]"
+                    className="relative h-[450px] overflow-hidden rounded-[28px] [grid-area:1/1] max-[379px]:h-[480px] min-[760px]:h-auto min-[760px]:min-h-[380px]"
                     style={{
                       background: p.tile,
                       opacity: on ? 1 : 0,
