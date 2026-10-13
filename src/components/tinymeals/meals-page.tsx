@@ -18,7 +18,7 @@ export const MEALS_FAQS: FaqItem[] = [
   },
   {
     q: "How much does it cost?",
-    a: "Getting ready for solids is free. Once first foods start, TinyMeals Premium is a yearly or monthly subscription, and the yearly plan starts with 7 days free. Cancel anytime. One subscription covers up to 6 caregivers, so a partner or grandparent can see the same plan.",
+    a: "Getting ready is free: the readiness checklist, starter guides, gear list and dated check-ins. From first tastes, TinyMeals Premium adds first foods week by week, allergen pacing and a record, and meals, logging and sharing. Choose yearly, with 7 days free, or monthly with no trial. Cancel anytime, and share it with up to 6 caregivers.",
   },
   {
     q: "What ages is it for?",
@@ -455,8 +455,8 @@ function GetTheApp() {
             Know what&rsquo;s for lunch before they&rsquo;re hungry.
           </h2>
           <p className="mt-3 max-w-[46ch] text-pretty text-base leading-relaxed text-white">
-            Free while you get ready, then 7 days free on the yearly plan. Share it with up to 6 caregivers, so everyone who
-            feeds your baby sees the same plan.
+            Free while you get ready for solids. From first tastes, Premium starts with 7 days free on the yearly plan, and
+            you can share it with up to 6 caregivers.
           </p>
         </div>
         <AppStoreCta app={app} waitlistHref="/#join" />

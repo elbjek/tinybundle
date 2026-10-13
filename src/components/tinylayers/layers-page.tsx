@@ -17,7 +17,7 @@ export const LAYERS_FAQS: FaqItem[] = [
   },
   {
     q: "Is TinyLayers free?",
-    a: "TinyLayers is free to download, and setup shows your baby’s first sleep plan before you pay. To keep using it you need a plan: monthly, with a 7-day free trial where the App Store offers one, or a one-time lifetime unlock. Either one includes every situation, unlimited check-ins, history, multiple children, and sync. You create an account with Apple, Google, or an email code after you choose a plan.",
+    a: "TinyLayers is free to download, and setup shows your baby’s first sleep plan before you pay. Then choose Premium: $4.49 a month, cancel anytime, or $14.99 once, yours for good with no subscription. Premium includes unlimited check-ins, guidance that learns, your full check-in history, unlimited children, Apple Watch and widgets, sync across phones, and your room temperature, remembered. You create an account with Apple, Google or an email code after you choose a plan.",
   },
   {
     q: "What is TOG?",
@@ -510,7 +510,7 @@ function GetTheApp() {
             Close the nursery door calm tonight.
           </h2>
           <p className="mt-3 max-w-[44ch] text-pretty text-base leading-[1.6] text-white">
-            Download TinyLayers for iOS for plain-English outfit guidance for sleep, naps, and every outing. Monthly starts with a 7-day free trial where the App Store offers it.
+            Plain-English outfit guidance for sleep, naps and every outing. $4.49 a month, cancel anytime, or pay once: $14.99, yours for good.
           </p>
         </div>
         <AppStoreCta app={app} waitlistHref="/#join" liveLabel="Download on the App Store" />
