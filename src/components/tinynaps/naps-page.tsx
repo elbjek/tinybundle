@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { AppTile } from "@/components/app-identity";
+import { StoreLabel } from "@/components/app-store-badge";
 import { AppStoreCta } from "@/components/site/app-store-cta";
 import { Faq, type FaqItem } from "@/components/site/faq";
 import { GuidesTeaser } from "@/components/site/guides-teaser";
@@ -15,13 +16,11 @@ export const NAPS_CTA = cta.live
   ? {
       ...cta,
       nav: "Get the app",
-      hero: "Download on the App Store",
       text: "Free to download on iPhone. Share it with everyone who looks after your baby.",
     }
   : {
       ...cta,
       nav: "Get early access",
-      hero: "Get early access",
       text: "TinyNaps is coming to iPhone soon. Leave your email and we’ll tell you the day it’s out.",
     };
 
@@ -229,12 +228,7 @@ function Hero() {
               rel={NAPS_CTA.live ? "noopener" : undefined}
               className="flex h-[54px] items-center gap-[11px] rounded-[18px] bg-[#232F48] px-6 text-base font-extrabold text-white hover:bg-[#1A2337] hover:text-white active:scale-[0.97]"
             >
-              {NAPS_CTA.live ? (
-                <svg width="20" height="24" viewBox="0 0 18 22" fill="#FFFFFF" aria-hidden="true">
-                  <path d="M14.7 11.6c0-2.3 1.9-3.5 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.7 2.3 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.2-2.6 0 0-2.4-.9-2.4-3.6ZM12.5 4.3c.6-.8 1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.9 1 .1 2-.5 2.7-1.3Z" />
-                </svg>
-              ) : null}
-              <span>{NAPS_CTA.hero}</span>
+              {NAPS_CTA.live ? <StoreLabel /> : <span>Get early access</span>}
             </a>
             <a
               href="#try"
@@ -527,7 +521,7 @@ function GetTinyNaps() {
           <p className="mt-3 max-w-[46ch] text-pretty text-base leading-[1.6] text-white">{NAPS_CTA.text}</p>
         </div>
         {NAPS_CTA.live ? (
-          <AppStoreCta app={app} waitlistHref="#get" liveLabel="Download on the App Store" />
+          <AppStoreCta app={app} waitlistHref="#get" />
         ) : (
           <div className="relative min-w-0 max-w-[440px] flex-[1_1_min(100%,360px)]">
             <WaitlistForm list="TinyNaps launch" button="Tell me at launch" />

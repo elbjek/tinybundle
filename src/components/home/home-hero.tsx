@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { AppTile } from "@/components/app-identity";
+import { StoreLabel } from "@/components/app-store-badge";
 import type { HeroPanel } from "@/components/home/hero-moments";
 import { HomeNav } from "@/components/home/home-nav";
 import { onTabKeys, REDUCED_MOTION, useMedia } from "@/components/home/interaction";
@@ -65,13 +66,12 @@ function HeroAction({
   const content = (
     <>
       {action.download ? (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="flex-none">
-          <path d="M12 4v11M7 10l5 5 5-5M5 20h14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      ) : null}
-      <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
-        {action.label}
-      </span>
+        <StoreLabel />
+      ) : (
+        <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
+          {action.label}
+        </span>
+      )}
       {action.external || action.href.startsWith("#") ? null : <span aria-hidden="true">&rarr;</span>}
     </>
   );
