@@ -144,8 +144,6 @@ export function TryIt({ children }: { children: ReactNode }) {
   const [min, max] = RANGE[s.ctx];
   const tempLabel = `${t}°C`;
   const answer = outfitAnswer(s.ctx, t);
-  const warmer = outfitAnswer(s.ctx, t - 3);
-  const cooler = outfitAnswer(s.ctx, t + 3);
 
   const plan = answer.rows.filter((r) => r.wearable).map((r) => r.name);
   const worn = plan.filter((n) => !s.off[n]);
@@ -161,25 +159,29 @@ export function TryIt({ children }: { children: ReactNode }) {
       bg: "#E7EFF7",
       ink: "#2F5B8A",
       kicker: "A little cool",
-      title: "Add one layer next time",
-      body: "Cool chest, settled baby? Easy fix. We’ll nudge the outfit one step warmer.",
-      change: warmer.title === answer.title ? "Add a light layer on top" : warmer.title,
+      title: "Add one thin layer",
+      body: "A cool chest usually means one layer short, not a whole extra outfit. Add a thin layer now and check again in twenty minutes.",
+      change: isSleep
+        ? "Same plan for now. If it keeps feeling cool here, the base layer moves one step warmer."
+        : "Same plan for now. Add a thin layer if they feel cool again.",
     },
     ok: {
       bg: "#EEF3E8",
       ink: "#4F5D3E",
       kicker: "Just right",
       title: "That’s a win. Saved.",
-      body: "We’ll remember this outfit works for your baby at this temperature.",
+      body: "Warm and dry on the chest is what you want. Saved to your baby’s history for this temperature.",
       change: `Keep it: ${lc(answer.title)}`,
     },
     warm: {
       bg: "#F3EADF",
       ink: "#8A4F14",
       kicker: "Running warm",
-      title: "Try one layer lighter",
-      body: "A sweaty neck means too much. Take a layer off now, and we’ll adjust next time.",
-      change: cooler.title === answer.title ? "Drop the outer layer" : cooler.title,
+      title: "Take one layer off",
+      body: "A sweaty neck means one layer too many. Take the outermost layer off now and check again in twenty minutes.",
+      change: isSleep
+        ? "Same plan for now. If it keeps running warm here, the base layer moves one step lighter."
+        : "Same plan for now. Leave the outer layer off if they run warm again.",
     },
   };
   let result = results[s.feel ?? "ok"];

@@ -5,27 +5,21 @@ import { useState } from "react";
 type Week = { theme: string; note: string; foods: { name: string; allergen?: boolean }[] };
 
 const WEEKS: Week[] = [
-  { theme: "First tastes", note: "Smooth, single vegetables to start. Bitter and sweet both count.", foods: [{ name: "Sweet potato" }, { name: "Carrot" }, { name: "Avocado" }] },
-  { theme: "Gentle greens", note: "Slightly bitter veg early on helps them accept greens later.", foods: [{ name: "Courgette" }, { name: "Pea" }, { name: "Broccoli" }] },
-  { theme: "Soft fruits", note: "Naturally sweet, easy to mash or offer as soft pieces.", foods: [{ name: "Banana" }, { name: "Pear" }, { name: "Apple" }] },
-  { theme: "Grains", note: "Thicker textures and the first iron-rich staples.", foods: [{ name: "Oats" }, { name: "Rice" }, { name: "Lentils" }] },
-  { theme: "First allergen", note: "Egg first, well cooked, on a morning you’re at home.", foods: [{ name: "Egg", allergen: true }, { name: "Butternut" }, { name: "Mango" }] },
-  { theme: "Dairy", note: "Full-fat plain yoghurt and cheese, cooked into meals.", foods: [{ name: "Yoghurt", allergen: true }, { name: "Cauliflower" }, { name: "Peach" }] },
-  { theme: "Nut butters", note: "Smooth peanut thinned into porridge, never whole nuts.", foods: [{ name: "Peanut", allergen: true }, { name: "Beetroot" }, { name: "Blueberry" }] },
-  { theme: "Wheat", note: "Toast fingers and soft pasta join the table.", foods: [{ name: "Wheat", allergen: true }, { name: "Spinach" }, { name: "Plum" }] },
-  { theme: "Fish", note: "Flaked, boneless fish, mashed into familiar veg.", foods: [{ name: "Salmon", allergen: true }, { name: "Green bean" }, { name: "Kiwi" }] },
-  { theme: "Mixing it up", note: "Last allergens, then combinations of foods they know.", foods: [{ name: "Soy", allergen: true }, { name: "Sesame", allergen: true }, { name: "Tomato" }] },
+  { theme: "First tastes", note: "Mild vegetables first, so sweet tastes don’t take over.", foods: [{ name: "Sweet potato" }, { name: "Carrot" }, { name: "Avocado" }] },
+  { theme: "Iron and egg", note: "Egg joins on its own, early in the day, so you can watch for a reaction.", foods: [{ name: "Red lentil" }, { name: "Banana" }, { name: "Egg", allergen: true }] },
+  { theme: "More iron", note: "From six months an iron-rich taste leads the week, then more single tastes.", foods: [{ name: "Beef" }, { name: "Pear" }, { name: "Broccoli" }] },
+  { theme: "Peanut and oats", note: "Peanut butter joins on its own, early in the day, so you can watch for a reaction.", foods: [{ name: "Peas" }, { name: "Oats" }, { name: "Peanut butter", allergen: true }] },
 ];
 
 /** The sample baby is in week 3: earlier weeks are done. */
 const CURRENT_WEEK = 2;
 
 const RULES = [
-  { title: "One new food every 2–3 days", body: "Offered a few days running so the taste becomes familiar." },
-  { title: "Allergens once tastes go well", body: "One at a time, a few days apart, starting with egg." },
+  { title: "One new food every few days", body: "If something doesn’t agree, you know which food it was." },
+  { title: "Allergens early, one at a time", body: "Egg, then peanut, then fish, every other week from week 2." },
   {
     title: "Then everyday meals take over",
-    body: "Once the ten weeks are done, Home switches to a daily meal built from what they’ve tried.",
+    body: "Once the ten first tastes are done, Home switches to a daily meal built from what they’ve tried.",
   },
 ];
 
@@ -42,7 +36,7 @@ export function FirstFoodsPlan() {
 
   return (
     <>
-      <div className="mt-[30px] grid grid-cols-2 gap-2 min-[480px]:grid-cols-5 min-[1080px]:grid-cols-10">
+      <div className="mt-[30px] grid grid-cols-2 gap-2 min-[480px]:grid-cols-4">
         {WEEKS.map((w, i) => {
           const on = selected === i;
           return (
@@ -87,7 +81,7 @@ export function FirstFoodsPlan() {
         >
           <div aria-hidden="true" className="absolute -bottom-[30px] -right-[30px] h-[110px] w-[110px] rounded-full bg-meals-mint opacity-70" />
           <p className="relative text-[11px] font-extrabold uppercase tracking-[0.07em] text-meals-orange-deep">
-            Week {selected + 1} of 10
+            Week {selected + 1}
           </p>
           <h3 className="relative mt-1.5 text-balance text-2xl font-extrabold leading-[1.2]">{week.theme}</h3>
           <p className="relative mt-1.5 max-w-[46ch] text-pretty text-[14.5px] leading-relaxed text-meals-body">{week.note}</p>

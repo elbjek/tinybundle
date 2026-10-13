@@ -44,7 +44,7 @@ const LISTED: { slug: AppSlug; about: string }[] = [
   },
   {
     slug: "tinymeals",
-    about: "Baby-led weaning and first foods planner with a 10-week plan, age-right recipes and allergen tracking.",
+    about: "Baby-led weaning and first foods planner with ten first tastes, age-right recipes and allergen tracking.",
   },
   {
     slug: "tinyblooms",

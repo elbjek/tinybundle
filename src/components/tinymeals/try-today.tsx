@@ -25,7 +25,7 @@ const MEALS: Record<Mode, Meal[][]> = {
       { title: "Avocado & banana mash", meta: "3 min · Smooth puree", desc: "No cooking. Mash together with a fork until smooth.", foods: [f("Avocado", "loves"), f("Banana", "tried")] },
     ],
     [
-      { title: "Salmon, pea & potato mash", meta: "15 min · Mashed", desc: "Flaked salmon through buttery potato and crushed peas. Check carefully for bones.", foods: [f("Salmon", "fresh"), f("Peas", "tried"), f("Potato", "loves")] },
+      { title: "Salmon, pea & potato mash", meta: "15 min · Mashed", desc: "Flaked salmon through buttery potato and crushed peas. Check carefully for bones.", foods: [f("Salmon", "tried"), f("Peas", "tried"), f("Potato", "loves")] },
       { title: "Apple & cinnamon yoghurt", meta: "5 min · Mashed", desc: "Stewed apple swirled into full-fat plain yoghurt.", foods: [f("Apple", "loves"), f("Yoghurt", "tried")] },
       { title: "Chicken & butternut stew", meta: "20 min · Mashed", desc: "Gently cooked and mashed to a soft, lumpy texture.", foods: [f("Chicken", "tried"), f("Butternut", "loves"), f("Onion", "fresh")] },
     ],
@@ -44,12 +44,12 @@ const MEALS: Record<Mode, Meal[][]> = {
     [
       { title: "Courgette & carrot fritters", meta: "15 min · Soft finger food", desc: "Grated veg bound with egg and flour, cooked until golden and soft.", foods: [f("Courgette", "tried"), f("Carrot", "loves"), f("Egg", "tried")] },
       { title: "Banana oat pancakes", meta: "10 min · Soft finger food", desc: "Two-ingredient pancakes, cut into strips.", foods: [f("Banana", "loves"), f("Oats", "tried"), f("Egg", "tried")] },
-      { title: "Salmon fishcakes", meta: "20 min · Soft finger food", desc: "Salmon and potato patties, no added salt.", foods: [f("Salmon", "fresh"), f("Potato", "loves")] },
+      { title: "Salmon fishcakes", meta: "20 min · Soft finger food", desc: "Salmon and potato patties, no added salt.", foods: [f("Salmon", "tried"), f("Potato", "loves")] },
     ],
     [
       { title: "Cheesy pasta & peas", meta: "15 min · Small bites", desc: "Small pasta shapes in a mild cheese sauce.", foods: [f("Pasta", "loves"), f("Cheese", "tried"), f("Peas", "tried")] },
       { title: "Chicken & veg meatballs", meta: "25 min · Small bites", desc: "Soft baked meatballs, cut in half for little hands.", foods: [f("Chicken", "tried"), f("Courgette", "tried"), f("Garlic", "fresh")] },
-      { title: "Hummus toast fingers", meta: "5 min · Small bites", desc: "Lightly toasted bread spread thin with hummus.", foods: [f("Wheat", "tried"), f("Chickpeas", "tried"), f("Sesame", "fresh")] },
+      { title: "Hummus toast fingers", meta: "5 min · Small bites", desc: "Lightly toasted bread spread thin with hummus.", foods: [f("Wheat", "tried"), f("Chickpeas", "tried"), f("Sesame", "tried")] },
     ],
   ],
 };
@@ -109,8 +109,8 @@ const REACTIONS: { id: Reaction; title: string; sub: string; className: string; 
   },
   {
     id: "notyet",
-    title: "Not yet",
-    sub: "We’ll offer it again later",
+    title: "Not a fan",
+    sub: "Most babies need more tries",
     className: "bg-meals-sand text-meals-ink hover:shadow-[inset_0_0_0_2px_#E5DCCD]",
     icon: (
       <>
@@ -162,9 +162,9 @@ export function TryToday({ baby }: { baby: string }) {
     },
     notyet: {
       className: "bg-meals-sand text-meals-body",
-      kicker: "Not yet",
-      title: "That’s normal. We’ll try again.",
-      body: `Most babies need a food a few times before it clicks. ${firstNew.name} comes back in a few days, alongside a favourite.`,
+      kicker: "Not a fan",
+      title: "That’s normal. Keep offering it.",
+      body: `Most babies need 10 or more tries before a new food clicks. Offer ${lower(firstNew.name)} again another day.`,
     },
   };
   const result = results[reaction ?? "liked"];
@@ -201,8 +201,8 @@ export function TryToday({ baby }: { baby: string }) {
           Pick an age. Get today&rsquo;s meal.
         </h2>
         <p className="mt-3 max-w-[44ch] text-pretty text-base leading-relaxed text-meals-body">
-          This is the app&rsquo;s Home card. Choose an age and how they eat, then log how the meal went. The whole
-          thing takes about ten seconds.
+          A sample of the app&rsquo;s Home card. Choose an age and how they eat, then log how the meal went. The
+          whole thing takes about ten seconds.
         </p>
         <div className="mt-5 flex flex-wrap items-center gap-2.5">
           <span className="text-[13px] font-extrabold text-meals-muted">Age</span>

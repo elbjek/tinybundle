@@ -1443,7 +1443,7 @@ const APP_CTA: Record<
     ctaLabel: "See TinyMeals",
     ctaHref: "/tinymeals",
     ctaBlurb:
-      "One gentle meal a day for your baby’s age and stage, with a 10-week first foods plan and allergen tracking.",
+      "One gentle meal a day for your baby’s age and stage, with ten first tastes and allergen tracking.",
   },
   tinyblooms: {
     ctaApp: "tinyblooms",

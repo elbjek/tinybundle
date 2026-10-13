@@ -134,7 +134,7 @@ export function FirstFoodCard({ baby, title, date }: { baby: string; title: stri
       </p>
       <Spacer min="5cqw" />
       <p className="text-center text-[3.3cqw] font-extrabold" style={{ color: "var(--sc-amber2)" }}>
-        tinymeals.app
+        tinybundle.app
       </p>
     </Frame>
   );
@@ -192,7 +192,7 @@ export function TriedCard({ baby, count, theme }: { baby: string; count: number;
           </svg>
           Loved
         </span>
-        <span style={{ color: "var(--sc-amber2)" }}>tinymeals.app</span>
+        <span style={{ color: "var(--sc-amber2)" }}>tinybundle.app</span>
       </div>
     </Frame>
   );
@@ -256,7 +256,7 @@ export function FavouritesCard({ baby }: { baby: string }) {
       </div>
       <Spacer min="5cqw" />
       <p className="text-right text-[3.3cqw] font-extrabold" style={{ color: "var(--sc-amber2)" }}>
-        tinymeals.app
+        tinybundle.app
       </p>
     </Frame>
   );

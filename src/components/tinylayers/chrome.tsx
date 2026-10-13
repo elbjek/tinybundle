@@ -7,7 +7,6 @@ export function LayersFooter() {
     <div className="font-nunito text-tb-ink">
       <SiteFooter
         app="tinylayers"
-        blurb="four calm apps for the first year, from what to wear to what’s for lunch."
         product={[
           { href: "/tinylayers#how", label: "How it works" },
           { href: "/tinylayers#modes", label: "Modes" },

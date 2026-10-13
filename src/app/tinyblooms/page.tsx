@@ -72,7 +72,6 @@ export default function TinyBloomsRoute() {
       </main>
       <SiteFooter
         app="tinyblooms"
-        blurb="one small, age-right play idea for whatever time you have."
         note="© 2026 Two Brick Labs. Play ideas for everyday moments, not medical advice."
       />
     </div>

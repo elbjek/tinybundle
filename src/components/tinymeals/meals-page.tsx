@@ -14,27 +14,27 @@ const app = getApp("tinymeals");
 export const MEALS_FAQS: FaqItem[] = [
   {
     q: "What does TinyMeals actually do?",
-    a: "It suggests one meal a day that suits your baby’s age, texture stage and the foods they’ve already tried. Log how it went with one tap, and the history builds itself: first tried, last served, favourites.",
+    a: "It starts with a first-foods plan of ten single tastes, then suggests one meal a day that suits your baby’s age, texture stage and the foods they’ve already tried. Log how it went in a few taps, and the history builds itself: first tried, last served, favourites.",
   },
   {
     q: "How much does it cost?",
-    a: "Start with 7 days free, then $29.99 a year or $6.99 a month. Cancel anytime. Family Sharing is included, so a partner or grandparent can see the same plan.",
+    a: "Getting ready for solids is free. Once first foods start, TinyMeals Premium is a yearly or monthly subscription, and the yearly plan starts with 7 days free. Cancel anytime. One subscription covers up to 6 caregivers, so a partner or grandparent can see the same plan.",
   },
   {
     q: "What ages is it for?",
-    a: "From getting ready for solids at around 4 months through to toddler family meals. The plan and textures change as your baby grows.",
+    a: "From getting ready for solids, even before 4 months, through to toddler family meals. The plan and textures change as your baby grows.",
   },
   {
     q: "Do I need to follow a schedule?",
-    a: "No. The first-foods plan is grouped by week, not by day. Miss a few days and you simply carry on where you were.",
+    a: "No. The first-foods plan is grouped by week, not by day. Miss a few days and any untried foods simply carry into the next week.",
   },
   {
     q: "How does it handle allergens?",
-    a: "The common allergens are introduced one at a time, a few days apart, once first tastes are going well. TinyMeals keeps a clear record but never diagnoses or assesses reactions. Always speak to your doctor if you’re worried.",
+    a: "Egg, peanut and fish come in one at a time, every other week, after the first few tastes. TinyMeals keeps a clear record but never diagnoses or assesses reactions. Always speak to your doctor if you’re worried.",
   },
   {
     q: "Can the rest of the family follow along?",
-    a: "Yes. Everyone in your household sees the same food history and gets a gentle note at milestones, like the first food or the tenth.",
+    a: "Yes. Up to 6 caregivers can share one family in the app. Everyone sees the same food history and gets a notification at milestones, like the first food or the tenth.",
   },
 ];
 
@@ -62,7 +62,7 @@ const VALUES = [
   },
   {
     title: "Remembers what they loved",
-    body: "One tap after a meal. The next ideas lean on favourites and gently bring back the “not yet” foods.",
+    body: "A quick log after a meal. The next ideas lean on foods they liked, and first foods they weren’t keen on come back for more tries.",
     tile: "bg-meals-peach",
     icon: (
       <path
@@ -75,7 +75,7 @@ const VALUES = [
   },
   {
     title: "Allergens, calmly",
-    body: "The common allergens introduced one at a time, with a record you can show your health visitor.",
+    body: "Egg, peanut and fish introduced one at a time, with a tracker and a summary you can share with your health visitor.",
     tile: "bg-meals-sand",
     icon: (
       <>
@@ -90,11 +90,11 @@ const STEPS = [
   { title: "Tell us about your baby", body: "Age, how they eat, anything to work around. Two minutes, once.", dot: "bg-meals-sage", blob: "bg-meals-mint rounded-[42px]" },
   {
     title: "Cook today’s meal",
-    body: "One clear idea with a familiarity badge, so you know when something new is in it.",
+    body: "One clear idea made from foods they know, with at most one new food in it.",
     dot: "bg-meals-orange",
     blob: "bg-meals-apricot rounded-[24px]",
   },
-  { title: "Tap how it went", body: "Loved, liked or not yet. Optional, and it shapes tomorrow’s idea.", dot: "bg-meals-sage", blob: "bg-meals-sage-tint rounded-[42px]" },
+  { title: "Tap how it went", body: "Loved it, liked it or not a fan. Optional, and it shapes the next ideas.", dot: "bg-meals-sage", blob: "bg-meals-sage-tint rounded-[42px]" },
 ];
 
 const SECTION = "mx-auto box-border w-full max-w-[1180px] px-[clamp(18px,4vw,40px)]";
@@ -149,12 +149,12 @@ function HomeCardPreview() {
         <div className="mt-3.5 rounded-2xl bg-meals-peach px-3.5 py-2.5">
           <div className="flex items-baseline justify-between gap-2">
             <span className="whitespace-nowrap text-[10.5px] font-extrabold uppercase tracking-[0.07em] text-meals-orange-deep">
-              First foods · Week 3 of 10
+              First foods · Week 3
             </span>
-            <span className="whitespace-nowrap text-[11.5px] font-extrabold text-[#8A4513]">7 of 30</span>
+            <span className="whitespace-nowrap text-[11.5px] font-extrabold text-[#8A4513]">6 of 10 first tastes</span>
           </div>
           <div className="mt-[7px] h-1.5 overflow-hidden rounded-[3px] bg-[#EFD3B4]">
-            <div className="h-full w-[23%] rounded-[3px] bg-meals-orange" />
+            <div className="h-full w-[60%] rounded-[3px] bg-meals-orange" />
           </div>
           <p className="mt-1.5 truncate text-xs text-[#7A5230]">Next up: Pear</p>
         </div>
@@ -232,14 +232,14 @@ function Hero() {
         <div className="z-[1] min-w-0 [animation:tm-rise_.5s_ease_both]">
           <p className="inline-flex min-h-8 items-center gap-2 rounded-2xl bg-meals-sage-tint px-3.5 py-1.5 text-xs font-extrabold tracking-[0.02em] text-meals-sage-ink">
             <span className="h-[7px] w-[7px] rounded-full bg-meals-sage" />
-            Built on NHS, WHO &amp; CDC weaning guidance
+            Based on NHS, AAP, WHO &amp; CDC guidance
           </p>
           <h1 className="mt-[18px] max-w-[14ch] text-balance text-[clamp(38px,5.4vw,60px)] font-extrabold leading-[1.05] tracking-[-0.025em]">
             Today&rsquo;s meal, worked out for you.
           </h1>
           <p className="mt-4 max-w-[42ch] text-pretty text-[clamp(16px,1.5vw,19px)] leading-relaxed text-meals-body">
             One gentle recipe a day, matched to your baby&rsquo;s age and texture stage, from first spoons to family meals.
-            No food journal to keep.
+            Log in a few taps, with no food journal to keep.
           </p>
           <div className="mt-[30px] flex flex-wrap items-center gap-5">
             {app.live && app.appStoreUrl ? (
@@ -314,8 +314,8 @@ function HowItWorks() {
       <Kicker>How it works</Kicker>
       <SectionTitle className="max-w-[20ch]">A food history that writes itself.</SectionTitle>
       <p className="mt-3.5 max-w-[58ch] text-pretty text-base leading-relaxed text-meals-body">
-        TinyMeals is built for one-handed, half-asleep parents. You never fill in a journal. The history builds from the
-        meals you cook.
+        TinyMeals is built for one-handed, half-asleep parents. You never fill in a journal. A quick log after each meal
+        builds the history for you.
       </p>
       <ol className="mt-7 grid gap-3.5 min-[760px]:grid-cols-3">
         {STEPS.map((step, i) => (
@@ -350,8 +350,8 @@ function Plan() {
     <section id="plan" className={`${SECTION} scroll-mt-20 pb-[clamp(20px,3vw,32px)] pt-[clamp(48px,7vw,88px)]`}>
       <SplitHeading
         kicker="The first-foods plan"
-        title="Ten calm weeks, from first spoon to allergens."
-        body="About three new foods a week, grouped so a missed day never puts you behind. Tap a week to see what’s in it."
+        title="Ten first tastes, with allergens paced in."
+        body="Two or three new foods a week, and untried ones carry forward, so a missed day never puts you behind. Tap a week to see what’s in it."
       />
       <FirstFoodsPlan />
     </section>
@@ -385,7 +385,7 @@ function Sharing() {
         <SplitHeading
           kicker="Moments worth sharing"
           title="First foods deserve a little fanfare."
-          body="Milestones turn into cards you can post or send to the grandparents. Everyone in the household gets a gentle note when they happen."
+          body="Milestones turn into cards you can post or send to the grandparents. Everyone else in your TinyMeals family gets a notification when they happen."
         />
         <ul
           aria-label="Example milestone cards"
@@ -405,13 +405,13 @@ function Sharing() {
             badge={<MealsMark className="h-[22px] w-[22px]" />}
             badgeClass="bg-meals-peach"
             time="now"
-            text={`${BABY} just had her first food`}
+            text={`${BABY} just had their first food`}
           />
           <Notification
             badge={<span className="text-sm font-extrabold text-meals-sage-ink">10</span>}
             badgeClass="bg-meals-sage-tint"
             time="2h ago"
-            text={`${BABY} just tried her 10th food`}
+            text={`${BABY} just tried their 10th food`}
           />
         </div>
       </div>
@@ -424,15 +424,15 @@ function Safety() {
     <section id="safety" className={`${SECTION} scroll-mt-20 pt-[clamp(40px,6vw,64px)]`}>
       <div className="flex flex-wrap items-center gap-x-8 gap-y-4 rounded-3xl bg-meals-sage-tint p-[clamp(22px,3vw,32px)]">
         <div className="min-w-0 flex-[1_1_min(100%,380px)]">
-          <h2 className="text-[19px] font-extrabold text-[#3F4A33]">Every safety tip shows its source.</h2>
+          <h2 className="text-[19px] font-extrabold text-[#3F4A33]">Every food and guide shows its sources.</h2>
           <p className="mt-1.5 max-w-[64ch] text-pretty text-[14.5px] font-bold leading-relaxed text-meals-sage-ink">
-            Serving and allergen guidance is written from NHS, WHO, CDC and national paediatric sources, with the date we
-            last reviewed it. TinyMeals never diagnoses allergies or replaces advice from your health visitor or
-            paediatrician.
+            Serving and allergen guidance is based on NHS, AAP, WHO and CDC sources, linked on each food page and guide
+            with the date we last reviewed them. TinyMeals never diagnoses allergies or replaces advice from your health
+            visitor or paediatrician.
           </p>
         </div>
         <ul className="flex flex-wrap gap-1.5">
-          {["NHS", "WHO", "CDC"].map((source) => (
+          {["NHS", "AAP", "WHO", "CDC"].map((source) => (
             <li key={source} className="flex h-[30px] items-center rounded-[15px] bg-white px-3 text-[12.5px] font-extrabold text-meals-sage-ink">
               {source}
             </li>
@@ -455,7 +455,8 @@ function GetTheApp() {
             Know what&rsquo;s for lunch before they&rsquo;re hungry.
           </h2>
           <p className="mt-3 max-w-[46ch] text-pretty text-base leading-relaxed text-white">
-            7 days free, then $29.99 a year. Family Sharing included, so everyone who feeds your baby sees the same plan.
+            Free while you get ready, then 7 days free on the yearly plan. Share it with up to 6 caregivers, so everyone who
+            feeds your baby sees the same plan.
           </p>
         </div>
         <AppStoreCta app={app} waitlistHref="/#join" />

@@ -52,7 +52,7 @@ export const apps: TinyApp[] = [
     card: "One gentle meal a day for your baby’s age and stage, with a first foods plan and allergen tracking.",
     tagline: "Today’s meal, worked out for you.",
     description:
-      "A calm baby-led weaning and purée planner: one meal a day for your baby’s age and stage, a 10-week first foods plan and allergen tracking.",
+      "A calm baby-led weaning and purée planner: one meal a day for your baby’s age and stage, a ten-food first foods plan and allergen tracking.",
     colors: { dot: "#D17A2A", deep: "#A0521A", tile: "#FBEEDC", iconBg: "#FBEEDC", btn: "#5F6F4B", band: "#5F6F4B" },
   },
   {

@@ -120,7 +120,7 @@ const PANELS: Panel[] = [
       "A baby TOG guide for every room temperature",
       "What to dress your baby in for walks, car rides and the pram",
       "A quick safe-sleep check before naps and bedtime",
-      "Adjusts as your baby grows, from newborn to toddler",
+      "Notes for every age, from newborn to 2 years and up",
     ],
     hover: "#35608F",
     info: <TogChart />,
@@ -130,9 +130,9 @@ const PANELS: Panel[] = [
     sub: "First foods",
     kicker: "Baby-led weaning and first foods",
     title: "Starting solids, one bite at a time",
-    body: "TinyMeals is a calm baby-led weaning and purée planner. It gives you one meal a day matched to your baby’s age and texture stage, a 10-week first-foods plan, and a simple log of every food your baby has tried, including common allergens.",
+    body: "TinyMeals is a calm baby-led weaning and purée planner. It gives you one meal a day matched to your baby’s age and texture stage, a first-foods plan of ten single tastes, and a simple log of every food your baby has tried, including common allergens.",
     bullets: [
-      "A 10-week first-foods plan from around 6 months",
+      "Ten first tastes, with egg, peanut and fish paced in",
       "Baby-led weaning, purées or a mix of both",
       "Easy baby food recipes with no added salt or sugar",
       "Track foods tried and allergen introduction",
@@ -226,42 +226,47 @@ function PanelBody({ panel }: { panel: Panel }) {
             </li>
           ))}
         </ul>
-        <div className="mt-6 flex flex-wrap items-center gap-x-[22px] gap-y-4">
+      </div>
+      <div className="min-w-0">
+        <div className="box-border rounded-[20px] p-5" style={{ background: tile }}>
+          {panel.info}
+        </div>
+      </div>
+      <div className="col-span-full flex flex-wrap items-center justify-between gap-x-8 gap-y-4 rounded-[20px] bg-[#FBF6EF] p-[clamp(14px,2vw,20px)]">
+        <div className="flex w-full min-w-0 items-center gap-4 sm:w-auto">
           {cta.live ? (
-            <QrLink app={panel.app} name={app.name} href={cta.href} className="h-[104px] w-[104px] rounded-[18px] p-2.5" />
+            <QrLink app={panel.app} name={app.name} href={cta.href} className="h-[88px] w-[88px] rounded-2xl p-2" />
           ) : null}
-          <div className="flex min-w-0 flex-col items-start gap-3">
+          <div className="flex min-w-0 flex-1 flex-col items-stretch gap-2 sm:flex-none sm:items-start">
             {cta.live ? (
               <p className="m-0 hidden text-[13px] font-bold text-tb-muted min-[720px]:block">Scan with your iPhone camera, or</p>
             ) : null}
             <a
               href={cta.href}
               rel={cta.live ? "noopener" : undefined}
-              className="inline-flex h-[50px] items-center gap-2 rounded-[18px] bg-(--btn) px-5 text-[15.5px] font-extrabold text-white hover:bg-(--hover) hover:text-white active:scale-[0.97]"
+              className="inline-flex h-[50px] items-center justify-center gap-2 whitespace-nowrap rounded-[18px] bg-(--btn) px-5 text-[15.5px] font-extrabold text-white hover:bg-(--hover) hover:text-white active:scale-[0.97]"
               style={{ "--btn": btn, "--hover": panel.hover } as CSSProperties}
             >
               {cta.label}
             </a>
-            <Link
-              href={`/${panel.app}`}
-              className="box-border flex h-[50px] items-center justify-center gap-2 rounded-[18px] bg-white px-5 text-[15px] font-extrabold shadow-[0_2px_10px_rgba(90,60,20,0.08)] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)] active:scale-[0.98]"
-              style={{ color: deep }}
-            >
-              Check out the {app.name} page<span aria-hidden="true">&rarr;</span>
-            </Link>
-            <Link
-              href={`/guides/${panel.app}`}
-              className="px-1 py-0.5 text-[15px] font-extrabold underline decoration-[rgba(46,46,46,0.18)] decoration-2 underline-offset-[5px] hover:opacity-75"
-              style={{ color: deep }}
-            >
-              {`Read the ${app.name} guides →`}
-            </Link>
           </div>
         </div>
-      </div>
-      <div className="min-w-0">
-        <div className="box-border rounded-[20px] p-5" style={{ background: tile }}>
-          {panel.info}
+        <div className="flex w-full flex-col items-stretch gap-x-6 gap-y-3 sm:w-auto sm:flex-row sm:items-center">
+          <Link
+            href={`/${panel.app}`}
+            className="box-border flex h-[50px] items-center justify-center gap-2 whitespace-nowrap rounded-[18px] bg-white px-5 text-[15px] font-extrabold shadow-[0_2px_10px_rgba(90,60,20,0.08)] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)] active:scale-[0.98]"
+            style={{ color: deep }}
+          >
+            {`Check out the ${app.name} page`}
+            <span aria-hidden="true">&rarr;</span>
+          </Link>
+          <Link
+            href={`/guides/${panel.app}`}
+            className="self-center px-1 py-0.5 text-[15px] font-extrabold underline decoration-[rgba(46,46,46,0.18)] decoration-2 underline-offset-[5px] hover:opacity-75"
+            style={{ color: deep }}
+          >
+            {`Read the ${app.name} guides →`}
+          </Link>
         </div>
       </div>
     </>

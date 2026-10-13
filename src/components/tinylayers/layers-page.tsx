@@ -17,19 +17,19 @@ export const LAYERS_FAQS: FaqItem[] = [
   },
   {
     q: "Is TinyLayers free?",
-    a: "Yes. TinyLayers is free to download, and the free plan includes a daily sleep check with TOG and layer guidance. Premium adds unlimited checks, all six modes, multiple children, and the learning history.",
+    a: "TinyLayers is free to download, and setup shows your baby’s first sleep plan before you pay. To keep using it you need a plan: monthly, with a 7-day free trial where the App Store offers one, or a one-time lifetime unlock. Either one includes every situation, unlimited check-ins, history, multiple children, and sync. You create an account with Apple, Google, or an email code after you choose a plan.",
   },
   {
     q: "What is TOG?",
-    a: "TOG measures how much warmth a sleep sack traps. 0.5 is summer-light, 1.0 is the everyday middle, 2.5 is for cold rooms. TinyLayers gives you layers first and treats TOG as the label on the sack you already own.",
+    a: "TOG measures how much warmth a sleep sack traps. 0.5 is summer-light, 1.0 is the everyday middle, 2.5 is for cool rooms, and it never goes above 3.5. TinyLayers gives you layers first and treats TOG as the label on the sack you already own.",
   },
   {
     q: "What ages is it for?",
-    a: "Newborn through toddler. Age changes the guidance: swaddles, hats indoors, and loose blankets are not the same at every stage.",
+    a: "Newborn to 2 years and up, in five age bands. Age changes the notes rather than the TOG: swaddling advice, sun protection under six months, and garment tips differ by stage, while no hats indoors and no loose blankets apply at every age.",
   },
   {
     q: "Does it track my location?",
-    a: "Only if you turn on outdoor weather for outings, and only to fetch conditions. Nothing is shared, and sleep guidance never uses location.",
+    a: "Only if you allow location access, and only coarse location to fetch outdoor weather. You can type the outdoor temperature instead, and sleep guidance never uses location: it runs on the room temperature you give it.",
   },
   {
     q: "Is this medical advice?",
@@ -39,12 +39,11 @@ export const LAYERS_FAQS: FaqItem[] = [
 
 const tonight = outfitAnswer("sleep", DEMO_TEMP);
 const tonightPlan = tonight.rows.filter((r) => r.wearable);
-const lighter = outfitAnswer("sleep", DEMO_TEMP + 3);
 
 const CHIPS = [
   { label: "Sleep", bg: "#DCE6F2", ink: "#2F5B8A" },
   { label: "Naps", bg: "#EEF3E8", ink: "#4F5D3E" },
-  { label: "Going out", bg: "#F3EADF", ink: "#8A4F14" },
+  { label: "In arms", bg: "#F3EADF", ink: "#8A4F14" },
   { label: "Stroller", bg: "#DCE6F2", ink: "#2F5B8A" },
   { label: "Carrier", bg: "#EEF3E8", ink: "#4F5D3E" },
   { label: "Car seat", bg: "#F3EADF", ink: "#8A4F14" },
@@ -67,13 +66,13 @@ const VALUES: { title: string; body: string; tint: string; icon: ReactNode }[] =
   },
   {
     title: "It learns your baby",
-    body: "Tell it how each night went, and the answers shape themselves around your child, not the average one.",
+    body: "Say whether they run warm or cool, then check in. When the same answer repeats at a similar temperature, the starting layers move one step.",
     tint: "#DCE6F2",
     icon: <path d="M12 3.5c1 3.4 2.6 5 6 6-3.4 1-5 2.6-6 6-1-3.4-2.6-5-6-6 3.4-1 5-2.6 6-6Z" stroke="#2F5B8A" strokeWidth="1.8" strokeLinejoin="round" />,
   },
   {
     title: "Every situation",
-    body: "Sleep, naps, going out, stroller, carrier, and car seat: one calm answer for each, in one glance.",
+    body: "Sleep, naps, in arms, stroller, carrier, and car seat: one calm answer for each, in one glance.",
     tint: "#F3EADF",
     icon: (
       <>
@@ -85,11 +84,11 @@ const VALUES: { title: string; body: string; tint: string; icon: ReactNode }[] =
 ];
 
 const STEPS = [
-  { n: "01", title: "Choose the situation", body: "Sleep, nap, going out, stroller, carrier, or car seat: pick the moment you are dressing for." },
+  { n: "01", title: "Choose the situation", body: "Sleep, or outside in arms, in the stroller, in a carrier, or in the car seat: pick the moment you are dressing for." },
   {
     n: "02",
     title: "Add age and temperature",
-    body: "Room temperature for sleep and naps. Outdoor conditions for outings. Age adjusts the recommendation.",
+    body: "Room temperature for sleep and naps. Local weather, or a temperature you type, for outings. Age shapes the notes.",
   },
   {
     n: "03",
@@ -100,20 +99,20 @@ const STEPS = [
 
 const MODES = [
   { mark: "01", tint: "#DCE6F2", ink: "#2F5B8A", title: "Sleep", body: "Room temperature in, plain-English layers and TOG out, so you can close the nursery door calm." },
-  { mark: "02", tint: "#EEF3E8", ink: "#5F6F4B", title: "Naps", body: "Daytime settles need the same care as night. A nap outfit that matches the room you are actually in." },
+  { mark: "02", tint: "#EEF3E8", ink: "#5F6F4B", title: "Naps", body: "Daytime settles need the same care as night. The sleep card covers naps: set the room they nap in." },
   {
     mark: "03",
     tint: "#F3EADF",
     ink: "#D17A2A",
-    title: "Going out",
-    body: "Outdoor weather for walks and errands, without using the forecast to guess how warm the nursery is.",
+    title: "In arms",
+    body: "Outdoor weather for walks and errands in your arms, without using the forecast to guess how warm the nursery is.",
   },
   {
     mark: "04",
     tint: "#EEF3E8",
     ink: "#5F6F4B",
     title: "Stroller",
-    body: "Layering for fresh-air rides: warm enough outside, without overheating under blankets and hoods.",
+    body: "Layering for fresh-air rides: warm enough outside, without overheating under blankets or a draped cover.",
   },
   {
     mark: "05",
@@ -290,8 +289,8 @@ function TryItBand() {
           Set the room. See the answer.
         </h2>
         <p className="mt-3 max-w-[44ch] text-pretty text-base leading-[1.6] text-tb-body">
-          This is the app’s Home card. Pick sleep or going out, nudge the temperature, then do a pretend check-in: the same
-          plain-English guidance you get at 2am.
+          A simplified version of the app’s Home card. Pick sleep or going out, nudge the temperature, then do a pretend
+          check-in, the same three taps you do at 2am.
         </p>
       </TryIt>
     </section>
@@ -354,11 +353,11 @@ function CheckIn() {
           <div className="min-w-0 flex-[1_1_440px]">
             <p className={EYEBROW}>The dressing check-in</p>
             <h2 id="checkin-h" className={`${SECTION_H2} max-w-[18ch]`}>
-              Ten seconds after they settle. Smarter every night.
+              Ten minutes after they settle. Ten seconds to log.
             </h2>
           </div>
           <p className="max-w-[42ch] flex-[0_1_400px] text-pretty text-base leading-[1.6] text-tb-body">
-            Feel the chest, tap how it felt. TinyLayers keeps what worked and nudges the next outfit when it didn’t.
+            Feel the chest, tap how it felt. When the same answer keeps coming back at a similar temperature, TinyLayers moves the starting layers one step.
           </p>
         </div>
 
@@ -419,7 +418,7 @@ function CheckIn() {
           <StepCard
             n={3}
             badge="#D17A2A"
-            title="It adjusts next time"
+            title="It adjusts on a pattern"
             decor={
               <>
                 <div className="absolute right-[-22px] top-[-22px] h-[86px] w-[86px] rotate-[14deg] rounded-[26px] bg-[#F6D9A8] [animation:tm-float-a_6.5s_ease-in-out_infinite]" />
@@ -427,14 +426,14 @@ function CheckIn() {
                 <div className="absolute right-[18px] top-24 h-1.5 w-1.5 rounded-full bg-[#7FA8CF] [animation:tm-twinkle_2.2s_ease-in-out_infinite_.8s]" />
               </>
             }
-            foot="Every check-in tunes the answers to your baby, not the average one."
+            foot="One check-in never changes the plan. Repeated answers at a similar room temperature move it one step, never more."
           >
             <div className="rounded-[18px] bg-tb-sand px-4 py-3.5">
               <p className="text-[10.5px] font-extrabold uppercase tracking-[0.07em] text-[#8A4F14]">Running warm</p>
-              <p className="mt-[5px] text-base font-extrabold leading-[1.3]">Try one layer lighter</p>
+              <p className="mt-[5px] text-base font-extrabold leading-[1.3]">Warm again and again</p>
               <div className="mt-2.5 rounded-[14px] bg-tb px-3 py-2.5">
                 <p className="text-[10px] font-extrabold uppercase tracking-[0.07em] text-tb-muted">Next time at {DEMO_TEMP}&deg;C</p>
-                <p className="mt-[3px] text-[13.5px] font-bold">{lighter.title}</p>
+                <p className="mt-[3px] text-[13.5px] font-bold">One base layer lighter, same TOG</p>
               </div>
             </div>
           </StepCard>
@@ -479,7 +478,7 @@ function Modes() {
       aria-labelledby="modes-h"
       className="mx-auto box-border max-w-[1180px] scroll-mt-[72px] px-[clamp(18px,4vw,40px)] py-[clamp(40px,6vw,76px)]"
     >
-      <p className={EYEBROW}>Six modes</p>
+      <p className={EYEBROW}>Six situations</p>
       <h2 id="modes-h" className={`${SECTION_H2} max-w-[20ch]`}>
         Guidance for the moments that keep you guessing.
       </h2>
@@ -511,7 +510,7 @@ function GetTheApp() {
             Close the nursery door calm tonight.
           </h2>
           <p className="mt-3 max-w-[44ch] text-pretty text-base leading-[1.6] text-white">
-            Download TinyLayers for iOS and get plain-English outfit guidance for sleep, naps, and every outing in between.
+            Download TinyLayers for iOS for plain-English outfit guidance for sleep, naps, and every outing. Monthly starts with a 7-day free trial where the App Store offers it.
           </p>
         </div>
         <AppStoreCta app={app} waitlistHref="/#join" liveLabel="Download on the App Store" />

@@ -94,7 +94,6 @@ export default function TinyNapsRoute() {
       </main>
       <SiteFooter
         app="tinynaps"
-        blurb="four calm apps for the first year, from what to wear to what’s for lunch."
         product={[
           { href: "#how", label: "How it works" },
           { href: "#try", label: "Try it" },

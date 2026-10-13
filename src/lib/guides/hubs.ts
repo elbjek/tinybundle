@@ -55,7 +55,7 @@ export const GUIDE_HUBS: Record<GuideApp, GuideHub> = {
     intro:
       "Starting solids, baby-led weaning, purées and allergens, one calm step at a time. Practical guides for every texture stage from around 6 months.",
     bandHead: "Know what’s for lunch before they’re hungry.",
-    bandText: "One meal a day matched to your baby’s age and stage, a 10-week first-foods plan and a log of every food tried.",
+    bandText: "One meal a day matched to your baby’s age and stage, ten first tastes with allergens paced in, and a log of every food tried.",
   },
   tinyblooms: {
     app: "tinyblooms",

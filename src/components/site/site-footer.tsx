@@ -30,13 +30,10 @@ function Column({ title, links }: { title: string; links: FooterLink[] }) {
  */
 export function SiteFooter({
   app,
-  blurb,
   product,
   note,
 }: {
   app: AppSlug;
-  /** Sentence after "Part of TinyBundle:". */
-  blurb: string;
   /** In-page links, e.g. How it works and FAQ. */
   product?: FooterLink[];
   /** Small print under the columns. */
@@ -56,7 +53,7 @@ export function SiteFooter({
             <Link href="/" className="font-extrabold text-tb-ink">
               TinyBundle
             </Link>
-            : {blurb}
+            : four calm apps for the early years, from what to wear to what&rsquo;s for lunch.
           </p>
         </div>
         <nav aria-label="Footer" className="flex flex-wrap gap-7">
