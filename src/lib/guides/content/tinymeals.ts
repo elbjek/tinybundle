@@ -34,7 +34,7 @@ import {
 export const MEALS_GUIDES: GuideContent[] = [
   {
     slug: "baby-meal-ideas",
-    category: "cooking",
+    category: "meal-ideas",
     question: "What are easy baby meal ideas?",
     title: "Easy baby meal ideas for every stage of weaning",
     metaTitle: "Easy baby meal ideas: simple, safe plates by age",
@@ -150,7 +150,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "first-baby-foods",
-    category: "cooking",
+    category: "starting-solids",
     question: "What should baby's first foods be?",
     title:
       "First baby foods: when to start, what to offer and simple puree ideas",
@@ -260,7 +260,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "baby-led-weaning-meal-ideas",
-    category: "cooking",
+    category: "meal-ideas",
     question: "What are baby-led weaning meal ideas?",
     title: "Baby-led weaning meal ideas and safe finger foods for babies",
     metaTitle: "Baby-led weaning meal ideas and safe finger foods",
@@ -372,7 +372,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "6-month-baby-meal-ideas",
-    category: "cooking",
+    category: "meal-ideas",
     question: "What are easy 6-month baby meal ideas?",
     title: "6-month baby meal ideas: first tastes, textures and how much",
     metaTitle: "6-month baby meal ideas: first tastes and simple plates",
@@ -476,7 +476,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "9-month-baby-meal-ideas",
-    category: "cooking",
+    category: "meal-ideas",
     question: "What are easy 9-month baby meal ideas?",
     title: "9-month baby meal ideas: 3 meals a day, more textures",
     metaTitle: "9-month baby meal ideas: breakfast, lunch and tea",
@@ -583,7 +583,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "12-month-baby-meal-ideas",
-    category: "cooking",
+    category: "meal-ideas",
     question: "What are easy 12-month baby meal ideas?",
     title: "12-month baby meal ideas: family meals, snacks and milk",
     metaTitle: "12-month baby meal ideas: meals, snacks and drinks",
@@ -692,7 +692,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "baby-breakfast-ideas",
-    category: "cooking",
+    category: "meal-ideas",
     question: "What are easy baby breakfast ideas?",
     title: "Easy baby breakfast ideas from 6 months",
     metaTitle: "Baby breakfast ideas: quick, healthy and no added sugar",
@@ -795,7 +795,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "baby-dinner-ideas",
-    category: "cooking",
+    category: "meal-ideas",
     question: "What are easy baby lunch and dinner ideas?",
     title: "Easy baby lunch and dinner ideas from 6 months",
     metaTitle: "Baby lunch and dinner ideas: easy, healthy family meals",
@@ -910,7 +910,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "allergen-introduction-meal-ideas",
-    category: "cooking",
+    category: "allergens",
     question: "How do I introduce allergens in baby meals?",
     title: "How to introduce allergens to your baby, with meal ideas",
     metaTitle: "Introducing allergens to baby: how and meal ideas",
@@ -1023,7 +1023,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "recipes-from-leftovers",
-    category: "cooking",
+    category: "meal-ideas",
     question: "How do I turn leftovers into baby meals?",
     title: "Recipes from leftovers: baby meals from your fridge and cupboard",
     metaTitle: "Recipes from leftovers: safe baby meals from the fridge",
@@ -1145,7 +1145,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "signs-baby-ready-for-solids",
-    category: "cooking",
+    category: "starting-solids",
     question: "How do I know my baby is ready for solids?",
     title: "Signs your baby is ready for solids: what to look for around 6 months",
     metaTitle: "Signs baby is ready for solids: the 3 to look for",
@@ -1258,7 +1258,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "gagging-vs-choking",
-    category: "cooking",
+    category: "food-safety",
     question: "What is the difference between gagging and choking in babies?",
     title: "Gagging vs choking in babies: how to tell the difference and what to do",
     metaTitle: "Gagging vs choking in babies: signs and what to do",
@@ -1376,7 +1376,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "foods-to-avoid-for-babies",
-    category: "cooking",
+    category: "food-safety",
     question: "What foods should babies avoid before 12 months?",
     title: "Foods to avoid for babies: what not to give before 12 months",
     metaTitle: "Foods to avoid for babies under 12 months: full list",
@@ -1505,7 +1505,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "how-to-cut-food-for-baby",
-    category: "cooking",
+    category: "food-safety",
     question: "How should I cut food for my baby?",
     title: "How to cut food for baby safely: grapes, sausages, apples and more",
     metaTitle: "How to cut food for baby: safe shapes by age",
@@ -1628,7 +1628,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "iron-rich-foods-for-babies",
-    category: "cooking",
+    category: "nutrition",
     question: "What are good iron-rich foods for babies?",
     title: "Iron-rich foods for babies: easy first foods and why iron matters",
     metaTitle: "Iron-rich foods for babies: easy ideas from 6 months",
@@ -1742,7 +1742,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "how-much-should-my-baby-eat",
-    category: "cooking",
+    category: "starting-solids",
     question: "How much should my baby eat?",
     title: "How much should my baby eat? Amounts by age, cues and milk",
     metaTitle: "How much should my baby eat? A simple guide by age",
@@ -1854,7 +1854,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "introducing-egg-to-baby",
-    category: "cooking",
+    category: "allergens",
     question: "When and how can I introduce egg to my baby?",
     title: "Introducing egg to your baby: when, how and signs of a reaction",
     metaTitle: "Introducing egg to baby: when, how and what to watch for",
@@ -1982,7 +1982,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "introducing-peanut-to-baby",
-    category: "cooking",
+    category: "allergens",
     question: "When and how can I introduce peanut to my baby?",
     title: "Introducing peanut to your baby: safe forms, timing and reactions",
     metaTitle: "Introducing peanut to baby: when and how to do it safely",
@@ -2100,7 +2100,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "drinks-for-babies",
-    category: "cooking",
+    category: "nutrition",
     question: "What drinks can I give my baby?",
     title: "Drinks for babies: water, milk, juice and cups by age",
     metaTitle: "Drinks for babies: what to give and when, by age",
@@ -2210,7 +2210,7 @@ export const MEALS_GUIDES: GuideContent[] = [
   },
   {
     slug: "baby-constipation-starting-solids",
-    category: "cooking",
+    category: "nutrition",
     question: "Why is my baby constipated after starting solids?",
     title:
       "Baby constipation after starting solids: what is normal and what helps",

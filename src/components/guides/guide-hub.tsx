@@ -4,9 +4,9 @@ import { GuidesBackdrop, GuidesFooter, GuidesHeader } from "@/components/guides/
 import { AppStoreCta } from "@/components/site/app-store-cta";
 import { GuideCard } from "@/components/site/guide-card";
 import { appCta, getApp } from "@/lib/apps";
-import { getGuidesByApp } from "@/lib/guides/catalog";
+import { getGuidesByApp, groupGuides } from "@/lib/guides/catalog";
 import { GUIDE_HUBS, HUB_ORDER, hubHref } from "@/lib/guides/hubs";
-import type { GuideApp } from "@/lib/guides/types";
+import type { GuideApp, GuidePage } from "@/lib/guides/types";
 
 const WAITLIST = "/#join";
 
@@ -34,11 +34,31 @@ function placement(index: number, count: number) {
   };
 }
 
+/** Hubs with fewer guides than this stay one list; sorting a handful into topics only adds headings. */
+const GROUP_FROM = 8;
+
+function GuideGrid({ guides, className }: { guides: GuidePage[]; className: string }) {
+  return (
+    <ul className={`grid list-none gap-3.5 p-0 min-[640px]:grid-cols-2 min-[980px]:grid-cols-3 ${className}`}>
+      {guides.map((guide, i) => {
+        const place = placement(i, guides.length);
+        return (
+          <li key={guide.slug} className={`flex min-w-0 motion-safe:[animation:tm-rise_.4s_ease_both] ${place.className}`}>
+            <GuideCard guide={guide} featured={place.featured} />
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 export function GuideHubPage({ app }: { app: GuideApp }) {
   const hub = GUIDE_HUBS[app];
   const identity = APP_IDENTITY[app];
   const colors = identity.colors;
   const guides = getGuidesByApp(app);
+  const groups = groupGuides(guides);
+  const grouped = groups.length > 1 && guides.length >= GROUP_FROM;
   const tinyApp = app === "tinybundle" ? undefined : getApp(app);
   const cta = tinyApp ? appCta(tinyApp, WAITLIST) : { href: "/#apps", label: "Explore the apps", live: false };
 
@@ -135,16 +155,32 @@ export function GuideHubPage({ app }: { app: GuideApp }) {
               })}
             </nav>
           </div>
-          <ul className="mt-[22px] grid list-none gap-3.5 p-0 min-[640px]:grid-cols-2 min-[980px]:grid-cols-3">
-            {guides.map((guide, i) => {
-              const place = placement(i, guides.length);
-              return (
-                <li key={guide.slug} className={`flex min-w-0 motion-safe:[animation:tm-rise_.4s_ease_both] ${place.className}`}>
-                  <GuideCard guide={guide} featured={place.featured} />
-                </li>
-              );
-            })}
-          </ul>
+          {grouped ? (
+            <>
+              <nav aria-label={`${identity.name} guide topics`} className="mt-[22px] flex flex-wrap gap-2">
+                {groups.map((group) => (
+                  <a
+                    key={group.id}
+                    href={`#${group.id}`}
+                    className="box-border flex h-10 items-center gap-2 rounded-[20px] bg-white px-[15px] text-[13.5px] font-extrabold text-tb-ink shadow-[0_2px_10px_rgba(90,60,20,0.06)] hover:text-tb-ink hover:shadow-[0_6px_16px_rgba(90,60,20,0.10)] active:scale-[0.97]"
+                  >
+                    {group.topic}
+                    <span className="text-tb-muted">{group.guides.length}</span>
+                  </a>
+                ))}
+              </nav>
+              {groups.map((group) => (
+                <section key={group.id} id={group.id} aria-labelledby={`${group.id}-h`} className="scroll-mt-24 pt-[clamp(32px,4vw,44px)]">
+                  <h3 id={`${group.id}-h`} className="m-0 text-[clamp(20px,2.4vw,26px)] font-extrabold leading-[1.2]" style={{ color: colors.deep }}>
+                    {group.topic}
+                  </h3>
+                  <GuideGrid guides={group.guides} className="mt-4" />
+                </section>
+              ))}
+            </>
+          ) : (
+            <GuideGrid guides={guides} className="mt-[22px]" />
+          )}
         </section>
 
         <section aria-labelledby="more-h" className="mx-auto box-border max-w-[1180px] px-[clamp(18px,4vw,40px)] pt-[clamp(56px,7vw,88px)]">
