@@ -1,0 +1,5 @@
+Contact: mailto:contact@twobricklabs.com
+Expires: 2027-10-13T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://www.tinybundle.app/.well-known/security.txt
+Policy: https://www.tinybundle.app/privacy

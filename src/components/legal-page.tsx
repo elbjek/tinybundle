@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BundleQuads } from "@/components/app-identity";
 import { Backdrop } from "@/components/site/backdrop";
+import { COOKIE_SETTINGS_HREF } from "@/lib/consent";
 import { hubHref } from "@/lib/guides/hubs";
 import { absoluteUrl, SITE_URL } from "@/lib/seo";
 
@@ -237,6 +238,9 @@ export function LegalPage({
             <Link href={`${base}/terms`} className="text-sm font-bold text-tb-body hover:text-tb-ink">
               Terms
             </Link>
+            <a href={COOKIE_SETTINGS_HREF} className="text-sm font-bold text-tb-body hover:text-tb-ink">
+              Cookie settings
+            </a>
             <a href={`mailto:${email}`} className="text-sm font-bold text-tb-body hover:text-tb-ink">
               Contact
             </a>

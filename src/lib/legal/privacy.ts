@@ -45,7 +45,9 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
     id: "website",
     title: "The tinybundle.app website",
     paragraphs: [
-      "You can read the website without giving us anything. We do not use advertising or analytics cookies on it.",
+      "You can read the website without giving us anything. It sets no cookies and shows no ads.",
+      "If you choose Allow in the notice that appears on your first visit, we use Vercel Web Analytics to count page visits, so we can see which pages and guides help. It works without cookies, does not identify you and does not follow you to other websites. If you choose No thanks, it never loads. You can change your choice at any time with Cookie settings at the bottom of any page.",
+      "Your choice is saved in your browser’s local storage, on your device only, so we do not ask again.",
       "Our hosting provider, Vercel, processes technical request data such as your IP address and browser type to deliver pages and keep the site secure.",
       "If you ask to hear about a launch, the form opens your own email app with a message to us. We keep your email address to send that launch news and delete it when you ask us to.",
     ],
@@ -140,7 +142,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
       "MET Norway: weather for TinyLayers, receiving only approximate coordinates with no account identifier.",
       "PostHog (United States) and Sentry: usage events and crash reports for TinyMeals. Expo: push notifications for TinyMeals.",
       "A content moderation service: scores TinyHaven note text for safety. Email us if you want to know the current provider.",
-      "Vercel: hosts the tinybundle.app website.",
+      "Vercel: hosts the tinybundle.app website and, only if you allow it, counts website visits with Vercel Web Analytics.",
     ],
     afterList: [
       "We may also disclose information if the law requires it, to protect someone’s safety or to defend our legal rights. If TwoBrickLabs is involved in a merger or acquisition, information may transfer with continued protection.",
