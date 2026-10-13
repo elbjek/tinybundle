@@ -1,3 +1,4 @@
+import { StoreLabel } from "@/components/app-store-badge";
 import { appCta, type TinyApp } from "@/lib/apps";
 
 /**
@@ -10,23 +11,20 @@ import { appCta, type TinyApp } from "@/lib/apps";
 export function AppStoreCta({
   app,
   waitlistHref,
-  liveLabel,
 }: {
   app: TinyApp;
   /** Where "Tell me when it launches" goes before the app is live. */
   waitlistHref: string;
-  /** Overrides "Get <App> on the App Store". */
-  liveLabel?: string;
 }) {
   const cta = appCta(app, waitlistHref);
   const button = (
     <a
       href={cta.href}
       rel={cta.live ? "noopener" : undefined}
-      className="inline-flex h-[54px] items-center rounded-[18px] bg-white px-6 text-base font-extrabold hover:brightness-[0.96] active:scale-[0.97]"
+      className="inline-flex h-[54px] items-center gap-2.5 rounded-[18px] bg-white px-6 text-base font-extrabold hover:brightness-[0.96] active:scale-[0.97]"
       style={{ color: app.colors.deep }}
     >
-      {cta.live ? (liveLabel ?? cta.label) : cta.label}
+      {cta.live ? <StoreLabel /> : cta.label}
     </a>
   );
   if (!cta.live) return <div className="relative">{button}</div>;
