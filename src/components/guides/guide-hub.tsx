@@ -16,17 +16,20 @@ const HASH_REDIRECT = `(function(){var h=location.hash.replace(/^#(hub-)?/,"");i
 )}.indexOf(h)>-1)location.replace("/guides/"+h)})()`;
 
 /**
- * Grid placement so a card is never alone on the last row. Three columns from 980px: the first card spans two
- * unless the count already fills every row. Two columns from 640px: an odd last card spans both.
+ * Grid placement so every row is full. Three columns from 980px: the first card spans two unless the count already
+ * fills every row, and the last card also spans two when one cell would be left over. Two columns from 640px: an odd
+ * last card spans both.
  */
 function placement(index: number, count: number) {
   const featured = index === 0 && count % 3 !== 0;
-  const lastOdd = index === count - 1 && count % 2 === 1 && count > 1;
+  const last = index === count - 1 && count > 1;
+  const wideLast = last && count % 3 === 1;
+  const oddLast = last && count % 2 === 1;
   return {
     featured,
     className: [
-      lastOdd ? "sm:col-span-2" : "",
-      featured ? "min-[980px]:col-span-2" : lastOdd ? "min-[980px]:col-span-1" : "",
+      oddLast ? "min-[640px]:col-span-2" : "",
+      featured || wideLast ? "min-[980px]:col-span-2" : oddLast ? "min-[980px]:col-span-1" : "",
     ].join(" "),
   };
 }
@@ -71,21 +74,35 @@ export function GuideHubPage({ app }: { app: GuideApp }) {
           <h1 className="mt-4 max-w-[18ch] text-balance text-[clamp(34px,5vw,56px)] font-extrabold leading-[1.06]">{hub.h1}</h1>
           <p className="mt-4 max-w-[56ch] text-pretty text-[clamp(16px,1.5vw,18px)] leading-[1.6] text-tb-body">{hub.intro}</p>
           <div className="mt-[26px] flex flex-wrap items-center gap-3">
+            {tinyApp && !cta.live ? (
+              <Link
+                href={`/${app}`}
+                className="inline-flex h-[52px] items-center gap-2 rounded-[18px] px-[22px] text-[15.5px] font-extrabold text-white hover:text-white hover:brightness-[0.92] active:scale-[0.97]"
+                style={{ background: colors.btn }}
+              >
+                <span>{`Check out ${identity.name}`}</span>
+                <span aria-hidden="true">&rarr;</span>
+              </Link>
+            ) : null}
             <a
               href={cta.href}
               rel={cta.live ? "noopener" : undefined}
-              className="inline-flex h-[52px] items-center rounded-[18px] px-[22px] text-[15.5px] font-extrabold text-white hover:text-white hover:brightness-[0.92] active:scale-[0.97]"
-              style={{ background: colors.btn }}
+              className={`inline-flex h-[52px] items-center rounded-[18px] px-[22px] text-[15.5px] font-extrabold active:scale-[0.97] ${
+                cta.live || !tinyApp
+                  ? "text-white hover:text-white hover:brightness-[0.92]"
+                  : "bg-white shadow-[0_2px_10px_rgba(90,60,20,0.08)] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)]"
+              }`}
+              style={cta.live || !tinyApp ? { background: colors.btn } : { color: colors.deep }}
             >
               {cta.label}
             </a>
-            {tinyApp ? (
+            {tinyApp && cta.live ? (
               <Link
                 href={`/${app}`}
                 className="inline-flex h-[52px] items-center gap-2 rounded-[18px] bg-white px-5 text-[15.5px] font-extrabold shadow-[0_2px_10px_rgba(90,60,20,0.08)] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)] active:scale-[0.98]"
                 style={{ color: colors.deep }}
               >
-                <span>Check out the {identity.name} page</span>
+                <span>{`Check out ${identity.name}`}</span>
                 <span aria-hidden="true">&rarr;</span>
               </Link>
             ) : null}
@@ -118,7 +135,7 @@ export function GuideHubPage({ app }: { app: GuideApp }) {
               })}
             </nav>
           </div>
-          <ul className="mt-[22px] grid list-none gap-3.5 p-0 sm:grid-cols-2 min-[980px]:grid-cols-3">
+          <ul className="mt-[22px] grid list-none gap-3.5 p-0 min-[640px]:grid-cols-2 min-[980px]:grid-cols-3">
             {guides.map((guide, i) => {
               const place = placement(i, guides.length);
               return (
