@@ -9,7 +9,7 @@ import { absoluteUrl, layersOgImage, SITE_URL } from "@/lib/seo";
 const app = getApp("tinylayers");
 const title = "TinyLayers: What Should My Baby Wear to Sleep? Baby TOG Guide App";
 const description =
-  "TinyLayers tells you what your baby should wear to sleep and outside, from the room temperature or the weather: bodysuit, sleepsuit and TOG sleep sack, with a quick chest check.";
+  "What your baby should wear to sleep and outside, from the room temperature or weather: bodysuit, sleepsuit and TOG sleep sack, with a quick chest check.";
 const path = "/tinylayers";
 const url = absoluteUrl(path);
 

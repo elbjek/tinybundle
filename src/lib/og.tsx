@@ -225,30 +225,6 @@ export function createOgImage(config: OgConfig) {
   );
 }
 
-export const bundleOg = {
-  brand: "TinyBundle",
-  title: "Four moments. One journey.",
-  titleAccent: "We've got you.",
-  subtitle:
-    "From the late nights to the everyday wins. Four calm apps for every tiny moment of parenting.",
-  theme: {
-    background: "#fbf5ec",
-    ink: "#263048",
-    muted: "#5f6a80",
-    accent: "#e2a13d",
-    accentSoft: "#f2c173",
-    card: "#ffffff",
-    border: "#ecdfcc",
-    glow: "rgba(242, 193, 115, 0.35)",
-  },
-  pills: [
-    { label: "TinyNaps", bg: "#e6e9f0", color: "#232f48" },
-    { label: "TinyLayers", bg: "#dce6f1", color: "#263048" },
-    { label: "TinyBlooms", bg: "#dfe4d1", color: "#263048" },
-    { label: "TinyMeals", bg: "#f6dfc9", color: "#263048" },
-  ],
-} satisfies OgConfig;
-
 export const napsOg = {
   brand: "TinyNaps",
   title: "All the little things,",

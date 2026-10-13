@@ -22,20 +22,21 @@ export const APP_IDENTITY: Record<GuideApp, { name: string; href: string; colors
   ) as Record<TinyApp["slug"], { name: string; href: string; colors: Colors }>),
 };
 
-export function AppMark({ app, className }: { app: GuideApp; className: string }) {
-  if (app === "tinynaps") return <NapsMark className={className} />;
-  if (app === "tinymeals") return <MealsMark className={className} />;
+/** `size` sets pixel width and height for places that ignore CSS classes, such as generated share images. */
+export function AppMark({ app, className, size }: { app: GuideApp; className?: string; size?: number }) {
+  if (app === "tinynaps") return <NapsMark className={className} size={size} />;
+  if (app === "tinymeals") return <MealsMark className={className} size={size} />;
   return (
-    <svg viewBox="0 0 64 64" fill="none" className={className} aria-hidden="true">
+    <svg viewBox="0 0 64 64" width={size} height={size} fill="none" className={className} aria-hidden="true">
       {app === "tinylayers" ? (
-        <>
+        <g>
           <path d="M11 43a21 21 0 0 1 42 0" stroke="#3D6DA8" strokeWidth="5.5" strokeLinecap="round" />
           <path d="M21 43a11 11 0 0 1 22 0" stroke="#7FA8CF" strokeWidth="5.5" strokeLinecap="round" />
           <circle cx="32" cy="43" r="5" fill="#E2A03F" />
-        </>
+        </g>
       ) : null}
       {app === "tinyblooms" ? (
-        <>
+        <g>
           <path d="M32 52V31" stroke="#55915E" strokeWidth="4.5" strokeLinecap="round" />
           <path d="M23 53h18" stroke="#55915E" strokeWidth="4.5" strokeLinecap="round" />
           <path d="M31 37c-8 0-13-5-13-12 8 0 13 5 13 12Z" stroke="#55915E" strokeWidth="4.5" strokeLinejoin="round" />
@@ -46,7 +47,7 @@ export function AppMark({ app, className }: { app: GuideApp; className: string }
             strokeLinejoin="round"
             fill="#A9C9A4"
           />
-        </>
+        </g>
       ) : null}
       {app === "tinybundle" ? <BundleQuads /> : null}
     </svg>

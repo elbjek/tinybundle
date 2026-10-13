@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/legal-page";
 import { TERMS_INTRO, TERMS_SECTIONS, TERMS_SHORT, TERMS_UPDATED } from "@/lib/legal/terms";
+import { bundleOgImage } from "@/lib/seo";
 
 const description =
   "The terms for using tinybundle.app and the TinyLayers, TinyMeals and TinyHaven apps, including subscriptions, health guidance and community rules.";
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   title: { absolute: "Terms of use | TinyBundle" },
   description,
   alternates: { canonical: "/terms" },
-  openGraph: { type: "website", siteName: "TinyBundle", url: "/terms", title: "Terms of use | TinyBundle", description },
+  openGraph: { type: "website", siteName: "TinyBundle", url: "/terms", title: "Terms of use | TinyBundle", description, images: [bundleOgImage] },
 };
 
 export default function TermsRoute() {

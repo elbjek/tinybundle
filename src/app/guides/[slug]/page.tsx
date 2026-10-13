@@ -8,7 +8,7 @@ import { GuideHubPage } from "@/components/guides/guide-hub";
 import { getGuide, getGuideSlugs, getGuidesByApp } from "@/lib/guides/catalog";
 import { GUIDE_HUBS, HUB_ORDER, hubHref, isHub } from "@/lib/guides/hubs";
 import type { GuideApp, GuidePage } from "@/lib/guides/types";
-import { absoluteUrl, bundleOgImage, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, SITE_URL } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -30,7 +30,6 @@ function hubMetadata(app: GuideApp): Metadata {
       url: absoluteUrl(path),
       title: hub.metaTitle,
       description: hub.metaDescription,
-      images: [bundleOgImage],
     },
     twitter: { card: "summary_large_image" },
   };

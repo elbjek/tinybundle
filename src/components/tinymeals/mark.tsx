@@ -1,7 +1,15 @@
 /** TinyMeals bowl: rim, inner curve and a warm dot. `animated` draws it in once on load. */
-export function MealsMark({ className = "h-8 w-8", animated = false }: { className?: string; animated?: boolean }) {
+export function MealsMark({
+  className = "h-8 w-8",
+  animated = false,
+  size,
+}: {
+  className?: string;
+  animated?: boolean;
+  size?: number;
+}) {
   return (
-    <svg viewBox="0 0 64 64" fill="none" className={`overflow-visible ${className}`} aria-hidden="true">
+    <svg viewBox="0 0 64 64" width={size} height={size} fill="none" className={`overflow-visible ${className}`} aria-hidden="true">
       <path
         d="M6 27h5a21 21 0 0 0 42 0h5"
         stroke="#C77245"
