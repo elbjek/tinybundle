@@ -1520,7 +1520,11 @@ const TOPICS: Record<GuidePage["category"], string> = {
   age: "By age",
   development: "Play",
   loneliness: "Wellbeing",
-  cooking: "Weaning",
+  "starting-solids": "Starting solids",
+  "meal-ideas": "Meal ideas",
+  "food-safety": "Food safety",
+  allergens: "Allergens",
+  nutrition: "Nutrition",
   "parenting-apps": "Apps",
   tracking: "Tracking",
 };
@@ -1528,6 +1532,18 @@ const TOPICS: Record<GuidePage["category"], string> = {
 /** The short topic label shown above a guide's title on cards. */
 export function guideTopic(guide: GuidePage): string {
   return TOPICS[guide.category];
+}
+
+/** The order topics appear in on a hub. */
+const TOPIC_ORDER = [...new Set(Object.values(TOPICS))];
+
+/** A hub's guides grouped by topic, in TOPIC_ORDER. Weather and combo guides share the "Weather" group. */
+export function groupGuides(guides: GuidePage[]): { topic: string; id: string; guides: GuidePage[] }[] {
+  return TOPIC_ORDER.map((topic) => ({
+    topic,
+    id: topic.toLowerCase().replace(/\s+/g, "-"),
+    guides: guides.filter((g) => guideTopic(g) === topic),
+  })).filter((group) => group.guides.length > 0);
 }
 
 /** Reading time in minutes at 200 words a minute. */
