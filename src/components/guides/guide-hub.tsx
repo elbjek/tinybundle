@@ -16,17 +16,20 @@ const HASH_REDIRECT = `(function(){var h=location.hash.replace(/^#(hub-)?/,"");i
 )}.indexOf(h)>-1)location.replace("/guides/"+h)})()`;
 
 /**
- * Grid placement so a card is never alone on the last row. Three columns from 980px: the first card spans two
- * unless the count already fills every row. Two columns from 640px: an odd last card spans both.
+ * Grid placement so every row is full. Three columns from 980px: the first card spans two unless the count already
+ * fills every row, and the last card also spans two when one cell would be left over. Two columns from 640px: an odd
+ * last card spans both.
  */
 function placement(index: number, count: number) {
   const featured = index === 0 && count % 3 !== 0;
-  const lastOdd = index === count - 1 && count % 2 === 1 && count > 1;
+  const last = index === count - 1 && count > 1;
+  const wideLast = last && count % 3 === 1;
+  const oddLast = last && count % 2 === 1;
   return {
     featured,
     className: [
-      lastOdd ? "sm:col-span-2" : "",
-      featured ? "min-[980px]:col-span-2" : lastOdd ? "min-[980px]:col-span-1" : "",
+      oddLast ? "min-[640px]:col-span-2" : "",
+      featured || wideLast ? "min-[980px]:col-span-2" : oddLast ? "min-[980px]:col-span-1" : "",
     ].join(" "),
   };
 }
@@ -132,7 +135,7 @@ export function GuideHubPage({ app }: { app: GuideApp }) {
               })}
             </nav>
           </div>
-          <ul className="mt-[22px] grid list-none gap-3.5 p-0 sm:grid-cols-2 min-[980px]:grid-cols-3">
+          <ul className="mt-[22px] grid list-none gap-3.5 p-0 min-[640px]:grid-cols-2 min-[980px]:grid-cols-3">
             {guides.map((guide, i) => {
               const place = placement(i, guides.length);
               return (
