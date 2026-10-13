@@ -8,8 +8,8 @@ export const TERMS_INTRO =
 
 export const TERMS_SHORT = [
   {
-    h: "Guidance, not medical advice",
-    p: "Our apps help with everyday decisions. They do not replace your doctor, health visitor or midwife.",
+    h: "Information only, never advice",
+    p: "Our apps and guides are general information. They are not medical or any other professional advice, and never replace your doctor, health visitor or midwife.",
   },
   {
     h: "Payments go through Apple",
@@ -32,12 +32,14 @@ export const TERMS_SECTIONS: LegalSection[] = [
   },
   {
     id: "medical",
-    title: "Guidance, not medical advice",
+    title: "General information only, never advice",
     paragraphs: [
-      "Our apps and guides give general information based on public guidance from sources such as the NHS, WHO, CDC and the AAP. They are not medical advice, are not a medical device and do not diagnose, treat or prevent any condition. You know your baby best and are always responsible for their care.",
-      "TinyMeals does not diagnose allergies or assess reactions. Ask a health professional before starting solids if your baby was premature, has a medical condition, eczema or a known allergy, and before introducing allergens if you are unsure. Always supervise your baby while they eat.",
-      "TinyLayers gives general dressing guidance only. If your baby has a fever, was born prematurely or has a medical condition, or you are worried about their temperature, talk to a health professional.",
-      "If your baby has trouble breathing, swelling of the face or lips, or seems seriously unwell, or if anyone is in danger, call your local emergency number straight away.",
+      "Everything in our apps, guides, emails and on this website is general information for educational purposes only. It is not medical, health, nutritional, dietary, allergy, safety, sleep, developmental or any other professional advice, and it is never a substitute for advice from a qualified professional who knows your child. Our apps are not medical devices and do not diagnose, treat, cure, monitor or prevent any condition.",
+      "Using the apps or reading our content does not create a doctor-patient or any other professional relationship between you and TwoBrickLabs. We are not doctors, nurses, dietitians or other health professionals, and nothing we publish is reviewed for your child’s individual circumstances.",
+      "You are always responsible for your child’s care and for every decision you make about it. Use your own judgement, and always ask your doctor, health visitor, midwife, dietitian or another qualified professional before acting on anything you read in our apps or guides, especially if your child was premature, has a medical condition, eczema or a known allergy, or before introducing allergens or new foods.",
+      "Public guidance changes and differs between countries, and our content may be incomplete, out of date or not right for your child. We summarise public sources such as the NHS, WHO, CDC and the AAP, but we do not guarantee that our content is accurate, complete or current, and you should not rely on it as the basis for any decision.",
+      "Always supervise your child while they eat, sleep and play. Suggestions such as meals, food shapes, outfits, activities and tracking reminders are examples, not instructions, and they cannot account for every child or situation.",
+      "If your child has trouble breathing, swelling of the face or lips, a seizure, or seems seriously unwell, or if anyone is in danger, call your local emergency number straight away. Do not wait to check an app.",
     ],
   },
   {
@@ -132,7 +134,8 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: "disclaimers",
     title: "Disclaimers",
     paragraphs: [
-      "To the fullest extent the law allows, the website and apps are provided “as is” and “as available”, without warranties of any kind, including fitness for a particular purpose, accuracy or uninterrupted availability. Guidance cannot account for every situation, and automatic moderation cannot catch everything.",
+      "To the fullest extent the law allows, the website, apps and all content are provided “as is” and “as available”, without warranties or representations of any kind, whether express or implied, including accuracy, completeness, reliability, fitness for a particular purpose, safety or uninterrupted availability. Content cannot account for every child or situation, and automatic moderation cannot catch everything.",
+      "You use the website, the apps and their content entirely at your own risk and on your own responsibility. To the fullest extent the law allows, TwoBrickLabs is not responsible for any decision you make, or any action you take or do not take, based on information in the apps, guides or website.",
     ],
   },
   {
