@@ -39,7 +39,7 @@ const jsonLd = {
       applicationCategory: "HealthApplication",
       operatingSystem: "iOS",
       ...(NAPS_CTA.live ? { installUrl: NAPS_CTA.href } : {}),
-      publisher: { "@type": "Organization", name: "Two Brick Labs", url: SITE_URL },
+      publisher: { "@type": "Organization", name: "TwoBrickLabs", url: SITE_URL },
     },
     {
       "@type": "BreadcrumbList",
@@ -99,7 +99,7 @@ export default function TinyNapsRoute() {
           { href: "#try", label: "Try it" },
           { href: "#faq", label: "FAQ" },
         ]}
-        note="© 2026 Two Brick Labs. General guidance only, not medical advice."
+        note="© 2026 TwoBrickLabs. General guidance only, not medical advice."
       />
     </div>
   );

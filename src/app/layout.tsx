@@ -33,9 +33,9 @@ export const metadata: Metadata = {
     "baby apps",
     "new parent apps",
   ],
-  authors: [{ name: "Two Brick Labs", url: "https://www.twobricklabs.com" }],
-  creator: "Two Brick Labs",
-  publisher: "Two Brick Labs",
+  authors: [{ name: "TwoBrickLabs", url: "https://www.twobricklabs.com" }],
+  creator: "TwoBrickLabs",
+  publisher: "TwoBrickLabs",
   openGraph: {
     siteName: "TinyBundle",
     locale: "en_US",

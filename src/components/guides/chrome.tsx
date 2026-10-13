@@ -43,7 +43,7 @@ export function GuidesFooter() {
   return (
     <footer className="mt-[clamp(56px,7vw,88px)]">
       <div className="mx-auto box-border flex max-w-[1180px] flex-wrap items-center justify-between gap-x-8 gap-y-[18px] px-[clamp(18px,4vw,40px)] pb-11 pt-8">
-        <p className="text-[13px] text-tb-muted">&copy; 2026 Two Brick Labs. General guidance only, not medical advice.</p>
+        <p className="text-[13px] text-tb-muted">&copy; 2026 TwoBrickLabs. General guidance only, not medical advice.</p>
         <nav aria-label="Footer" className="flex flex-wrap gap-x-[22px] gap-y-2.5">
           {HUB_ORDER.map((app) => (
             <Link key={app} href={hubHref(app)} className="text-sm font-bold text-tb-body hover:text-tb-ink">

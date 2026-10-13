@@ -103,15 +103,6 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
       { href: "/terms", label: "Terms" },
     ],
   },
-  {
-    title: "Legal",
-    links: [
-      { href: "/tinymeals/privacy", label: "TinyMeals privacy" },
-      { href: "/tinymeals/terms", label: "TinyMeals terms" },
-      { href: "/tinyhaven/privacy", label: "TinyHaven privacy" },
-      { href: "/tinyhaven/terms", label: "TinyHaven terms" },
-    ],
-  },
 ];
 
 const LINK = "text-sm font-bold text-tb-body hover:text-tb-ink";
@@ -127,7 +118,7 @@ export function HomeFooter() {
             </svg>
             <span className="text-lg font-extrabold">TinyBundle</span>
           </div>
-          <p className="m-0 mt-3 text-[13px] leading-[1.6] text-tb-muted">&copy; {new Date().getFullYear()} Two Brick Labs</p>
+          <p className="m-0 mt-3 text-[13px] leading-[1.6] text-tb-muted">&copy; {new Date().getFullYear()} TwoBrickLabs</p>
         </div>
         {COLUMNS.map((column) => (
           <nav key={column.title} aria-label={column.title} className="flex min-w-0 flex-col gap-2.5">

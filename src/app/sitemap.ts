@@ -53,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     ...appPages,
-    ...["tinymeals/privacy", "tinymeals/terms", "tinyhaven/privacy", "tinyhaven/terms"].map((page) => ({
+    ...["privacy", "terms"].map((page) => ({
       url: `${SITE_URL}/${page}`,
       lastModified: now,
       changeFrequency: "yearly" as const,

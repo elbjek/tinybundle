@@ -50,7 +50,7 @@ const jsonLd = {
       applicationCategory: "LifestyleApplication",
       operatingSystem: "iOS",
       ...(app.live && app.appStoreUrl ? { installUrl: app.appStoreUrl } : {}),
-      publisher: { "@type": "Organization", name: "Two Brick Labs", url: SITE_URL },
+      publisher: { "@type": "Organization", name: "TwoBrickLabs", url: SITE_URL },
     },
     {
       "@type": "BreadcrumbList",

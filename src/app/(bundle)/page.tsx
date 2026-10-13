@@ -62,7 +62,7 @@ const jsonLd = {
     {
       "@type": "Organization",
       "@id": `${SITE_URL}/#org`,
-      name: "Two Brick Labs",
+      name: "TwoBrickLabs",
       url: SITE_URL,
       email: CONTACT_EMAIL,
       brand: { "@type": "Brand", name: "TinyBundle" },

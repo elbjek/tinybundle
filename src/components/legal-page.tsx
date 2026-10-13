@@ -31,7 +31,7 @@ export function LegalPage({
 }: {
   /** App name, e.g. "TinyMeals". */
   app: string;
-  /** Path the app's legal pages live under, e.g. "/tinymeals". */
+  /** Path the legal pages live under: "" for the site-wide pages at /privacy and /terms. */
   base: string;
   doc: LegalDoc;
   title: string;
@@ -62,8 +62,8 @@ export function LegalPage({
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "TinyBundle", item: `${SITE_URL}/` },
-          { "@type": "ListItem", position: 2, name: app, item: absoluteUrl(base) },
-          { "@type": "ListItem", position: 3, name: title, item: url },
+          ...(base ? [{ "@type": "ListItem", position: 2, name: app, item: absoluteUrl(base) }] : []),
+          { "@type": "ListItem", position: base ? 3 : 2, name: title, item: url },
         ],
       },
     ],
@@ -202,7 +202,7 @@ export function LegalPage({
 
       <footer className="mt-[clamp(56px,7vw,88px)]">
         <div className="mx-auto box-border flex max-w-[1180px] flex-wrap items-center justify-between gap-x-8 gap-y-[18px] px-[clamp(18px,4vw,40px)] pb-11 pt-8">
-          <p className="text-[13px] text-tb-muted">&copy; 2026 Two Brick Labs</p>
+          <p className="text-[13px] text-tb-muted">&copy; 2026 TwoBrickLabs</p>
           <nav aria-label="Footer" className="flex flex-wrap gap-x-[22px] gap-y-2.5">
             <Link href="/" className="text-sm font-bold text-tb-body hover:text-tb-ink">
               All apps

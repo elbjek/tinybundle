@@ -5,7 +5,7 @@ import type { FaqItem } from "@/components/site/faq";
 export const HOME_FAQS: FaqItem[] = [
   {
     q: "What is TinyBundle?",
-    a: "TinyBundle is a family of four calm parenting apps from Two Brick Labs: TinyLayers for what your baby should wear, TinyMeals for starting solids, TinyBlooms for play ideas, gentle milestones and memories, and TinyNaps for tracking sleep, feeds and diapers.",
+    a: "TinyBundle is a family of four calm parenting apps from TwoBrickLabs: TinyLayers for what your baby should wear, TinyMeals for starting solids, TinyBlooms for play ideas, gentle milestones and memories, and TinyNaps for tracking sleep, feeds and diapers.",
   },
   {
     q: "What should my baby wear to sleep at 18°C?",
