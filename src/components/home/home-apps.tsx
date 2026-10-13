@@ -276,18 +276,13 @@ function PanelBody({ panel }: { panel: Panel }) {
           </div>
           {cta.live ? (
             <QrLink app={panel.app} name={app.name} href={cta.href} className="h-[110px] w-[110px] rounded-2xl p-2" />
-          ) : (
-            <span className="hidden flex-1 justify-end self-start pt-3 sm:flex">{guidesLink}</span>
-          )}
+          ) : null}
+          <span className="hidden flex-1 justify-end self-start pt-3 sm:flex">{guidesLink}</span>
         </div>
         {cta.live ? (
-          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
-            <p className="m-0 hidden text-[13px] font-bold text-tb-muted min-[720px]:block">Scan the code with your iPhone camera</p>
-            {guidesLink}
-          </div>
-        ) : (
-          <span className="sm:hidden">{guidesLink}</span>
-        )}
+          <p className="m-0 hidden text-[13px] font-bold text-tb-muted min-[720px]:block">Scan the code with your iPhone camera</p>
+        ) : null}
+        <span className="sm:hidden">{guidesLink}</span>
       </div>
     </>
   );
