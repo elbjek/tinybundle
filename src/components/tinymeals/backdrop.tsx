@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Backdrop, type BackdropShape } from "@/components/site/backdrop";
 
 type Spot = [top: string, left: string, rotate?: string];
 type Layout = Record<"a" | "b" | "c" | "d" | "e" | "f" | "g", Spot>;
@@ -15,22 +16,26 @@ const LAYOUTS: Layout[] = [
   { a: ["80%", "44%", "rotate(-24deg)"], b: ["-110px", "56%"], c: ["44%", "4%"], d: ["20%", "58%", "rotate(60deg)"], e: ["66%", "12%"], f: ["12%", "38%"], g: ["34%", "80%"] },
 ];
 
-const GLIDE = "top 1.1s cubic-bezier(.34,1.2,.64,1), left 1.1s cubic-bezier(.34,1.2,.64,1), transform 1.1s ease";
+const SPRING = "cubic-bezier(.34,1.2,.64,1)";
+const GLIDE = `top 1.1s ${SPRING}, left 1.1s ${SPRING}, transform 1.1s ease`;
+const DRIFT = "top 1.1s ease, left 1.1s ease";
 
-const SHAPES: { key: keyof Layout; className: string }[] = [
-  { key: "a", className: "h-[220px] w-[220px] rounded-[60px] bg-meals-apricot opacity-55 [animation:tm-float-a_9s_ease-in-out_infinite]" },
-  { key: "b", className: "h-[300px] w-[300px] rounded-full bg-meals-mint opacity-60 [animation:tm-float-b_10s_ease-in-out_infinite]" },
-  { key: "c", className: "h-[90px] w-[90px] rounded-full bg-meals-sage-tint opacity-80 [animation:tm-float-b_7s_ease-in-out_1s_infinite]" },
-  { key: "d", className: "h-[46px] w-[46px] rounded-[14px] bg-meals-apricot opacity-60 [animation:tm-float-a_7.5s_ease-in-out_.6s_infinite]" },
-  { key: "e", className: "h-[9px] w-[9px] rounded-full bg-meals-amber [animation:tm-twinkle_2.4s_ease-in-out_infinite]" },
-  { key: "f", className: "h-2 w-2 rounded-full bg-meals-moss [animation:tm-twinkle_2.4s_ease-in-out_.8s_infinite]" },
-  { key: "g", className: "h-[7px] w-[7px] rounded-full bg-meals-sage [animation:tm-twinkle_2.4s_ease-in-out_1.4s_infinite]" },
+const SHAPES: { key: keyof Layout; style: BackdropShape["style"]; animation: string }[] = [
+  { key: "a", style: { width: 220, height: 220, borderRadius: 60, background: "#F6D9A8", opacity: 0.55, transition: GLIDE }, animation: "tm-float-a 9s ease-in-out infinite" },
+  { key: "b", style: { width: 300, height: 300, borderRadius: 150, background: "#DCE5CF", opacity: 0.6, transition: GLIDE }, animation: "tm-float-b 10s ease-in-out infinite" },
+  { key: "c", style: { width: 90, height: 90, borderRadius: 45, background: "#E3EBDC", opacity: 0.8, transition: GLIDE }, animation: "tm-float-b 7s ease-in-out 1s infinite" },
+  { key: "d", style: { width: 46, height: 46, borderRadius: 14, background: "#F6D9A8", opacity: 0.6, transition: GLIDE }, animation: "tm-float-a 7.5s ease-in-out .6s infinite" },
+  { key: "e", style: { width: 9, height: 9, borderRadius: 5, background: "#E2A03F", transition: DRIFT }, animation: "tm-twinkle 2.4s ease-in-out infinite" },
+  { key: "f", style: { width: 8, height: 8, borderRadius: 4, background: "#8FA078", transition: DRIFT }, animation: "tm-twinkle 2.4s ease-in-out .8s infinite" },
+  { key: "g", style: { width: 7, height: 7, borderRadius: 4, background: "#5F6F4B", transition: DRIFT }, animation: "tm-twinkle 2.4s ease-in-out 1.4s infinite" },
 ];
 
+/** The page's background shapes. They move to a new layout as you scroll, unless reduced motion is on. */
 export function MealsBackdrop() {
   const [stage, setStage] = useState(0);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const onScroll = () => {
       const next = Math.max(0, Math.floor((window.scrollY + window.innerHeight * 0.35) / (window.innerHeight * 0.75))) % LAYOUTS.length;
       setStage(next);
@@ -42,17 +47,11 @@ export function MealsBackdrop() {
 
   const layout = LAYOUTS[stage];
   return (
-    <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      {SHAPES.map(({ key, className }) => {
+    <Backdrop
+      shapes={SHAPES.map(({ key, style, animation }) => {
         const [top, left, rotate] = layout[key];
-        return (
-          <div
-            key={key}
-            className={`absolute ${className}`}
-            style={{ top, left, transform: rotate ?? "none", transition: GLIDE }}
-          />
-        );
+        return { style: { ...style, top, left, transform: rotate ?? "none" }, animation };
       })}
-    </div>
+    />
   );
 }

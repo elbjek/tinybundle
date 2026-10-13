@@ -42,7 +42,7 @@ export function FirstFoodsPlan() {
 
   return (
     <>
-      <div className="mt-[30px] grid gap-2 [grid-template-columns:repeat(auto-fill,minmax(min(30%,96px),1fr))]">
+      <div className="mt-[30px] grid grid-cols-2 gap-2 min-[480px]:grid-cols-5 min-[1080px]:grid-cols-10">
         {WEEKS.map((w, i) => {
           const on = selected === i;
           return (
@@ -54,7 +54,7 @@ export function FirstFoodsPlan() {
                 setSelected(i);
                 setFlip((n) => n + 1);
               }}
-              className={`rounded-[18px] px-3 pb-[13px] pt-3 text-left transition-colors active:scale-[0.97] ${
+              className={`cursor-pointer rounded-[18px] px-3 pb-[13px] pt-3 text-left transition-colors active:scale-[0.97] ${
                 on
                   ? "bg-meals-sage text-white shadow-[0_8px_18px_rgba(95,111,75,0.22)]"
                   : "bg-white text-meals-ink shadow-[0_2px_10px_rgba(90,60,20,0.06)]"

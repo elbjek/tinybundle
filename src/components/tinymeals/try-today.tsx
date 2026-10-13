@@ -66,12 +66,15 @@ function Segment<T extends string | number>({
   current,
   onPick,
   className,
+  onClassName,
   children,
 }: {
   value: T;
   current: T;
   onPick: (value: T) => void;
   className: string;
+  /** Background of the selected segment. */
+  onClassName: string;
   children: React.ReactNode;
 }) {
   const on = value === current;
@@ -80,8 +83,8 @@ function Segment<T extends string | number>({
       type="button"
       aria-pressed={on}
       onClick={() => onPick(value)}
-      className={`${className} font-extrabold transition-colors active:scale-[0.97] ${
-        on ? "bg-white text-meals-sage-ink shadow-[0_1px_4px_rgba(90,60,20,0.10)]" : "text-meals-muted"
+      className={`${className} cursor-pointer font-extrabold transition-colors active:scale-[0.97] ${
+        on ? `${onClassName} text-meals-sage-ink shadow-[0_1px_4px_rgba(90,60,20,0.10)]` : "text-meals-muted"
       }`}
     >
       {children}
@@ -175,6 +178,13 @@ export function TryToday({ baby }: { baby: string }) {
     setReaction(null);
     flipTo("meal");
   };
+  const pickMode = (next: Mode) => {
+    if (next === mode) return;
+    showMeal(() => {
+      setMode(next);
+      setIdea(0);
+    });
+  };
   const pick = (rx: Reaction) => {
     setReaction(rx);
     flipTo("result");
@@ -209,6 +219,7 @@ export function TryToday({ baby }: { baby: string }) {
                   })
                 }
                 className="rounded-[10px] px-3.5 py-2 text-[12.5px]"
+                onClassName="bg-meals-sage-tint"
               >
                 {label}
               </Segment>
@@ -228,13 +239,9 @@ export function TryToday({ baby }: { baby: string }) {
             <Segment
               value="spoon"
               current={mode}
-              onPick={(v) =>
-                showMeal(() => {
-                  setMode(v);
-                  setIdea(0);
-                })
-              }
+              onPick={pickMode}
               className="flex h-[38px] flex-1 items-center justify-center gap-[7px] rounded-[11px] text-[13px]"
+              onClassName="bg-white"
             >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M12 21v-6M12 15a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
@@ -244,13 +251,9 @@ export function TryToday({ baby }: { baby: string }) {
             <Segment
               value="finger"
               current={mode}
-              onPick={(v) =>
-                showMeal(() => {
-                  setMode(v);
-                  setIdea(0);
-                })
-              }
+              onPick={pickMode}
               className="flex h-[38px] flex-1 items-center justify-center gap-[7px] rounded-[11px] text-[13px]"
+              onClassName="bg-white"
             >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path
@@ -310,7 +313,7 @@ export function TryToday({ baby }: { baby: string }) {
                     {meal.meta}
                   </p>
                   <p className="mt-2.5 text-pretty text-[13.5px] leading-[1.55] text-meals-body">{meal.desc}</p>
-                  <ul className="mt-3 flex flex-wrap gap-1.5 border-t border-meals-border pt-3">
+                  <ul className="mt-4 flex flex-wrap gap-1.5">
                     {meal.foods.map((food) => (
                       <li
                         key={food.name}

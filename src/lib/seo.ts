@@ -32,12 +32,12 @@ export function routeOgImage(path: string, alt: string) {
 
 export const bloomsOgImage = routeOgImage(
   "/tinyblooms",
-  "TinyBlooms - One lovely thing to do with baby. Age-based ideas, coming soon.",
+  "TinyBlooms: baby activities, milestones and memories, ages 0 to 5.",
 );
 
 export const napsOgImage = routeOgImage(
   "/tinynaps",
-  "TinyNaps - All the little things, in one place. Baby sleep, feeding and daily care tracker, coming soon.",
+  "TinyNaps: baby sleep, feeding and diaper tracker for iPhone.",
 );
 
 export const mealsOgImage = routeOgImage(

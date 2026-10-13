@@ -1,108 +1,80 @@
-import type { Metadata } from "next";
-import { BloomsHeader, BloomsFooter } from "@/components/tinyblooms/chrome";
-import { BloomsPage } from "@/components/tinyblooms/blooms-page";
+import type { Metadata, Viewport } from "next";
+import { Backdrop } from "@/components/site/backdrop";
+import { faqJsonLd } from "@/components/site/faq";
+import { SiteFooter } from "@/components/site/site-footer";
+import { BLOOMS_FAQS, BloomsPage } from "@/components/tinyblooms/blooms-page";
+import { BloomsHeader } from "@/components/tinyblooms/chrome";
+import { getApp } from "@/lib/apps";
 import { absoluteUrl, bloomsOgImage, SITE_URL } from "@/lib/seo";
 
-const title = "TinyBlooms - One lovely thing to do with baby";
+const app = getApp("tinyblooms");
+const title = "TinyBlooms: Baby Activities, Milestones and Memories, Ages 0 to 5";
 const description =
-  "Age-based ideas and tiny activities that fit real days. One idea at a time, no milestones, no guilt. Coming soon from TinyBundle.";
-const ogTitle = "One lovely thing to do with baby.";
-const ogDescription =
-  "One age-right idea at a time. No browsing, no milestones, no guilt. TinyBlooms is coming soon.";
+  "TinyBlooms gives you age-right play ideas, gentle milestones with no scores and a journal for the moments you want to keep, from newborn to age 5.";
 const path = "/tinyblooms";
 const url = absoluteUrl(path);
 
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
-  keywords: [
-    "TinyBlooms",
-    "baby activities",
-    "what to do with baby",
-    "age appropriate play",
-    "tummy time ideas",
-    "newborn activities",
-    "TinyBundle",
-  ],
   alternates: { canonical: path },
-  openGraph: {
-    type: "website",
-    url,
-    title: ogTitle,
-    description: ogDescription,
-    siteName: "TinyBlooms",
-    locale: "en_US",
-    images: [bloomsOgImage],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: ogTitle,
-    description: ogDescription,
-    images: [bloomsOgImage.url],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true, "max-image-preview": "large" },
+  openGraph: { type: "website", siteName: "TinyBundle", url, title, description, images: [bloomsOgImage] },
+  twitter: { card: "summary_large_image" },
+  ...(app.live && app.appStoreId ? { other: { "apple-itunes-app": `app-id=${app.appStoreId}` } } : {}),
 };
+
+export const viewport: Viewport = { themeColor: "#EAF1E5" };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
-      "@id": `${SITE_URL}/#organization`,
-      name: "TinyBundle",
-      url: `${SITE_URL}/`,
+      "@type": "MobileApplication",
+      name: app.name,
+      url,
+      description,
+      applicationCategory: "LifestyleApplication",
+      operatingSystem: "iOS",
+      ...(app.live && app.appStoreUrl ? { installUrl: app.appStoreUrl } : {}),
+      publisher: { "@type": "Organization", name: "Two Brick Labs", url: SITE_URL },
     },
     {
-      "@type": "WebPage",
-      "@id": `${url}#webpage`,
-      url,
-      name: title,
-      description,
-      isPartOf: { "@id": `${SITE_URL}/#organization` },
-      primaryImageOfPage: {
-        "@type": "ImageObject",
-        url: absoluteUrl(bloomsOgImage.url),
-        width: bloomsOgImage.width,
-        height: bloomsOgImage.height,
-      },
-      about: {
-        "@type": "SoftwareApplication",
-        name: "TinyBlooms",
-        applicationCategory: "LifestyleApplication",
-        operatingSystem: "iOS",
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/PreOrder",
-          price: "0",
-          priceCurrency: "USD",
-        },
-      },
-      inLanguage: "en-US",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "TinyBundle", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: app.name, item: url },
+      ],
     },
+    faqJsonLd(BLOOMS_FAQS),
   ],
 };
 
+const BLOBS = [
+  { style: { top: -120, right: -80, width: 320, height: 320, borderRadius: 160, background: "#C9DCC3", opacity: 0.7 } },
+  { style: { bottom: -160, left: -120, width: 340, height: 340, borderRadius: 170, background: "#C9DCC3", opacity: 0.6 } },
+];
+
 export default function TinyBloomsRoute() {
   return (
-    <div className="min-h-screen bg-blooms font-sans text-blooms-ink antialiased selection:bg-blooms-green-tint selection:text-blooms-green-deep">
+    <div className="relative isolate min-h-screen overflow-x-clip bg-tb font-nunito text-tb-ink antialiased">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <Backdrop shapes={BLOBS} />
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-blooms-green focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-extrabold focus:text-tb-ink"
       >
         Skip to content
       </a>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <BloomsHeader />
       <main id="main">
         <BloomsPage />
       </main>
-      <BloomsFooter />
+      <SiteFooter
+        app="tinyblooms"
+        blurb="one small, age-right play idea for whatever time you have."
+        note="© 2026 Two Brick Labs. Play ideas for everyday moments, not medical advice."
+      />
     </div>
   );
 }

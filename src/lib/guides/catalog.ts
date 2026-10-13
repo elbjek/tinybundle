@@ -1512,8 +1512,31 @@ export function getGuidesByApp(app: GuidePage["app"]): GuidePage[] {
   return guidePages.filter((p) => p.app === app);
 }
 
-export function getGuidesByCategory(
-  category: GuidePage["category"],
-): GuidePage[] {
-  return guidePages.filter((p) => p.category === category);
+const TOPICS: Record<GuidePage["category"], string> = {
+  weather: "Weather",
+  combo: "Weather",
+  sleep: "Sleep",
+  situation: "Going out",
+  age: "By age",
+  development: "Play",
+  loneliness: "Wellbeing",
+  cooking: "Weaning",
+  "parenting-apps": "Apps",
+  tracking: "Tracking",
+};
+
+/** The short topic label shown above a guide's title on cards. */
+export function guideTopic(guide: GuidePage): string {
+  return TOPICS[guide.category];
+}
+
+/** Reading time in minutes at 200 words a minute. */
+export function readMinutes(guide: GuidePage): number {
+  const text = [
+    guide.quickAnswer,
+    ...guide.bullets,
+    ...guide.sections.flatMap((s) => [s.heading, ...s.paragraphs, ...(s.list ?? [])]),
+    ...guide.faqs.flatMap((f) => [f.q, f.a]),
+  ].join(" ");
+  return Math.max(1, Math.round(text.split(/\s+/).length / 200));
 }

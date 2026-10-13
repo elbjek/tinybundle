@@ -14,7 +14,7 @@ export function GET() {
     "## Apps",
     ...apps.map(
       (app) =>
-        `- [${app.name}](${SITE_URL}/${app.slug}): ${app.tagline}${app.comingSoon ? " (coming soon)" : ""}`,
+        `- [${app.name}](${SITE_URL}/${app.slug}): ${app.tagline}${app.live ? "" : " (coming soon)"}`,
     ),
     "",
     "## TinyLayers blog",

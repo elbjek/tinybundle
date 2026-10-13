@@ -1,13 +1,17 @@
 import Image from "next/image";
+import { AppStoreCta } from "@/components/site/app-store-cta";
+import { Faq, type FaqItem } from "@/components/site/faq";
+import { GuidesTeaser } from "@/components/site/guides-teaser";
 import { FirstFoodsPlan } from "@/components/tinymeals/first-foods-plan";
 import { MealsMark } from "@/components/tinymeals/mark";
 import { FavouritesCard, FirstFoodCard, TriedCard } from "@/components/tinymeals/share-card";
 import { TryToday } from "@/components/tinymeals/try-today";
-import { MEALS_APP_STORE_URL } from "@/lib/tinymeals";
+import { getApp } from "@/lib/apps";
 
 const BABY = "Mila";
+const app = getApp("tinymeals");
 
-export const MEALS_FAQS = [
+export const MEALS_FAQS: FaqItem[] = [
   {
     q: "What does TinyMeals actually do?",
     a: "It suggests one meal a day that suits your baby’s age, texture stage and the foods they’ve already tried. Log how it went with one tap, and the history builds itself: first tried, last served, favourites.",
@@ -115,7 +119,7 @@ function AppleLogo({ className }: { className: string }) {
 
 function HomeCardPreview() {
   return (
-    <div className="relative min-w-0 px-0 pb-16 pt-7 sm:pl-[18px]">
+    <div className="relative box-border min-w-0 pb-16 pl-[clamp(0px,1.6vw,18px)] pr-[clamp(0px,1vw,8px)] pt-7">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="absolute -right-3.5 -top-2 h-[150px] w-[150px] rotate-[14deg] rounded-[40px] bg-meals-apricot [animation:tm-float-a_7s_ease-in-out_infinite]" />
         <div className="absolute -left-[34px] bottom-0 h-[200px] w-[200px] rounded-full bg-meals-mint [animation:tm-float-b_8s_ease-in-out_infinite]" />
@@ -185,7 +189,7 @@ function HomeCardPreview() {
               See more suggestions &rarr;
             </a>
           </p>
-          <a href="#try" className="mt-3.5 flex h-[50px] items-center justify-center gap-2 border-t border-meals-line">
+          <a href="#try" className="mt-3.5 flex h-[50px] items-center justify-center gap-2">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M12 5v14M5 12h14" stroke="#D17A2A" strokeWidth="2.4" strokeLinecap="round" />
             </svg>
@@ -238,19 +242,29 @@ function Hero() {
             No food journal to keep.
           </p>
           <div className="mt-[30px] flex flex-wrap items-center gap-5">
-            <a
-              href={MEALS_APP_STORE_URL}
-              className="flex h-[54px] items-center gap-[11px] rounded-[18px] bg-meals-sage px-6 text-white transition-colors hover:bg-meals-sage-deep active:scale-[0.97]"
-            >
-              <AppleLogo className="h-6 w-5" />
-              <span className="block">
-                <span className="block text-[11px] font-bold leading-[1.1] opacity-85">Download on the</span>
-                <span className="block text-[17px] font-extrabold leading-[1.2]">App Store</span>
-              </span>
-            </a>
+            {app.live && app.appStoreUrl ? (
+              <a
+                href={app.appStoreUrl}
+                rel="noopener"
+                className="flex h-[54px] items-center gap-[11px] rounded-[18px] bg-meals-sage px-6 text-white transition-colors hover:bg-meals-sage-deep hover:text-white active:scale-[0.97]"
+              >
+                <AppleLogo className="h-6 w-5" />
+                <span className="block">
+                  <span className="block text-[11px] font-bold leading-[1.1] opacity-85">Download on the</span>
+                  <span className="block text-[17px] font-extrabold leading-[1.2]">App Store</span>
+                </span>
+              </a>
+            ) : (
+              <a
+                href="#get"
+                className="flex h-[54px] items-center rounded-[18px] bg-meals-sage px-6 text-[17px] font-extrabold text-white transition-colors hover:bg-meals-sage-deep hover:text-white active:scale-[0.97]"
+              >
+                Get early access
+              </a>
+            )}
             <a
               href="#try"
-              className="border-b-2 border-meals-orange-deep/30 pb-0.5 text-[15px] font-extrabold text-meals-orange-deep transition-colors hover:border-meals-orange hover:text-meals-orange"
+              className="pb-0.5 text-[15px] font-extrabold text-meals-orange-deep underline decoration-meals-orange-deep/30 decoration-2 underline-offset-[6px] transition-colors hover:text-meals-orange hover:decoration-meals-orange"
             >
               Try today&rsquo;s meal &rarr;
             </a>
@@ -277,7 +291,7 @@ function Values() {
   return (
     <section
       aria-label="Why TinyMeals"
-      className={`${SECTION} grid gap-3.5 pb-[clamp(40px,6vw,72px)] pt-[clamp(16px,3vw,32px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))]`}
+      className={`${SECTION} grid gap-3.5 pb-[clamp(40px,6vw,72px)] pt-[clamp(16px,3vw,32px)] min-[760px]:grid-cols-3`}
     >
       {VALUES.map((card) => (
         <div key={card.title} className="rounded-[22px] bg-white p-6 shadow-[0_2px_10px_rgba(90,60,20,0.06)]">
@@ -303,7 +317,7 @@ function HowItWorks() {
         TinyMeals is built for one-handed, half-asleep parents. You never fill in a journal. The history builds from the
         meals you cook.
       </p>
-      <ol className="mt-7 grid gap-3.5 [grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr))]">
+      <ol className="mt-7 grid gap-3.5 min-[760px]:grid-cols-3">
         {STEPS.map((step, i) => (
           <li key={step.title} className="relative overflow-hidden rounded-[22px] bg-white p-6 shadow-[0_2px_10px_rgba(90,60,20,0.06)]">
             <div aria-hidden="true" className={`absolute -right-[26px] -top-[26px] h-[84px] w-[84px] rotate-[14deg] ${step.blob}`} />
@@ -429,31 +443,6 @@ function Safety() {
   );
 }
 
-function Faq() {
-  return (
-    <section id="faq" className="mx-auto box-border max-w-[840px] scroll-mt-20 px-[clamp(18px,4vw,40px)] py-[clamp(48px,7vw,88px)]">
-      <h2 className="text-balance text-center text-[clamp(30px,4vw,44px)] font-extrabold leading-[1.12]">Questions, answered</h2>
-      <div className="mt-7 flex flex-col gap-2.5">
-        {MEALS_FAQS.map((item) => (
-          <details
-            key={item.q}
-            className="group rounded-[20px] bg-white px-[22px] py-[18px] shadow-[0_2px_10px_rgba(90,60,20,0.06)]"
-          >
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
-              <span className="text-pretty text-base font-extrabold">{item.q}</span>
-              <span aria-hidden="true" className="flex-none text-xl font-bold leading-none text-meals-orange">
-                <span className="group-open:hidden">+</span>
-                <span className="hidden group-open:inline">&minus;</span>
-              </span>
-            </summary>
-            <p className="mt-2.5 max-w-[64ch] text-pretty text-[14.5px] leading-[1.65] text-meals-body">{item.a}</p>
-          </details>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 function GetTheApp() {
   return (
     <section id="get" className={`${SECTION} scroll-mt-20 pb-[clamp(48px,6vw,80px)]`}>
@@ -469,12 +458,7 @@ function GetTheApp() {
             7 days free, then $29.99 a year. Family Sharing included, so everyone who feeds your baby sees the same plan.
           </p>
         </div>
-        <a
-          href={MEALS_APP_STORE_URL}
-          className="relative box-border flex h-14 max-w-full flex-[1_0_auto] items-center justify-center rounded-[20px] bg-white px-7 text-base font-extrabold text-meals-sage-ink transition-colors hover:text-meals-ink active:scale-[0.97]"
-        >
-          Download on the App Store
-        </a>
+        <AppStoreCta app={app} waitlistHref="/#join" />
       </div>
     </section>
   );
@@ -485,7 +469,7 @@ export function MealsPage() {
     <>
       <Hero />
       <Values />
-      <section id="try" className="scroll-mt-20 border-y border-meals-border bg-meals-oat/70">
+      <section id="try" className="scroll-mt-20 bg-[rgba(241,234,224,0.72)]">
         <div className={`${SECTION} py-[clamp(40px,6vw,76px)]`}>
           <TryToday baby={BABY} />
         </div>
@@ -493,8 +477,14 @@ export function MealsPage() {
       <HowItWorks />
       <Plan />
       <Sharing />
+      <GuidesTeaser
+        app="tinymeals"
+        eyebrow="TinyMeals guides"
+        heading="Calm answers for the weaning months."
+        slugs={["first-baby-foods", "baby-led-weaning-meal-ideas", "allergen-introduction-meal-ideas"]}
+      />
       <Safety />
-      <Faq />
+      <Faq faqs={MEALS_FAQS} accent="#D17A2A" />
       <GetTheApp />
     </>
   );

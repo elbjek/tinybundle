@@ -10,7 +10,8 @@ export type GuideCategory =
   | "development"
   | "loneliness"
   | "cooking"
-  | "parenting-apps";
+  | "parenting-apps"
+  | "tracking";
 
 export type GuideFaq = { q: string; a: string };
 

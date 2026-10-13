@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { getApp } from "@/lib/apps";
 
 export const ogSize = {
   width: 1200,
@@ -241,7 +242,7 @@ export const bundleOg = {
     glow: "rgba(242, 193, 115, 0.35)",
   },
   pills: [
-    { label: "TinyNaps", bg: "#ebe6f5", color: "#4b4380" },
+    { label: "TinyNaps", bg: "#e6e9f0", color: "#232f48" },
     { label: "TinyLayers", bg: "#dce6f1", color: "#263048" },
     { label: "TinyBlooms", bg: "#dfe4d1", color: "#263048" },
     { label: "TinyMeals", bg: "#f6dfc9", color: "#263048" },
@@ -252,39 +253,38 @@ export const napsOg = {
   brand: "TinyNaps",
   title: "All the little things,",
   titleAccent: "in one place.",
-  subtitle:
-    "Sleep, feeds, nappies, growth and health in one calm tracker, quick enough to use one-handed at 3am.",
-  badge: "Coming soon to iOS",
+  subtitle: "Log sleep, feeds and diapers in one tap and see the whole day on one calm screen.",
+  badge: getApp("tinynaps").live ? "Free on iPhone" : "Coming soon to iOS",
   theme: {
-    background: "#fef8f3",
-    ink: "#2e2e2e",
-    muted: "#5a5245",
-    accent: "#6f64a8",
-    accentSoft: "#ebe6f5",
-    card: "#ffffff",
-    border: "#f3e7d3",
-    glow: "rgba(201, 192, 230, 0.45)",
+    background: "#232f48",
+    ink: "#ffffff",
+    muted: "#c9d4de",
+    accent: "#f0b66e",
+    accentSoft: "#1a2337",
+    card: "#2c3a57",
+    border: "#2c3a57",
+    glow: "rgba(242, 201, 139, 0.18)",
   },
   pills: [
-    { label: "Sleep", bg: "#ebe6f5", color: "#4b4380" },
-    { label: "Feeds", bg: "#e1ebf3", color: "#4e6e8a" },
-    { label: "Nappies", bg: "#e4eadf", color: "#5e7258" },
+    { label: "Sleep", bg: "#dce6f2", color: "#2f5b8a" },
+    { label: "Feeds", bg: "#fbeedc", color: "#8a4f14" },
+    { label: "Diapers", bg: "#e3ebdc", color: "#3f6e47" },
   ],
 } satisfies OgConfig;
 
 export const bloomsOg = {
   brand: "TinyBlooms",
-  title: "One lovely thing",
-  titleAccent: "to do with baby.",
+  title: "One small idea",
+  titleAccent: "for right now.",
   subtitle:
-    "Age-based ideas and tiny activities that fit real days. One idea at a time, no milestones, no guilt.",
-  badge: "Coming soon",
+    "Age-right play ideas, gentle milestones and a memory journal, from newborn to age 5.",
+  badge: getApp("tinyblooms").live ? "Free on iPhone" : "Coming soon to iOS",
   theme: {
     background: "#faf6ef",
     ink: "#2b2823",
     muted: "#756e62",
-    accent: "#7a8a5a",
-    accentSoft: "#e7f1e4",
+    accent: "#55915e",
+    accentSoft: "#e3ebdc",
     card: "#ffffff",
     border: "#ebe3d5",
     glow: "rgba(223, 228, 209, 0.85)",

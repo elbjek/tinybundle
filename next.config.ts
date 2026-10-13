@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
       { source: "/terms", destination: "/tinymeals/terms", permanent: false },
       // TinyHaven's page was replaced by TinyNaps; its privacy and terms stay for the App Store listing.
       { source: "/tinyhaven", destination: "/tinynaps", permanent: true },
+      // Guides live in one hub per app; the TinyBundle hub is the front door.
+      { source: "/guides", destination: "/guides/tinybundle", permanent: true },
       ...Object.entries(GUIDE_REDIRECTS).map(([from, to]) => ({
         source: `/guides/${from}`,
         destination: `/guides/${to}`,

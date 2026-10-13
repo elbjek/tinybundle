@@ -39,14 +39,14 @@ export default async function JoinFamilyRoute(props: PageProps<"/tinymeals/join/
           </p>
 
           <ol className="mt-8 space-y-4">
-            <li className="rounded-[1.5rem] border border-meals-border bg-meals-card p-5">
+            <li className="rounded-[1.5rem] bg-meals-card p-5 shadow-[0_2px_10px_rgba(90,60,20,0.06)]">
               <p className="text-sm font-extrabold">1. Get TinyMeals</p>
               <p className="mt-1 text-sm font-medium text-meals-muted">Free on iPhone.</p>
               <div className="mt-4">
                 <AppStoreBadge href={MEALS_APP_STORE_URL} />
               </div>
             </li>
-            <li className="rounded-[1.5rem] border border-meals-border bg-meals-card p-5">
+            <li className="rounded-[1.5rem] bg-meals-card p-5 shadow-[0_2px_10px_rgba(90,60,20,0.06)]">
               <p className="text-sm font-extrabold">2. Open your invite</p>
               <p className="mt-1 text-sm font-medium text-meals-muted">
                 Sign in when TinyMeals asks, then tap Join family.

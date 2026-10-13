@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { faqJsonLd } from "@/components/site/faq";
 import { MealsBackdrop } from "@/components/tinymeals/backdrop";
 import { MealsFooter, MealsHeader } from "@/components/tinymeals/chrome";
 import { MEALS_FAQS, MealsPage } from "@/components/tinymeals/meals-page";
+import { getApp } from "@/lib/apps";
 import { absoluteUrl, mealsOgImage, SITE_URL } from "@/lib/seo";
-import { MEALS_APP_STORE_URL } from "@/lib/tinymeals";
 
+const app = getApp("tinymeals");
 const title = "TinyMeals: Baby-Led Weaning and First Foods App for Starting Solids";
 const description =
   "TinyMeals is a calm baby-led weaning and purée planner: one meal a day for your baby’s age and stage, a 10-week first foods plan and allergen tracking.";
@@ -14,16 +16,6 @@ const url = absoluteUrl(path);
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
-  keywords: [
-    "TinyMeals",
-    "baby-led weaning app",
-    "first foods app",
-    "starting solids",
-    "baby meal ideas",
-    "allergen introduction",
-    "weaning plan",
-    "TinyBundle",
-  ],
   alternates: { canonical: path },
   openGraph: {
     type: "website",
@@ -31,7 +23,6 @@ export const metadata: Metadata = {
     title,
     description,
     siteName: "TinyBundle",
-    locale: "en_US",
     images: [mealsOgImage],
   },
   twitter: {
@@ -45,7 +36,7 @@ export const metadata: Metadata = {
     follow: true,
     "max-image-preview": "large",
   },
-  itunes: { appId: "6818279922" },
+  ...(app.live && app.appStoreId ? { other: { "apple-itunes-app": `app-id=${app.appStoreId}` } } : {}),
 };
 
 const jsonLd = {
@@ -58,8 +49,8 @@ const jsonLd = {
       description,
       applicationCategory: "LifestyleApplication",
       operatingSystem: "iOS",
-      installUrl: MEALS_APP_STORE_URL,
-      publisher: { "@type": "Organization", name: "Two Brick Labs", url: `${SITE_URL}/` },
+      ...(app.live && app.appStoreUrl ? { installUrl: app.appStoreUrl } : {}),
+      publisher: { "@type": "Organization", name: "Two Brick Labs", url: SITE_URL },
     },
     {
       "@type": "BreadcrumbList",
@@ -68,20 +59,13 @@ const jsonLd = {
         { "@type": "ListItem", position: 2, name: "TinyMeals", item: url },
       ],
     },
-    {
-      "@type": "FAQPage",
-      mainEntity: MEALS_FAQS.map((item) => ({
-        "@type": "Question",
-        name: item.q,
-        acceptedAnswer: { "@type": "Answer", text: item.a },
-      })),
-    },
+    faqJsonLd(MEALS_FAQS),
   ],
 };
 
 export default function TinyMealsRoute() {
   return (
-    <div className="tm-motion relative isolate min-h-screen font-nunito bg-meals text-meals-ink antialiased selection:bg-meals-peach selection:text-meals-orange-deep">
+    <div className="relative isolate min-h-screen overflow-x-clip bg-tb font-nunito text-tb-ink antialiased selection:bg-meals-peach selection:text-meals-orange-deep">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-meals-sage focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white"

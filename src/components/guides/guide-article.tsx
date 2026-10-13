@@ -1,64 +1,13 @@
 import Link from "next/link";
+import { APP_IDENTITY, AppTile } from "@/components/app-identity";
+import { FaqList } from "@/components/site/faq";
+import { getRelatedLink, guideTopic, readMinutes } from "@/lib/guides/catalog";
 import type { GuidePage } from "@/lib/guides/types";
-import { APP_IDENTITY, AppMark } from "@/components/app-identity";
-import { getRelatedLink } from "@/lib/guides/catalog";
 
-/** Class names per look: the shared TinyBundle guides, or TinyMeals guides in the TinyMeals design. */
-const THEMES = {
-  bundle: {
-    kicker: "",
-    title: "text-tb-ink",
-    meta: "text-tb-muted",
-    quickBox: "rounded-[26px]",
-    quickText: "text-tb-ink",
-    bulletText: "text-tb-body",
-    bullet: "bg-tb-amber",
-    heading: "text-tb-ink",
-    body: "text-tb-body",
-    divider: "border-tb-border",
-    faq: "rounded-[20px] bg-white shadow-[0_2px_10px_rgba(90,60,20,0.06)]",
-    cta: "rounded-[28px] bg-[#232F48] text-white",
-    ctaButton: "rounded-[19px] bg-tb-amber text-[#232F48] hover:brightness-95",
-    link: "text-tb-amber-ink hover:text-tb-ink",
-  },
-  meals: {
-    kicker: "text-meals-orange-deep",
-    title: "text-meals-ink",
-    meta: "text-meals-muted",
-    quickBox: "rounded-[22px] bg-meals-sage-tint",
-    quickText: "text-meals-ink",
-    bulletText: "text-meals-sage-ink",
-    bullet: "bg-meals-sage",
-    heading: "text-meals-ink",
-    body: "text-meals-body",
-    divider: "border-meals-border",
-    faq: "rounded-[20px] bg-white shadow-[0_2px_10px_rgba(90,60,20,0.06)]",
-    cta: "rounded-[28px] bg-meals-sage text-white",
-    ctaButton:
-      "rounded-[18px] bg-white text-meals-sage-ink hover:text-meals-ink",
-    link: "text-meals-orange-deep hover:text-meals-orange",
-  },
-} as const;
-
-export type GuideTheme = keyof typeof THEMES;
-
-export function GuideArticle({
-  guide,
-  theme = "bundle",
-}: {
-  guide: GuidePage;
-  theme?: GuideTheme;
-}) {
+/** A guide in the hub design: app eyebrow, quick answer card, sections, sources, FAQ, app band and related reads. */
+export function GuideArticle({ guide }: { guide: GuidePage }) {
   const identity = APP_IDENTITY[guide.app];
-  // TinyBundle guides take their app's colour for the kicker and quick answer.
-  const t =
-    theme === "bundle"
-      ? {
-          ...THEMES.bundle,
-          kicker: identity.ink,
-          quickBox: `${THEMES.bundle.quickBox} ${identity.soft}`,
-        }
-      : THEMES[theme];
+  const colors = identity.colors;
   const related = guide.relatedSlugs
     .map((slug) => getRelatedLink(slug))
     .filter((link) => link !== undefined)
@@ -67,50 +16,30 @@ export function GuideArticle({
   return (
     <article className="mx-auto w-full max-w-[720px]">
       <header>
-        <p
-          className={`flex items-center gap-2.5 text-xs font-extrabold uppercase tracking-[0.12em] ${t.kicker}`}
-        >
-          <span
-            className={`flex h-9 w-9 flex-none items-center justify-center rounded-xl ${identity.tile}`}
-          >
-            <AppMark app={guide.app} className="h-6 w-6" />
+        <div className="flex items-center gap-3">
+          <AppTile app={guide.app} className="h-[52px] w-[52px] rounded-[18px]" markClassName="h-8 w-8" />
+          <span className="text-[11px] font-extrabold uppercase tracking-[0.09em]" style={{ color: colors.deep }}>
+            {identity.name} guide &middot; {guideTopic(guide)}
           </span>
-          {identity.name} guide
-        </p>
-        <h1
-          className={`mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl ${t.title}`}
-        >
-          {guide.title}
-        </h1>
-        <p className={`mt-3 text-sm font-semibold ${t.meta}`}>
-          <time dateTime={guide.modifiedAt}>
-            Reviewed {formatDate(guide.modifiedAt)}
-          </time>
+        </div>
+        <h1 className="mt-4 text-balance text-[clamp(32px,4.4vw,48px)] font-extrabold leading-[1.08]">{guide.title}</h1>
+        <p className="mt-3.5 text-[13.5px] font-bold text-tb-muted">
+          <time dateTime={guide.modifiedAt}>Reviewed {formatDate(guide.modifiedAt)}</time>
+          <span aria-hidden="true"> &middot; </span>
+          {readMinutes(guide)} min read
         </p>
       </header>
 
-      <div className={`mt-8 px-5 py-5 ${t.quickBox}`}>
-        <p
-          className={`text-[11px] font-extrabold uppercase tracking-[0.14em] ${t.kicker}`}
-        >
+      <div className="mt-8 rounded-[22px] p-[clamp(22px,3vw,28px)]" style={{ background: colors.tile }}>
+        <p className="text-[11px] font-extrabold uppercase tracking-[0.09em]" style={{ color: colors.deep }}>
           Quick answer
         </p>
-        <p
-          className={`mt-2 text-base font-medium leading-relaxed ${t.quickText}`}
-        >
-          {guide.quickAnswer}
-        </p>
+        <p className="mt-2 text-pretty text-[17px] font-semibold leading-relaxed">{guide.quickAnswer}</p>
         {guide.bullets.length > 0 ? (
           <ul className="mt-4 space-y-2">
             {guide.bullets.map((item) => (
-              <li
-                key={item}
-                className={`flex gap-2 text-sm font-medium ${t.bulletText}`}
-              >
-                <span
-                  className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${t.bullet}`}
-                  aria-hidden="true"
-                />
+              <li key={item} className="flex gap-2.5 text-[15px] font-semibold text-tb-body">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: colors.dot }} aria-hidden="true" />
                 <span>{item}</span>
               </li>
             ))}
@@ -118,30 +47,20 @@ export function GuideArticle({
         ) : null}
       </div>
 
-      <div className="mt-8 space-y-8">
+      <div className="mt-10 space-y-9">
         {guide.sections.map((section) => (
           <section key={section.heading}>
-            <h2 className={`text-xl font-extrabold ${t.heading}`}>
-              {section.heading}
-            </h2>
+            <h2 className="text-balance text-[clamp(22px,2.6vw,27px)] font-extrabold leading-[1.2]">{section.heading}</h2>
             {section.paragraphs.map((p) => (
-              <p
-                key={p.slice(0, 48)}
-                className={`mt-3 text-base font-medium leading-relaxed ${t.body}`}
-              >
+              <p key={p.slice(0, 48)} className="mt-3 text-pretty text-[16.5px] leading-[1.7] text-tb-body">
                 {p}
               </p>
             ))}
             {section.list ? (
-              <ul
-                className={`mt-3 space-y-2 text-base font-medium leading-relaxed ${t.body}`}
-              >
+              <ul className="mt-3 space-y-2 text-[16.5px] leading-[1.7] text-tb-body">
                 {section.list.map((item) => (
                   <li key={item} className="flex gap-2.5">
-                    <span
-                      className={`mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full ${t.bullet}`}
-                      aria-hidden="true"
-                    />
+                    <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: colors.dot }} aria-hidden="true" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -153,34 +72,21 @@ export function GuideArticle({
 
       {guide.sources.length > 0 ? (
         <section
-          className={`mt-12 border-t pt-8 ${t.divider}`}
           aria-labelledby="guide-sources"
+          className="mt-12 rounded-[22px] bg-white p-[clamp(22px,3vw,28px)] shadow-[0_2px_10px_rgba(90,60,20,0.06)]"
         >
-          <h2
-            id="guide-sources"
-            className={`text-xl font-extrabold ${t.heading}`}
-          >
+          <h2 id="guide-sources" className="text-xl font-extrabold">
             Sources
           </h2>
-          <p className={`mt-2 text-sm font-medium leading-relaxed ${t.body}`}>
-            We check this guide against these sources. It is general
-            information, not medical advice: speak to your health visitor, GP or
-            paediatrician about your own baby.
+          <p className="mt-2 text-pretty text-sm leading-relaxed text-tb-body">
+            We check this guide against these sources. It is general information, not medical advice: speak to your
+            health visitor, GP or paediatrician about your own baby.
           </p>
           <ol className="mt-4 space-y-2.5">
             {guide.sources.map((source) => (
-              <li
-                key={source.url}
-                className={`text-sm font-medium leading-relaxed ${t.body}`}
-              >
-                <span className={`font-extrabold ${t.heading}`}>
-                  {source.org}:
-                </span>{" "}
-                <a
-                  href={source.url}
-                  rel="noopener"
-                  className={`font-bold ${t.link}`}
-                >
+              <li key={source.url} className="text-sm leading-relaxed text-tb-body">
+                <span className="font-extrabold text-tb-ink">{source.org}:</span>{" "}
+                <a href={source.url} rel="noopener" className="font-bold hover:opacity-80" style={{ color: colors.deep }}>
                   {source.title}
                 </a>
               </li>
@@ -190,61 +96,48 @@ export function GuideArticle({
       ) : null}
 
       {guide.faqs.length > 0 ? (
-        <section
-          className={`mt-12 border-t pt-8 ${t.divider}`}
-          aria-labelledby="guide-faq"
-        >
-          <h2 id="guide-faq" className={`text-xl font-extrabold ${t.heading}`}>
-            Frequently asked questions
+        <section aria-labelledby="guide-faq" className="mt-12">
+          <h2 id="guide-faq" className="text-[clamp(22px,2.6vw,27px)] font-extrabold leading-[1.2]">
+            Questions parents ask
           </h2>
-          <div className="mt-4 space-y-3">
-            {guide.faqs.map((item) => (
-              <details key={item.q} className={`group px-5 py-4 ${t.faq}`}>
-                <summary
-                  className={`cursor-pointer list-none text-sm font-extrabold marker:content-none [&::-webkit-details-marker]:hidden ${t.heading}`}
-                >
-                  {item.q}
-                </summary>
-                <p
-                  className={`mt-3 text-sm font-medium leading-relaxed ${t.body}`}
-                >
-                  {item.a}
-                </p>
-              </details>
-            ))}
-          </div>
+          <FaqList faqs={guide.faqs} accent={colors.deep} className="mt-5" />
         </section>
       ) : null}
 
-      <aside className={`mt-10 px-6 py-7 ${t.cta}`}>
-        <p className="text-lg font-extrabold">{guide.ctaBlurb}</p>
+      <aside
+        className="relative mt-12 overflow-hidden rounded-[28px] p-[clamp(26px,4vw,40px)] text-white"
+        style={{ background: colors.band }}
+      >
+        <div aria-hidden="true" className="absolute -top-[50px] right-[18%] h-[140px] w-[140px] rotate-[16deg] rounded-[38px] bg-white opacity-[0.08]" />
+        <div aria-hidden="true" className="absolute -bottom-20 -right-10 h-[200px] w-[200px] rounded-full bg-black opacity-10" />
+        <p className="relative max-w-[40ch] text-pretty text-[clamp(20px,2.4vw,24px)] font-extrabold leading-[1.25]">
+          {guide.ctaBlurb}
+        </p>
         <Link
           href={guide.ctaHref}
-          className={`mt-5 inline-flex px-5 py-2.5 text-sm font-extrabold transition-colors ${t.ctaButton}`}
+          className="relative mt-5 inline-flex h-[52px] items-center rounded-[18px] bg-white px-[22px] text-[15.5px] font-extrabold hover:brightness-[0.96] active:scale-[0.97]"
+          style={{ color: colors.deep }}
         >
           {guide.ctaLabel}
         </Link>
       </aside>
 
       {related.length > 0 ? (
-        <section
-          className={`mt-12 border-t pt-8 ${t.divider}`}
-          aria-labelledby="related-guides"
-        >
-          <h2
-            id="related-guides"
-            className={`text-lg font-extrabold ${t.heading}`}
-          >
+        <section aria-labelledby="related-guides" className="mt-12">
+          <h2 id="related-guides" className="text-xl font-extrabold">
             Related questions parents ask
           </h2>
-          <ul className="mt-4 space-y-3">
+          <ul className="mt-4 flex flex-col gap-2.5">
             {related.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`text-sm font-bold ${t.link}`}
+                  className="flex items-center justify-between gap-4 rounded-[18px] bg-white px-5 py-4 text-[15px] font-extrabold text-tb-ink shadow-[0_2px_10px_rgba(90,60,20,0.06)] transition-[transform,box-shadow] hover:-translate-y-0.5 hover:text-tb-ink hover:shadow-[0_10px_26px_rgba(90,60,20,0.10)]"
                 >
-                  {item.label}
+                  <span className="text-pretty">{item.label}</span>
+                  <span aria-hidden="true" style={{ color: colors.deep }}>
+                    &rarr;
+                  </span>
                 </Link>
               </li>
             ))}
@@ -256,9 +149,9 @@ export function GuideArticle({
 }
 
 function formatDate(iso: string) {
-  return new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", {
-    month: "long",
+  return new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-GB", {
     day: "numeric",
+    month: "long",
     year: "numeric",
   });
 }

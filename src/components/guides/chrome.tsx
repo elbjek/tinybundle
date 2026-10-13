@@ -1,53 +1,35 @@
 import Link from "next/link";
-import { APP_IDENTITY, BundleArcs } from "@/components/app-identity";
+import { APP_IDENTITY, BundleQuads } from "@/components/app-identity";
+import { Backdrop } from "@/components/site/backdrop";
+import { HUB_ORDER, hubHref } from "@/lib/guides/hubs";
+import type { GuideApp } from "@/lib/guides/types";
 
-const APPS = ["tinynaps", "tinylayers", "tinyblooms", "tinymeals"] as const;
-
+/** Header on the guide hubs and articles: TinyBundle home, Our apps / Guides / FAQ, and Explore the apps. */
 export function GuidesHeader() {
   return (
-    <header className="sticky top-0 z-20 border-b border-tb-border bg-tb/90 backdrop-blur-md">
-      <div className="mx-auto flex w-full max-w-[1180px] items-center gap-[clamp(10px,2vw,20px)] px-[clamp(16px,4vw,40px)] py-2.5">
-        <Link
-          href="/"
-          className="flex flex-none items-center gap-2 text-tb-ink"
-          aria-label="TinyBundle home"
-        >
-          <svg
-            viewBox="0 0 64 64"
-            fill="none"
-            className="h-7 w-7"
-            aria-hidden="true"
-          >
-            <BundleArcs />
+    <header className="sticky top-0 z-20 bg-[rgba(254,248,243,0.92)] backdrop-blur-[10px]">
+      <div className="mx-auto box-border flex max-w-[1180px] items-center gap-[clamp(10px,2vw,24px)] px-[clamp(16px,4vw,40px)] py-2.5">
+        <Link href="/" className="flex flex-none items-center gap-2 text-tb-ink hover:text-tb-ink">
+          <svg width="28" height="28" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <BundleQuads />
           </svg>
-          <span className="text-[17px] font-extrabold tracking-[-0.01em]">
-            TinyBundle
-          </span>
+          <span className="text-[17px] font-extrabold">TinyBundle</span>
         </Link>
-        <nav
-          aria-label="Guides"
-          className="hidden flex-1 justify-center gap-[clamp(12px,2.4vw,30px)] min-[820px]:flex"
-        >
-          <Link
-            href="/guides"
-            className="whitespace-nowrap text-[13.5px] font-bold text-tb-body hover:text-tb-ink"
-          >
-            All guides
+        <nav aria-label="Main" className="hidden flex-1 justify-center gap-[clamp(14px,2.4vw,30px)] min-[760px]:flex">
+          <Link href="/#apps" className="text-[13.5px] font-bold text-tb-body hover:text-tb-ink">
+            Our apps
           </Link>
-          {APPS.map((app) => (
-            <Link
-              key={app}
-              href={`/guides#hub-${app}`}
-              className="whitespace-nowrap text-[13.5px] font-bold text-tb-body hover:text-tb-ink"
-            >
-              {APP_IDENTITY[app].name}
-            </Link>
-          ))}
+          <Link href={hubHref("tinybundle")} className="text-[13.5px] font-extrabold text-tb-ink">
+            Guides
+          </Link>
+          <Link href="/#faq" className="text-[13.5px] font-bold text-tb-body hover:text-tb-ink">
+            FAQ
+          </Link>
         </nav>
-        <div className="flex-1 min-[820px]:hidden" />
+        <div className="flex-1 min-[760px]:hidden" />
         <Link
           href="/#apps"
-          className="flex h-[38px] flex-none items-center whitespace-nowrap rounded-[19px] bg-tb-amber px-[clamp(14px,1.8vw,18px)] text-[13.5px] font-extrabold text-[#232F48] hover:brightness-95 active:scale-[0.97]"
+          className="flex h-10 flex-none items-center rounded-2xl bg-[#232F48] px-4 text-[13.5px] font-extrabold text-white hover:bg-[#1A2337] hover:text-white active:scale-[0.97]"
         >
           Explore the apps
         </Link>
@@ -56,73 +38,39 @@ export function GuidesHeader() {
   );
 }
 
+/** Footer on the guide hubs and articles: every hub, plus privacy. */
 export function GuidesFooter() {
   return (
-    <footer className="mt-[clamp(40px,6vw,72px)] border-t border-tb-border">
-      <div className="mx-auto grid w-full max-w-[1180px] gap-7 px-[clamp(18px,4vw,40px)] pb-10 pt-[clamp(32px,5vw,56px)] [grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr))]">
-        <div className="min-w-0">
-          <div className="flex items-center gap-2.5">
-            <svg
-              viewBox="0 0 64 64"
-              fill="none"
-              className="h-[30px] w-[30px]"
-              aria-hidden="true"
-            >
-              <BundleArcs />
-            </svg>
-            <span className="text-lg font-extrabold">TinyBundle</span>
-          </div>
-          <p className="mt-3 text-[13px] leading-relaxed text-tb-muted">
-            &copy; 2026 Two Brick Labs. General guidance only, not medical
-            advice.
-          </p>
-        </div>
-        <div className="flex min-w-0 flex-col gap-2.5">
-          <p className="text-xs font-extrabold uppercase tracking-[0.08em] text-tb-muted">
-            Our apps
-          </p>
-          {APPS.map((app) => (
-            <Link
-              key={app}
-              href={APP_IDENTITY[app].href}
-              className="text-sm font-bold text-tb-body hover:text-tb-ink"
-            >
-              {APP_IDENTITY[app].name}
-            </Link>
-          ))}
-        </div>
-        <div className="flex min-w-0 flex-col gap-2.5">
-          <p className="text-xs font-extrabold uppercase tracking-[0.08em] text-tb-muted">
-            Guides
-          </p>
-          {APPS.map((app) => (
-            <Link
-              key={app}
-              href={`/guides#hub-${app}`}
-              className="text-sm font-bold text-tb-body hover:text-tb-ink"
-            >
+    <footer className="mt-[clamp(56px,7vw,88px)]">
+      <div className="mx-auto box-border flex max-w-[1180px] flex-wrap items-center justify-between gap-x-8 gap-y-[18px] px-[clamp(18px,4vw,40px)] pb-11 pt-8">
+        <p className="text-[13px] text-tb-muted">&copy; 2026 Two Brick Labs. General guidance only, not medical advice.</p>
+        <nav aria-label="Footer" className="flex flex-wrap gap-x-[22px] gap-y-2.5">
+          {HUB_ORDER.map((app) => (
+            <Link key={app} href={hubHref(app)} className="text-sm font-bold text-tb-body hover:text-tb-ink">
               {APP_IDENTITY[app].name} guides
             </Link>
           ))}
-        </div>
-        <div className="flex min-w-0 flex-col gap-2.5">
-          <p className="text-xs font-extrabold uppercase tracking-[0.08em] text-tb-muted">
-            Company
-          </p>
-          <a
-            href="https://www.twobricklabs.com"
-            className="text-sm font-bold text-tb-body hover:text-tb-ink"
-          >
-            Two Brick Labs
-          </a>
-          <a
-            href="mailto:contact@twobricklabs.com"
-            className="text-sm font-bold text-tb-body hover:text-tb-ink"
-          >
-            Contact
-          </a>
-        </div>
+          <Link href="/privacy" className="text-sm font-bold text-tb-body hover:text-tb-ink">
+            Privacy
+          </Link>
+        </nav>
       </div>
     </footer>
+  );
+}
+
+/** The fixed background shapes behind the hubs and articles, with one shape in the app's colour. */
+export function GuidesBackdrop({ app }: { app: GuideApp }) {
+  return (
+    <Backdrop
+      shapes={[
+        { style: { top: "12%", right: -60, width: 220, height: 220, borderRadius: 60, background: "#F6D9A8", opacity: 0.45, transform: "rotate(14deg)" }, animation: "tm-float-a 9s ease-in-out infinite" },
+        { style: { top: "58%", left: -120, width: 300, height: 300, borderRadius: 150, opacity: 0.7, background: APP_IDENTITY[app].colors.tile }, animation: "tm-float-b 10s ease-in-out infinite" },
+        { style: { top: "82%", right: "14%", width: 90, height: 90, borderRadius: 45, background: "#E3EBDC", opacity: 0.8 }, animation: "tm-float-b 7s ease-in-out infinite 1s" },
+        { style: { top: "30%", left: "6%", width: 46, height: 46, borderRadius: 14, background: "#F6D9A8", opacity: 0.55, transform: "rotate(-18deg)" }, animation: "tm-float-a 7.5s ease-in-out infinite .6s" },
+        { style: { top: "22%", left: "48%", width: 9, height: 9, borderRadius: 5, background: "#E2A03F" }, animation: "tm-twinkle 2.4s ease-in-out infinite" },
+        { style: { top: "70%", left: "34%", width: 8, height: 8, borderRadius: 4, background: "#7FA8CF" }, animation: "tm-twinkle 2.4s ease-in-out infinite .8s" },
+      ]}
+    />
   );
 }

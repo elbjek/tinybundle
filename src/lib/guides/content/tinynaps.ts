@@ -14,7 +14,7 @@ import { URGENT_HELP_LINE } from "@/lib/guides/content/shared";
 export const NAPS_GUIDES: GuideContent[] = [
   {
     slug: "4-month-sleep-regression",
-    category: "loneliness",
+    category: "sleep",
     question: "What is the 4-month sleep regression like?",
     title: "4-month sleep regression: what it is and how to cope",
     metaTitle: "4-month sleep regression: signs, causes and coping",
@@ -125,7 +125,7 @@ export const NAPS_GUIDES: GuideContent[] = [
   },
   {
     slug: "baby-wakes-every-hour",
-    category: "loneliness",
+    category: "sleep",
     question: "Why does my baby wake every hour?",
     title: "Baby wakes every hour: why it happens and what to do",
     metaTitle: "Baby wakes every hour: causes and what to do tonight",
@@ -241,7 +241,7 @@ export const NAPS_GUIDES: GuideContent[] = [
   },
   {
     slug: "is-this-normal-baby",
-    category: "loneliness",
+    category: "tracking",
     question: "Is this normal for a baby?",
     title: "Is this normal for a baby? How to tell ordinary from urgent",
     metaTitle: "Is this normal for a baby? When to worry and who to call",

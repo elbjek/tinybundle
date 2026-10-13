@@ -3,14 +3,11 @@
 @theme {
   --color-cream: #fbf5ec;
   --color-sand: #f7eee0;
-  --color-blush: #f9efe4;
   --color-ink: #263048;
   --color-navy: #232f44;
   --color-muted: #5f6a80;
   --color-amber: #e2a13d;
-  --color-amber-deep: #b97f26;
   --color-butter: #f2c173;
-  --color-powder: #dce6f1;
   --color-sage: #dfe4d1;
   --color-peach: #f6dfc9;
   --color-line: #ecdfcc;
@@ -20,30 +17,13 @@
   --color-layers-card: #ffffff;
   --color-layers-ink: #2b2823;
   --color-layers-muted: #756e62;
-  --color-layers-soft: #6b6355;
   --color-layers-border: #ebe3d5;
   --color-layers-sand: #f1eadd;
   --color-layers-blue: #567f97;
   --color-layers-blue-deep: #3d6478;
-  --color-layers-blue-tint: #e4eef3;
   --color-layers-green: #587d6a;
   --color-layers-green-deep: #3e5c4d;
   --color-layers-green-tint: #e9f0e9;
-  --color-layers-gold: #c99048;
-
-  /* TinyBlooms soft sage palette (TinyBundle cream + app green) */
-  --color-blooms: #faf6ef;
-  --color-blooms-card: #ffffff;
-  --color-blooms-ink: #2b2823;
-  --color-blooms-muted: #756e62;
-  --color-blooms-border: #ebe3d5;
-  --color-blooms-sand: #f1eadd;
-  --color-blooms-sage: #dfe4d1;
-  --color-blooms-green: #7a8a5a;
-  --color-blooms-green-deep: #5f6c45;
-  --color-blooms-green-tint: #e7f1e4;
-  --color-blooms-amber: #e2a13d;
-  --color-blooms-amber-deep: #b97f26;
 
   /* TinyBundle (Landing design: shared cream and ink) */
   --color-tb: #fef8f3;
@@ -55,17 +35,6 @@
   --color-tb-amber: #e2a03f;
   --color-tb-amber-ink: #9a6c1e;
 
-  /* TinyNaps (cream, muted lavender, powder blue, desaturated sage) */
-  --color-naps-lavender: #ebe6f5;
-  --color-naps-lavender-mid: #c9c0e6;
-  --color-naps-lavender-deep: #6f64a8;
-  --color-naps-lavender-ink: #4b4380;
-  --color-naps-powder: #e1ebf3;
-  --color-naps-powder-deep: #4e6e8a;
-  --color-naps-sage: #e4eadf;
-  --color-naps-sage-deep: #5e7258;
-  --color-naps-night: #232038;
-
   /* TinyMeals (Landing design: cream, sage, warm orange) */
   --color-meals: #fef8f3;
   --color-meals-card: #ffffff;
@@ -73,9 +42,7 @@
   --color-meals-body: #5a5245;
   --color-meals-muted: #8c8676;
   --color-meals-border: #f3e7d3;
-  --color-meals-line: #f1e9dc;
   --color-meals-sand: #f3eadf;
-  --color-meals-oat: #f1eae0;
   --color-meals-peach: #fbeedc;
   --color-meals-apricot: #f6d9a8;
   --color-meals-orange: #d17a2a;
@@ -83,7 +50,6 @@
   --color-meals-orange-ink: #8a4f14;
   --color-meals-orange-tint: #fbeedc;
   --color-meals-amber: #e2a03f;
-  --color-meals-amber-deep: #b97f26;
   --color-meals-sage: #5f6f4b;
   --color-meals-sage-deep: #4f5d3e;
   --color-meals-sage-ink: #47523b;
@@ -110,8 +76,14 @@
 @keyframes tm-flip { from { opacity: 0.2; transform: perspective(1100px) rotateY(-75deg); } to { opacity: 1; transform: perspective(1100px) rotateY(0); } }
 @keyframes tm-burst { 0% { transform: translateY(0) scale(0); opacity: 0; } 25% { opacity: 1; } 70% { transform: translateY(var(--tm-burst-y)) scale(1); opacity: 1; } 100% { transform: translateY(calc(var(--tm-burst-y) - 14px)) scale(0.6); opacity: 0; } }
 
+/* Site-wide: no movement for people who ask for less. Entry animations jump straight to their end state. */
 @media (prefers-reduced-motion: reduce) {
-  .tm-motion, .tm-motion * { animation: none !important; transition: none !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 body {
@@ -194,3 +166,4 @@ body {
   line-height: 1.6;
   color: var(--color-layers-muted);
 }
+@keyframes tn-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
