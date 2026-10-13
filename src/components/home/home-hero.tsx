@@ -27,21 +27,16 @@ function StatusPill({ live }: { live: boolean }) {
 /** Links every app panel carries: the app's guides hub and its page. */
 function PanelLinks({ p, className }: { p: HeroPanel; className: string }) {
   return (
-    <span className={`flex flex-wrap gap-2 font-extrabold ${className}`}>
-      <Link
-        href={`/${p.app}`}
-        className="inline-flex h-10 items-center gap-1.5 whitespace-nowrap rounded-[14px] px-4 text-white hover:text-white hover:brightness-[0.92] active:scale-[0.97]"
-        style={{ background: p.btn }}
-      >
-        {`Check out ${p.name}`}
-        <span aria-hidden="true">&rarr;</span>
-      </Link>
+    <span className={`flex flex-wrap items-center gap-x-4 gap-y-2 font-extrabold ${className}`}>
       <Link
         href={`/guides/${p.app}`}
-        className="inline-flex h-10 items-center whitespace-nowrap rounded-[14px] bg-white px-4 shadow-[0_2px_10px_rgba(90,60,20,0.08)] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)] active:scale-[0.97]"
-        style={{ color: p.deep }}
+        className="inline-flex h-10 items-center whitespace-nowrap rounded-[14px] px-4 text-white hover:text-white hover:brightness-[0.92] active:scale-[0.97]"
+        style={{ background: p.btn }}
       >
         {p.guideLabel}
+      </Link>
+      <Link href={`/${p.app}`} className="whitespace-nowrap hover:opacity-75 active:opacity-60" style={{ color: p.deep }}>
+        {`Check out ${p.name} →`}
       </Link>
     </span>
   );
