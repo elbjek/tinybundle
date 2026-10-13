@@ -3,78 +3,87 @@
 @theme {
   --color-cream: #fbf5ec;
   --color-sand: #f7eee0;
-  --color-blush: #f9efe4;
   --color-ink: #263048;
   --color-navy: #232f44;
   --color-muted: #5f6a80;
   --color-amber: #e2a13d;
-  --color-amber-deep: #b97f26;
   --color-butter: #f2c173;
-  --color-powder: #dce6f1;
   --color-sage: #dfe4d1;
   --color-peach: #f6dfc9;
   --color-line: #ecdfcc;
-
-  /* TinyHaven night palette */
-  --color-haven: #16202a;
-  --color-haven-elevated: #1e2a36;
-  --color-haven-deep: #08121a;
-  --color-haven-border: #2c3b49;
-  --color-haven-ink: #f3ede0;
-  --color-haven-muted: #93a7b6;
-  --color-haven-soft: #5a6e7e;
-  --color-haven-amber: #dfae6d;
-  --color-haven-amber-bright: #f2c98b;
-  --color-haven-amber-text: #e8c08a;
-  --color-haven-on-amber: #241c0f;
 
   /* TinyLayers warm sand palette */
   --color-layers: #f8f4ec;
   --color-layers-card: #ffffff;
   --color-layers-ink: #2b2823;
   --color-layers-muted: #756e62;
-  --color-layers-soft: #6b6355;
   --color-layers-border: #ebe3d5;
   --color-layers-sand: #f1eadd;
   --color-layers-blue: #567f97;
   --color-layers-blue-deep: #3d6478;
-  --color-layers-blue-tint: #e4eef3;
   --color-layers-green: #587d6a;
   --color-layers-green-deep: #3e5c4d;
   --color-layers-green-tint: #e9f0e9;
-  --color-layers-gold: #c99048;
 
-  /* TinyBlooms soft sage palette (TinyBundle cream + app green) */
-  --color-blooms: #faf6ef;
-  --color-blooms-card: #ffffff;
-  --color-blooms-ink: #2b2823;
-  --color-blooms-muted: #756e62;
-  --color-blooms-border: #ebe3d5;
-  --color-blooms-sand: #f1eadd;
-  --color-blooms-sage: #dfe4d1;
-  --color-blooms-green: #7a8a5a;
-  --color-blooms-green-deep: #5f6c45;
-  --color-blooms-green-tint: #e7f1e4;
-  --color-blooms-amber: #e2a13d;
-  --color-blooms-amber-deep: #b97f26;
+  /* TinyBundle (Landing design: shared cream and ink) */
+  --color-tb: #fef8f3;
+  --color-tb-ink: #2e2e2e;
+  --color-tb-body: #5a5245;
+  --color-tb-muted: #8c8676;
+  --color-tb-border: #f3e7d3;
+  --color-tb-sand: #f3eadf;
+  --color-tb-amber: #e2a03f;
+  --color-tb-amber-ink: #9a6c1e;
 
-  /* TinyMeals warm peach palette (TinyBundle cream + app orange) */
-  --color-meals: #faf6ef;
+  /* TinyMeals (Landing design: cream, sage, warm orange) */
+  --color-meals: #fef8f3;
   --color-meals-card: #ffffff;
-  --color-meals-ink: #2b2823;
-  --color-meals-muted: #756e62;
-  --color-meals-border: #ebe3d5;
-  --color-meals-sand: #f1eadd;
-  --color-meals-peach: #f6dfc9;
-  --color-meals-orange: #c97b4a;
-  --color-meals-orange-deep: #a86338;
-  --color-meals-orange-tint: #f8ebe0;
-  --color-meals-amber: #e2a13d;
-  --color-meals-amber-deep: #b97f26;
+  --color-meals-ink: #2e2e2e;
+  --color-meals-body: #5a5245;
+  --color-meals-muted: #8c8676;
+  --color-meals-border: #f3e7d3;
+  --color-meals-sand: #f3eadf;
+  --color-meals-peach: #fbeedc;
+  --color-meals-apricot: #f6d9a8;
+  --color-meals-orange: #d17a2a;
+  --color-meals-orange-deep: #b45f1f;
+  --color-meals-orange-ink: #8a4f14;
+  --color-meals-orange-tint: #fbeedc;
+  --color-meals-amber: #e2a03f;
+  --color-meals-sage: #5f6f4b;
+  --color-meals-sage-deep: #4f5d3e;
+  --color-meals-sage-ink: #47523b;
+  --color-meals-sage-tint: #eef3e8;
+  --color-meals-mint: #dce5cf;
+  --color-meals-moss: #8fa078;
 }
 
 @theme inline {
   --font-sans: var(--font-jakarta), system-ui, sans-serif;
+  --font-nunito: var(--font-nunito-sans), system-ui, sans-serif;
+}
+
+@keyframes tb-swap { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: none; } }
+@keyframes tm-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes tm-screen-in { from { opacity: 0; transform: translateY(14px) scale(0.985); } to { opacity: 1; transform: none; } }
+@keyframes tm-float-a { 0%, 100% { translate: 0 0; } 50% { translate: 6px 8px; } }
+@keyframes tm-float-b { 0%, 100% { translate: 0 0; } 50% { translate: -7px 6px; } }
+@keyframes tm-twinkle { 0%, 100% { opacity: 0.25; transform: scale(0.7); } 50% { opacity: 1; transform: scale(1.2); } }
+@keyframes tm-draw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+@keyframes tm-drop { 0% { opacity: 0; transform: translateY(-26px); } 60% { opacity: 1; } 100% { opacity: 1; transform: none; } }
+@keyframes tm-chip { 0% { transform: scale(0.92); } 55% { transform: scale(1.05); } 100% { transform: none; } }
+@keyframes tm-float-in { from { opacity: 0; transform: translateY(16px) scale(0.92); } to { opacity: 1; transform: none; } }
+@keyframes tm-flip { from { opacity: 0.2; transform: perspective(1100px) rotateY(-75deg); } to { opacity: 1; transform: perspective(1100px) rotateY(0); } }
+@keyframes tm-burst { 0% { transform: translateY(0) scale(0); opacity: 0; } 25% { opacity: 1; } 70% { transform: translateY(var(--tm-burst-y)) scale(1); opacity: 1; } 100% { transform: translateY(calc(var(--tm-burst-y) - 14px)) scale(0.6); opacity: 0; } }
+
+/* Site-wide: no movement for people who ask for less. Entry animations jump straight to their end state. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 body {
@@ -84,59 +93,6 @@ body {
 ::selection {
   background-color: var(--color-butter);
   color: var(--color-navy);
-}
-
-@keyframes haven-breathe {
-  0%,
-  100% {
-    opacity: 0.45;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.75;
-    transform: scale(1.06);
-  }
-}
-
-@keyframes haven-twinkle {
-  0%,
-  100% {
-    opacity: 0.25;
-  }
-  50% {
-    opacity: 0.9;
-  }
-}
-
-@keyframes haven-rise {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.haven-breathe {
-  animation: haven-breathe 4.5s ease-in-out infinite;
-}
-
-.haven-twinkle {
-  animation: haven-twinkle 3.2s ease-in-out infinite;
-}
-
-.haven-rise {
-  animation: haven-rise 0.8s ease-out both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .haven-breathe,
-  .haven-twinkle,
-  .haven-rise {
-    animation: none;
-  }
 }
 
 /* TinyLayers article prose */
@@ -210,3 +166,4 @@ body {
   line-height: 1.6;
   color: var(--color-layers-muted);
 }
+@keyframes tn-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }

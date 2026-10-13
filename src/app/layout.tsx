@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { nunitoSans } from "@/lib/fonts";
 import { absoluteUrl, bundleOgImage, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
@@ -12,7 +13,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 const defaultTitle = "TinyBundle - Four moments. One journey.";
 const defaultDescription =
-  "From the late nights to the everyday wins, TinyBundle is here for every tiny moment of parenting. Meet TinyHaven, TinyLayers, TinyBlooms, and TinyMeals.";
+  "From the late nights to the everyday wins, TinyBundle is here for every tiny moment of parenting. Meet TinyNaps, TinyLayers, TinyBlooms and TinyMeals.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -25,16 +26,16 @@ export const metadata: Metadata = {
   keywords: [
     "TinyBundle",
     "parenting apps",
-    "TinyHaven",
+    "TinyNaps",
     "TinyLayers",
     "TinyBlooms",
     "TinyMeals",
     "baby apps",
     "new parent apps",
   ],
-  authors: [{ name: "Two Brick Labs", url: "https://www.twobricklabs.com" }],
-  creator: "Two Brick Labs",
-  publisher: "Two Brick Labs",
+  authors: [{ name: "TwoBrickLabs", url: "https://www.twobricklabs.com" }],
+  creator: "TwoBrickLabs",
+  publisher: "TwoBrickLabs",
   openGraph: {
     siteName: "TinyBundle",
     locale: "en_US",
@@ -61,7 +62,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={plusJakartaSans.variable}>{children}</body>
+      <body className={`${plusJakartaSans.variable} ${nunitoSans.variable}`}>{children}</body>
     </html>
   );
 }

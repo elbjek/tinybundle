@@ -1,151 +1,93 @@
+import { MEALS_APP_STORE_URL } from "@/lib/tinymeals";
+
+export type AppSlug = "tinylayers" | "tinymeals" | "tinyblooms" | "tinynaps";
+
 export type TinyApp = {
-  slug: string;
+  slug: AppSlug;
   name: string;
+  /** True once the app can be downloaded. Drives every App Store button, QR code and "Coming soon" label. */
+  live: boolean;
+  /** App Store page. Only linked while `live` is true. */
+  appStoreUrl?: string;
+  /** App Store id for the Smart App Banner. */
+  appStoreId?: string;
   card: string;
-  cardClassName: string;
-  cardTextClassName: string;
-  cardLinkClassName: string;
   tagline: string;
   description: string;
-  comingSoon?: boolean;
-  features: { title: string; text: string }[];
-  theme: {
-    hero: string;
-    heroHeading: string;
-    heroText: string;
-    accent: string;
+  colors: {
+    /** Brand dot and accent. */
+    dot: string;
+    /** Headings and links on light backgrounds. */
+    deep: string;
+    /** Soft card and chip background. */
+    tile: string;
+    /** Background behind the app mark. */
+    iconBg: string;
+    /** Primary button. */
+    btn: string;
+    /** Dark call-to-action band. */
+    band: string;
   };
 };
 
 export const apps: TinyApp[] = [
   {
-    slug: "tinyhaven",
-    name: "TinyHaven",
-    card: "A late-night haven for when you just need to know you're not alone.",
-    cardClassName: "bg-navy",
-    cardTextClassName: "text-cream/75",
-    cardLinkClassName: "text-butter",
-    tagline: "You're not alone tonight.",
-    description:
-      "A calm late-night check-in for parents — anonymous presence, quiet reassurance, and soft company when the house is asleep and you're wide awake.",
-    features: [
-      {
-        title: "Night-friendly by design",
-        text: "A soft, dark interface that keeps the room calm and your eyes rested.",
-      },
-      {
-        title: "Gentle reassurance",
-        text: "Real words from real parents who have sat in the same dark room.",
-      },
-      {
-        title: "Soft sounds",
-        text: "Lullabies, white noise and quiet stories to carry you both through.",
-      },
-    ],
-    theme: {
-      hero: "bg-navy",
-      heroHeading: "text-cream",
-      heroText: "text-cream/70",
-      accent: "text-butter",
-    },
-  },
-  {
     slug: "tinylayers",
     name: "TinyLayers",
+    live: true,
+    appStoreUrl: "https://apps.apple.com/us/app/tinylayers-baby-outfit-guide/id6787217063",
+    appStoreId: "6787217063",
     card: "Dress your baby right for sleep, weather and every situation.",
-    cardClassName: "bg-powder",
-    cardTextClassName: "text-ink/70",
-    cardLinkClassName: "text-amber-deep",
     tagline: "Dressed right, every time.",
     description:
-      "Take the guesswork out of dressing your baby — for sleep, for weather and for every situation in between.",
-    features: [
-      {
-        title: "Weather-aware outfits",
-        text: "Suggestions based on the temperature outside and inside.",
-      },
-      {
-        title: "Sleep-safe layers",
-        text: "TOG-based sleepwear guidance for safer, comfier nights.",
-      },
-      {
-        title: "Every situation",
-        text: "From car rides to first snow — know exactly what to put on.",
-      },
-    ],
-    theme: {
-      hero: "bg-powder",
-      heroHeading: "text-ink",
-      heroText: "text-ink/70",
-      accent: "text-amber-deep",
-    },
-  },
-  {
-    slug: "tinyblooms",
-    name: "TinyBlooms",
-    card: "Age-based ideas and activities to help your baby bloom every day.",
-    cardClassName: "bg-sage",
-    cardTextClassName: "text-ink/70",
-    cardLinkClassName: "text-amber-deep",
-    comingSoon: true,
-    tagline: "One lovely thing to do with baby.",
-    description:
-      "Age-based ideas and tiny activities that fit real days — one idea at a time, no milestones, no guilt.",
-    features: [
-      {
-        title: "Made for their age",
-        text: "Ideas that match exactly where your baby is right now.",
-      },
-      {
-        title: "Five-minute activities",
-        text: "Small, doable play that fits between naps and feeds.",
-      },
-      {
-        title: "Grow together",
-        text: "Gentle guidance that turns everyday routines into discovery.",
-      },
-    ],
-    theme: {
-      hero: "bg-sage",
-      heroHeading: "text-ink",
-      heroText: "text-ink/70",
-      accent: "text-amber-deep",
-    },
+      "Take the guesswork out of dressing your baby for sleep, for the weather and for every situation in between.",
+    colors: { dot: "#3D6DA8", deep: "#2F5B8A", tile: "#DCE6F2", iconBg: "#DCE6F2", btn: "#3D6DA8", band: "#2F5B8A" },
   },
   {
     slug: "tinymeals",
     name: "TinyMeals",
-    card: "A calm cookbook for introducing solids. Stage-right recipes written for babies.",
-    cardClassName: "bg-peach",
-    cardTextClassName: "text-ink/70",
-    cardLinkClassName: "text-amber-deep",
-    comingSoon: true,
-    tagline: "What can I safely make for baby today?",
+    live: false,
+    appStoreUrl: MEALS_APP_STORE_URL,
+    appStoreId: "6818279922",
+    card: "One gentle meal a day for your baby’s age and stage, with a first foods plan and allergen tracking.",
+    tagline: "Today’s meal, worked out for you.",
     description:
-      "A calm, evidence-based cookbook for introducing solids. Simple, developmentally appropriate recipes written for babies, not adapted from adult meals.",
-    features: [
-      {
-        title: "Stage-right recipes",
-        text: "Ideas matched to where your baby is with solids.",
-      },
-      {
-        title: "Written for babies",
-        text: "Safety, texture, and nutrition built in from the start.",
-      },
-      {
-        title: "Real kitchen cooking",
-        text: "Ingredients you can actually buy and prepare at home.",
-      },
-    ],
-    theme: {
-      hero: "bg-peach",
-      heroHeading: "text-ink",
-      heroText: "text-ink/70",
-      accent: "text-amber-deep",
-    },
+      "A calm baby-led weaning and purée planner: one meal a day for your baby’s age and stage, a ten-food first foods plan and allergen tracking.",
+    colors: { dot: "#D17A2A", deep: "#A0521A", tile: "#FBEEDC", iconBg: "#FBEEDC", btn: "#5F6F4B", band: "#5F6F4B" },
+  },
+  {
+    slug: "tinyblooms",
+    name: "TinyBlooms",
+    live: false,
+    card: "Play ideas, milestones and memories for your child's first five years.",
+    tagline: "Little moments, big discoveries.",
+    description:
+      "Age-right activities for babies and young children, gentle milestones with no scores, and a memory journal for the moments you want to keep.",
+    colors: { dot: "#55915E", deep: "#3F6E47", tile: "#E3EBDC", iconBg: "#E3EBDC", btn: "#47794F", band: "#3F6E47" },
+  },
+  {
+    slug: "tinynaps",
+    name: "TinyNaps",
+    live: false,
+    card: "Sleep, feeds, nappies and health in one calm tracker you can use one-handed at 3am.",
+    tagline: "All the little things, in one place.",
+    description:
+      "A calm baby care tracker for sleep, feeds, nappies, growth and health. See when your baby last ate, slept or had a change, at a glance.",
+    colors: { dot: "#232F48", deep: "#232F48", tile: "#E6E9F0", iconBg: "#232F48", btn: "#232F48", band: "#232F48" },
   },
 ];
 
-export function getApp(slug: string): TinyApp | undefined {
-  return apps.find((app) => app.slug === slug);
+export function getApp(slug: AppSlug): TinyApp {
+  const app = apps.find((a) => a.slug === slug);
+  if (!app) throw new Error(`Unknown app ${slug}`);
+  return app;
 }
+
+/** Where an app's main button goes and what it says: the App Store once live, otherwise the launch list. */
+export function appCta(app: TinyApp, waitlistHref: string): { href: string; label: string; live: boolean } {
+  return app.live && app.appStoreUrl
+    ? { href: app.appStoreUrl, label: `Get ${app.name} on the App Store`, live: true }
+    : { href: waitlistHref, label: `Tell me when ${app.name} launches`, live: false };
+}
+
+export const CONTACT_EMAIL = "contact@twobricklabs.com";

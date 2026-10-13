@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { getApp } from "@/lib/apps";
 
 export const ogSize = {
   width: 1200,
@@ -241,50 +242,49 @@ export const bundleOg = {
     glow: "rgba(242, 193, 115, 0.35)",
   },
   pills: [
-    { label: "TinyHaven", bg: "#232f44", color: "#fbf5ec" },
+    { label: "TinyNaps", bg: "#e6e9f0", color: "#232f48" },
     { label: "TinyLayers", bg: "#dce6f1", color: "#263048" },
     { label: "TinyBlooms", bg: "#dfe4d1", color: "#263048" },
     { label: "TinyMeals", bg: "#f6dfc9", color: "#263048" },
   ],
 } satisfies OgConfig;
 
-export const havenOg = {
-  brand: "TinyHaven",
-  title: "You're not the only",
-  titleAccent: "one awake.",
-  subtitle:
-    "A late-night check-in for parents. Anonymous presence, quiet company, and proof that someone else is up too.",
-  badge: "For the 2am club",
+export const napsOg = {
+  brand: "TinyNaps",
+  title: "All the little things,",
+  titleAccent: "in one place.",
+  subtitle: "Log sleep, feeds and diapers in one tap and see the whole day on one calm screen.",
+  badge: getApp("tinynaps").live ? "Free on iPhone" : "Coming soon to iOS",
   theme: {
-    background: "#16202a",
-    ink: "#f3ede0",
-    muted: "#93a7b6",
-    accent: "#dfae6d",
-    accentSoft: "rgba(223, 174, 109, 0.18)",
-    card: "#1e2a36",
-    border: "#2c3b49",
-    glow: "rgba(223, 174, 109, 0.16)",
+    background: "#232f48",
+    ink: "#ffffff",
+    muted: "#c9d4de",
+    accent: "#f0b66e",
+    accentSoft: "#1a2337",
+    card: "#2c3a57",
+    border: "#2c3a57",
+    glow: "rgba(242, 201, 139, 0.18)",
   },
   pills: [
-    { label: "Anonymous", bg: "#1e2a36", color: "#e8c08a" },
-    { label: "Fades by morning", bg: "#1e2a36", color: "#e8c08a" },
-    { label: "On the App Store", bg: "#dfae6d", color: "#241c0f" },
+    { label: "Sleep", bg: "#dce6f2", color: "#2f5b8a" },
+    { label: "Feeds", bg: "#fbeedc", color: "#8a4f14" },
+    { label: "Diapers", bg: "#e3ebdc", color: "#3f6e47" },
   ],
 } satisfies OgConfig;
 
 export const bloomsOg = {
   brand: "TinyBlooms",
-  title: "One lovely thing",
-  titleAccent: "to do with baby.",
+  title: "One small idea",
+  titleAccent: "for right now.",
   subtitle:
-    "Age-based ideas and tiny activities that fit real days. One idea at a time, no milestones, no guilt.",
-  badge: "Coming soon",
+    "Age-right play ideas, gentle milestones and a memory journal, from newborn to age 5.",
+  badge: getApp("tinyblooms").live ? "Free on iPhone" : "Coming soon to iOS",
   theme: {
     background: "#faf6ef",
     ink: "#2b2823",
     muted: "#756e62",
-    accent: "#7a8a5a",
-    accentSoft: "#e7f1e4",
+    accent: "#55915e",
+    accentSoft: "#e3ebdc",
     card: "#ffffff",
     border: "#ebe3d5",
     glow: "rgba(223, 228, 209, 0.85)",
@@ -298,24 +298,24 @@ export const bloomsOg = {
 
 export const mealsOg = {
   brand: "TinyMeals",
-  title: "What can I safely",
-  titleAccent: "make for baby today?",
+  title: "Today’s meal,",
+  titleAccent: "worked out for you.",
   subtitle:
-    "A calm, evidence-based cookbook for introducing solids. Simple recipes written for babies, matched to their stage.",
-  badge: "Coming soon",
+    "One gentle recipe a day, matched to your baby’s age and texture stage, from first spoons to family meals.",
+  badge: "Built on NHS, WHO & CDC guidance",
   theme: {
-    background: "#faf6ef",
-    ink: "#2b2823",
-    muted: "#756e62",
-    accent: "#c97b4a",
-    accentSoft: "#f8ebe0",
+    background: "#fef8f3",
+    ink: "#2e2e2e",
+    muted: "#5a5245",
+    accent: "#5f6f4b",
+    accentSoft: "#eef3e8",
     card: "#ffffff",
-    border: "#ebe3d5",
+    border: "#f3e7d3",
     glow: "rgba(246, 223, 201, 0.9)",
   },
   pills: [
-    { label: "Stage-right", bg: "#f8ebe0", color: "#a86338" },
-    { label: "Baby-first", bg: "#f6dfc9", color: "#a86338" },
-    { label: "Real ingredients", bg: "#f7edd8", color: "#b97f26" },
+    { label: "First spoons", bg: "#fbeedc", color: "#8a4f14" },
+    { label: "Finger foods", bg: "#eef3e8", color: "#47523b" },
+    { label: "First allergens", bg: "#f3eadf", color: "#8a4f14" },
   ],
 } satisfies OgConfig;

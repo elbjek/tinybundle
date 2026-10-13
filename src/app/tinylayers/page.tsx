@@ -1,131 +1,79 @@
 import type { Metadata } from "next";
-import { LayersHeader, LayersFooter } from "@/components/tinylayers/chrome";
-import { LayersPage } from "@/components/tinylayers/layers-page";
+import { faqJsonLd } from "@/components/site/faq";
+import { LayersBackdrop } from "@/components/tinylayers/backdrop";
+import { LayersFooter, LayersHeader } from "@/components/tinylayers/chrome";
+import { LAYERS_FAQS, LayersPage } from "@/components/tinylayers/layers-page";
+import { getApp } from "@/lib/apps";
 import { absoluteUrl, layersOgImage, SITE_URL } from "@/lib/seo";
-import { layersFaqs } from "@/lib/tinylayers/faqs";
 
-const title = "TinyLayers - Dress your baby with confidence";
+const app = getApp("tinylayers");
+const title = "TinyLayers: What Should My Baby Wear to Sleep? Baby TOG Guide App";
 const description =
-  "TinyLayers tells you what your baby should wear for tonight's room, today's walk, every nap. Plain-English outfit guidance for sleep, outings, stroller, carrier, and car seat — no more second-guessing.";
+  "TinyLayers tells you what your baby should wear to sleep and outside, from the room temperature or the weather: bodysuit, sleepsuit and TOG sleep sack, with a quick chest check.";
 const path = "/tinylayers";
 const url = absoluteUrl(path);
-const ogDescription =
-  "Know what your baby should wear for tonight's room, today's walk, and every nap.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
-  keywords: [
-    "TinyLayers",
-    "what should baby wear to sleep",
-    "baby TOG guide",
-    "dress baby for weather",
-    "baby sleep sack TOG",
-    "room temperature baby sleep",
-    "baby outfit guide app",
-    "car seat coat rule",
-  ],
   alternates: { canonical: path },
   openGraph: {
     type: "website",
     url,
     title,
-    description: ogDescription,
-    siteName: "TinyLayers",
-    locale: "en_US",
+    description,
+    siteName: "TinyBundle",
     images: [layersOgImage],
   },
   twitter: {
     card: "summary_large_image",
     title,
-    description: ogDescription,
+    description,
     images: [layersOgImage.url],
   },
+  robots: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large",
+  },
+  ...(app.live && app.appStoreId ? { other: { "apple-itunes-app": `app-id=${app.appStoreId}` } } : {}),
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
-      "@id": `${SITE_URL}/#organization`,
-      name: "TinyBundle",
-      url: `${SITE_URL}/`,
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${url}#website`,
-      url,
+      "@type": "MobileApplication",
       name: "TinyLayers",
-      publisher: { "@id": `${SITE_URL}/#organization` },
-      inLanguage: "en-US",
-    },
-    {
-      "@type": "WebPage",
-      "@id": `${url}#webpage`,
       url,
-      name: title,
       description,
-      isPartOf: { "@id": `${url}#website` },
-      about: {
-        "@type": "Thing",
-        name: "Baby outfit guidance for sleep and outings",
-      },
-      primaryImageOfPage: {
-        "@type": "ImageObject",
-        url: absoluteUrl(layersOgImage.url),
-        width: layersOgImage.width,
-        height: layersOgImage.height,
-      },
-      inLanguage: "en-US",
-    },
-    {
-      "@type": "SoftwareApplication",
-      "@id": `${url}#app`,
-      name: "TinyLayers - Baby Outfit Guide",
-      operatingSystem: "iOS",
       applicationCategory: "LifestyleApplication",
-      description:
-        "Plain-English baby outfit guidance for sleep, naps, going out, stroller, carrier, and car seat.",
-      url,
-      downloadUrl:
-        "https://apps.apple.com/us/app/tinylayers-baby-outfit-guide/id6787217063",
-      installUrl:
-        "https://apps.apple.com/us/app/tinylayers-baby-outfit-guide/id6787217063",
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
-        description: "Free to download; Premium available in-app",
-      },
-      publisher: { "@id": `${SITE_URL}/#organization` },
-      image: absoluteUrl(layersOgImage.url),
+      operatingSystem: "iOS",
+      ...(app.live && app.appStoreUrl ? { installUrl: app.appStoreUrl } : {}),
+      publisher: { "@type": "Organization", name: "TwoBrickLabs", url: SITE_URL },
     },
     {
-      "@type": "FAQPage",
-      "@id": `${url}#faq`,
-      mainEntity: layersFaqs.map((item) => ({
-        "@type": "Question",
-        name: item.q,
-        acceptedAnswer: { "@type": "Answer", text: item.a },
-      })),
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "TinyBundle", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: "TinyLayers", item: url },
+      ],
     },
+    faqJsonLd(LAYERS_FAQS),
   ],
 };
 
 export default function TinyLayersRoute() {
   return (
-    <div className="min-h-screen bg-layers font-sans text-layers-ink antialiased selection:bg-layers-blue-tint selection:text-layers-blue-deep">
+    <div className="relative isolate min-h-screen overflow-x-clip bg-tb font-nunito text-tb-ink antialiased">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-layers-blue focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[#3D6DA8] focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
       >
         Skip to content
       </a>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <LayersBackdrop />
       <LayersHeader />
       <main id="main">
         <LayersPage />
