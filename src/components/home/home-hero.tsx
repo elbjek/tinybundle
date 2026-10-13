@@ -70,6 +70,10 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
       <section id="top" aria-label="TinyBundle apps" className="relative overflow-hidden bg-tb">
         <div className="relative mx-auto box-border grid max-w-[1180px] grid-cols-[minmax(0,1fr)] items-center gap-[26px] px-[clamp(18px,4vw,40px)] pb-10 pt-[78px] min-[760px]:grid-cols-[minmax(0,1fr)_minmax(300px,400px)] min-[760px]:gap-11 min-[1100px]:h-[max(100svh,700px)] min-[1100px]:grid-cols-[minmax(0,1fr)_440px] min-[1100px]:grid-rows-[auto_minmax(0,1fr)] min-[1100px]:items-end min-[1100px]:gap-x-[clamp(20px,3vw,48px)] min-[1100px]:gap-y-0 min-[1100px]:pb-0 min-[1100px]:pt-[calc(52px+clamp(28px,5vh,60px))]">
           <div className="flex min-w-0 flex-col items-start">
+            <p className="m-0 mb-2.5 flex items-center gap-2 text-[12.5px] font-bold text-tb-muted">
+              <span className="h-[7px] w-[7px] flex-none rounded-full bg-[#5F6F4B]" />
+              {moreSoon ? `${outNow} · ${moreSoon}` : outNow}
+            </p>
             <h1
               className="m-0 box-border inline-flex items-center gap-2.5 text-balance text-[11.5px] font-extrabold uppercase leading-[1.5] tracking-[0.07em] transition-[color,background-color] duration-[900ms] min-[1100px]:min-h-8 min-[1100px]:rounded-2xl min-[1100px]:bg-(--chip) min-[1100px]:py-1.5 min-[1100px]:pl-2 min-[1100px]:pr-3.5 min-[1100px]:text-xs min-[1100px]:normal-case min-[1100px]:leading-[1.35] min-[1100px]:tracking-[0.02em] min-[1100px]:[animation:tm-rise_.5s_ease_both]"
               style={{ color: cur.deep, "--chip": cur.tile } as CSSProperties}
@@ -129,14 +133,10 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
               <a href="#apps" className="text-[14.5px] font-extrabold text-[#D17A2A] hover:text-[#B45F1F] active:opacity-60">
                 Explore all four apps &rarr;
               </a>
-              <span className="flex items-center gap-[7px] text-[12.5px] font-bold text-tb-muted">
-                <span className="h-[7px] w-[7px] rounded-full bg-[#5F6F4B]" />
-                {outNow}
-              </span>
             </div>
           </div>
 
-          <div className="hidden min-w-0 flex-col gap-3 min-[1100px]:mt-[50px] min-[1100px]:flex min-[1100px]:self-start">
+          <div className="hidden min-w-0 flex-col gap-3 min-[1100px]:mt-[78px] min-[1100px]:flex min-[1100px]:self-start">
             <div className="flex min-w-0 items-stretch gap-3">
               <div className="flex min-w-0 flex-1 flex-col gap-2.5">
                 <a
@@ -175,13 +175,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
                 />
               ) : null}
             </div>
-            <div className="flex flex-col gap-1 text-[12.5px] font-bold text-tb-muted">
-              {cur.live ? <p className="m-0 text-[13px] text-tb-body">Scan the code with your iPhone camera</p> : null}
-              <p className="m-0 flex items-center gap-2">
-                <span className="h-[7px] w-[7px] flex-none rounded-full bg-[#5F6F4B]" />
-                {moreSoon ? `${outNow} · ${moreSoon}` : outNow}
-              </p>
-            </div>
+            {cur.live ? <p className="m-0 text-[13px] font-bold text-tb-body">Scan the code with your iPhone camera</p> : null}
           </div>
 
           <div className="w-full min-w-0 max-w-[420px] justify-self-center min-[1100px]:hidden">
