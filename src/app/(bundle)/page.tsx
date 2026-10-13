@@ -12,9 +12,9 @@ import { GuidesTeaser } from "@/components/site/guides-teaser";
 import { appCta, CONTACT_EMAIL, getApp, type AppSlug } from "@/lib/apps";
 import { absoluteUrl, bundleOgImage, SITE_URL } from "@/lib/seo";
 
-const title = "TinyBundle: Calm Parenting Apps for Baby Sleep, First Foods, Play and Daily Care";
+const title = "TinyBundle: Calm Parenting Apps for Sleep, Food and Play";
 const description =
-  "TinyBundle brings together four calm parenting apps: TinyLayers for what baby should wear to sleep, TinyMeals for starting solids, TinyBlooms for age-right play ideas and TinyNaps for tracking sleep, feeds and diapers.";
+  "Four calm parenting apps: TinyLayers for what baby wears to sleep, TinyMeals for first foods, TinyBlooms for play ideas and TinyNaps for sleep and feeds.";
 const ogTitle = "TinyBundle: calm parenting apps for every part of the day";
 const ogDescription =
   "Baby sleepwear, first foods, play ideas and a simple sleep, feeding and diaper tracker in four small, calm apps.";

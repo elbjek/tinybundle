@@ -12,9 +12,9 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-const defaultTitle = "TinyBundle - Four moments. One journey.";
+const defaultTitle = "TinyBundle: Calm Parenting Apps for Sleep, Food and Play";
 const defaultDescription =
-  "From the late nights to the everyday wins, TinyBundle is here for every tiny moment of parenting. Meet TinyNaps, TinyLayers, TinyBlooms and TinyMeals.";
+  "Four calm parenting apps: TinyLayers for what baby wears to sleep, TinyMeals for first foods, TinyBlooms for play ideas and TinyNaps for sleep and feeds.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
