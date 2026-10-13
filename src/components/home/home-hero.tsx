@@ -12,7 +12,7 @@ import { QrLink } from "@/components/home/qr-link";
 const ADVANCE_MS = 5200;
 const QUAD_RADII = ["3px 1.5px 1.5px 1.5px", "1.5px 3px 1.5px 1.5px", "1.5px 1.5px 1.5px 3px", "1.5px 1.5px 3px 1.5px"];
 const QUAD_COLORS = ["#55915E", "#D17A2A", "#3D6DA8", "#232F48"];
-const PHONE_FRAME = "absolute w-[260px] overflow-hidden rounded-[40px] origin-top";
+const PHONE_FRAME = "absolute h-[520px] w-[260px] overflow-hidden rounded-[40px] origin-top";
 /** How far every door phone runs past the card's bottom edge, so a tall screen never leaves an empty strip under it. */
 const PHONE_BLEED = 40;
 
@@ -234,7 +234,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
             {cur.live ? <p className="m-0 text-[13px] font-bold text-tb-body">Scan the code with your iPhone camera</p> : null}
           </div>
 
-          <div className="w-full min-w-0 max-w-[420px] justify-self-center min-[1100px]:hidden">
+          <div className="w-full min-w-0 max-w-[420px] justify-self-center min-[760px]:flex min-[760px]:flex-col min-[760px]:self-stretch min-[1100px]:hidden">
             <div
               role="tablist"
               aria-label="The four TinyBundle apps"
@@ -267,7 +267,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
               })}
             </div>
             <div
-              className="mt-2.5 grid"
+              className="mt-2.5 grid min-[760px]:min-h-0 min-[760px]:flex-1"
               onTouchStart={(e) => {
                 touchX.current = e.touches[0].clientX;
               }}
@@ -284,7 +284,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
                     id={`hero-card-${p.app}`}
                     role="tabpanel"
                     aria-labelledby={`hero-tab-${p.app}`}
-                    className="relative h-[450px] overflow-hidden rounded-[28px] [grid-area:1/1] max-[379px]:h-[480px] min-[760px]:h-[470px]"
+                    className="relative h-[450px] overflow-hidden rounded-[28px] [grid-area:1/1] max-[379px]:h-[480px] min-[760px]:h-auto min-[760px]:min-h-[380px]"
                     style={{
                       background: p.tile,
                       opacity: on ? 1 : 0,
