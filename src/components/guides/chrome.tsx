@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { APP_IDENTITY, BundleQuads } from "@/components/app-identity";
 import { Backdrop } from "@/components/site/backdrop";
+import { COOKIE_SETTINGS_HREF } from "@/lib/consent";
 import { HUB_ORDER, hubHref } from "@/lib/guides/hubs";
 import type { GuideApp } from "@/lib/guides/types";
 
@@ -53,6 +54,9 @@ export function GuidesFooter() {
           <Link href="/privacy" className="text-sm font-bold text-tb-body hover:text-tb-ink">
             Privacy
           </Link>
+          <a href={COOKIE_SETTINGS_HREF} className="text-sm font-bold text-tb-body hover:text-tb-ink">
+            Cookie settings
+          </a>
         </nav>
       </div>
     </footer>

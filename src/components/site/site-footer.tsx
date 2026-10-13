@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AppTile } from "@/components/app-identity";
 import { apps, CONTACT_EMAIL, type AppSlug } from "@/lib/apps";
+import { COOKIE_SETTINGS_HREF } from "@/lib/consent";
 import { hubHref } from "@/lib/guides/hubs";
 
 type FooterLink = { href: string; label: string };
@@ -10,7 +11,7 @@ function Column({ title, links }: { title: string; links: FooterLink[] }) {
     <div className="flex flex-col gap-[9px]">
       <p className="text-[11px] font-extrabold uppercase tracking-[0.08em] text-tb-muted">{title}</p>
       {links.map((link) =>
-        link.href.startsWith("mailto:") ? (
+        link.href.startsWith("mailto:") || link.href.startsWith("#") ? (
           <a key={link.label} href={link.href} className="text-sm font-bold text-tb-body hover:text-tb-ink">
             {link.label}
           </a>
@@ -78,6 +79,7 @@ export function SiteFooter({
               { href: `mailto:${CONTACT_EMAIL}`, label: "Contact" },
               { href: "/privacy", label: "Privacy" },
               { href: "/terms", label: "Terms" },
+              { href: COOKIE_SETTINGS_HREF, label: "Cookie settings" },
             ]}
           />
         </nav>
