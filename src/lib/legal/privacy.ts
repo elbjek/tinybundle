@@ -185,6 +185,13 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
     ],
   },
   {
+    id: "not-medical",
+    title: "Not a medical record",
+    paragraphs: [
+      "What you log in our apps, such as foods, reactions, sleep, outfits or activities, is for your own reference. It is not a medical record, we do not review it, and we do not use it to assess, diagnose or advise on your child’s health. Share anything that worries you with your doctor or health visitor.",
+    ],
+  },
+  {
     id: "security",
     title: "Security",
     paragraphs: [
