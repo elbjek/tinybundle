@@ -205,6 +205,15 @@ function PanelBody({ panel }: { panel: Panel }) {
   const { deep, tile, btn } = app.colors;
   const cta = appCta(app, "#join");
   // A live app leads with the App Store; an app that is not out yet leads with its own page.
+  const guidesLink = (
+    <Link
+      href={`/guides/${panel.app}`}
+      className="whitespace-nowrap px-1 py-0.5 text-[15px] font-extrabold underline decoration-[rgba(46,46,46,0.18)] decoration-2 underline-offset-[5px] hover:opacity-75"
+      style={{ color: deep }}
+    >
+      {`Read the ${app.name} guides →`}
+    </Link>
+  );
   const pageLink = (filled: boolean) => (
     <Link
       href={`/${panel.app}`}
@@ -267,20 +276,18 @@ function PanelBody({ panel }: { panel: Panel }) {
           </div>
           {cta.live ? (
             <QrLink app={panel.app} name={app.name} href={cta.href} className="h-[110px] w-[110px] rounded-2xl p-2" />
-          ) : null}
+          ) : (
+            <span className="hidden flex-1 justify-end self-start pt-3 sm:flex">{guidesLink}</span>
+          )}
         </div>
-        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
-          {cta.live ? (
+        {cta.live ? (
+          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
             <p className="m-0 hidden text-[13px] font-bold text-tb-muted min-[720px]:block">Scan the code with your iPhone camera</p>
-          ) : null}
-          <Link
-            href={`/guides/${panel.app}`}
-            className="px-1 py-0.5 text-[15px] font-extrabold underline decoration-[rgba(46,46,46,0.18)] decoration-2 underline-offset-[5px] hover:opacity-75"
-            style={{ color: deep }}
-          >
-            {`Read the ${app.name} guides →`}
-          </Link>
-        </div>
+            {guidesLink}
+          </div>
+        ) : (
+          <span className="sm:hidden">{guidesLink}</span>
+        )}
       </div>
     </>
   );
