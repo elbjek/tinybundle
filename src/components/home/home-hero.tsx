@@ -154,10 +154,10 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
               </span>
               Calm parenting apps for baby sleep, first foods, play and daily care
             </h1>
-            <p className="m-0 mt-3 min-h-[2.16em] max-w-[15ch] text-balance text-[clamp(32px,8.2vw,46px)] font-extrabold leading-[1.08] text-tb-ink min-[1100px]:mt-[18px] min-[1100px]:min-h-[2.1em] min-[1100px]:max-w-[20ch] min-[1100px]:text-[clamp(36px,min(4.3vw,7vh),56px)] min-[1100px]:leading-[1.05]">
+            <p className="m-0 mt-3 min-h-[2.16em] text-[length:min(8.9vw,46px)] font-extrabold min-[760px]:text-[length:min(calc((92vw_-_444px)/10.2),46px)] leading-[1.08] text-tb-ink min-[1100px]:mt-[18px] min-[1100px]:min-h-[2.1em] min-[1100px]:max-w-[20ch] min-[1100px]:text-[clamp(36px,min(4.3vw,7vh),56px)] min-[1100px]:leading-[1.05]">
               <span key={hero} className="block [animation:tb-swap_.45s_ease_both]">
-                <span className="block min-[1100px]:whitespace-nowrap">{cur.title}</span>
-                <span className="block transition-colors duration-[800ms] min-[1100px]:whitespace-nowrap" style={{ color: cur.deep }}>
+                <span className="block whitespace-nowrap">{cur.title}</span>
+                <span className="block whitespace-nowrap transition-colors duration-[800ms]" style={{ color: cur.deep }}>
                   {cur.title2}
                 </span>
               </span>
