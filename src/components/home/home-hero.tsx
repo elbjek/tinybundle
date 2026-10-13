@@ -68,7 +68,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
     <>
       <HomeNav btn={cur.btn} />
       <section id="top" aria-label="TinyBundle apps" className="relative overflow-hidden bg-tb">
-        <div className="relative mx-auto box-border grid max-w-[1180px] grid-cols-[minmax(0,1fr)] items-center gap-[26px] px-[clamp(18px,4vw,40px)] pb-10 pt-[78px] min-[760px]:grid-cols-[minmax(0,1fr)_minmax(300px,400px)] min-[760px]:gap-11 min-[1100px]:grid-cols-[minmax(0,1fr)_440px] min-[1100px]:items-end min-[1100px]:gap-x-[clamp(20px,3vw,48px)] min-[1100px]:gap-y-0 min-[1100px]:pb-0 min-[1100px]:pt-[calc(52px+clamp(28px,5vh,60px))]">
+        <div className="relative mx-auto box-border grid max-w-[1180px] grid-cols-[minmax(0,1fr)] items-center gap-[26px] px-[clamp(18px,4vw,40px)] pb-10 pt-[78px] min-[760px]:grid-cols-[minmax(0,1fr)_minmax(300px,400px)] min-[760px]:gap-11 min-[1100px]:h-[max(100svh,700px)] min-[1100px]:grid-cols-[minmax(0,1fr)_440px] min-[1100px]:grid-rows-[auto_minmax(0,1fr)] min-[1100px]:items-end min-[1100px]:gap-x-[clamp(20px,3vw,48px)] min-[1100px]:gap-y-0 min-[1100px]:pb-0 min-[1100px]:pt-[calc(52px+clamp(28px,5vh,60px))]">
           <div className="flex min-w-0 flex-col items-start">
             <h1
               className="m-0 box-border inline-flex items-center gap-2.5 text-balance text-[11.5px] font-extrabold uppercase leading-[1.5] tracking-[0.07em] transition-[color,background-color] duration-[900ms] min-[1100px]:min-h-8 min-[1100px]:rounded-2xl min-[1100px]:bg-(--chip) min-[1100px]:py-1.5 min-[1100px]:pl-2 min-[1100px]:pr-3.5 min-[1100px]:text-xs min-[1100px]:normal-case min-[1100px]:leading-[1.35] min-[1100px]:tracking-[0.02em] min-[1100px]:[animation:tm-rise_.5s_ease_both]"
@@ -81,10 +81,10 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
               </span>
               Calm parenting apps for baby sleep, first foods, play and daily care
             </h1>
-            <p className="m-0 mt-3 min-h-[2.16em] max-w-[15ch] text-balance text-[clamp(32px,8.2vw,46px)] font-extrabold leading-[1.08] text-tb-ink min-[1100px]:mt-[18px] min-[1100px]:min-h-[2.1em] min-[1100px]:max-w-[20ch] min-[1100px]:text-[clamp(36px,min(4.6vw,7.4vh),60px)] min-[1100px]:leading-[1.05]">
+            <p className="m-0 mt-3 min-h-[2.16em] max-w-[15ch] text-balance text-[clamp(32px,8.2vw,46px)] font-extrabold leading-[1.08] text-tb-ink min-[1100px]:mt-[18px] min-[1100px]:min-h-[2.1em] min-[1100px]:max-w-[20ch] min-[1100px]:text-[clamp(36px,min(4.3vw,7vh),56px)] min-[1100px]:leading-[1.05]">
               <span key={hero} className="block [animation:tb-swap_.45s_ease_both]">
-                {cur.title}
-                <span className="block transition-colors duration-[800ms]" style={{ color: cur.deep }}>
+                <span className="block min-[1100px]:whitespace-nowrap">{cur.title}</span>
+                <span className="block transition-colors duration-[800ms] min-[1100px]:whitespace-nowrap" style={{ color: cur.deep }}>
                   {cur.title2}
                 </span>
               </span>
@@ -286,7 +286,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
             onKeyDown={(e) => onTabKeys(e, hero, count, pick)}
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
-            className="col-span-full mt-[clamp(24px,4vh,36px)] hidden h-[clamp(380px,50vh,460px)] gap-3 min-[1100px]:flex"
+            className="col-span-full mt-[clamp(24px,4vh,36px)] hidden h-full min-h-0 gap-3 overflow-hidden min-[1100px]:flex"
           >
             {panels.map((p, i) => {
               const on = i === hero;

@@ -76,7 +76,7 @@ export const HERO_MOMENTS: HeroMoment[] = [
     time: "2 am",
     tag: "Sleep & feeds",
     title: "Awake at 2 am?",
-    title2: "Log the feed in one tap.",
+    title2: "Log it in one tap.",
     sub: "And at 2 am, TinyNaps shows when your baby last ate, slept and was changed. Logged in one tap.",
     head: "Everything since the last feed, at a glance.",
     text: "Sleep, feeds and diapers in one calm tracker. Log in one tap, even one-handed in the dark.",
