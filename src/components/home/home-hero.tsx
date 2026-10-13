@@ -68,7 +68,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
     <>
       <HomeNav btn={cur.btn} />
       <section id="top" aria-label="TinyBundle apps" className="relative overflow-hidden bg-tb">
-        <div className="relative mx-auto box-border grid max-w-[1180px] grid-cols-[minmax(0,1fr)] items-center gap-[26px] px-[clamp(18px,4vw,40px)] pb-10 pt-[78px] min-[760px]:grid-cols-[minmax(0,1fr)_minmax(300px,400px)] min-[760px]:gap-11 min-[1100px]:grid-cols-[minmax(0,1fr)_340px] min-[1100px]:items-end min-[1100px]:gap-x-[clamp(20px,3vw,48px)] min-[1100px]:gap-y-0 min-[1100px]:pb-0 min-[1100px]:pt-[calc(52px+clamp(28px,5vh,60px))]">
+        <div className="relative mx-auto box-border grid max-w-[1180px] grid-cols-[minmax(0,1fr)] items-center gap-[26px] px-[clamp(18px,4vw,40px)] pb-10 pt-[78px] min-[760px]:grid-cols-[minmax(0,1fr)_minmax(300px,400px)] min-[760px]:gap-11 min-[1100px]:grid-cols-[minmax(0,1fr)_440px] min-[1100px]:items-end min-[1100px]:gap-x-[clamp(20px,3vw,48px)] min-[1100px]:gap-y-0 min-[1100px]:pb-0 min-[1100px]:pt-[calc(52px+clamp(28px,5vh,60px))]">
           <div className="flex min-w-0 flex-col items-start">
             <h1
               className="m-0 box-border inline-flex items-center gap-2.5 text-balance text-[11.5px] font-extrabold uppercase leading-[1.5] tracking-[0.07em] transition-[color,background-color] duration-[900ms] min-[1100px]:min-h-8 min-[1100px]:rounded-2xl min-[1100px]:bg-(--chip) min-[1100px]:py-1.5 min-[1100px]:pl-2 min-[1100px]:pr-3.5 min-[1100px]:text-xs min-[1100px]:normal-case min-[1100px]:leading-[1.35] min-[1100px]:tracking-[0.02em] min-[1100px]:[animation:tm-rise_.5s_ease_both]"
@@ -136,49 +136,51 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
             </div>
           </div>
 
-          <div className="hidden min-w-0 flex-col gap-2.5 min-[1100px]:mt-[50px] min-[1100px]:flex min-[1100px]:self-start">
-            <a
-              href={cur.ctaHref}
-              rel={cur.live ? "noopener" : undefined}
-              className="flex h-14 items-center justify-center gap-2.5 whitespace-nowrap rounded-[18px] px-5 text-center text-base font-extrabold text-white transition-[background-color] duration-[600ms] hover:text-white hover:brightness-[0.92] active:scale-[0.97]"
-              style={{ background: cur.btn }}
-            >
-              {cur.live ? (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="flex-none">
-                  <path d="M12 4v11M7 10l5 5 5-5M5 20h14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              ) : null}
-              <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
-                {cur.ctaLabel}
-              </span>
-            </a>
-            <Link
-              href={`/${cur.app}`}
-              className="flex h-[54px] items-center justify-center gap-2 whitespace-nowrap rounded-[18px] bg-white px-5 text-[15.5px] font-extrabold shadow-[0_2px_10px_rgba(90,60,20,0.08)] transition-[color,box-shadow] duration-[600ms] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)] active:scale-[0.98]"
-              style={{ color: cur.deep }}
-            >
-              <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
-                {`Check out the ${cur.name} page`}
-              </span>
-              <span aria-hidden="true">&rarr;</span>
-            </Link>
-            <div className="mt-1.5 flex min-w-0 items-center gap-3.5">
+          <div className="hidden min-w-0 flex-col gap-3 min-[1100px]:mt-[50px] min-[1100px]:flex min-[1100px]:self-start">
+            <div className="flex min-w-0 items-stretch gap-3">
+              <div className="flex min-w-0 flex-1 flex-col gap-2.5">
+                <a
+                  href={cur.ctaHref}
+                  rel={cur.live ? "noopener" : undefined}
+                  className="flex h-14 items-center justify-center gap-2.5 whitespace-nowrap rounded-[18px] px-4 text-center text-[15.5px] font-extrabold text-white transition-[background-color] duration-[600ms] hover:text-white hover:brightness-[0.92] active:scale-[0.97]"
+                  style={{ background: cur.btn }}
+                >
+                  {cur.live ? (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="flex-none">
+                      <path d="M12 4v11M7 10l5 5 5-5M5 20h14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  ) : null}
+                  <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
+                    {cur.ctaLabel}
+                  </span>
+                </a>
+                <Link
+                  href={`/${cur.app}`}
+                  className="flex h-[54px] items-center justify-center gap-2 whitespace-nowrap rounded-[18px] bg-white px-4 text-[15px] font-extrabold shadow-[0_2px_10px_rgba(90,60,20,0.08)] transition-[color,box-shadow] duration-[600ms] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)] active:scale-[0.98]"
+                  style={{ color: cur.deep }}
+                >
+                  <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
+                    {`Check out the ${cur.name} page`}
+                  </span>
+                  <span aria-hidden="true">&rarr;</span>
+                </Link>
+              </div>
               {cur.live ? (
                 <QrLink
                   key={hero}
                   app={cur.app}
                   name={cur.name}
                   href={cur.ctaHref}
-                  className="h-[84px] w-[84px] rounded-2xl p-2 [animation:tb-swap_.4s_ease_both]"
+                  className="h-[120px] w-[120px] rounded-[18px] p-2.5 [animation:tb-swap_.4s_ease_both]"
                 />
               ) : null}
-              <div className="flex min-w-0 flex-col gap-1">
-                {cur.live ? <p className="m-0 text-[13px] font-bold text-tb-body">Scan with your iPhone camera</p> : null}
-                <p className="m-0 flex items-center gap-2 text-[12.5px] font-bold text-tb-muted">
-                  <span className="h-[7px] w-[7px] flex-none rounded-full bg-[#5F6F4B]" />
-                  {moreSoon ? `${outNow} · ${moreSoon}` : outNow}
-                </p>
-              </div>
+            </div>
+            <div className="flex flex-col gap-1 text-[12.5px] font-bold text-tb-muted">
+              {cur.live ? <p className="m-0 text-[13px] text-tb-body">Scan the code with your iPhone camera</p> : null}
+              <p className="m-0 flex items-center gap-2">
+                <span className="h-[7px] w-[7px] flex-none rounded-full bg-[#5F6F4B]" />
+                {moreSoon ? `${outNow} · ${moreSoon}` : outNow}
+              </p>
             </div>
           </div>
 
