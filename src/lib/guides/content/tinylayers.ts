@@ -31,8 +31,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
       {
         heading: "What does TOG mean on a baby sleeping bag?",
         paragraphs: [
-          "TOG (thermal overall grade) is a number that tells you how warm a fabric is. A 0.5 TOG bag is thin and summery. A 2.5 TOG bag is padded and made for cooler rooms.",
-          "A baby sleeping bag (also called a sleep sack or wearable blanket) does the job of a blanket without the loose fabric. The AAP says nothing should be in the cot except a fitted sheet, and suggests a wearable blanket or extra layers of clothing if you are worried your baby will get cold. The NHS also lists a baby sleeping bag as a safe option.",
+          "TOG is a warmth rating for the fabric of a sleeping bag: the higher the number, the warmer the bag. Our guide to what TOG is explains every rating and how to read a TOG chart.",
         ],
       },
       {
@@ -110,6 +109,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
       "baby-sleep-20-23c",
       "baby-sleep-24-26c",
       "feel-baby-neck-to-check-temperature",
+      "what-is-tog",
     ],
     sources: [NHS_SIDS, NHS_DRESS, NHS_SUN_BABY, AAP_SAFE_SLEEP],
     modifiedAt: "2026-10-12",
@@ -587,5 +587,125 @@ export const LAYERS_GUIDES: GuideContent[] = [
     ],
     sources: [AAP_CAR_SEAT_WINTER, NHS_SIDS, NHS_SUN_BABY, AAP_SAFE_SLEEP],
     modifiedAt: "2026-10-12",
+  },
+  {
+    slug: "what-is-tog",
+    category: "sleep",
+    question: "What is TOG and how do I read a TOG chart?",
+    title: "What is TOG? Baby TOG ratings and TOG charts explained",
+    metaTitle: "What is TOG? Baby sleeping bag TOG ratings and chart",
+    description:
+      "What TOG means on a baby sleeping bag, which TOG rating suits each room temperature from under 16°C to over 27°C, and how to read a TOG chart safely.",
+    quickAnswer:
+      "TOG is a warmth rating for fabric: the higher the number, the warmer the baby sleeping bag. It describes the bag, not the room. A TOG chart pairs each rating with a room temperature, such as 2.5 TOG for 16–19°C and 1.0 TOG for 20–23°C. Then you check your baby's chest or neck.",
+    bullets: [
+      "TOG rates the sleeping bag, not the room",
+      "Common ratings: 0.2, 0.5, 1.0, 2.5 and 3.5 TOG",
+      "The NHS advises a room of about 16–20°C",
+      "Use a chart as a start, then adjust the clothes underneath",
+      "No hats indoors, and no duvets or loose blankets",
+    ],
+    sections: [
+      {
+        heading: "What does TOG mean?",
+        paragraphs: [
+          "TOG is a number that shows how well a fabric holds in heat. The bigger the number, the warmer the sleeping bag. Makers often spell it out as thermal overall grade.",
+          "The rating belongs to the bag, not the room, so you pick the TOG from the temperature where your baby sleeps, not the time of year.",
+          "A baby sleeping bag, called a sleep sack or wearable blanket in the US, keeps your baby covered without loose bedding. The NHS lists it as a safe choice, and the AAP suggests one if you worry about the cold.",
+        ],
+      },
+      {
+        heading: "What is a TOG chart? Ratings by room temperature",
+        paragraphs: [
+          "A TOG chart matches each rating to a band of room temperatures and suggests what to wear under the bag. These are our starting points, not NHS or AAP rules, so read them alongside your maker's chart.",
+        ],
+        list: [
+          "Under 16°C (under 61°F): 2.5 to 3.5 TOG, over a vest and a long-sleeved sleepsuit. Warm the room if you can",
+          "16–19°C (61–66°F): 2.5 TOG, over a long-sleeved cotton sleepsuit, adding a vest at 16–17°C",
+          "20–23°C (68–73°F): 1.0 TOG, over a cotton sleepsuit or long-sleeved vest, or a short-sleeved vest at 22–23°C",
+          "24–26°C (75–79°F): 0.5 TOG, over a short-sleeved cotton vest, or the vest alone if your baby feels hot",
+          "27°C and above (81°F and above): 0.2 TOG over a short-sleeved cotton vest, or the vest alone",
+        ],
+      },
+      {
+        heading: "How to read a TOG chart",
+        paragraphs: [
+          "Start from the room, then work inwards to your baby.",
+        ],
+        list: [
+          "Read a room thermometer near the cot at bedtime",
+          "Find that temperature on the chart and pick the matching TOG",
+          "Fine-tune with the clothes underneath, one thin layer at a time",
+          "After 10 to 15 minutes, feel your baby's chest or the back of their neck",
+          "Warm and dry is right. Hot or sweaty means take a layer off",
+        ],
+      },
+      {
+        heading: "Why do TOG charts differ between brands?",
+        paragraphs: [
+          "Each maker uses its own fabrics and fillings and sets its own temperature bands, so two charts can be a degree or two apart. The NHS suggests following the maker's guidance for your bag.",
+          "So treat any chart as a starting point, not a rule. Rooms cool overnight and babies differ. The NHS notes babies are better a little cool than too hot, so if you are torn between two bags, choose the lighter one.",
+          "For the full room-by-room choice, see our related guide, the TOG guide for baby sleep.",
+        ],
+      },
+      {
+        heading: "Do duvets and blankets have a TOG rating?",
+        paragraphs: [
+          "Adult duvets carry TOG ratings too, usually far higher than any baby bag.",
+          "Babies under 1 should not sleep with duvets, quilts or loose blankets. The NHS lists duvets, pillows and loose blankets among things to keep out of the cot, and AAP advice for the first year is the same for quilts and blankets. If you use a blanket, the NHS says choose a thin cellular one, with your baby's feet at the foot of the cot. The AAP prefers a wearable blanket instead.",
+        ],
+      },
+      {
+        heading: "Is my baby too hot? Safe sleep at every TOG",
+        paragraphs: [
+          "A warmer bag is never safer. Overheating can raise the risk of sudden infant death syndrome (SIDS), so aim for warm and dry.",
+        ],
+        list: [
+          "Keep the room at about 16–20°C (61–68°F)",
+          "No hat for sleep indoors. Take hats off as soon as you come inside",
+          "Lay your baby on their back for every sleep, naps included",
+          "Use a firm, flat mattress with just a fitted sheet",
+          "Keep the cot away from radiators, heaters and direct sun",
+          "Judge by the chest or neck, as cool hands and feet are normal",
+        ],
+      },
+      {
+        heading: "When to get help",
+        paragraphs: [
+          "If your baby seems unwell, do not bundle them up. The NHS says most unwell or feverish babies need no extra clothes, even in winter.",
+          "Call 999 (or your local emergency number) if your baby stops breathing, will not wake, struggles for breath, turns pale, blue or grey, or is floppy. Contact NHS 111 or your GP if you think your baby is ill. For everyday questions, ask your health visitor.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I use a higher TOG just because it is winter?",
+        a: "No. Go by the room, not the season. With the heating on, a bedroom can sit at 20°C in January, which on our chart calls for a 1.0 TOG bag. Overheating can raise the risk of SIDS, so a warmer bag is not safer. Check the thermometer and your baby's chest.",
+      },
+      {
+        q: "What does 2.5 TOG mean?",
+        a: "2.5 TOG is a warm rating for cooler rooms. On our chart it suits about 16–19°C (61–66°F) with a long-sleeved sleepsuit underneath, plus a vest at the colder end. From 20°C most babies need a lighter 1.0 TOG bag. Check your maker's chart too.",
+      },
+      {
+        q: "What temperature is a 1.0 TOG sleeping bag for?",
+        a: "A 1.0 TOG bag suits a room of about 20–23°C (68–73°F), over a cotton sleepsuit or long-sleeved vest, or a short-sleeved vest at 22–23°C. Below 20°C, 2.5 TOG is usually the better start. A 0.2 TOG bag is for rooms of 27°C or more.",
+      },
+      {
+        q: "What TOG is a sleepsuit?",
+        a: "Sleepsuits and vests do not usually come with a TOG rating, so there is no standard number to look up. Treat them as the layer you change under a rated sleeping bag. If your baby feels cool, the NHS says add clothing, not a blanket.",
+      },
+      {
+        q: "Do I need a different TOG for naps?",
+        a: "Use the same chart, but read the room at nap time, as daytime rooms can be warmer and may suit a lighter bag. Safe sleep advice covers every sleep, day or night: on the back, in a clear cot, with no hat.",
+      },
+    ],
+    relatedSlugs: [
+      "tog-guide-for-baby-sleep",
+      "feel-baby-neck-to-check-temperature",
+      "baby-sleep-16-19c",
+      "baby-sleep-20-23c",
+    ],
+    sources: [NHS_SIDS, NHS_DRESS, AAP_SAFE_SLEEP],
+    modifiedAt: "2026-10-13",
   },
 ];

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { nunitoSans } from "@/lib/fonts";
 import { absoluteUrl, bundleOgImage, SITE_URL } from "@/lib/seo";
 import "./globals.css";
@@ -62,7 +63,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${plusJakartaSans.variable} ${nunitoSans.variable}`}>{children}</body>
+      <body className={`${plusJakartaSans.variable} ${nunitoSans.variable}`}>
+        <ScrollToTop />
+        {children}
+      </body>
     </html>
   );
 }

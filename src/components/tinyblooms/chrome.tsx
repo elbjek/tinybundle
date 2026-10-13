@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AppMark } from "@/components/app-identity";
+import { MobileMenu } from "@/components/site/mobile-menu";
 import { getApp } from "@/lib/apps";
 
 const NAV = [
@@ -52,6 +53,7 @@ export function BloomsHeader() {
         >
           {cta.label}
         </a>
+        <MobileMenu id="blooms-menu" items={NAV} />
       </div>
     </header>
   );
