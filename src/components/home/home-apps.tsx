@@ -232,37 +232,37 @@ function PanelBody({ panel }: { panel: Panel }) {
           {panel.info}
         </div>
       </div>
-      <div className="col-span-full flex flex-wrap items-center justify-between gap-x-8 gap-y-4 rounded-[20px] bg-[#FBF6EF] p-[clamp(14px,2vw,20px)]">
-        <div className="flex w-full min-w-0 items-center gap-4 sm:w-auto">
-          {cta.live ? (
-            <QrLink app={panel.app} name={app.name} href={cta.href} className="h-[88px] w-[88px] rounded-2xl p-2" />
-          ) : null}
-          <div className="flex min-w-0 flex-1 flex-col items-stretch gap-2 sm:flex-none sm:items-start">
-            {cta.live ? (
-              <p className="m-0 hidden text-[13px] font-bold text-tb-muted min-[720px]:block">Scan with your iPhone camera, or</p>
-            ) : null}
+      <div className="col-span-full flex flex-col gap-3 rounded-[20px] bg-[#FBF6EF] p-[clamp(14px,2vw,20px)]">
+        <div className="flex min-w-0 items-stretch gap-3">
+          <div className="flex min-w-0 flex-1 flex-col gap-2.5 sm:max-w-[360px]">
             <a
               href={cta.href}
               rel={cta.live ? "noopener" : undefined}
-              className="inline-flex h-[50px] items-center justify-center gap-2 whitespace-nowrap rounded-[18px] bg-(--btn) px-5 text-[15.5px] font-extrabold text-white hover:bg-(--hover) hover:text-white active:scale-[0.97]"
+              className="flex h-[50px] items-center justify-center gap-2 whitespace-nowrap rounded-[18px] bg-(--btn) px-4 text-[15.5px] font-extrabold text-white hover:bg-(--hover) hover:text-white active:scale-[0.97]"
               style={{ "--btn": btn, "--hover": panel.hover } as CSSProperties}
             >
               {cta.label}
             </a>
+            <Link
+              href={`/${panel.app}`}
+              className="box-border flex h-[50px] items-center justify-center gap-2 whitespace-nowrap rounded-[18px] bg-white px-4 text-[15px] font-extrabold shadow-[0_2px_10px_rgba(90,60,20,0.08)] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)] active:scale-[0.98]"
+              style={{ color: deep }}
+            >
+              {`Check out the ${app.name} page`}
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
           </div>
+          {cta.live ? (
+            <QrLink app={panel.app} name={app.name} href={cta.href} className="h-[110px] w-[110px] rounded-2xl p-2" />
+          ) : null}
         </div>
-        <div className="flex w-full flex-col items-stretch gap-x-6 gap-y-3 sm:w-auto sm:flex-row sm:items-center">
-          <Link
-            href={`/${panel.app}`}
-            className="box-border flex h-[50px] items-center justify-center gap-2 whitespace-nowrap rounded-[18px] bg-white px-5 text-[15px] font-extrabold shadow-[0_2px_10px_rgba(90,60,20,0.08)] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)] active:scale-[0.98]"
-            style={{ color: deep }}
-          >
-            {`Check out the ${app.name} page`}
-            <span aria-hidden="true">&rarr;</span>
-          </Link>
+        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+          {cta.live ? (
+            <p className="m-0 hidden text-[13px] font-bold text-tb-muted min-[720px]:block">Scan the code with your iPhone camera</p>
+          ) : null}
           <Link
             href={`/guides/${panel.app}`}
-            className="self-center px-1 py-0.5 text-[15px] font-extrabold underline decoration-[rgba(46,46,46,0.18)] decoration-2 underline-offset-[5px] hover:opacity-75"
+            className="px-1 py-0.5 text-[15px] font-extrabold underline decoration-[rgba(46,46,46,0.18)] decoration-2 underline-offset-[5px] hover:opacity-75"
             style={{ color: deep }}
           >
             {`Read the ${app.name} guides →`}
