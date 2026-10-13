@@ -9,7 +9,11 @@ export type GuideCategory =
   | "combo"
   | "development"
   | "loneliness"
-  | "cooking"
+  | "starting-solids"
+  | "meal-ideas"
+  | "food-safety"
+  | "allergens"
+  | "nutrition"
   | "parenting-apps"
   | "tracking";
 

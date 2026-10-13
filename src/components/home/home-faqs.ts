@@ -32,6 +32,10 @@ export const HOME_FAQS: FaqItem[] = [
     a: "Log each one as it happens, with as few taps as possible. TinyNaps puts sleep, feeds and diapers on one screen, shows when your baby last ate or slept, and keeps a timeline you can bring to check-ups. It helps you understand your own records; it doesn’t predict sleep or give medical advice.",
   },
   {
+    q: "Do the TinyBundle apps sync with each other?",
+    a: "Not yet. Each app works on its own, so you add your baby in each one you use. We’re exploring ways to sync the apps, and we’ll share news here if and when it’s ready.",
+  },
+  {
     q: "Do the apps give medical advice?",
     a: "No. The apps offer everyday guidance based on published sources, not medical advice. Always speak to a healthcare professional about your baby’s health.",
   },

@@ -5,7 +5,7 @@ import { WaitlistForm } from "@/components/site/waitlist-form";
 import { CONTACT_EMAIL, getApp, type AppSlug } from "@/lib/apps";
 
 const STEPS = [
-  { color: "#55915E", title: "Add your baby", text: "Their name and age. Each app uses it to match advice to this month, not last month." },
+  { color: "#55915E", title: "Add your baby", text: "Their name and age, so each app matches this month, not last. Syncing between the apps is something we’re exploring." },
   { color: "#D17A2A", title: "Pick the moment", text: "Getting dressed for bed, lunchtime, playtime or the 2 am feed. Each app does one job." },
   { color: "#3D6DA8", title: "Get one clear answer", text: "What to put on, what to cook, what to play, or when they last ate. Then back to your day." },
 ];
