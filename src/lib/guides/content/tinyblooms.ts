@@ -39,7 +39,7 @@ export const BLOOMS_GUIDES: GuideContent[] = [
         heading: "What do I do with my baby when they are awake?",
         paragraphs: [
           "Play is one of the main ways babies learn about the world, and the NHS says it supports social, language, thinking and problem-solving skills. For a baby, play mostly means being near you while you talk, sing and move.",
-          "The World Health Organization (WHO) advises that babies under 1 are physically active several times a day in a variety of ways, particularly through interactive floor-based play. More is better. That can be five minutes on a mat after a nappy change, not a planned session.",
+          "Guidance from the World Health Organization (WHO) is that babies under 1 should be active a few times every day in different ways, with playing together on the floor the most useful kind. The more, the better. That can be five minutes on a mat after a nappy change, not a planned session.",
           "Everyday jobs count. Describe what you are doing as you fold washing, sing while you feed, and name things you see on a walk. Outdoor play also helps your baby learn about their surroundings.",
         ],
       },
@@ -75,7 +75,7 @@ export const BLOOMS_GUIDES: GuideContent[] = [
       {
         heading: "How much floor time and tummy time does my baby need?",
         paragraphs: [
-          "For babies who are not yet moving about, WHO recommends at least 30 minutes on their tummy, spread through the day, while awake. Start little and often. You can begin from birth by lying your baby on your chest, but only when you are wide awake and unlikely to fall asleep.",
+          "For babies who are not yet moving about, WHO recommends at least 30 minutes on their tummy, spread through the day, while awake. Start little and often. From birth, your chest is a good first spot for tummy time, as long as you are fully alert and not likely to doze off.",
           "Tummy time is only for when your baby is awake and alert, and you are there to keep an eye on them.",
           "Try not to keep your baby strapped in for long stretches. WHO advises no more than 1 hour at a time in a pram, high chair or carrier, and the NHS suggests walkers, bouncers and seats for no more than 20 minutes at a time.",
         ],
@@ -170,7 +170,7 @@ export const BLOOMS_GUIDES: GuideContent[] = [
       {
         heading: "How do I do tummy time with a newborn?",
         paragraphs: [
-          "You can start tummy time from birth by lying your baby on your chest. Only do this when you are wide awake and unlikely to fall asleep. Tummy time builds strength in your baby's back, neck and shoulders.",
+          "Tummy time can begin on day one, with your baby lying tummy down on your chest. Save this for times when you are fully alert and in no danger of nodding off. Tummy time builds strength in your baby's back, neck and shoulders.",
           "The AAP suggests 2 to 3 short sessions a day of about 3 to 5 minutes, starting the day you come home, and building up to 15 to 30 minutes a day by 7 weeks. When your baby is ready, move to the floor with you or a toy within reach.",
           "Tummy time is only for when your baby is awake and someone is watching. Healthy babies are safest sleeping on their backs, for night-time sleep and every nap.",
         ],
@@ -178,15 +178,14 @@ export const BLOOMS_GUIDES: GuideContent[] = [
       {
         heading: "Signs your newborn has had enough",
         paragraphs: [
-          "Newborns can easily become overwhelmed, tired or stressed. The NHS lists these signs that your baby needs a break:",
+          "A newborn can quickly get overloaded, worn out or upset. The NHS describes cues like these that tell you your baby needs a pause:",
         ],
         list: [
-          "Sneezing",
-          "Yawning",
-          "Hiccupping",
-          "Turning away",
-          "Closing their eyes",
-          "Bringing up some milk",
+          "A yawn or a sneeze",
+          "A bout of hiccups",
+          "Looking or turning their head away",
+          "Shutting their eyes",
+          "Spitting up a little milk",
         ],
       },
       {
@@ -211,7 +210,7 @@ export const BLOOMS_GUIDES: GuideContent[] = [
       },
       {
         q: "Can I do tummy time with a newborn on my chest?",
-        a: "Yes. The NHS says you can start tummy time from birth by lying your baby on your chest, as long as you are wide awake and unlikely to fall asleep. If you start to feel drowsy, put your baby down in their cot on their back instead, and try again another time.",
+        a: "Yes. The NHS says chest tummy time is fine from birth, provided you are fully awake and not at risk of dropping off. If you start to feel drowsy, put your baby down in their cot on their back instead, and try again another time.",
       },
       {
         q: "When should newborn tummy time move to the floor?",
@@ -265,7 +264,7 @@ export const BLOOMS_GUIDES: GuideContent[] = [
       {
         heading: "When can I start tummy time?",
         paragraphs: [
-          "You can start from birth. The NHS suggests lying your baby on your chest, but only when you are wide awake and unlikely to fall asleep. The AAP says you can start the day your baby comes home.",
+          "You can start from birth. The NHS suggests having your baby lie on your chest, but only at times when you are fully alert and not drowsy. The AAP says you can start the day your baby comes home.",
           "Once your baby is ready, try tummy time on the floor, with you down at their level.",
         ],
       },
@@ -406,13 +405,13 @@ export const BLOOMS_GUIDES: GuideContent[] = [
       {
         heading: "How to keep indoor play safe",
         paragraphs: [
-          "A baby can drown in less than 5 centimetres (2 inches) of water. Never leave a young child alone in the bath or playing with water, even for a moment.",
+          "Even water under 5 centimetres (2 inches) deep is enough for a baby to drown in. Stay with a young child at all times in the bath or during water play, even for a moment.",
         ],
         list: [
           "Check toys for sharp edges or small parts your baby could swallow",
           "Do not give toys labelled 'not suitable for children under 36 months' to a child under 3",
           "Keep button batteries away from children and make sure battery compartments are screwed shut",
-          "If you think your child has swallowed a button battery, go to A&E straight away or call 999 (or your local emergency number)",
+          "If your child might have swallowed a button battery, go to A&E straight away or call 999 (or your local emergency number)",
           "Once your baby is crawling, check the floor is safe and clear before play",
         ],
       },
@@ -431,7 +430,7 @@ export const BLOOMS_GUIDES: GuideContent[] = [
       },
       {
         q: "Is water play safe for babies?",
-        a: "Yes, with an adult right there the whole time. Use only a little water in a bowl or the bath and stay within arm's reach. The NHS warns that a baby can drown in less than 5 centimetres (2 inches) of water, so never leave them alone with it, even briefly.",
+        a: "Yes, with an adult right there the whole time. Use only a little water in a bowl or the bath and stay within arm's reach. The NHS warns that water under 5 centimetres (2 inches) deep is enough for a baby to drown in, so never leave them alone with it, even briefly.",
       },
       {
         q: "Can I take my baby out in the rain?",
@@ -494,15 +493,14 @@ export const BLOOMS_GUIDES: GuideContent[] = [
       {
         heading: "Signs your baby is overstimulated and needs a break",
         paragraphs: [
-          "Babies can easily become overwhelmed, tired or stressed. The NHS lists these signs that your baby needs a break:",
+          "A baby can quickly get overloaded, worn out or upset. The NHS describes cues like these that tell you your baby needs a pause:",
         ],
         list: [
-          "Sneezing",
-          "Yawning",
-          "Hiccupping",
-          "Turning away from you or the toy",
-          "Closing their eyes",
-          "Bringing up some milk",
+          "A yawn or a sneeze",
+          "A bout of hiccups",
+          "Looking away from you or the toy",
+          "Shutting their eyes",
+          "Spitting up a little milk",
         ],
       },
       {
@@ -527,7 +525,7 @@ export const BLOOMS_GUIDES: GuideContent[] = [
       {
         heading: "Keeping sensory play safe",
         paragraphs: [
-          "Babies explore with their mouths, so anything they can grab will end up there. Never leave your baby alone with water, even a shallow bowl: a baby can drown in less than 5 centimetres (2 inches) of water.",
+          "Babies explore with their mouths, so anything they can grab will end up there. Never leave your baby alone with water, even a shallow bowl: water under 5 centimetres (2 inches) deep is enough for a baby to drown in.",
         ],
         list: [
           "Check toys and household objects for sharp edges or small parts that could be swallowed",
@@ -545,7 +543,7 @@ export const BLOOMS_GUIDES: GuideContent[] = [
       },
       {
         q: "Is it bad if my baby gets overstimulated?",
-        a: "It happens to every baby. The NHS explains that babies can easily become overwhelmed, tired or stressed because their brains are making so many new connections. Spotting the signs, like yawning, hiccups or turning away, then slowing down or moving somewhere quieter, helps. Over time you will learn their cues.",
+        a: "It happens to every baby. The NHS explains that babies are quickly overloaded, worn out or upset because their brains are making so many new connections. Spotting the signs, like yawning, hiccups or turning away, then slowing down or moving somewhere quieter, helps. Over time you will learn their cues.",
       },
       {
         q: "Are light-up toys and baby sensory videos good for babies?",
@@ -615,19 +613,19 @@ export const BLOOMS_GUIDES: GuideContent[] = [
           "The CDC lists skills most babies show by about 2 months. These are typical ranges, not a test, and babies develop at different speeds.",
         ],
         list: [
-          "Calms down when spoken to or picked up",
-          "Looks at your face and seems happy to see you",
-          "Smiles when you talk to or smile at them",
-          "Makes sounds other than crying and reacts to loud sounds",
-          "Watches you as you move and looks at a toy for several seconds",
-          "Holds their head up when on their tummy",
-          "Moves both arms and both legs, and opens their hands briefly",
+          "Settles when you chat to them or lift them up",
+          "Gazes at your face and seems pleased when you come over",
+          "Gives you a smile back when you chat or smile at them",
+          "Makes little noises besides crying, and reacts when there is a sudden loud noise",
+          "Follows you with their eyes as you move about, and can study a toy for a few seconds",
+          "Lifts their head while lying on their tummy",
+          "Wiggles both arms and both legs, and unfolds their fingers for a moment",
         ],
       },
       {
         heading: "Signs your 2-month-old needs a break",
         paragraphs: [
-          "Play is tiring at this age. The NHS says sneezing, yawning, hiccupping, turning away, closing their eyes or bringing up some milk can mean your baby has had enough. Slow down, move somewhere quieter, or offer a feed or a nap.",
+          "Play is tiring at this age. The NHS says a yawn, a sneeze, hiccups, looking away, shut eyes or a little spit-up milk can all mean your baby has had enough. Slow down, move somewhere quieter, or offer a feed or a nap.",
           "Cuddling and responding to your baby does not spoil them. Soothing with a soft voice, holding, rocking or singing helps them calm down.",
         ],
       },
@@ -700,11 +698,11 @@ export const BLOOMS_GUIDES: GuideContent[] = [
           "At 4 months, many babies chuckle, coo and start swiping at toys. Activities that let them reach, grab and 'talk' with you fit this stage well. These ideas come from the CDC:",
         ],
         list: [
-          "Track a toy: while your baby lies on their back, slowly move a bright toy side to side and up and down",
-          "Reach and grab: offer rattles or cloth books that are easy to hold",
+          "Follow the toy: with your baby on their back, move a brightly coloured toy slowly across and then up and down, and watch their eyes follow it",
+          "Reach and grab: give them rattles or soft cloth books that small hands can hold easily",
           "Play peek-a-boo and watch for smiles",
           "Chat and pause: copy your baby's coos and see how long the conversation lasts",
-          "Bounce gently: hold your baby under the arms with their feet on your lap",
+          "Bounce gently: rest your baby's feet on your lap while you support them firmly under the arms",
           "Sing and move their arms and legs gently in a little exercise game",
           "Use your baby's name often",
           "Read a fabric or board book together at a quiet time",
@@ -714,7 +712,7 @@ export const BLOOMS_GUIDES: GuideContent[] = [
         heading: "How much floor time does a 4-month-old need?",
         paragraphs: [
           "Give your baby time on the floor or a play mat every day so they can move and explore. WHO recommends babies are active several times a day, particularly through floor-based play, and that babies not yet moving about have at least 30 minutes of tummy time, spread across the day, while awake.",
-          "Lay your baby on their back so they can kick, and on their tummy so they can push up. Tummy time is always supervised. For sleep, the NHS says babies should always go on their back with their feet at the foot of the cot.",
+          "Lay your baby on their back so they can kick, and on their tummy so they can push up. Tummy time is always supervised. For sleep, the NHS says to lay babies down on their back every time, with their feet touching the bottom end of the cot.",
         ],
       },
       {
@@ -729,23 +727,23 @@ export const BLOOMS_GUIDES: GuideContent[] = [
           "The CDC lists skills most babies show by about 4 months. These are typical ranges, not a test.",
         ],
         list: [
-          "Smiles on their own to get your attention",
-          "Chuckles (not yet a full laugh) when you try to make them laugh",
-          "Looks at you, moves or makes sounds to get or keep your attention",
-          "Coos ('oooo', 'aahh') and makes sounds back when you talk",
-          "Turns their head towards the sound of your voice",
-          "Opens their mouth when hungry and they see the breast or bottle",
-          "Looks at their hands with interest",
-          "Holds their head steady without support when held",
-          "Holds a toy when you put it in their hand and swings at toys",
-          "Brings hands to mouth and pushes up onto elbows or forearms on their tummy",
+          "Smiles unprompted to catch your eye",
+          "Gives a little chuckle, rather than a proper laugh, when you play to make them giggle",
+          "Uses looks, wriggles or noises to win your attention and hold on to it",
+          "Coos with sounds like 'oooo' and 'aahh', and replies with noises when you chat",
+          "Turns towards you when they hear your voice",
+          "Opens their mouth at the sight of the breast or bottle when hungry",
+          "Studies their own hands closely",
+          "Keeps their head steady without needing support while you hold them",
+          "Grips a toy you place in their hand, and swipes at toys with an arm",
+          "Puts their hands to their mouth, and props up on elbows or forearms during tummy time",
         ],
       },
       {
         heading: "Is it safe for my 4-month-old to put toys in their mouth?",
         paragraphs: [
           "Yes, mouthing is how babies explore. Let your baby mouth safe objects, but avoid anything sharp, hot or small enough to choke on. A blanket on the floor with a few safe toys gives them space to reach, kick and explore.",
-          "The NHS advises keeping small objects, such as buttons, coins and small toy parts, out of your baby's reach, and keeping button batteries well away from small children.",
+          "The NHS advises putting little things like coins, buttons and bits that come off toys somewhere your baby cannot get to them, and keeping button batteries well away from small children.",
         ],
       },
       {

@@ -1,3 +1,3 @@
-/** The urgent mental health help line used word for word in every guide that discusses low mood (NHS "Where to get urgent help for mental health"). */
+/** The urgent mental health help line shown in every guide that discusses low mood, written in our own words from the NHS page on getting urgent help for mental health. */
 export const URGENT_HELP_LINE =
-  "If you feel unable to cope or have thoughts of harming yourself or your baby, you do not have to wait. Call 999 or go to A&E now (or call your local emergency number) if you do not feel you can keep yourself or someone else safe. For urgent mental health help in England, call NHS 111 and select the mental health option. You can also call Samaritans on 116 123.";
+  "If you cannot cope, or you are having thoughts of hurting yourself or your baby, get help straight away rather than waiting. If you think you might not be able to keep yourself or another person safe, phone 999 or go to A&E now (or use your local emergency number). In England, NHS 111 gives urgent mental health help: call and choose the mental health option. Samaritans are also there to listen on 116 123.";

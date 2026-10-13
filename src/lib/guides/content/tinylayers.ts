@@ -54,7 +54,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
         heading: "What should my baby wear under a sleeping bag?",
         paragraphs: [
           "Think of the bag as the outer layer and the clothes underneath as the dial you turn. If the room is a degree or two off, swap a short-sleeve bodysuit for a long-sleeve one (or the other way round) before buying a new bag.",
-          "If your baby seems cold, the NHS says add a layer of clothing, not extra blankets. In hot weather the NHS says keep nightwear to a minimum, and your baby can sleep in just a nappy. Babies do not need a hat to sleep indoors. The NHS says remove hats and extra clothing as soon as you come inside.",
+          "If your baby seems cold, the NHS says add a layer of clothing, not extra blankets. In hot weather the NHS says keep nightwear to a minimum, and your baby can sleep in just a nappy. Babies do not need a hat to sleep indoors. The NHS advises taking hats and any extra layers off straight away once you are back inside.",
         ],
       },
       {
@@ -123,7 +123,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
     description:
       "How to feel your baby's neck or chest to tell if they are too hot or too cold, why cold hands are normal, and when to use a thermometer instead.",
     quickAnswer:
-      "Yes, feel the back of your baby's neck or their chest to check their temperature. The NHS says to check by feeling their chest or the back of their neck. Warm and dry is right. Hot or sweaty means remove a layer. Cool hands and feet on their own are normal.",
+      "Yes, feel the back of your baby's neck or their chest to check their temperature. This is the check the NHS recommends, using the chest or the back of the neck. Warm and dry is right. Hot or sweaty means remove a layer. Cool hands and feet on their own are normal.",
     bullets: [
       "Feel the back of the neck, chest or tummy, not hands or feet",
       "Warm and dry: dressed right",
@@ -166,7 +166,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
       {
         heading: "Signs your baby is too cold",
         paragraphs: [
-          "If the back of the neck or the chest feels cool to your warm hand, add one thin layer. At night, the NHS says add a layer of clothing rather than extra blankets. Outdoors, a hat is fine and useful in the cold, but take it off as soon as you come inside or get into a warm car, bus or train, even if it means waking your baby.",
+          "If the back of the neck or the chest feels cool to your warm hand, add one thin layer. At night, the NHS says add a layer of clothing rather than extra blankets. Outdoors, a hat is fine and useful in the cold, but take it off straight away when you go indoors or climb into a warm car, bus or train, even if that wakes your baby.",
         ],
       },
       {
@@ -230,8 +230,8 @@ export const LAYERS_GUIDES: GuideContent[] = [
       {
         heading: "The one-extra-layer rule",
         paragraphs: [
-          "The NHS says a good rule of thumb is to give your baby one more layer of clothing than you are wearing. The AAP gives the same advice: infants should wear one more layer than adults.",
-          "The NHS example: if you are in a T-shirt and a jumper, dress your baby in a vest, a sleepsuit and a cardigan or jumper. If you feel chilly, your baby probably does too. Several thin layers are easier to adjust than one thick one.",
+          "The NHS offers a simple guide: dress your baby in one layer more than you have on yourself. The AAP gives the same advice: infants should wear one more layer than adults.",
+          "To borrow the NHS example, a parent in a T-shirt and jumper might put their baby in a sleepsuit and cardigan over a vest. And if you are feeling cold, assume your baby is too. Several thin layers are easier to adjust than one thick one.",
         ],
       },
       {
@@ -259,7 +259,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
       {
         heading: "How many layers in hot weather?",
         paragraphs: [
-          "The NHS says when it is hot, a single layer is enough, and lightweight cotton is best because it breathes. Keep babies under 6 months out of direct sunlight, and older babies out of the sun as much as possible, especially between 11am and 3pm. A sun hat with a wide brim or a long flap at the back protects the head, ears and neck.",
+          "In hot weather, the NHS says one layer is enough, ideally lightweight cotton because it breathes. Babies younger than 6 months should have no direct sun, and older babies as little strong sun as you can manage, above all from 11am to 3pm. Choose a sun hat with a broad brim or a neck flap to shade the head, ears and neck.",
         ],
       },
       {
@@ -288,7 +288,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
       },
       {
         q: "How many layers should a newborn wear?",
-        a: "Newborns follow the same rule: one more layer than you. A vest, sleepsuit and cardigan is a typical indoor outfit in a cool house. The NHS says small babies are not very good at regulating their own temperature, so check them often. If your baby was born early or is unwell, ask your health visitor for advice on dressing them.",
+        a: "Newborns follow the same rule: one more layer than you. A vest, sleepsuit and cardigan is a typical indoor outfit in a cool house. The NHS points out that young babies struggle to keep their body temperature steady, so check them often. If your baby was born early or is unwell, ask your health visitor for advice on dressing them.",
       },
       {
         q: "Does a vest count as a layer?",
@@ -296,7 +296,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
       },
       {
         q: "Should my baby wear a hat indoors?",
-        a: "No. The NHS says remove hats and extra clothing as soon as you come indoors, even if it means waking your baby. That means no hat for sleep indoors either. If your baby feels cool inside, add a thin layer of clothing instead. Hats are for outside: warm hats in the cold and wide-brimmed sun hats in summer.",
+        a: "No. The NHS advises taking off hats and extra layers straight away when you come in, even if your baby wakes. That means no hat for sleep indoors either. If your baby feels cool inside, add a thin layer of clothing instead. Hats are for outside: warm hats in the cold and wide-brimmed sun hats in summer.",
       },
     ],
     relatedSlugs: [
@@ -342,18 +342,18 @@ export const LAYERS_GUIDES: GuideContent[] = [
       {
         heading: "Can I cover the pram with a muslin or blanket?",
         paragraphs: [
-          "No. The NHS says do not cover your baby's pushchair or pram with a blanket because it could lead to overheating, and never cover the pram with a muslin.",
+          "No. The NHS warns that a blanket or muslin draped over a pram or pushchair can make your baby overheat, so never use one to cover it.",
           "Use the pram hood, or attach a parasol or sunshade to the pram, as the NHS suggests.",
         ],
       },
       {
         heading: "Pram clothing in hot weather and sun",
         paragraphs: [
-          "The NHS says babies under 6 months should be kept out of direct sunlight. Older babies should be kept out of the sun as much as possible, especially between 11am and 3pm. Sunscreen is not recommended for babies under 6 months. From 6 months, the NHS suggests a sunscreen of at least SPF 30 with UVA and UVB protection.",
+          "NHS advice is to keep babies younger than 6 months out of direct sun completely, and to limit sun for older babies wherever you can, especially from 11am to 3pm. Sunscreen is not recommended before 6 months. From 6 months, the NHS suggests SPF 30 or higher with both UVA and UVB protection.",
         ],
         list: [
           "Loose, lightweight cotton clothes and not too many layers",
-          "A sun hat with a wide brim or a long flap at the back",
+          "A sun hat with a broad brim or a neck flap",
           "A parasol or sunshade clipped to the pram",
           "Extra breastfeeds, as your baby may want to feed more than usual (fully breastfed babies do not need water until they start solids)",
           "Never leave your baby in a parked car, as it heats up quickly",
@@ -363,7 +363,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
         heading: "Pram clothing in winter",
         paragraphs: [
           "Several thin layers under a footmuff or pram blanket are easier to adjust than one thick outfit. A warm hat and mittens help outside.",
-          "The tricky part is coming inside. The NHS says remove hats and extra clothing as soon as you come indoors or get on a bus or train, even if it means waking your baby. Open the footmuff and take off the rain cover in shops and cafés.",
+          "The tricky part is coming inside. The NHS advises taking off hats and extra layers straight away when you go indoors or board a warm bus or train, even if your baby wakes. Open the footmuff and take off the rain cover in shops and cafés.",
         ],
       },
       {
@@ -487,7 +487,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
       },
       {
         q: "Should my baby wear a hat in the carrier?",
-        a: "Outdoors, yes: a warm hat in the cold and a wide-brimmed sun hat in summer. Make sure the hat and the carrier fabric stay clear of your baby's face. Take the hat off as soon as you come indoors or get into a warm car, bus or train.",
+        a: "Outdoors, yes: a warm hat in the cold and a wide-brimmed sun hat in summer. Make sure the hat and the carrier fabric stay clear of your baby's face. Once you are indoors, or in a warm car, bus or train, take the hat off straight away.",
       },
     ],
     relatedSlugs: [
@@ -520,7 +520,7 @@ export const LAYERS_GUIDES: GuideContent[] = [
       {
         heading: "Why puffy coats and snowsuits are not safe under the harness",
         paragraphs: [
-          "The AAP says bulky clothing, including winter coats and snowsuits, should not be worn under the harness of a car seat. In a crash, the fluffy padding flattens straight away, which leaves extra space under the straps. A harness that felt tight over a coat can suddenly be loose.",
+          "According to the AAP, winter coats, snowsuits and other bulky clothes should never go under a car seat harness. In a crash, the fluffy padding flattens straight away, which leaves extra space under the straps. A harness that felt tight over a coat can suddenly be loose.",
           "Nothing bulky should go under your baby's body or between their body and the harness straps. This includes thick footmuffs or liners that did not come with your seat, as the AAP warns these have not been crash tested with it.",
         ],
       },
@@ -551,14 +551,14 @@ export const LAYERS_GUIDES: GuideContent[] = [
       {
         heading: "Keeping your baby warm without overheating",
         paragraphs: [
-          "The AAP suggests keeping the carrier part of an infant car seat indoors when you are not using it, so it starts at room temperature. Make the top layer easy to remove, so your baby does not get too hot once the car warms up. The NHS says take off hats and extra clothing as soon as you get into a warm car, even if it means waking your baby.",
-          "If you use a car seat cover, the AAP says use it only if it has no layer under your baby, and keep your baby's face uncovered. The NHS warns never to leave a baby in a parked car, as they can get hot very quickly.",
+          "The AAP suggests keeping the carrier part of an infant car seat indoors when you are not using it, so it starts at room temperature. Make the top layer easy to remove, so your baby does not get too hot once the car warms up. Once you are in a warm car, the NHS advises removing hats and extra layers straight away, even if your baby wakes.",
+          "If you use a car seat cover, the AAP says use it only if it has no layer under your baby, and keep your baby's face uncovered. The NHS also warns never to leave a baby in a parked car, which can heat up very fast.",
         ],
       },
       {
         heading: "Can my baby sleep in the car seat?",
         paragraphs: [
-          "The NHS says it is fine for your baby to fall asleep in a car seat while you are travelling, but take them out as soon as you get where you are going and do not let them stay in it for too long. The AAP advises moving a sleeping baby to a firm, flat surface on their back as soon as possible. Always follow your seat's own instructions.",
+          "The NHS says a baby nodding off in the car seat during a journey is fine, but lift them out once you arrive and do not leave them in the seat for long periods. The AAP advises moving a sleeping baby to a firm, flat surface on their back as soon as possible. Always follow your seat's own instructions.",
         ],
       },
     ],

@@ -77,7 +77,7 @@ const SAFE_SLEEP_LIST = [
   "No loose blankets or duvets. A well-fitting baby sleeping bag is the simplest option.",
   "No hat or head covering indoors, and nothing that could cover their face.",
   "Never use a weighted sleeping bag, weighted swaddle or weighted blanket.",
-  "Keep the cot in your room for every sleep for at least the first 6 months.",
+  "For at least the first 6 months, keep the cot in your room, for naps as well as nights.",
 ];
 
 type BandFaq = { q: string; a: string };
@@ -129,7 +129,7 @@ export const OUTDOOR_BANDS: readonly OutdoorBand[] = [
       "Several thin layers help keep children warm and dry (AAP), and they are easier to peel off as you go in and out of shops, buses and cafés. Wind and drizzle make 12°C feel much colder, so a pram rain cover or a pramsuit with a hood earns its place on wet days.",
     ],
     checkTip:
-      "At this temperature the most common slip is leaving the pramsuit and hat on once you are inside. Shops, buses and cars are warm, and NHS advice is to take off hats and extra clothing as soon as you come indoors, even if it means waking your baby.",
+      "At this temperature the most common slip is leaving the pramsuit and hat on once you are inside. Shops, buses and cars are warm, and The NHS advises removing hats and outer layers the moment you get inside, even if that wakes your baby.",
     pram: "In the pram, a pramsuit or footmuff over the vest, sleepsuit and cardigan keeps your baby warm, with a hat and mittens. If you add a blanket, use a lightweight cellular one tucked around their legs, and keep it away from their face.",
     carrier:
       "In a carrier your baby shares your body warmth, so a vest, sleepsuit and cardigan is often enough under a carrier cover or your coat zipped around you both. Keep their face clear, and add a hat and socks, as their head and feet stick out.",
@@ -143,7 +143,7 @@ export const OUTDOOR_BANDS: readonly OutdoorBand[] = [
     extraHeading: "Wet days, wind and newborns at 10–14°C",
     extra: [
       "Rain makes clothes cold fast. The AAP advises changing children out of wet clothes straight away, so pack a spare sleepsuit, socks and mittens.",
-      "Small babies are not very good at regulating their own temperature (NHS), so check a newborn more often than an older baby. If your baby was born prematurely or had a low birthweight, ask your health visitor how to dress them for cold days.",
+      "Young babies struggle to keep their body temperature steady (NHS), so check a newborn more often than an older baby. If your baby was born prematurely or had a low birthweight, ask your health visitor how to dress them for cold days.",
     ],
     faqs: [
       {
@@ -201,11 +201,11 @@ export const OUTDOOR_BANDS: readonly OutdoorBand[] = [
     sunHeading: "Hats and sun at 15–18°C",
     sun: [
       "A thin cotton hat helps on a breezy day, but most babies do not need a woolly hat at this temperature. Take it off once you are indoors.",
-      "Do not let the cool air fool you about the sun. The NHS says the sun is at its strongest between 11am and 3pm, and that babies under 6 months should be kept out of direct sunlight. On a bright spring day, use the pram hood or a clip-on parasol and swap the thin hat for a wide-brimmed sun hat.",
+      "Do not let the cool air fool you about the sun. UV is fiercest from 11am to 3pm, and the NHS advises keeping babies younger than 6 months out of direct sun altogether. On a bright spring day, use the pram hood or a clip-on parasol and swap the thin hat for a wide-brimmed sun hat.",
     ],
     extraHeading: "Newborns and premature babies at 15–18°C",
     extra: [
-      "Small babies are not very good at regulating their own temperature (NHS), so a newborn may need the full vest, sleepsuit and cardigan where an older, wriggly baby is happy without the cardigan. Check them more often in the first weeks.",
+      "A newborn finds it harder than an older baby to hold a steady body temperature (NHS), so they may need the full vest, sleepsuit and cardigan where an older, wriggly baby is happy without the cardigan. Check them more often in the first weeks.",
       "If your baby was born prematurely or had a low birthweight, ask your health visitor or neonatal team how many layers to use while they are small.",
     ],
     faqs: [
@@ -215,7 +215,7 @@ export const OUTDOOR_BANDS: readonly OutdoorBand[] = [
       },
       {
         q: "What should my baby wear at 18°C in the sun?",
-        a: "At 18°C in direct sun it can feel much warmer, so a vest and sleepsuit may be enough, with the cardigan kept in the bag. Babies under 6 months should be kept out of direct sunlight, so use the pram hood, a clip-on parasol or a shady spot, plus a wide-brimmed hat.",
+        a: "At 18°C in direct sun it can feel much warmer, so a vest and sleepsuit may be enough, with the cardigan kept in the bag. Babies younger than 6 months need to stay out of direct sun, so use the pram hood, a clip-on parasol or a shady spot, plus a wide-brimmed hat.",
       },
       {
         q: "Should I use a blanket in the pram at 15°C?",
@@ -260,16 +260,16 @@ export const OUTDOOR_BANDS: readonly OutdoorBand[] = [
     carrier:
       "In a carrier, you are a layer. A short or long-sleeved vest and light trousers is often plenty, with a sun hat if you are out in sunshine.",
     carSeat:
-      "In the car seat, a vest and light sleepsuit is fine. Cars heat up in the sun even on a mild day, so open the windows or use the air conditioning, and never leave your baby in a parked car, as it can get hot very quickly (NHS).",
+      "In the car seat, a vest and light sleepsuit is fine. Cars heat up in the sun even on a mild day, so open the windows or use the air conditioning, and never leave your baby in a parked car, which heats up fast (NHS).",
     sunHeading: "Sun hats and shade at 19–21°C",
     sun: [
-      "A 20°C day in late spring or summer can bring strong sunshine. The NHS advises keeping babies under 6 months out of direct sunlight, and keeping older babies out of the sun as much as possible, particularly between 11am and 3pm.",
-      "Use a sun hat with a wide brim or a long flap at the back to cover the head, ears and neck. From 6 months, use a sunscreen with SPF 30 or higher that protects against UVA and UVB on skin that clothes do not cover. The NHS does not recommend sunscreen for babies under 6 months, so shade and clothing come first.",
+      "A 20°C day in late spring or summer can bring strong sunshine. The NHS advises no direct sun at all for babies younger than 6 months, and as little sun as you can manage for older babies, above all from 11am to 3pm.",
+      "Choose a sun hat with a broad brim or a neck flap, so the head, ears and neck are shaded. From 6 months, use a sunscreen with SPF 30 or higher that protects against UVA and UVB on skin that clothes do not cover. The NHS does not recommend sunscreen for babies under 6 months, so shade and clothing come first.",
     ],
     extraHeading: "Newborns at 19–21°C",
     extra: [
-      "Small babies are not very good at regulating their own temperature (NHS), so a newborn may want the vest and sleepsuit plus the cardigan in a shady spot, while an older baby is happier in a vest and light trousers.",
-      "If your baby falls asleep in the pram and you bring them indoors, take off any hat and extra layers straight away, as the NHS advises, even if it means waking them.",
+      "Newborns struggle more than older babies to keep their body temperature steady (NHS), so in a shady spot they may want the cardigan over the vest and sleepsuit, while an older baby is happier in a vest and light trousers.",
+      "If your baby falls asleep in the pram and you bring them indoors, take off any hat and extra layers straight away, as the NHS advises, even if that wakes them.",
     ],
     faqs: [
       {
@@ -326,8 +326,8 @@ export const OUTDOOR_BANDS: readonly OutdoorBand[] = [
       "In the car seat, a single light layer is fine. The car warms up quickly at this temperature, so cool it first, use window shades, and never leave your baby in a parked car, even for a short time (NHS).",
     sunHeading: "Sun, shade and hats at 22–23°C",
     sun: [
-      "The NHS advises keeping babies under 6 months out of direct sunlight, and older babies out of the sun as much as possible, particularly between 11am and 3pm when the sun is at its strongest.",
-      "Choose a sun hat with a wide brim or a long flap at the back. From 6 months, use sunscreen with SPF 30 or higher and UVA protection on uncovered skin, and reapply every 2 hours and after sweating. Under 6 months, the NHS does not recommend sunscreen, so rely on shade and clothing.",
+      "Under 6 months, NHS advice is no direct sun at all. Older babies should spend as little time in the sun as you can manage, especially from 11am to 3pm, when it is at its most intense.",
+      "Pick a sun hat with a broad brim or a flap that shades the neck. From 6 months, use sunscreen with SPF 30 or higher and UVA protection on uncovered skin, and reapply every 2 hours and after sweating. Under 6 months, the NHS does not recommend sunscreen, so rely on shade and clothing.",
     ],
     extraHeading: "Feeds and drinks on warm days",
     extra: [
@@ -381,20 +381,20 @@ export const OUTDOOR_BANDS: readonly OutdoorBand[] = [
       "If you cannot find shade, a loose long-sleeved cotton top and trousers in a close-weave fabric protect skin from the sun while letting air move. Leave fleece, cardigans and pramsuits at home.",
     ],
     checkTip:
-      "In hot weather, check the back of the neck or tummy often, not just once. If your baby is sweating or their tummy feels hot, take off some clothing (NHS). Move into the shade or indoors, offer a feed, and check again after a few minutes.",
+      "In hot weather, check the back of the neck or tummy often, not just once. Sweating or a hot tummy is your cue to remove a layer (NHS). Move into the shade or indoors, offer a feed, and check again after a few minutes.",
     pram: "In the pram, use a single layer, the hood and a clip-on parasol or sunshade. Never drape a blanket or muslin over the pram: the NHS warns it could lead to overheating.",
     carrier:
       "In a carrier, a nappy and a short-sleeved vest is often enough, because your body warmth adds heat. Choose the shade, keep their face clear, and take breaks so you can both cool down.",
     carSeat:
-      "In the car seat, a single light layer is enough. Cool the car before you go, use window shades, and never leave your baby in a parked car, as it can get hot very quickly (NHS).",
+      "In the car seat, a single light layer is enough. Cool the car before you go, use window shades, and never leave your baby in a parked car, which heats up fast (NHS).",
     sunHeading: "Sun, shade and hats at 24–26°C",
     sun: [
-      "Babies under 6 months should be kept out of direct sunlight. Older babies should stay out of the sun as much as possible, especially between 11am and 3pm when it is strongest (NHS).",
+      "Keep babies younger than 6 months out of direct sun completely. For older babies, cut sun time to a minimum, especially from 11am to 3pm, when UV peaks (NHS).",
       "Use a sun hat with a wide brim or a long neck flap. From 6 months, use SPF 30 or higher with UVA protection on uncovered skin, and reapply every 2 hours and after sweating or swimming. The NHS does not recommend sunscreen under 6 months. The AAP allows a small amount on small areas such as the face if shade and clothing are not available.",
     ],
     extraHeading: "Signs your baby is too hot and when to get help",
     extra: [
-      "Keep your baby's bedroom cool during the day by closing blinds or curtains, and do not point a fan directly at them (NHS). Breastfed babies may want to feed more often, formula-fed babies can have a little cooled boiled water as well as their milk, and from 6 months you can offer sips of water with meals.",
+      "In the daytime, draw the blinds or curtains so your baby's bedroom stays cool, and do not aim a fan straight at them (NHS). Breastfed babies may want to feed more often, formula-fed babies can have a little cooled boiled water as well as their milk, and from 6 months you can offer sips of water with meals.",
       "If your baby seems unwell in the heat, move them somewhere cool, take off extra clothing and offer a feed. Call NHS 111 if you are struggling to cool them or need advice. Call 999 or your local emergency number if they have a seizure, lose consciousness, or are still unwell after 30 minutes of cooling.",
     ],
     faqs: [
@@ -452,7 +452,7 @@ export const OUTDOOR_BANDS: readonly OutdoorBand[] = [
       "In the car seat, use a single thin layer and cool the car before you put your baby in. Never leave your baby in a parked car: the NHS warns that enclosed spaces like parked cars get hot very quickly.",
     sunHeading: "Sun, shade and hats at 27–30°C",
     sun: [
-      "Keep babies under 6 months out of direct sunlight entirely, and older babies out of the sun as much as possible, especially from 11am to 3pm (NHS).",
+      "Babies younger than 6 months should have no direct sun at all, and older babies as little as you can manage, especially from 11am to 3pm (NHS).",
       "A sun hat with a wide brim or a long neck flap protects the head, ears and neck. From 6 months, use sunscreen with SPF 30 or higher and UVA protection on uncovered skin, and reapply every 2 hours and after sweating. Indoors, close blinds or curtains during the day and do not aim a fan directly at your baby (NHS).",
     ],
     extraHeading: "Signs of overheating and when to get help",
@@ -550,7 +550,7 @@ export const SLEEP_BANDS: readonly SleepBand[] = [
       "In a cool room, cold hands are common even when the body is warm. Feel the chest or the back of the neck under the sleeping bag. If it feels cool, add a layer of clothing, as the NHS suggests, or move to a warmer bag within the maker's range.",
     extraHeading: "Newborns and premature babies in a cold room",
     extra: [
-      "Small babies are not very good at regulating their own temperature (NHS), so a newborn in a cool room needs checking more often in the first weeks. Use a sleeping bag sized for their weight or age, as the label states, so it fits closely.",
+      "Young babies struggle to keep their body temperature steady (NHS), so in a cool room check a newborn more often in the first weeks. Use a sleeping bag sized for their weight or age, as the label states, so it fits closely.",
       "If your baby was born prematurely, the NHS advises following safer sleep advice for a year from their due date. Talk to your health visitor about keeping a premature or low birthweight baby warm at home.",
     ],
     faqs: [
@@ -667,7 +667,7 @@ export const SLEEP_BANDS: readonly SleepBand[] = [
       "In this range, babies are more likely to get too warm than too cold. Check the back of the neck or tummy when you go to bed. Sweaty hair or a hot tummy means take a layer off, for example swapping the sleepsuit for a short-sleeved vest.",
     extraHeading: "Newborns and swaddling at 20–23°C",
     extra: [
-      "Small babies are not very good at regulating their own temperature (NHS), so in a warm room keep a newborn's layers light and check them more often, rather than adding layers to be safe.",
+      "Young babies struggle to keep their body temperature steady (NHS). In a warm room, keep a newborn's layers light and check them more often, rather than adding layers to be safe.",
       "A swaddle counts as a layer and adds warmth, so use a thin one in this range. The AAP advises stopping swaddling as soon as your baby looks like they are trying to roll over.",
     ],
     faqs: [
@@ -716,10 +716,10 @@ export const SLEEP_BANDS: readonly SleepBand[] = [
     ],
     outfitIntro: [
       "24–26°C is a warm summer bedroom, often in loft rooms, flats and homes during a warm spell. It is well above the NHS ideal of about 16–20°C for sleep, and overheating can increase the risk of SIDS.",
-      "Dress your baby lightly: a nappy and a short-sleeved cotton vest under a 0.5 TOG sleeping bag. If your baby is sweating or their tummy feels hot, take the sleeping bag off and let them sleep in the vest. The NHS says a vest or just a nappy is fine on the warmest nights.",
+      "Dress your baby lightly: a nappy and a short-sleeved cotton vest under a 0.5 TOG sleeping bag. If they are sweaty or their tummy is hot to the touch, take the sleeping bag off and let them sleep in the vest. On the hottest nights, the NHS says a vest alone, or even just a nappy, is enough.",
     ],
     roomAdvice:
-      "Keep the bedroom cool during the day by closing blinds or curtains, and open windows when it is cooler outside, usually late in the evening. A fan can move air around the room, but the NHS advises not to aim it directly at your baby. Keep bedclothes to a minimum.",
+      "Shut the blinds or curtains in the daytime so the bedroom does not heat up, and open windows once the air outside is cooler, usually late in the evening. A fan can move air around the room, but the NHS advises not to aim it directly at your baby. Keep bedclothes to a minimum.",
     togAdvice:
       "Sleeping bag charts usually list 0.5 TOG for 24–26°C, and some go down to 0.2 TOG. If you use a sheet instead, the NHS advises making sure it is secure enough that it cannot cover your baby's face. Never add a blanket on top of a sleeping bag.",
     checkTip:
@@ -727,7 +727,7 @@ export const SLEEP_BANDS: readonly SleepBand[] = [
     extraHeading: "Feeds and newborns on warm nights",
     extra: [
       "Breastfed babies may want to feed more often in hot weather, and fully breastfed babies do not need water before they start solid foods. Formula-fed babies can have a little cooled boiled water as well as their usual milk (NHS).",
-      "Small babies are not very good at regulating their own temperature (NHS), so check a newborn more often on warm nights, and keep their layers to a vest and a light bag or less.",
+      "Young babies struggle to keep their body temperature steady (NHS), so on warm nights check a newborn more often, and keep their layers to a vest and a light bag or less.",
     ],
     faqs: [
       {
@@ -778,7 +778,7 @@ export const SLEEP_BANDS: readonly SleepBand[] = [
       "If you have a 0.2 TOG sleeping bag, keep it for the early hours in case the room cools down. If you use a sheet, the NHS advises making sure it is secure enough that it cannot cover your baby's face.",
     ],
     roomAdvice:
-      "Close blinds or curtains during the day, open windows when the air outside is cooler, and use a fan to move air without aiming it directly at your baby (NHS). If another room is cooler, such as a downstairs room, your baby's cot or Moses basket can go there, as long as you sleep in the same room for the first 6 months.",
+      "Close blinds or curtains during the day, open windows when the air outside is cooler, and use a fan to move air without aiming it directly at your baby (NHS). If another room is cooler, such as a downstairs room, your baby's cot or Moses basket can go there, as long as you share that room with them for the first 6 months.",
     togAdvice:
       "Sleeping bag charts usually stop at about 27°C or list only 0.2 TOG, so above that a vest or a nappy alone is usually best.",
     checkTip:
@@ -799,7 +799,7 @@ export const SLEEP_BANDS: readonly SleepBand[] = [
       },
       {
         q: "Can my baby sleep in just a nappy?",
-        a: "Yes. The NHS says a vest or just a nappy is fine on the warmest nights. Keep your baby on their back, in their own cot with a firm, flat mattress, with no pillows or loose bedding. A light sheet, secured so it cannot cover their face, is fine if the room cools.",
+        a: "Yes. On the hottest nights, the NHS says a nappy on its own, or a vest, is fine. Keep your baby on their back, in their own cot with a firm, flat mattress, with no pillows or loose bedding. A light sheet, secured so it cannot cover their face, is fine if the room cools.",
       },
       {
         q: "Should I give my baby water at night in a heatwave?",
@@ -977,7 +977,7 @@ export const AGE_GUIDES: readonly AgeGuide[] = [
     ],
     changesHeading: "Why newborns need extra care outside",
     changes: [
-      "The NHS notes that small babies are not very good at regulating their own temperature. A newborn cannot tell you they are cold or hot, and cannot take off a layer, so it is up to you to dress them for the weather and check them.",
+      "The NHS points out that young babies struggle to keep their body temperature steady. A newborn cannot tell you they are cold or hot, and cannot take off a layer, so it is up to you to dress them for the weather and check them.",
       "That does not mean wrapping them up as much as possible. Overheating is a risk too, and the NHS links it to SIDS. The aim is comfortable: warm and dry on the back of the neck, without sweating.",
     ],
     outsideIntro:
@@ -995,15 +995,15 @@ export const AGE_GUIDES: readonly AgeGuide[] = [
       {
         heading: "Sun and hats for newborns",
         paragraphs: [
-          "Babies under 6 months should be kept out of direct sunlight, and the NHS does not recommend sunscreen for them. Use shade, the pram hood, a clip-on sunshade and light clothes that cover the skin.",
-          "A wide-brimmed sun hat protects the head, ears and neck in summer, and a soft hat helps on cold days. Take hats off as soon as you are indoors or in a warm car, even if it means waking your baby (NHS), and never let your baby sleep in a hat indoors.",
+          "The NHS advises no direct sun for babies younger than 6 months, and does not recommend sunscreen for them either. Use shade, the pram hood, a clip-on sunshade and light clothes that cover the skin.",
+          "A wide-brimmed sun hat protects the head, ears and neck in summer, and a soft hat helps on cold days. Once you are indoors or in a warm car, take hats off straight away, even if your baby wakes (NHS), and never let your baby sleep in a hat indoors.",
         ],
       },
     ],
     faqs: [
       {
         q: "Does a newborn need a hat outside in summer?",
-        a: "A wide-brimmed sun hat is useful in summer to shade the head, ears and neck, but it does not replace shade. The NHS says babies under 6 months should be kept out of direct sunlight. Take the hat off once you are indoors, and do not use a warm hat on a hot day.",
+        a: "A wide-brimmed sun hat is useful in summer to shade the head, ears and neck, but it does not replace shade. For babies younger than 6 months, the NHS advice is to keep them out of direct sun. Take the hat off once you are indoors, and do not use a warm hat on a hot day.",
       },
       {
         q: "How many layers should a newborn wear outside?",
@@ -1011,7 +1011,7 @@ export const AGE_GUIDES: readonly AgeGuide[] = [
       },
       {
         q: "Can I take my newborn out in the cold?",
-        a: "Yes, with the right layers. Dress them in a vest, sleepsuit, cardigan and pramsuit with a hat and mittens, keep them out of strong wind and rain, and keep outings shorter at first. Check the back of the neck, and take extra layers off as soon as you come indoors.",
+        a: "Yes, with the right layers. Dress them in a vest, sleepsuit, cardigan and pramsuit with a hat and mittens, keep them out of strong wind and rain, and keep outings shorter at first. Check the back of the neck, and take extra layers off once you are back inside.",
       },
       {
         q: "Can a newborn wear a snowsuit in the car seat?",
@@ -1040,12 +1040,12 @@ export const AGE_GUIDES: readonly AgeGuide[] = [
     ],
     changesHeading: "What changes at 1 month",
     changes: [
-      "Not much, when it comes to temperature. Your baby is still small, and the NHS notes small babies are not very good at regulating their own temperature, so dressing advice is the same as for a newborn: one more layer than you, adjusted by the thermometer.",
+      "Not much, when it comes to temperature. Your baby is still small, and the NHS points out that young babies struggle to keep their body temperature steady, so dressing advice is the same as for a newborn: one more layer than you, adjusted by the thermometer.",
       "What often changes is that you are going out more, to baby groups, the GP or a walk most days. That means more switching between a cold street, a warm bus and a heated café, so layers you can take off quickly are more useful than one warm outfit.",
     ],
     outsideIntro: "Use the outdoor temperature, not the season. As a guide:",
     sleepIntro:
-      "For sleep, go by the room thermometer. NHS advice is a room of about 16–20°C, with your baby on their back in their own cot or Moses basket in the same room as you for at least the first 6 months. As a guide:",
+      "For sleep, go by the room thermometer. NHS advice is a room of about 16–20°C. Until they are at least 6 months old, put your baby down on their back in their own cot or Moses basket, in your room. As a guide:",
     checkTip:
       "Check the back of the neck or tummy about 10 minutes after you go out or put your baby down, and when they wake. A 1-month-old who is sweating needs a layer off. Cool hands alone do not mean they are cold.",
     extra: [
@@ -1060,11 +1060,11 @@ export const AGE_GUIDES: readonly AgeGuide[] = [
     faqs: [
       {
         q: "Is dressing a 1-month-old different from a newborn?",
-        a: "For warmth, no. The NHS rule of one more layer than you still applies, and small babies are still not very good at regulating their own temperature. What changes is size and routine: check the sleepsuit and sleeping bag still fit, and plan for more trips in and out of warm buildings.",
+        a: "For warmth, no. The NHS rule of one more layer than you still applies, and young babies still struggle to keep their body temperature steady. What changes is size and routine: check the sleepsuit and sleeping bag still fit, and plan for more trips in and out of warm buildings.",
       },
       {
         q: "Should a 1-month-old wear a hat indoors?",
-        a: "No. The NHS advises taking hats off as soon as you come indoors, even if it means waking your baby, and the AAP says not to put a hat on your baby indoors. A hat is for outside on cold days, or a sun hat in summer.",
+        a: "No. The NHS advises removing hats straight away once you are inside, even if your baby wakes, and the AAP says not to put a hat on your baby indoors. A hat is for outside on cold days, or a sun hat in summer.",
       },
       {
         q: "What should a 1-month-old wear to bed at 18°C?",
@@ -1110,14 +1110,14 @@ export const AGE_GUIDES: readonly AgeGuide[] = [
         heading: "Carriers, prams and car journeys at 2 months",
         paragraphs: [
           "In a carrier, your body warmth acts as a layer, so a 2-month-old usually needs one layer less than in the pram. Keep their face clear and visible, and add a hat when it is cold or sunny.",
-          "In the pram, use a clip-on parasol or sunshade for shade, and never cover the pram with a muslin or blanket (NHS). When you get into a warm car, bus or train, take off hats and extra layers straight away, even if it means waking your baby, as the NHS advises.",
+          "In the pram, use a clip-on parasol or sunshade for shade, and never cover the pram with a muslin or blanket (NHS). Once you step into a warm car, bus or train, remove hats and extra layers straight away, as the NHS advises, even if your baby wakes.",
         ],
       },
     ],
     faqs: [
       {
         q: "Should I dress my 2-month-old warmer because they are small?",
-        a: "Not automatically. Dress for the air temperature, using the NHS rule of one more layer than you, then check the back of the neck. Small babies are not very good at regulating their own temperature, which is why checking matters, but extra layers can lead to overheating.",
+        a: "Not automatically. Dress for the air temperature, using the NHS rule of one more layer than you, then check the back of the neck. Young babies struggle to keep their body temperature steady, which is why checking matters, but extra layers can lead to overheating.",
       },
       {
         q: "What should a 2-month-old wear in a carrier?",
@@ -1231,7 +1231,7 @@ export const AGE_GUIDES: readonly AgeGuide[] = [
     faqs: [
       {
         q: "Can sunscreen replace shade at 6 months?",
-        a: "No. From 6 months the NHS says you can use sunscreen with SPF 30 or higher on uncovered skin, but older babies should still be kept out of the sun as much as possible, especially between 11am and 3pm. Use shade, a wide-brimmed hat and light clothing first, and sunscreen on the skin that is left.",
+        a: "No. From 6 months the NHS says you can use sunscreen with SPF 30 or higher on uncovered skin, but shade still comes first: keep older babies out of the sun wherever you can, especially from 11am to 3pm. Use shade, a wide-brimmed hat and light clothing first, and sunscreen on the skin that is left.",
       },
       {
         q: "What should a 6-month-old wear at 20°C?",
@@ -1239,7 +1239,7 @@ export const AGE_GUIDES: readonly AgeGuide[] = [
       },
       {
         q: "Does a 6-month-old need water in hot weather?",
-        a: "From around 6 months, the NHS suggests offering sips of water from a cup or beaker with meals, plus extra water between meals when it is hot. Breast milk or formula is still their main drink, so offer feeds more often on hot days too.",
+        a: "From around 6 months, the NHS suggests giving small sips of water in a cup at mealtimes, with a little more between meals in hot weather. Breast milk or formula is still their main drink, so offer feeds more often on hot days too.",
       },
       {
         q: "Can my 6-month-old sleep with a blanket now?",
@@ -1339,7 +1339,7 @@ export const AGE_GUIDES: readonly AgeGuide[] = [
       {
         heading: "Sun, cold and car seats at 12 months",
         paragraphs: [
-          "In summer, keep your child out of the sun as much as possible between 11am and 3pm, and use a wide-brimmed hat, light clothes and SPF 30+ sunscreen on uncovered skin, reapplied every 2 hours (NHS).",
+          "In summer, keep your child in the shade wherever you can from 11am to 3pm, and use a wide-brimmed hat, light clothes and SPF 30+ sunscreen on uncovered skin, reapplied every 2 hours (NHS).",
           "In winter, the AAP suggests several thin layers, plus a hat, mittens and insulated boots once they are walking outside, and changing wet clothes straight away. In the car, no puffy coats or snowsuits under the harness: buckle up in thin layers and put the coat over the top.",
         ],
       },

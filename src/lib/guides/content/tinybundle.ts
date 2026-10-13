@@ -52,7 +52,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
         paragraphs: ["Start with the free official resources."],
         list: [
           "The NHS App (England). If you and your baby are registered at the same GP surgery, ask the surgery for family and carer access (also called proxy access). Depending on what it allows, you may be able to book appointments, order repeat prescriptions and view test results or vaccinations.",
-          "NHS Best Start in Life (the new home of Start for Life) on nhs.uk. It covers feeding, newborn care, bonding, weaning and toddler development, and you can sign up for emails tailored to your stage of pregnancy or your baby’s age.",
+          "NHS Best Start in Life on nhs.uk, where the old Start for Life advice now sits. It covers feeding, newborn care, bonding, weaning and toddler development, and you can sign up for emails tailored to your stage of pregnancy or your baby’s age.",
           "Your baby’s red book. Your health visitor records checks and growth in it, so keep it somewhere easy to grab for appointments.",
           "For readers in the US: the CDC’s free Milestone Tracker app covers children from 2 months to 5 years, with checklists, photos and videos of milestones and a summary you can share with your doctor.",
         ],
@@ -74,16 +74,16 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       {
         heading: "What apps help after birth and postpartum?",
         paragraphs: [
-          "After birth, no app replaces a conversation with your GP, midwife or health visitor. Feeling down, anxious or irritable for a few days after birth (the baby blues) is very common and usually passes within 2 weeks. If it lasts longer, gets worse, or you are struggling to cope, get help.",
-          "The NHS lists these signs of postnatal depression, which can start in pregnancy or any time up to a year after birth:",
+          "After birth, no app replaces a conversation with your GP, midwife or health visitor. Lots of new parents have a few days of feeling tearful, on edge or short-tempered soon after the birth. This is known as the baby blues, and it normally lifts within 2 weeks. If the feelings hang on beyond that, get stronger, or make it hard to manage day to day, ask for help.",
+          "Postnatal depression can begin during pregnancy or at any point in the first year after the birth. Signs the NHS describes include:",
         ],
         list: [
-          "Low mood, or finding it hard to enjoy anything",
-          "Feeling hopeless, guilty, worthless or unable to cope",
-          "Constant worry, fear or anxiety",
-          "Trouble sleeping even when you have the chance to rest",
-          "Difficulty bonding with your baby",
-          "Thoughts of suicide, or of harming yourself or your baby: get urgent help straight away, and call 999 (or your local emergency number) if anyone is in immediate danger",
+          "A mood that stays low, or losing pleasure in things",
+          "Feeling overwhelmed or without hope, or weighed down by guilt and a sense that you are worthless",
+          "Worry, fear or anxiety that rarely lets up",
+          "Struggling to sleep even when there is a chance to rest",
+          "Finding it hard to feel close to your baby",
+          "Thinking about ending your life, or about hurting yourself or your baby: get urgent help straight away, and call 999 (or your local emergency number) if anyone is in immediate danger",
         ],
       },
       {
@@ -106,11 +106,11 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       },
       {
         q: "Is NHS Start for Life still available?",
-        a: "Start for Life now lives inside NHS Best Start in Life on nhs.uk. It covers pregnancy, babies and toddlers, including feeding, newborn care, weaning and early development. You can sign up for emails tailored to your stage of pregnancy or your baby’s age, so the advice arrives when it is relevant rather than all at once.",
+        a: "The Start for Life advice has moved into NHS Best Start in Life on nhs.uk. It covers pregnancy, babies and toddlers, including feeding, newborn care, weaning and early development. You can sign up for emails tailored to your stage of pregnancy or your baby’s age, so the advice arrives when it is relevant rather than all at once.",
       },
       {
         q: "Is there an app for postnatal depression?",
-        a: "Apps can offer company or calm, but postnatal depression needs real support. Speak to your GP, midwife or health visitor, even if you only have some of the signs. In England, adults can also refer themselves to NHS talking therapies. If you have thoughts of harming yourself or your baby, get urgent help straight away.",
+        a: "Apps can offer company or calm, but postnatal depression needs real support. Speak to your GP, midwife or health visitor, even if only a few of the signs fit. In England, adults can also refer themselves to NHS talking therapies. If you have thoughts of harming yourself or your baby, get urgent help straight away.",
       },
       {
         q: "Are milestone tracker apps worth it?",
@@ -155,9 +155,9 @@ export const BUNDLE_GUIDES: GuideContent[] = [
           "If you are worried, ask your midwife, health visitor or a breastfeeding specialist for help early, or call the National Breastfeeding Helpline (24 hours) on 0300 100 0212. The NHS signs that a breastfed baby is getting enough milk:",
         ],
         list: [
-          "Feeds: as a very rough guide, at least 8 to 12 times or more every 24 hours in the first few weeks, and it could be every 1 to 3 hours in the first few days",
+          "Feeds: as a very rough guide, a minimum of 8 to 12 feeds in each 24 hours during the first few weeks, which in the first days might mean a feed every 1 to 3 hours",
           "Wet nappies: only 2 or 3 in the first 48 hours, then from day 5 at least 6 heavy, wet nappies every 24 hours",
-          "Poos: from the fourth day, at least 2 soft, yellow poos about the size of a £2 coin every day for the first few weeks",
+          "Poos: from day 4, and for the first few weeks, a minimum of 2 soft yellow poos a day, each roughly as big as a £2 coin",
           "Weight: some loss in the first 3 to 4 days is normal, then steady gain",
         ],
       },
@@ -165,7 +165,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
         heading: "What can you skip tracking?",
         paragraphs: [
           "Skip anything that does not answer a question you actually have. The NHS signs to watch are feeding, nappies and weight, which do not mean timing every feed or logging every nap.",
-          "Sleep is the easiest thing to over-track. The NHS says newborns usually wake repeatedly at night for the first few months, and every baby has their own pattern. No chart or wake window can promise when your baby will sleep.",
+          "Sleep is the easiest thing to over-track. The NHS says it is usual for newborns to wake again and again through the night in their first months, and every baby has their own pattern. No chart or wake window can promise when your baby will sleep.",
         ],
       },
       {
@@ -191,7 +191,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       {
         heading: "How is your baby’s weight tracked?",
         paragraphs: [
-          "Professionals track it for you, on centile charts in the red book (the personal child health record). Babies are weighed in their first 2 weeks, and most are at or above their birthweight by 3 weeks. After that, the NHS suggests weighing no more than once a month up to 6 months, every 2 months from 6 to 12 months, and every 3 months after 1 year, unless there is a concern.",
+          "Professionals track it for you, on centile charts in the red book (the personal child health record). Babies are weighed in their first 2 weeks, and most are at or above their birthweight by 3 weeks. After that, unless there is a concern, the NHS suggests a weigh-in at most monthly until 6 months, at most every other month between 6 and 12 months, and at most every 3 months once your baby is over 1.",
         ],
       },
       {
@@ -217,7 +217,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
     faqs: [
       {
         q: "How often should a newborn feed?",
-        a: "As a very rough guide, the NHS says a breastfed baby should feed at least 8 to 12 times or more every 24 hours in the first few weeks, and it could be every 1 to 3 hours in the first few days. Feed whenever your baby shows they want to, for as long as they want.",
+        a: "As a very rough guide, the NHS says breastfed babies feed a minimum of 8 to 12 times in each 24 hours during the first few weeks, and in the first days that might be as often as every 1 to 3 hours. Feed whenever your baby shows they want to, for as long as they want.",
       },
       {
         q: "Should I write down every feed?",
@@ -225,7 +225,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       },
       {
         q: "Should I track my baby’s sleep?",
-        a: "You do not have to. Newborns usually wake repeatedly in the night for the first few months, and every baby has their own pattern, so a log cannot tell you what is normal. It can help you notice your baby’s rhythm or answer your health visitor. Treat any wake window as a rough guide, never a promise.",
+        a: "You do not have to. It is usual for newborns to wake again and again through the night in their first months, and every baby has their own pattern, so a log cannot tell you what is normal. It can help you notice your baby’s rhythm or answer your health visitor. Treat any wake window as a rough guide, never a promise.",
       },
       {
         q: "Is it bad to use a baby tracker app?",
@@ -256,7 +256,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
     description:
       "You are not the only one awake with your baby. Why night feeds feel so lonely, how to make them easier and when low mood needs help from your GP.",
     quickAnswer:
-      "No, you are not the only one awake. The NHS says newborns usually wake repeatedly in the night for the first few months, so many parents are feeding and settling at the same hour as you. Night feeds feel lonely because the house is dark and quiet, and nobody sees the work you are doing.",
+      "No, you are not the only one awake. The NHS says it is usual for newborns to wake again and again through the night in their first months, so many parents are feeding and settling at the same hour as you. Night feeds feel lonely because the house is dark and quiet, and nobody sees the work you are doing.",
     bullets: [
       "Frequent night waking is normal for newborns",
       "Loneliness at 3am is common and does not mean you are failing",
@@ -269,7 +269,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
         heading: "Am I the only one awake with my baby at night?",
         paragraphs: [
           "Almost certainly not. The NHS describes newborns as sleeping for around 18 hours a day in short stretches, waking often in the night to feed. That pattern repeats in homes all over the country, every night.",
-          "Between 3 and 6 months, babies need fewer night feeds as they grow, and some sleep for 5 to 8 hours or longer at night. Many do not, and that is normal too. Hunger, being too hot or too cold, growth spurts, teething and illness can all bring extra wake-ups.",
+          "Between 3 and 6 months, babies need fewer night feeds as they grow, and some manage a stretch of 5 to 8 hours or more overnight. Many do not, and that is normal too. Hunger, being too hot or too cold, growth spurts, teething and illness can all bring extra wake-ups.",
         ],
       },
       {
@@ -296,11 +296,11 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       {
         heading: "How to stay safe if you are very tired",
         paragraphs: [
-          "When you are exhausted, it is easy to drift off during a feed. The NHS advises never sleeping on a sofa or in an armchair with your baby, as this raises the risk of SIDS. If you feel yourself falling asleep, put your baby down on their back in their own cot.",
+          "When you are exhausted, it is easy to drift off during a feed. The NHS advises never dozing off on a sofa or armchair while holding your baby, as this raises the risk of SIDS. If you feel yourself falling asleep, put your baby down on their back in their own cot.",
         ],
         list: [
           "Keep your baby in a cot or Moses basket in your room for at least the first 6 months",
-          "Always place your baby on their back, with their feet at the foot of the cot",
+          "Always lay your baby on their back in the feet-to-foot position, with their feet touching the end of the cot",
           "Use a firm, flat mattress with nothing loose in the cot",
           "Keep the room between 16°C and 20°C (61°F to 68°F)",
           "Do not share a bed if you or your partner smoke, have had 2 or more units of alcohol, or have taken recreational drugs or medicine that makes you drowsy, or if your baby was born premature or weighed under 2.5kg (5.5lb)",
@@ -315,7 +315,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       {
         heading: "When loneliness at night is more than tiredness",
         paragraphs: [
-          "Feeling down, anxious or irritable for a few days after the birth is very common and is often called the baby blues. The NHS says it usually passes within 2 weeks. If low mood lasts longer, gets worse, or you are struggling to cope, talk to your GP, midwife or health visitor. Fathers and partners can also have depression after having a baby.",
+          "Many parents feel tearful, on edge or short-tempered for a few days after the birth, which is often called the baby blues. The NHS says it normally lifts within 2 weeks. If low mood hangs on beyond that, gets stronger, or makes it hard to manage, talk to your GP, midwife or health visitor. Dads and partners can get postnatal depression too.",
           URGENT_HELP_LINE,
         ],
       },
@@ -331,7 +331,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       },
       {
         q: "Is it safe to fall asleep feeding my baby on the sofa?",
-        a: "No. The NHS advises never sleeping on a sofa or in an armchair with your baby, because it raises the risk of SIDS. If you are likely to doze, feed somewhere you can easily put your baby back in their cot, then lay them on their back in their own clear, flat sleep space.",
+        a: "No. The NHS advises never dozing off on a sofa or armchair while holding your baby, because it raises the risk of SIDS. If you are likely to doze, feed somewhere you can easily put your baby back in their cot, then lay them on their back in their own clear, flat sleep space.",
       },
       {
         q: "How can I feel less alone at 3am?",
@@ -379,7 +379,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       {
         heading: "Why does postpartum loneliness affect partners and dads too?",
         paragraphs: [
-          "Loneliness after a baby is not only a mum's experience. The NHS says fathers and partners can get depression after having a baby too, so it is worth checking in with each other, not just with the baby.",
+          "Loneliness after a baby is not only a mum's experience. The NHS says dads and partners can become depressed after a birth too, so it is worth checking in with each other, not just with the baby.",
         ],
       },
       {
@@ -406,22 +406,22 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       {
         heading: "Baby blues or postnatal depression: what is the difference?",
         paragraphs: [
-          "The baby blues are feelings of being down, anxious or irritable for a few days after the birth. The NHS says they are very common and usually pass within 2 weeks. Postnatal depression lasts longer and can start during pregnancy, soon after birth or at any point up to a year after. Signs the NHS lists include:",
+          "The baby blues means a few days of feeling tearful, on edge or short-tempered soon after the birth. The NHS says lots of parents have them and they normally lift within 2 weeks. Postnatal depression goes on for longer, and it can begin in pregnancy, in the first weeks or at any point in the first year. Signs the NHS describes include:",
         ],
         list: [
-          "Low mood, or finding it hard to enjoy anything",
-          "Feeling hopeless, or that you cannot cope",
-          "Feeling guilty, worthless or like a bad parent",
-          "Fear, anxiety or constant worry",
-          "Difficulty sleeping, even when you have time to rest",
-          "Difficulty bonding with your baby",
-          "Thoughts of suicide, or of harming yourself or your baby",
+          "A mood that stays low, or losing pleasure in things",
+          "Feeling overwhelmed or without hope",
+          "Blaming yourself, feeling worthless or believing you are failing as a parent",
+          "Worry, fear or anxiety that rarely lets up",
+          "Struggling to sleep even when there is a chance to rest",
+          "Finding it hard to feel close to your baby",
+          "Thinking about ending your life, or about hurting yourself or your baby",
         ],
       },
       {
         heading: "When to get help for loneliness or low mood",
         paragraphs: [
-          "Talk to your GP, midwife or health visitor if you think you might have postnatal depression, even if you only have some of the signs. In England, if you are 18 or over (16 or over in some areas), you can also refer yourself to NHS talking therapies without seeing a GP. The NHS says postnatal depression usually gets better in 3 to 6 months, though it can sometimes last longer.",
+          "If postnatal depression could be what you are going through, speak to your GP, midwife or health visitor, even if only a few of the signs fit. In England, people aged 18 and over (16 and over in some places) can also contact NHS talking therapies directly, with no need to see a GP first. The NHS says most people recover within 3 to 6 months, though for some it takes much longer, and treatment improves the chances of getting better.",
           "Some parents worry that asking for help means their baby will be taken away. The NHS says this is very rare.",
           URGENT_HELP_LINE,
         ],
@@ -438,7 +438,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       },
       {
         q: "Can dads and partners feel lonely or depressed after a baby?",
-        a: "Yes. The NHS says fathers and partners can also get depression after having a baby. Partners may feel left out or unsure who to talk to. The same help is available to them: a GP, NHS talking therapies, or Samaritans on 116 123 if they need to talk to someone straight away.",
+        a: "Yes. The NHS says dads and partners can become depressed after a birth too. Partners may feel left out or unsure who to talk to. The same help is available to them: a GP, NHS talking therapies, or Samaritans on 116 123 if they need to talk to someone straight away.",
       },
       {
         q: "How do I make mum friends when I feel shy or exhausted?",
@@ -446,7 +446,7 @@ export const BUNDLE_GUIDES: GuideContent[] = [
       },
       {
         q: "Who can I talk to about postnatal depression?",
-        a: "Your GP, midwife or health visitor is the best first step, and you can contact them even if you only have some of the signs. In England you can refer yourself to NHS talking therapies if you are 18 or over. If you need someone to talk to straight away, Samaritans are on 116 123.",
+        a: "Your GP, midwife or health visitor is the best first step, and you can contact them even if only a few of the signs apply to you. In England you can refer yourself to NHS talking therapies if you are 18 or over. If you need someone to talk to straight away, Samaritans are on 116 123.",
       },
     ],
     relatedSlugs: [

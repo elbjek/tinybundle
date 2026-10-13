@@ -21,7 +21,7 @@ export const NAPS_GUIDES: GuideContent[] = [
     description:
       "What the 4-month sleep regression is, why babies wake more around this age, gentle settling ideas, safe sleep reminders and when to see your GP.",
     quickAnswer:
-      "The 4-month sleep regression is the name parents give to a phase when a baby who was sleeping in longer stretches starts waking more often. It is not a medical term. The AAP says babies do not have regular sleep cycles until about 4 months, so sleep is changing at this age. It does not mean anything has gone wrong.",
+      "The 4-month sleep regression is the name parents give to a phase when a baby who was sleeping in longer stretches starts waking more often. It is not a medical term. The AAP explains that a baby's sleep cycles only become regular at roughly 4 months, so sleep is changing at this age. It does not mean anything has gone wrong.",
     bullets: [
       "A parent term, not a medical diagnosis",
       "Sleep patterns are maturing around 4 months",
@@ -54,7 +54,7 @@ export const NAPS_GUIDES: GuideContent[] = [
         heading: "Why do babies wake more at 4 months?",
         paragraphs: [
           "Several normal things often happen at once. Alongside changing sleep cycles, the NHS lists hunger, being too hot or too cold, growth spurts, teething and illness as common reasons for disturbed sleep. The NHS also says that between 3 and 6 months some babies sleep 5 to 8 hours at night, but not all do, so there is no single normal.",
-          "Some babies start to roll around this time. The NHS advises moving your baby onto their back if they roll, until they can roll onto their front and back again by themselves.",
+          "Some babies start to roll around this time. If your baby rolls over, the NHS advises turning them onto their back again, and keeping this up until they can roll from back to front and front to back without help.",
         ],
       },
       {
@@ -179,7 +179,7 @@ export const NAPS_GUIDES: GuideContent[] = [
       {
         heading: "How to keep your baby safe when nights are hard",
         paragraphs: [
-          "When you are exhausted, safe sleep matters even more. The NHS advises placing your baby on their back in a clear cot or Moses basket in your room for every sleep for at least the first 6 months. If your baby falls asleep in a car seat, move them to a firm, flat surface as soon as possible.",
+          "When you are exhausted, safe sleep matters even more. The NHS advises that for at least the first 6 months, every nap and night-time sleep should be on their back in a clear cot or Moses basket kept in your bedroom. If your baby falls asleep in a car seat, move them to a firm, flat surface as soon as possible.",
           "Never sleep with your baby on a sofa or in an armchair. If you think you might drop off during a feed, move somewhere you can put your baby straight back in their cot.",
         ],
       },
@@ -198,11 +198,11 @@ export const NAPS_GUIDES: GuideContent[] = [
         ],
         list: [
           "Has a fit (seizure)",
-          "Has blue, grey, pale or blotchy skin, lips or tongue",
+          "Has skin, lips or tongue that look blue, grey, pale or blotchy",
           "Is floppy, unresponsive or harder to wake than usual",
           "Has difficulty breathing, grunting or very fast breathing",
           "Has a rash that does not fade when pressed",
-          "Has not had a wet nappy in the past 8 hours",
+          "Has gone 8 hours or more without a wet nappy",
         ],
       },
     ],
@@ -273,7 +273,7 @@ export const NAPS_GUIDES: GuideContent[] = [
       {
         heading: "Is my baby's crying normal?",
         paragraphs: [
-          "Crying is how babies communicate. The NHS lists hunger, a wet or dirty nappy, tiredness, wanting a cuddle, wind, being too hot or too cold, boredom and overstimulation as common reasons.",
+          "Crying is how babies communicate. Common reasons the NHS gives include being hungry or tired, needing a nappy change, wind, feeling too warm or too cool, wanting to be held, being bored, or having had too much going on.",
           "What matters most is a change. Contact your GP or NHS 111 if your baby cries in a way that is unlike their normal cry, cannot be comforted, is not interested in feeding or has a high temperature.",
         ],
       },
@@ -283,8 +283,8 @@ export const NAPS_GUIDES: GuideContent[] = [
           "A high temperature is 38°C (100.4°F) or more. Because young babies can become unwell quickly, the NHS gives lower thresholds for calling NHS 111 at younger ages:",
         ],
         list: [
-          "Under 3 months: a temperature of 38°C or higher, or you think they have a high temperature",
-          "3 to 6 months: a temperature of 39°C (102.2°F) or higher, or you think they have a high temperature",
+          "Under 3 months: a temperature of 38°C or above, or if you suspect a high temperature",
+          "3 to 6 months: a temperature of 39°C (102.2°F) or above, or if you suspect a high temperature",
           "Any age: a high temperature lasting 5 days or more",
           "Any age: a high temperature with other signs of illness, such as a rash",
           "Any age: not wanting to eat, not their usual self, or signs of dehydration such as nappies that are not very wet",
@@ -296,13 +296,13 @@ export const NAPS_GUIDES: GuideContent[] = [
           "Call 999 (or your local emergency number) straight away if your baby:",
         ],
         list: [
-          "Has blue, grey, pale or blotchy skin, lips or tongue",
+          "Has skin, lips or tongue that look blue, grey, pale or blotchy",
           "Is floppy, unresponsive or harder to wake than usual",
           "Has difficulty breathing, grunting, very fast breathing or their stomach sucking in under their ribs",
           "Has a fit (seizure)",
-          "Has a rash that does not fade when you press a glass on it",
+          "Has a rash that is still visible through the side of a glass pressed firmly against it",
           "Has a stiff neck or seems bothered by light",
-          "Has not had a wet nappy in the past 8 hours",
+          "Has gone 8 hours or more without a wet nappy",
         ],
       },
       {

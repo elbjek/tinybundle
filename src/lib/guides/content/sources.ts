@@ -328,3 +328,82 @@ export const WHO_FEEDING: GuideSource = {
   title: "Infant and young child feeding",
   url: "https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding",
 };
+
+export const NHS_FOOD_AND_DRINKS_TO_AVOID: GuideSource = {
+  org: "NHS",
+  title: "Foods and drinks to avoid",
+  url: "https://www.nhs.uk/best-start-in-life/baby/weaning/safe-weaning/food-and-drinks-to-avoid/",
+};
+
+export const NHS_VITAMINS_FOR_CHILDREN: GuideSource = {
+  org: "NHS",
+  title: "Vitamins for children",
+  url: "https://www.nhs.uk/baby/weaning-and-feeding/vitamins-for-children/",
+};
+
+export const AAP_STARTING_SOLIDS: GuideSource = {
+  org: "AAP",
+  title: "When Can Babies Start Solid Foods? Readiness & Feeding Tips",
+  url: "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/Pages/Starting-Solid-Foods.aspx",
+};
+
+export const AAP_CHOKING_PREVENTION: GuideSource = {
+  org: "AAP",
+  title:
+    "Choking Prevention for Babies & Children: What Every Parent Needs to Know",
+  url: "https://www.healthychildren.org/English/health-issues/injuries-emergencies/Pages/Choking-Prevention.aspx",
+};
+
+export const AAP_IRON_SUPPLEMENTS: GuideSource = {
+  org: "AAP",
+  title: "Where We Stand: Vitamin D & Iron Supplements for Babies",
+  url: "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/Pages/Vitamin-Iron-Supplements.aspx",
+};
+
+export const CDC_CHOKING_HAZARDS: GuideSource = {
+  org: "CDC",
+  title: "Choking Hazards",
+  url: "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/choking-hazards.html",
+};
+
+export const NHS_ANAPHYLAXIS: GuideSource = {
+  org: "NHS",
+  title: "Anaphylaxis",
+  url: "https://www.nhs.uk/conditions/anaphylaxis/",
+};
+
+export const NHS_CONSTIPATION_CHILDREN: GuideSource = {
+  org: "NHS",
+  title: "Constipation in children",
+  url: "https://www.nhs.uk/baby/health/constipation-in-children/",
+};
+
+export const CDC_HUNGRY_OR_FULL: GuideSource = {
+  org: "CDC",
+  title: "Signs Your Child Is Hungry or Full",
+  url: "https://www.cdc.gov/infant-toddler-nutrition/mealtime/signs-your-child-is-hungry-or-full.html",
+};
+
+export const AAP_INFANT_CONSTIPATION: GuideSource = {
+  org: "AAP",
+  title: "How Can I Tell If My Baby is Constipated?",
+  url: "https://www.healthychildren.org/English/ages-stages/baby/diapers-clothing/Pages/Infant-Constipation.aspx",
+};
+
+export const AAP_DRINKS_UNDER_5: GuideSource = {
+  org: "AAP",
+  title: "Recommended Drinks for Children Age 5 & Younger",
+  url: "https://www.healthychildren.org/English/healthy-living/nutrition/Pages/Recommended-Drinks-for-Young-Children-Ages-0-5.aspx",
+};
+
+export const AAP_BOTTLE_TO_CUP: GuideSource = {
+  org: "AAP",
+  title: "From Bottle to Cup: Helping Your Child Make a Healthy Transition",
+  url: "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/Pages/Discontinuing-the-Bottle.aspx",
+};
+
+export const NHS_WHEN_TO_USE_111: GuideSource = {
+  org: "NHS",
+  title: "When to use NHS 111 online or call 111",
+  url: "https://www.nhs.uk/nhs-services/urgent-and-emergency-care-services/when-to-use-111/",
+};
