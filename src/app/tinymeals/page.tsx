@@ -7,7 +7,7 @@ import { getApp } from "@/lib/apps";
 import { absoluteUrl, mealsOgImage, SITE_URL } from "@/lib/seo";
 
 const app = getApp("tinymeals");
-const title = "TinyMeals: Baby-Led Weaning and First Foods App for Starting Solids";
+const title = "TinyMeals: Starting Solids and Baby-Led Weaning App";
 const description =
   "TinyMeals is a calm baby-led weaning and purée planner: one meal a day for your baby’s age and stage, a ten-food first foods plan and allergen tracking.";
 const path = "/tinymeals";

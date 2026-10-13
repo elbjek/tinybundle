@@ -1,9 +1,9 @@
-import { bloomsOg, createOgImage, ogSize } from "@/lib/og";
+import { appShareImage, shareImageSize } from "@/lib/share-image";
 
-export const alt = "TinyBlooms: baby activities, milestones and memories, ages 0 to 5.";
-export const size = ogSize;
+export const alt = "TinyBlooms: five spare minutes? One small, age-right play idea for right now.";
+export const size = shareImageSize;
 export const contentType = "image/png";
 
 export default function Image() {
-  return createOgImage(bloomsOg);
+  return appShareImage("tinyblooms");
 }

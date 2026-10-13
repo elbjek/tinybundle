@@ -1,10 +1,9 @@
-import { createOgImage, mealsOg, ogSize } from "@/lib/og";
+import { appShareImage, shareImageSize } from "@/lib/share-image";
 
-export const alt =
-  "TinyMeals - Today’s meal, worked out for you. One gentle recipe a day for your baby’s age and stage.";
-export const size = ogSize;
+export const alt = "TinyMeals: starting solids, one bite at a time. Today’s meal for your baby’s age and stage.";
+export const size = shareImageSize;
 export const contentType = "image/png";
 
 export default function Image() {
-  return createOgImage(mealsOg);
+  return appShareImage("tinymeals");
 }
