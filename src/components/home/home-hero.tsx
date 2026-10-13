@@ -81,10 +81,10 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
               </span>
               Calm parenting apps for baby sleep, first foods, play and daily care
             </h1>
-            <p className="m-0 mt-3 min-h-[2.16em] max-w-[15ch] text-balance text-[clamp(32px,8.2vw,46px)] font-extrabold leading-[1.08] text-tb-ink min-[1100px]:mt-[18px] min-[1100px]:min-h-[2.1em] min-[1100px]:max-w-[16ch] min-[1100px]:text-[clamp(36px,min(4.6vw,7.4vh),60px)] min-[1100px]:leading-[1.05]">
+            <p className="m-0 mt-3 min-h-[2.16em] max-w-[15ch] text-balance text-[clamp(32px,8.2vw,46px)] font-extrabold leading-[1.08] text-tb-ink min-[1100px]:mt-[18px] min-[1100px]:min-h-[2.1em] min-[1100px]:max-w-[20ch] min-[1100px]:text-[clamp(36px,min(4.6vw,7.4vh),60px)] min-[1100px]:leading-[1.05]">
               <span key={hero} className="block [animation:tb-swap_.45s_ease_both]">
-                {cur.title}{" "}
-                <span className="transition-colors duration-[800ms]" style={{ color: cur.deep }}>
+                {cur.title}
+                <span className="block transition-colors duration-[800ms]" style={{ color: cur.deep }}>
                   {cur.title2}
                 </span>
               </span>
@@ -136,7 +136,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
             </div>
           </div>
 
-          <div className="hidden min-w-0 flex-col gap-2.5 pb-1.5 min-[1100px]:flex">
+          <div className="hidden min-w-0 flex-col gap-2.5 min-[1100px]:mt-[50px] min-[1100px]:flex min-[1100px]:self-start">
             <a
               href={cur.ctaHref}
               rel={cur.live ? "noopener" : undefined}
@@ -162,7 +162,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
               </span>
               <span aria-hidden="true">&rarr;</span>
             </Link>
-            <div className="mt-1.5 flex min-h-[84px] min-w-0 items-center gap-3.5">
+            <div className="mt-1.5 flex min-w-0 items-center gap-3.5">
               {cur.live ? (
                 <QrLink
                   key={hero}
