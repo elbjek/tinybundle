@@ -12,7 +12,14 @@ import { QrLink } from "@/components/home/qr-link";
 const ADVANCE_MS = 5200;
 const QUAD_RADII = ["3px 1.5px 1.5px 1.5px", "1.5px 3px 1.5px 1.5px", "1.5px 1.5px 1.5px 3px", "1.5px 1.5px 3px 1.5px"];
 const QUAD_COLORS = ["#55915E", "#D17A2A", "#3D6DA8", "#232F48"];
-const PHONE_FRAME = "absolute h-[520px] w-[260px] overflow-hidden rounded-[40px] origin-top";
+const PHONE_FRAME = "absolute w-[260px] overflow-hidden rounded-[40px] origin-top";
+/** How far every door phone runs past the card's bottom edge, so a tall screen never leaves an empty strip under it. */
+const PHONE_BLEED = 40;
+
+/** A door phone's unscaled height: tall enough to run past the bottom of a door `doorH` high, never under 520px. */
+function phoneHeight(top: number, scale: number, doorH: number) {
+  return Math.max(520, (doorH - top + PHONE_BLEED) / scale);
+}
 
 function StatusPill({ live }: { live: boolean }) {
   return (
@@ -98,6 +105,16 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
   const wide = useMedia("(min-width: 1100px)");
   const reduce = useMedia(REDUCED_MOTION);
   const touchX = useRef(0);
+  const doors = useRef<HTMLDivElement>(null);
+  const [doorH, setDoorH] = useState(0);
+
+  useEffect(() => {
+    const el = doors.current;
+    if (!el) return;
+    const watch = new ResizeObserver(([entry]) => setDoorH(entry.contentRect.height));
+    watch.observe(el);
+    return () => watch.disconnect();
+  }, []);
   const count = panels.length;
   const cur = panels[hero];
   // A live app leads with the App Store; an app that is not out yet leads with its own page.
@@ -314,6 +331,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
           </div>
 
           <div
+            ref={doors}
             role="tablist"
             aria-label="The four TinyBundle apps"
             onKeyDown={(e) => onTabKeys(e, hero, count, pick)}
@@ -323,6 +341,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
           >
             {panels.map((p, i) => {
               const on = i === hero;
+              const phone = on ? { top: 30, scale: 0.84 } : { top: 178, scale: 0.6 };
               return (
                 <div
                   key={p.app}
@@ -335,9 +354,10 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
                     className={`${PHONE_FRAME} pointer-events-none`}
                     style={{
                       background: p.screenBg,
+                      height: phoneHeight(phone.top, phone.scale, doorH),
                       left: on ? "calc(100% - 262px)" : "calc(50% - 130px)",
-                      top: on ? 30 : 178,
-                      transform: on ? "scale(0.84)" : "rotate(5deg) scale(0.6)",
+                      top: phone.top,
+                      transform: on ? `scale(${phone.scale})` : `rotate(5deg) scale(${phone.scale})`,
                       boxShadow: on ? "0 26px 50px rgba(35,47,72,0.24)" : "0 12px 26px rgba(35,47,72,0.14)",
                       transition:
                         "left .7s cubic-bezier(.34,1.1,.64,1), top .7s cubic-bezier(.34,1.1,.64,1), transform .7s cubic-bezier(.34,1.2,.64,1), box-shadow .5s ease",
@@ -345,7 +365,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
                   >
                     {p.screen}
                   </div>
-                  <div className="relative z-[2] box-border px-5 py-[22px]" style={{ maxWidth: on ? 320 : "none" }}>
+                  <div className="relative z-[2] box-border flex h-full flex-col px-5 py-[22px]" style={{ maxWidth: on ? 320 : "none" }}>
                     <div className={`flex gap-2.5 ${on ? "flex-row items-center" : "flex-col items-start"}`}>
                       <AppTile app={p.app} className="h-[42px] w-[42px] rounded-[14px]" markClassName="h-[26px] w-[26px]" bg="#FFFFFF" />
                       <div className="flex min-w-0 flex-col">
@@ -371,7 +391,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
                       id={`hero-door-${p.app}`}
                       role="tabpanel"
                       aria-labelledby={`hero-door-tab-${p.app}`}
-                      className={on ? "block [animation:tm-rise_.35s_ease-out_.35s_both]" : "hidden"}
+                      className={on ? "mt-auto block [animation:tm-rise_.35s_ease-out_.35s_both]" : "hidden"}
                     >
                       <span className="mt-4 inline-flex">
                         <StatusPill live={p.live} />
