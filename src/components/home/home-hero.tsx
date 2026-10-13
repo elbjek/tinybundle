@@ -27,14 +27,67 @@ function StatusPill({ live }: { live: boolean }) {
 /** Links every app panel carries: the app's guides hub and its page. */
 function PanelLinks({ p, className }: { p: HeroPanel; className: string }) {
   return (
-    <span className={`flex flex-wrap gap-x-4 gap-y-1 font-extrabold ${className}`}>
-      <Link href={`/guides/${p.app}`} className="text-[#D17A2A] hover:text-[#B45F1F] active:opacity-60">
-        {`${p.guideLabel} →`}
+    <span className={`flex flex-wrap gap-2 font-extrabold ${className}`}>
+      <Link
+        href={`/${p.app}`}
+        className="inline-flex h-10 items-center gap-1.5 whitespace-nowrap rounded-[14px] px-4 text-white hover:text-white hover:brightness-[0.92] active:scale-[0.97]"
+        style={{ background: p.btn }}
+      >
+        {`Check out ${p.name}`}
+        <span aria-hidden="true">&rarr;</span>
       </Link>
-      <Link href={`/${p.app}`} className="active:opacity-60" style={{ color: p.deep }}>
-        {`See ${p.name} →`}
+      <Link
+        href={`/guides/${p.app}`}
+        className="inline-flex h-10 items-center whitespace-nowrap rounded-[14px] bg-white px-4 shadow-[0_2px_10px_rgba(90,60,20,0.08)] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)] active:scale-[0.97]"
+        style={{ color: p.deep }}
+      >
+        {p.guideLabel}
       </Link>
     </span>
+  );
+}
+
+/** One hero action: the filled main button or the white secondary one. Internal pages use Link. */
+function HeroAction({
+  action,
+  filled,
+  hero,
+  btn,
+  deep,
+  className,
+}: {
+  action: { href: string; label: string; external: boolean; download: boolean };
+  filled: boolean;
+  hero: number;
+  btn: string;
+  deep: string;
+  className: string;
+}) {
+  const look = filled
+    ? `${className} text-white hover:text-white hover:brightness-[0.92] transition-[background-color] duration-[600ms]`
+    : `${className} bg-white shadow-[0_2px_10px_rgba(90,60,20,0.08)] transition-[color,box-shadow] duration-[600ms] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)]`;
+  const style = filled ? { background: btn } : { color: deep };
+  const content = (
+    <>
+      {action.download ? (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="flex-none">
+          <path d="M12 4v11M7 10l5 5 5-5M5 20h14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      ) : null}
+      <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
+        {action.label}
+      </span>
+      {action.external || action.href.startsWith("#") ? null : <span aria-hidden="true">&rarr;</span>}
+    </>
+  );
+  return action.external || action.href.startsWith("#") ? (
+    <a href={action.href} rel={action.external ? "noopener" : undefined} className={look} style={style}>
+      {content}
+    </a>
+  ) : (
+    <Link href={action.href} className={look} style={style}>
+      {content}
+    </Link>
   );
 }
 
@@ -52,6 +105,10 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
   const touchX = useRef(0);
   const count = panels.length;
   const cur = panels[hero];
+  // A live app leads with the App Store; an app that is not out yet leads with its own page.
+  const store = { href: cur.ctaHref, label: cur.ctaLabel, external: cur.live, download: cur.live };
+  const page = { href: `/${cur.app}`, label: `Check out ${cur.name}`, external: false, download: false };
+  const [primary, secondary] = cur.live ? [store, page] : [page, store];
 
   useEffect(() => {
     if (manual || paused || !wide || reduce) return;
@@ -108,27 +165,23 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
                   className="h-[72px] w-[72px] rounded-2xl p-2 [animation:tb-swap_.4s_ease_both]"
                 />
               ) : null}
-              <a
-                href={cur.ctaHref}
-                rel={cur.live ? "noopener" : undefined}
-                className="flex h-[54px] min-w-0 flex-1 items-center justify-center gap-2.5 rounded-[18px] px-[18px] text-center text-[15.5px] font-extrabold text-white transition-[background-color] duration-[600ms] hover:text-white hover:brightness-[0.92] active:scale-[0.97]"
-                style={{ background: cur.btn }}
-              >
-                <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
-                  {cur.ctaLabel}
-                </span>
-              </a>
+              <HeroAction
+                action={primary}
+                filled
+                hero={hero}
+                btn={cur.btn}
+                deep={cur.deep}
+                className="flex h-[54px] min-w-0 flex-1 items-center justify-center gap-2.5 rounded-[18px] px-[18px] text-center text-[15.5px] font-extrabold active:scale-[0.97]"
+              />
             </div>
-            <Link
-              href={`/${cur.app}`}
-              className="mt-2.5 box-border flex h-[52px] w-full max-w-[420px] items-center justify-center gap-2 rounded-[18px] bg-white text-[15.5px] font-extrabold shadow-[0_2px_10px_rgba(90,60,20,0.08)] transition-[color,box-shadow] duration-[600ms] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)] active:scale-[0.98] min-[1100px]:hidden"
-              style={{ color: cur.deep }}
-            >
-              <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
-                {`Check out the ${cur.name} page`}
-              </span>
-              <span aria-hidden="true">&rarr;</span>
-            </Link>
+            <HeroAction
+              action={secondary}
+              filled={false}
+              hero={hero}
+              btn={cur.btn}
+              deep={cur.deep}
+              className="mt-2.5 box-border flex h-[52px] w-full max-w-[420px] items-center justify-center gap-2 rounded-[18px] text-[15.5px] font-extrabold active:scale-[0.98] min-[1100px]:hidden"
+            />
             <div className="mt-3.5 flex flex-wrap items-center gap-x-4 gap-y-2 min-[1100px]:hidden">
               <a href="#apps" className="text-[14.5px] font-extrabold text-[#D17A2A] hover:text-[#B45F1F] active:opacity-60">
                 Explore all four apps &rarr;
@@ -139,31 +192,22 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
           <div className="hidden min-w-0 flex-col gap-3 min-[1100px]:mt-[78px] min-[1100px]:flex min-[1100px]:self-start">
             <div className="flex min-w-0 items-stretch gap-3">
               <div className="flex min-w-0 flex-1 flex-col gap-2.5">
-                <a
-                  href={cur.ctaHref}
-                  rel={cur.live ? "noopener" : undefined}
-                  className="flex h-14 items-center justify-center gap-2.5 whitespace-nowrap rounded-[18px] px-4 text-center text-[15.5px] font-extrabold text-white transition-[background-color] duration-[600ms] hover:text-white hover:brightness-[0.92] active:scale-[0.97]"
-                  style={{ background: cur.btn }}
-                >
-                  {cur.live ? (
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="flex-none">
-                      <path d="M12 4v11M7 10l5 5 5-5M5 20h14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  ) : null}
-                  <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
-                    {cur.ctaLabel}
-                  </span>
-                </a>
-                <Link
-                  href={`/${cur.app}`}
-                  className="flex h-[54px] items-center justify-center gap-2 whitespace-nowrap rounded-[18px] bg-white px-4 text-[15px] font-extrabold shadow-[0_2px_10px_rgba(90,60,20,0.08)] transition-[color,box-shadow] duration-[600ms] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)] active:scale-[0.98]"
-                  style={{ color: cur.deep }}
-                >
-                  <span key={hero} className="[animation:tb-swap_.4s_ease_both]">
-                    {`Check out the ${cur.name} page`}
-                  </span>
-                  <span aria-hidden="true">&rarr;</span>
-                </Link>
+                <HeroAction
+                  action={primary}
+                  filled
+                  hero={hero}
+                  btn={cur.btn}
+                  deep={cur.deep}
+                  className="flex h-14 items-center justify-center gap-2.5 whitespace-nowrap rounded-[18px] px-4 text-center text-[15.5px] font-extrabold active:scale-[0.97]"
+                />
+                <HeroAction
+                  action={secondary}
+                  filled={false}
+                  hero={hero}
+                  btn={cur.btn}
+                  deep={cur.deep}
+                  className="flex h-[54px] items-center justify-center gap-2 whitespace-nowrap rounded-[18px] px-4 text-[15px] font-extrabold active:scale-[0.98]"
+                />
               </div>
               {cur.live ? (
                 <QrLink
@@ -248,7 +292,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
                       </div>
                       <p className="m-0 mt-4 text-balance text-lg font-extrabold leading-[1.3] text-tb-ink">{p.head}</p>
                       <p className="m-0 mt-1.5 text-pretty text-[14.5px] leading-[1.55] text-tb-body">{p.text}</p>
-                      <PanelLinks p={p} className="mt-2.5 text-sm" />
+                      <PanelLinks p={p} className="mt-3 text-[13.5px]" />
                     </div>
                     <div className="relative mt-[22px] h-0">
                       <div
@@ -339,7 +383,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
                       </span>
                       <p className="m-0 mt-3 text-balance text-[clamp(17px,1.6vw,20px)] font-extrabold leading-[1.3] text-tb-ink">{p.head}</p>
                       <p className="m-0 mt-2 text-pretty text-[15px] leading-[1.55] text-tb-body">{p.text}</p>
-                      <PanelLinks p={p} className="mt-3.5 text-[14.5px]" />
+                      <PanelLinks p={p} className="mt-4 text-[14px]" />
                     </div>
                   </div>
                 </div>

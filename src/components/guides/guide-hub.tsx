@@ -71,21 +71,35 @@ export function GuideHubPage({ app }: { app: GuideApp }) {
           <h1 className="mt-4 max-w-[18ch] text-balance text-[clamp(34px,5vw,56px)] font-extrabold leading-[1.06]">{hub.h1}</h1>
           <p className="mt-4 max-w-[56ch] text-pretty text-[clamp(16px,1.5vw,18px)] leading-[1.6] text-tb-body">{hub.intro}</p>
           <div className="mt-[26px] flex flex-wrap items-center gap-3">
+            {tinyApp && !cta.live ? (
+              <Link
+                href={`/${app}`}
+                className="inline-flex h-[52px] items-center gap-2 rounded-[18px] px-[22px] text-[15.5px] font-extrabold text-white hover:text-white hover:brightness-[0.92] active:scale-[0.97]"
+                style={{ background: colors.btn }}
+              >
+                <span>{`Check out ${identity.name}`}</span>
+                <span aria-hidden="true">&rarr;</span>
+              </Link>
+            ) : null}
             <a
               href={cta.href}
               rel={cta.live ? "noopener" : undefined}
-              className="inline-flex h-[52px] items-center rounded-[18px] px-[22px] text-[15.5px] font-extrabold text-white hover:text-white hover:brightness-[0.92] active:scale-[0.97]"
-              style={{ background: colors.btn }}
+              className={`inline-flex h-[52px] items-center rounded-[18px] px-[22px] text-[15.5px] font-extrabold active:scale-[0.97] ${
+                cta.live || !tinyApp
+                  ? "text-white hover:text-white hover:brightness-[0.92]"
+                  : "bg-white shadow-[0_2px_10px_rgba(90,60,20,0.08)] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)]"
+              }`}
+              style={cta.live || !tinyApp ? { background: colors.btn } : { color: colors.deep }}
             >
               {cta.label}
             </a>
-            {tinyApp ? (
+            {tinyApp && cta.live ? (
               <Link
                 href={`/${app}`}
                 className="inline-flex h-[52px] items-center gap-2 rounded-[18px] bg-white px-5 text-[15.5px] font-extrabold shadow-[0_2px_10px_rgba(90,60,20,0.08)] hover:shadow-[0_6px_18px_rgba(90,60,20,0.12)] active:scale-[0.98]"
                 style={{ color: colors.deep }}
               >
-                <span>Check out the {identity.name} page</span>
+                <span>{`Check out ${identity.name}`}</span>
                 <span aria-hidden="true">&rarr;</span>
               </Link>
             ) : null}
