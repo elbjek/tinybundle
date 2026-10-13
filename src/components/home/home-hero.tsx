@@ -371,7 +371,7 @@ export function HomeTop({ panels, outNow, moreSoon }: { panels: HeroPanel[]; out
                       id={`hero-door-${p.app}`}
                       role="tabpanel"
                       aria-labelledby={`hero-door-tab-${p.app}`}
-                      className={on ? "block [animation:tb-swap_.5s_ease_.12s_both]" : "hidden"}
+                      className={on ? "block [animation:tm-rise_.35s_ease-out_.35s_both]" : "hidden"}
                     >
                       <span className="mt-4 inline-flex">
                         <StatusPill live={p.live} />
