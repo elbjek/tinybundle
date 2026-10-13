@@ -27,7 +27,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     title: "About these terms",
     paragraphs: [
       "These terms are an agreement between you and TwoBrickLabs, based in Serbia (“we”, “us”). If you do not agree with them, please do not use the website or the apps. Our privacy policy explains how we handle your information.",
-      "If you downloaded an app from the App Store, Apple’s Licensed Application End User License Agreement also applies, as far as it does not conflict with these terms. Apple is not responsible for our apps or their support.",
+      "If you downloaded an app from the App Store, Apple’s standard Licensed Application End User License Agreement (EULA) also applies, as far as it does not conflict with these terms. You can read it at https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Apple is not responsible for our apps or their support.",
     ],
   },
   {

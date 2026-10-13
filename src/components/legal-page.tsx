@@ -9,6 +9,27 @@ export type LegalSection = { id: string; title: string; paragraphs: string[]; li
 
 export type LegalDoc = "privacy" | "terms";
 
+/** Web addresses and email addresses in legal text, as links. A full stop or comma after one stays outside the link. */
+const LINKABLE = /(https?:\/\/[^\s]+?|[\w.+-]+@[\w-]+(?:\.[\w-]+)+)(?=[.,]?(?:\s|$))/g;
+
+function Linked({ text }: { text: string }) {
+  return text.split(LINKABLE).map((part, i) =>
+    i % 2 === 1 ? (
+      <a
+        key={i}
+        href={part.includes("@") ? `mailto:${part}` : part}
+        rel={part.includes("@") ? undefined : "noopener"}
+        className="break-words font-bold text-[#B45F1F] underline decoration-[rgba(180,95,31,0.3)] underline-offset-2 hover:text-[#D17A2A]"
+      >
+        {part}
+      </a>
+    ) : (
+      part
+    ),
+  );
+}
+
+
 const DOC_STYLE: Record<LegalDoc, { label: string; tile: string; deep: string }> = {
   privacy: { label: "Privacy", tile: "#E6E9F0", deep: "#232F48" },
   terms: { label: "Terms", tile: "#FBEEDC", deep: "#A0521A" },
@@ -163,21 +184,21 @@ export function LegalPage({
                 <div className="mt-3 flex flex-col gap-3 text-base leading-[1.7] text-[#4A4339]">
                   {section.paragraphs.map((paragraph) => (
                     <p key={paragraph.slice(0, 60)} className="m-0 text-pretty">
-                      {paragraph}
+                      <Linked text={paragraph} />
                     </p>
                   ))}
                   {section.list ? (
                     <ul className="m-0 flex list-disc flex-col gap-2 pl-5">
                       {section.list.map((item) => (
                         <li key={item.slice(0, 60)} className="pl-1 text-pretty leading-[1.65]">
-                          {item}
+                          <Linked text={item} />
                         </li>
                       ))}
                     </ul>
                   ) : null}
                   {section.afterList?.map((paragraph) => (
                     <p key={paragraph.slice(0, 60)} className="m-0 text-pretty">
-                      {paragraph}
+                      <Linked text={paragraph} />
                     </p>
                   ))}
                 </div>
