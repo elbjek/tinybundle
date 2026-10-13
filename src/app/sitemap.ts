@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { apps } from "@/lib/apps";
 import { guidePages } from "@/lib/guides/catalog";
+import { HUB_ORDER, hubHref } from "@/lib/guides/hubs";
 import { SITE_URL } from "@/lib/seo";
 import { layersArticles } from "@/lib/tinylayers/articles";
 
@@ -11,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${SITE_URL}/${app.slug}`,
     lastModified: now,
     changeFrequency: "weekly" as const,
-    priority: app.comingSoon ? 0.5 : 0.8,
+    priority: app.live ? 0.8 : 0.5,
   }));
 
   const layersBlog = [
@@ -30,12 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const guides = [
-    {
-      url: `${SITE_URL}/guides`,
+    ...HUB_ORDER.map((app) => ({
+      url: `${SITE_URL}${hubHref(app)}`,
       lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.9,
-    },
+    })),
     ...guidePages.map((guide) => ({
       url: `${SITE_URL}/guides/${guide.slug}`,
       lastModified: new Date(guide.modifiedAt),
@@ -52,18 +53,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     ...appPages,
-    {
-      url: `${SITE_URL}/tinyhaven/privacy`,
+    ...["privacy", "terms"].map((page) => ({
+      url: `${SITE_URL}/${page}`,
       lastModified: now,
       changeFrequency: "yearly" as const,
       priority: 0.3,
-    },
-    {
-      url: `${SITE_URL}/tinyhaven/terms`,
-      lastModified: now,
-      changeFrequency: "yearly" as const,
-      priority: 0.3,
-    },
+    })),
     ...layersBlog,
     ...guides,
   ];
