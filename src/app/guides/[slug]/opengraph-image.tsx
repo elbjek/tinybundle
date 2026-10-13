@@ -1,7 +1,7 @@
 import { APP_IDENTITY } from "@/components/app-identity";
 import { getGuide, getGuideSlugs, guideTopic } from "@/lib/guides/catalog";
 import { GUIDE_HUBS, HUB_ORDER, isHub } from "@/lib/guides/hubs";
-import { familyShareImage, guideShareImage, shareImageSize } from "@/lib/share-image";
+import { familyShareImage, pageShareImage, shareImageSize } from "@/lib/share-image";
 
 export const alt = "A TinyBundle parenting guide";
 export const size = shareImageSize;
@@ -14,11 +14,11 @@ export function generateStaticParams() {
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   if (isHub(slug)) {
-    return guideShareImage({ app: slug, eyebrow: `${APP_IDENTITY[slug].name} guides`, title: GUIDE_HUBS[slug].h1 });
+    return pageShareImage({ app: slug, eyebrow: `${APP_IDENTITY[slug].name} guides`, title: GUIDE_HUBS[slug].h1 });
   }
   const guide = getGuide(slug);
   if (!guide) return familyShareImage();
-  return guideShareImage({
+  return pageShareImage({
     app: guide.app,
     eyebrow: `${APP_IDENTITY[guide.app].name} guide`,
     title: guide.question,

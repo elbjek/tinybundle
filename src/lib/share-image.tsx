@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { APP_IDENTITY, AppMark, BundleQuads } from "@/components/app-identity";
 import { HERO_MOMENTS } from "@/components/home/hero-moments";
+import { getApp, type AppSlug } from "@/lib/apps";
 import type { GuideApp } from "@/lib/guides/types";
 
 export const shareImageSize = { width: 1200, height: 630 } as const;
@@ -137,8 +138,82 @@ export async function familyShareImage() {
   );
 }
 
-/** A guide or guide hub card: the app's colours, its mark, the question and the topic. */
-export async function guideShareImage({ app, eyebrow, title, topic }: { app: GuideApp; eyebrow: string; title: string; topic?: string }) {
+/** An app landing page card: the app's hero headline, what it does, whether it is out, and a large mark. */
+export async function appShareImage(slug: AppSlug) {
+  const app = getApp(slug);
+  const moment = HERO_MOMENTS.find((m) => m.app === slug);
+  if (!moment) throw new Error(`No hero moment for ${slug}`);
+  const { colors } = APP_IDENTITY[slug];
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          padding: "56px 64px 56px",
+          background: colors.tile,
+          fontFamily: "Nunito Sans",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 150,
+            right: -70,
+            width: 360,
+            height: 360,
+            borderRadius: 96,
+            background: slug === "tinynaps" ? colors.iconBg : "#FFFFFF",
+            transform: "rotate(10deg)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <AppMark app={slug} size={230} />
+        </div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+            <Tile app={slug} size={72} radius={22} />
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <span style={{ fontSize: 38, fontWeight: 800, color: INK, lineHeight: 1.1 }}>{app.name}</span>
+              <span style={{ fontSize: 22, fontWeight: 800, color: colors.deep }}>{moment.tag}</span>
+            </div>
+          </div>
+          <span
+            style={{
+              padding: "10px 22px",
+              borderRadius: 999,
+              background: "#FFFFFF",
+              fontSize: 22,
+              fontWeight: 800,
+              color: app.live ? "#47523B" : "#8A6A3C",
+            }}
+          >
+            {app.live ? "Available now" : "Coming soon"}
+          </span>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", maxWidth: 760 }}>
+          <span style={{ fontSize: 72, fontWeight: 800, lineHeight: 1.05, color: INK, letterSpacing: "-0.02em" }}>{moment.title}</span>
+          <span style={{ fontSize: 72, fontWeight: 800, lineHeight: 1.05, color: colors.deep, letterSpacing: "-0.02em" }}>
+            {moment.title2}
+          </span>
+          <span style={{ marginTop: 18, fontSize: 27, lineHeight: 1.4, color: BODY }}>{moment.sub}</span>
+        </div>
+        <Wordmark size={44} ring={colors.tile} />
+      </div>
+    ),
+    { ...shareImageSize, fonts: await nunitoSans() },
+  );
+}
+
+/** A page card: the app's colours, its mark, an eyebrow, the page's title or question, and an optional topic. */
+export async function pageShareImage({ app, eyebrow, title, topic }: { app: GuideApp; eyebrow: string; title: string; topic?: string }) {
   const { colors } = APP_IDENTITY[app];
   const titleSize = title.length > 70 ? 56 : title.length > 44 ? 66 : 76;
   return new ImageResponse(

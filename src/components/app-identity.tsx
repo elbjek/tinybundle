@@ -49,7 +49,8 @@ export function AppMark({ app, className, size }: { app: GuideApp; className?: s
           />
         </g>
       ) : null}
-      {app === "tinybundle" ? <BundleQuads /> : null}
+      {/* Called directly so share images, which skip components inside an <svg>, still draw it. */}
+      {app === "tinybundle" ? BundleQuads({}) : null}
     </svg>
   );
 }

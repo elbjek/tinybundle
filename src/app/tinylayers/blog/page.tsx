@@ -5,7 +5,7 @@ import {
   breadcrumbJsonLd,
 } from "@/components/tinylayers/breadcrumbs";
 import { LayersHeader, LayersFooter } from "@/components/tinylayers/chrome";
-import { absoluteUrl, layersOgImage, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, SITE_URL } from "@/lib/seo";
 import { layersArticles } from "@/lib/tinylayers/articles";
 
 const title = "The TinyLayers Guide - Calm answers on dressing your baby";
@@ -36,13 +36,11 @@ export const metadata: Metadata = {
     description: ogDescription,
     siteName: "TinyLayers",
     locale: "en_US",
-    images: [layersOgImage],
   },
   twitter: {
     card: "summary_large_image",
     title: ogTitle,
     description: ogDescription,
-    images: [layersOgImage.url],
   },
 };
 

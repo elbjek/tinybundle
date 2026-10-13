@@ -6,7 +6,8 @@ import {
   breadcrumbJsonLd,
 } from "@/components/tinylayers/breadcrumbs";
 import { LayersHeader, LayersFooter } from "@/components/tinylayers/chrome";
-import { absoluteUrl, layersOgImage, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, SITE_URL } from "@/lib/seo";
+import { shareImageSize } from "@/lib/share-image";
 import {
   getLayersArticle,
   getLayersArticleSlugs,
@@ -47,13 +48,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: article.publishedAt,
       modifiedTime: article.modifiedAt,
       authors: ["TinyLayers"],
-      images: [layersOgImage],
     },
     twitter: {
       card: "summary_large_image",
       title: article.title,
       description: article.description,
-      images: [layersOgImage.url],
     },
   };
 }
@@ -82,9 +81,9 @@ export default async function TinyLayersArticlePage({ params }: Props) {
         description: article.description,
         image: {
           "@type": "ImageObject",
-          url: absoluteUrl(layersOgImage.url),
-          width: layersOgImage.width,
-          height: layersOgImage.height,
+          url: absoluteUrl(`${path}/opengraph-image`),
+          width: shareImageSize.width,
+          height: shareImageSize.height,
         },
         author: {
           "@type": "Organization",
