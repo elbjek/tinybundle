@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AppTile } from "@/components/app-identity";
 import { BloomsDemo } from "@/components/home/app-demos";
+import { StoreLabel } from "@/components/app-store-badge";
 import { AppStoreCta } from "@/components/site/app-store-cta";
 import { Faq, type FaqItem } from "@/components/site/faq";
 import { GuidesTeaser } from "@/components/site/guides-teaser";
@@ -64,14 +65,6 @@ const FAMILY_LINES: Partial<Record<AppSlug, string>> = {
   tinynaps: "Sleep, feeds and nappies at a glance",
 };
 
-function DownloadIcon({ size }: { size: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 4v11M7 10l5 5 5-5M5 20h14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 function Hero() {
   const cta = appCta(APP, WAITLIST);
   return (
@@ -104,8 +97,7 @@ function Hero() {
               rel={cta.live ? "noopener" : undefined}
               className="flex h-[54px] items-center gap-2.5 rounded-[18px] bg-[#55915E] px-6 text-base font-extrabold text-white shadow-[0_8px_20px_rgba(0,0,0,0.12)] hover:brightness-[0.93] active:scale-[0.97]"
             >
-              {cta.live ? <DownloadIcon size={16} /> : null}
-              {cta.live ? "Download on the App Store" : cta.label}
+              {cta.live ? <StoreLabel /> : cta.label}
             </a>
             <a
               href="#features"
@@ -162,8 +154,7 @@ function Features() {
             rel={cta.live ? "noopener" : undefined}
             className="mt-[22px] inline-flex h-11 items-center gap-2 rounded-[22px] bg-tb-ink px-[18px] text-sm font-extrabold text-white hover:bg-black"
           >
-            {cta.live ? <DownloadIcon size={15} /> : null}
-            {cta.label}
+            {cta.live ? <StoreLabel /> : cta.label}
           </a>
         </div>
         <div className="box-border min-w-0 rounded-[24px] bg-[#E3EBDC] p-5">

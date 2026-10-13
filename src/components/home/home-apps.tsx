@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { AppTile } from "@/components/app-identity";
+import { StoreLabel } from "@/components/app-store-badge";
 import { AppTabs } from "@/components/home/app-tabs";
 import { launch } from "@/components/home/launch-copy";
 import { QrLink } from "@/components/home/qr-link";
@@ -270,7 +271,7 @@ function PanelBody({ panel }: { panel: Panel }) {
               }`}
               style={{ "--btn": btn, "--hover": panel.hover, "--deep": deep } as CSSProperties}
             >
-              {cta.label}
+              {cta.live ? <StoreLabel /> : cta.label}
             </a>
             {cta.live ? pageLink(false) : null}
           </div>
