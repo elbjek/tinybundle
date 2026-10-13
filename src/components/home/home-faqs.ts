@@ -33,7 +33,7 @@ export const HOME_FAQS: FaqItem[] = [
   },
   {
     q: "Do the TinyBundle apps sync with each other?",
-    a: "Not yet, but cross-app sync is coming soon. For now each app works on its own, so you add your baby in each one you use. Once sync arrives, you’ll set your baby up once and every TinyBundle app you use will stay up to date.",
+    a: "Not yet. Each app works on its own, so you add your baby in each one you use. We’re exploring ways to sync the apps, and we’ll share news here if and when it’s ready.",
   },
   {
     q: "Do the apps give medical advice?",
